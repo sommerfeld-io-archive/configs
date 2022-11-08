@@ -45,24 +45,24 @@ jobs:
         with:
           ignore_paths: node_modules target
 
-  lint-ansible:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: ansible-lint
-        run: docker run --rm --volume "$(pwd)/src/main/ansible/playbooks:/data" cytopia/ansible-lint:latest playbook.yml
+  # lint-ansible:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #     - name: ansible-lint
+  #       run: docker run --rm --volume "$(pwd)/src/main/ansible/playbooks:/data" cytopia/ansible-lint:latest playbook.yml
 
   molecule:
     runs-on: ubuntu-latest
-    needs: ['lint-yaml', 'lint-ansible']
+    needs: ['lint-yaml']
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
   on-failure:
     runs-on: ubuntu-latest
-    needs: ['lint-yaml', 'lint-folders', 'lint-filenames', 'shellcheck', 'lint-ansible', 'molecule']
+    needs: ['lint-yaml', 'lint-folders', 'lint-filenames', 'shellcheck', 'molecule']
     if: failure()
 
     steps:
