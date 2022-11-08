@@ -1,0 +1,24 @@
+---
+- name: Main playbook
+  hosts: all
+  gather_facts: true
+  become: true
+  tasks:
+    - name: whoami
+      ansible.builtin.command: whoami
+
+- name: Workstation playbook
+  hosts: workstation
+  gather_facts: true
+  become: true
+  tasks:
+    - name: whoami
+      ansible.builtin.command: whoami
+
+- name: RasPi playbook
+  hosts: raspi
+  gather_facts: true
+  become: true
+  tasks:
+    - name: whoami
+      ansible.builtin.command: whoami

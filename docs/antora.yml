@@ -1,0 +1,9 @@
+---
+name: infrastructure-docs
+title: Infrastructure Docs
+version: feat__SIO-220-ci-pipeline
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/nav.adoc
+  - modules/ADRs/nav.adoc
+  - modules/GUIDELINES/nav.adoc

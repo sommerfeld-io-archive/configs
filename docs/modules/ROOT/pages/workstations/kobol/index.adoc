@@ -1,0 +1,59 @@
+= Workstation `kobol`
+Sebastian Sommerfeld <sebastian@sommerfeld.io>
+
+Setup, configuration and documentation for my local Ubuntu workstation following an infrastructure as code approach.
+
+== Building Block View / Whitebox Overall System
+=== Services
+The following services are up and running when the machine is started.
+
+[cols="3,1,2", options="header"]
+|===
+|Service |URL |User (Password)
+|Node Exporter |http://localhost:9100 |-
+|cAdvisor |http://localhost:9110 |-
+|Portainer |http://localhost:9990 |admin (admin)
+|===
+
+== Install
+Download and install a fresh link:https://ubuntu.com[Ubuntu] from an iso image:
+
+. Download iso image from https://ubuntu.com/download/desktop
+. Create bootable USB stick using the application "Startup Disk Creator" (shipped with Ubuntu) or some other software like https://www.balena.io/etcher[Etcher]
+. Install the OS on the machine
+
+Once the basic OS is installed, perform the following steps on your machine:
+
+. Choose NVIDIA graphics driver from "Additional Drivers"
+. Enable Dark Mode
+. Setup three monitors, Dock position and icon size, add favourite applications to Dock
+. Login to Firefox Sync
+. Adjust wokspaces behavior in _Settings > Multitasking_ (Workspaces on all displays)
+. Setup Deja Dup Backup folder to "/media/sebastian/USB-1TB/.kobol-backups/deja-dup
+. Run setup from infrastructure repository
+.. Install git using `sudo apt-get install -y git` and create folder `mkdir -p ~/work/repos/sebastian-sommerfeld-io`
+.. Clone repository (`git clone https://github.com/sebastian-sommerfeld-io/infrastructure.git`) to `~/work/repos/sebastian-sommerfeld-io`
+... Run `src/main/workstations/kobol/provision/10-configure.sh` -> Basic configuration and .bashrc settings
+... Run `src/main/workstations/kobol/provision/20-install.sh` -> Install software packages
+... Run `src/main/workstations/kobol/provision/21-install-intellij.sh` -> Install IntelliJ
+... Run `src/main/workstations/kobol/provision/90-start-services.sh` -> Start basic services and docker containers which are always running
+.. Add `~/work`, `~/temp` and `~/virtualmachines` to favourites (in File Manager)
+.. Update file associations in Settings > Applications > Sublime Text
+.. Clone repositories
+. Enable Auto-Export for Firefox bookmarks
+. Import existing Virtualbox VMs
+
+=== Steam Setup for Windows Games on Linux
+. Install Steam
+. Enable the Steam Beta Client: Go to _Steam -> Settings_ and (in the account tab) click change in the Steam Beta Update and click on Steam Beta Update
+. Enable Steam Play for all games: Go to _Settings -> Steam Play Tab_ and click "Enable Steam Play for all titles"
+. Install the respective games
+
+== Risks and Technical Debts
+Scale for Probability and Impact: Low, Medium and High
+
+[cols="1,3,5,1,1,1", options="header"]
+|===
+|# |Title |Description |Probability |Impact |Response
+|{counter:usage} |none |none |none |none |none ||none
+|===
