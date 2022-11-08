@@ -4,7 +4,14 @@
 #
 # @description This script runs the Ansible playbooks. Ansible runs in Docker.
 #
-# IMPORTANT: Make sure to run ``ssh-copy-id <REMOTE_USER>@<REMOTE_SERVER>.fritz.box`` for all relevant machines.
+# Make sure to run ``ssh-copy-id <REMOTE_USER>@<REMOTE_SERVER>.fritz.box`` for all relevant machines.
+#
+# [source, bash]
+# ----
+# ssh-copy-id sebastian@caprica.fritz.box
+# ssh-copy-id sebastian@kobol.fritz.box
+# ssh-copy-id pi@prometheus.fritz.box
+# ----
 #
 # ==== Arguments
 #
@@ -63,12 +70,6 @@ function ansible() {
 function ansible-playbook() {
   invoke ansible-playbook "$@"
 }
-
-# echo -e "$LOG_INFO Copy ssh keys to remote machines ----------"
-# ssh-copy-id sebastian@caprica.fritz.box
-# ssh-copy-id sebastian@kobol.fritz.box
-# ssh-copy-id sebastian@prometheus.fritz.box
-# echo -e "$LOG_INFO -------------------------------------------"
 
 echo -e "$LOG_INFO Lint yaml files"
 yamllint .
