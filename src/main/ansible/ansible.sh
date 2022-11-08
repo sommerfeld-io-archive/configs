@@ -46,6 +46,7 @@ function invoke() {
     --volume /etc/localtime:/etc/localtime:ro \
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \
+    --network host \
     cytopia/ansible:latest-tools "$@"
 }
 
@@ -75,4 +76,4 @@ echo -e "$LOG_INFO Lint yaml files"
 yamllint .
 
 echo -e "$LOG_INFO Run Ansible playbook"
-ansible-playbook playbooks/main.yml --inventory hosts.ini --ask-become-pass -v
+ansible-playbook playbooks/main.yml --inventory hosts.ini --ask-become-pass

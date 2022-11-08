@@ -10,6 +10,17 @@ Sebastian Sommerfeld <sebastian@sommerfeld.io>
 .. Do not install any futher software packages. Installations take place later on when provisioning the system using Ansible.
 . Test connecting to `caprica` via `ssh sebastian@caprica.fritz.box` (with sebastian being the user created while installing the OS).
 
+=== Install SSH Server
+Run the following commands to install and enable ssh.
+
+[source, bash]
+----
+sudo apt-get -y update
+sudo apt-get install -y openssh-server
+sudo ufw allow ssh
+sudo systemctl enable --now ssh
+----
+
 == Risks and Technical Debts
 Scale for Probability and Impact: Low, Medium and High
 

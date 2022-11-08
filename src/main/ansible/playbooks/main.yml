@@ -1,24 +1,78 @@
 ---
-- name: Main playbook
+- name: Main play
   hosts: all
   gather_facts: true
   become: true
+  vars_files:
+    - ../vars/global.yml
   tasks:
     - name: whoami
       ansible.builtin.command: whoami
 
-- name: Workstation playbook
-  hosts: workstation
+    - name: Install required system packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+          - software-properties-common
+        state: latest
+        update_cache: true
+
+    - name: Install tool packages
+      apt:
+        pkg:
+          - ncdu
+          - htop
+          - git
+          - neofetch
+        state: latest
+        update_cache: true
+
+    - name: Config -> Update bash prompt in .bashrc
+      lineinfile:
+        dest: "/home/{{ ansible_user }}/.bashrc"
+        regexp: '^PS1='
+        line: "PS1={{ ps1 }}"
+        state: present
+
+    - name: Config -> Write aliases to .bashrc
+      lineinfile:
+        dest: "/home/{{ ansible_user }}/.bashrc"
+        state: present
+        line: "{{ item }}"
+      with_items:
+        - alias ll="ls -alFh --color=auto"
+        - alias ls="ls -a --color=auto"
+        - alias grep="grep --color=auto"
+        - alias pull-all-repos="git all pull"
+        - export LOG_DONE="[\e[32mDONE\e[0m]"
+        - export LOG_ERROR="[\e[1;31mERROR\e[0m]"
+        - export LOG_INFO="[\e[34mINFO\e[0m]"
+        - export LOG_WARN="[\e[93mWARN\e[0m]"
+        - export Y="\e[93m"
+        - export P="\e[35m"
+        - export D="\e[0m"
+        - docker run --rm mwendler/figlet:latest "$(hostname)"
+
+- name: Workstation play
+  hosts: workstations
   gather_facts: true
   become: true
+  vars_files:
+    - ../vars/global.yml
   tasks:
     - name: whoami
       ansible.builtin.command: whoami
 
-- name: RasPi playbook
+- name: RasPi play
   hosts: raspi
   gather_facts: true
   become: true
+  vars_files:
+    - ../vars/global.yml
   tasks:
     - name: whoami
       ansible.builtin.command: whoami
