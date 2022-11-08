@@ -26,7 +26,7 @@ ls:
   .gitkeep: lowercase
 
 ignore:
-  - .asciidoc-link-check.json
+  - .adoc-links.json
   - .ls-lint.yml
   - .yamllint.yml
   - .gitpod.yml
