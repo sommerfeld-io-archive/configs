@@ -7,45 +7,6 @@
     - ../vars/global.yml
   tasks:
 
-    - name: Install -> Basic packages
-      apt:
-        pkg:
-          - apt-transport-https
-          - ca-certificates
-          - curl
-          - gnupg
-          - lsb-release
-          - software-properties-common
-        state: latest
-        update_cache: true
-
-    - name: Install -> Tool packages
-      apt:
-        pkg:
-          - ncdu
-          - htop
-          - git
-          - neofetch
-        state: latest
-        update_cache: true
-
-    - name: Uninstall -> Some pre-installed packages
-      apt:
-        pkg:
-          - thunderbird
-          - libreoffice
-          - totem
-          - totem-video-thumbnailer
-        state: absent
-
-    - name: Config -> Copy git configuration
-      ansible.builtin.copy:
-        src: ../assets/.gitconfig
-        dest: "/home/{{ ansible_user }}/.gitconfig"
-        owner: "{{ ansible_user }}"
-        group: "{{ ansible_user }}"
-        mode: "{{ file_permissions }}"
-
     - name: Config -> Update bash prompt in .bashrc
       lineinfile:
         dest: "/home/{{ ansible_user }}/.bashrc"
@@ -85,6 +46,45 @@
         - "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io"
         - "/home/{{ ansible_user }}/tmp"
 
+    - name: Install -> Basic packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+          - software-properties-common
+        state: latest
+        update_cache: true
+
+    - name: Install -> Tool packages
+      apt:
+        pkg:
+          - ncdu
+          - htop
+          - git
+          - neofetch
+        state: latest
+        update_cache: true
+
+    - name: Uninstall -> Some pre-installed packages
+      apt:
+        pkg:
+          - thunderbird
+          - libreoffice
+          - totem
+          - totem-video-thumbnailer
+        state: absent
+
+    - name: Config -> Copy git configuration
+      ansible.builtin.copy:
+        src: ../assets/.gitconfig
+        dest: "/home/{{ ansible_user }}/.gitconfig"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "{{ file_permissions }}"
+
 - name: Basic setup for all nodes (non-root)
   hosts: all
   gather_facts: false
@@ -108,6 +108,7 @@
   vars_files:
     - ../vars/global.yml
   tasks:
+
     - name: Info -> whoami
       ansible.builtin.command: whoami
 
@@ -118,6 +119,7 @@
   vars_files:
     - ../vars/global.yml
   tasks:
+
     - name: Config -> Create ssh keypair
       openssh_keypair:
         path: "/home/{{ ansible_user }}/.ssh/id_rsa"
@@ -128,6 +130,34 @@
         state: present
         force: false
 
+    - name: Docker Setup -> Print 'lsb_release -sc'
+      debug:
+        msg: "{{ ansible_distribution_release }}"
+
+    - name: Docker Setup -> Add GPG apt key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Docker Setup -> Add apt repository
+      apt_repository:
+        repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    - name: Docker Setup -> Install docker-ce and docker-compose
+      apt:
+        name:
+          - docker-ce
+          - docker-compose
+        state: latest
+        update_cache: true
+
+    - name: Docker Setup -> Add default user to docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: true
+
 - name: Setup for RasPi nodes
   hosts: raspi
   gather_facts: true
@@ -135,5 +165,6 @@
   vars_files:
     - ../vars/global.yml
   tasks:
+
     - name: Info -> whoami
       ansible.builtin.command: whoami
