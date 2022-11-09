@@ -16,7 +16,7 @@ Sebastian Sommerfeld <sebastian@sommerfeld.io>
 // |                                          |
 // +------------------------------------------+
 
-Infrastructure repository with configs and docs for my local workstations, my homelab with tool server and RasPi nodes and my public cloud-hosted website.
+Infrastructure repository with configs and docs for my local workstations, servers and RasPi nodes.
 
 image:{github-actions-url}/{job-generate-docs}/{badge}[Github Badge, link={github-actions-url}/{job-generate-docs}]
 image:{github-actions-url}/{job-ci}/{badge}[Github Badge, link={github-actions-url}/{job-ci}]
@@ -30,6 +30,8 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 == How to use this project
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+. Every machine is Ubuntu (or at least Debian-based)
 
 == Risks and Technical Debts
 Scale for Probability and Impact: Low, Medium and High
