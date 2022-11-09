@@ -1,4 +1,153 @@
 ---
-- ansible.builtin.import_playbook: playbook-group-x86-ubuntu.yml
-- ansible.builtin.import_playbook: playbook-group-raspi.yml
-- ansible.builtin.import_playbook: playbook-host-caprica.yml
+- name: Setup for group x86_ubuntu
+  hosts: x86_ubuntu
+  gather_facts: true
+  become: true
+  vars_files:
+    - ../vars/global.yml
+  tasks:
+
+    - ansible.builtin.import_tasks: ../tasks/config-bash-prompt.yml
+    - ansible.builtin.import_tasks: ../tasks/config-bash-aliases.yml
+    - ansible.builtin.import_tasks: ../tasks/config-create-directories.yml
+    - ansible.builtin.import_tasks: ../tasks/install-basic-packages.yml
+    - ansible.builtin.import_tasks: ../tasks/config-git.yml
+
+    - name: Install -> Software packages
+      apt:
+        pkg:
+          - rpi-imager
+          - tilix
+          - filezilla
+          - steam
+          - gnome-tweaks
+          - conky-all
+        state: latest
+        update_cache: true
+
+    - name: Install -> Chromium packages
+      apt:
+        pkg:
+          - chromium-browser
+          - chromium-browser-l10n
+          - chromium-codecs-ffmpeg
+        state: latest
+        update_cache: true
+
+    - name: Install -> Install media player and DRM packages
+      apt:
+        pkg:
+          - vlc
+          - vlc-plugin-access-extra
+          - libbluray-bdj
+          - libdvdcss2
+          - vlc-plugin-fluidsynth
+          - vlc-plugin-jack
+          - ffmpeg
+          - libavcodec-extra
+          - ubuntu-restricted-extras
+        state: latest
+        update_cache: true
+
+    - name: Uninstall -> Some pre-installed packages
+      apt:
+        pkg:
+          - thunderbird
+          - libreoffice
+          - totem
+          - totem-video-thumbnailer
+        state: absent
+
+    - name: Sublime Setup -> Add GPG apt key
+      apt_key:
+        url: https://download.sublimetext.com/sublimehq-pub.gpg
+        state: present
+
+    - name: Sublime Setup -> Add apt repository
+      apt_repository:
+        repo: deb https://download.sublimetext.com apt/stable/
+        state: present
+
+    - name: Sublime Setup -> Install docker-ce and docker-compose
+      apt:
+        name:
+          - sublime-text
+        state: latest
+        update_cache: true
+
+    - name: Install -> Snap packages
+      community.general.snap:
+        name:
+          - postman
+        state: present
+
+    - name: Install -> VSCode
+      community.general.snap:
+        name: code
+        state: present
+        classic: true
+
+- name: Setup for group x86_ubuntu
+  hosts: x86_ubuntu
+  gather_facts: true
+  become: false
+  vars_files:
+    - ../vars/global.yml
+  tasks:
+    - ansible.builtin.import_tasks: ../tasks/config-git-clone-repos.yml
+
+- name: Setup for RasPi nodes
+  hosts: raspi
+  gather_facts: true
+  become: true
+  vars_files:
+    - ../vars/global.yml
+  tasks:
+
+    - ansible.builtin.import_tasks: ../tasks/config-bash-prompt.yml
+    - ansible.builtin.import_tasks: ../tasks/config-bash-aliases.yml
+    - ansible.builtin.import_tasks: ../tasks/config-create-directories.yml
+    - ansible.builtin.import_tasks: ../tasks/install-basic-packages.yml
+    - ansible.builtin.import_tasks: ../tasks/config-git.yml
+
+- name: Setup for caprica
+  hosts: caprica.fritz.box
+  gather_facts: true
+  become: true
+  vars_files:
+    - ../vars/global.yml
+  tasks:
+
+    - name: Config -> Create ssh keypair
+      openssh_keypair:
+        path: "/home/{{ ansible_user }}/.ssh/id_rsa"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        type: rsa
+        size: 4096
+        state: present
+        force: false
+
+    - name: Docker Setup -> Add GPG apt key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Docker Setup -> Add apt repository
+      apt_repository:
+        repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    - name: Docker Setup -> Install docker-ce and docker-compose
+      apt:
+        name:
+          - docker-ce
+          - docker-compose
+        state: latest
+        update_cache: true
+
+    - name: Docker Setup -> Add default user to docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: true

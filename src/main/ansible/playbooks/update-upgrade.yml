@@ -1,0 +1,16 @@
+---
+- name: apt update and upgrade
+  hosts: all
+  gather_facts: true
+  become: true
+  tasks:
+
+    - name: Update all packages to their latest version
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+        update_cache: true
+
+    - name: Perform aptitude safe-upgrade
+      ansible.builtin.apt:
+        upgrade: safe

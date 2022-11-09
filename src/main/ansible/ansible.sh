@@ -72,11 +72,19 @@ function ansible-playbook() {
   invoke ansible-playbook "$@"
 }
 
+
 echo -e "$LOG_WARN +-----------------------------------------------------------------------------+"
 echo -e "$LOG_WARN |    Ansible expects the user ${P}sebastian${D} to be present on all nodes.           |"
 echo -e "$LOG_WARN |    This user is the default user for each node (workstation and RasPi).     |"
 echo -e "$LOG_WARN |    Normally this user is created from the setup wizard.                     |"
 echo -e "$LOG_WARN +-----------------------------------------------------------------------------+"
 
-echo -e "$LOG_INFO Run Ansible playbook"
-ansible-playbook playbooks/main.yml --inventory hosts.yml --ask-become-pass
+
+echo -e "$LOG_INFO Select playbook"
+#select s in $(cd playbooks && ls | grep .yml | grep -v playbook); do
+select playbook in playbooks/*.yml; do
+  echo -e "$LOG_INFO Run $P$playbook$D"
+  ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
+
+  break
+done
