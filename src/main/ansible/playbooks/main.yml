@@ -1,5 +1,5 @@
 ---
-- import_playbook: playbook-all.yml
 - import_playbook: playbook-group-x86-ubuntu.yml
 - import_playbook: playbook-group-raspi.yml
+- import_playbook: playbook-all.yml
 - import_playbook: playbook-host-caprica.yml

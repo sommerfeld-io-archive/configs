@@ -14,15 +14,7 @@ Sebastian Sommerfeld <sebastian@sommerfeld.io>
 . Allow caprica to work with github. Use public key `id_rsa.pub`, NOT the pivate key!
 
 === Install SSH Server
-Run the following commands to install and enable ssh.
-
-[source, bash]
-----
-sudo apt-get -y update
-sudo apt-get install -y openssh-server
-sudo ufw allow ssh
-sudo systemctl enable --now ssh
-----
+Setup openssh-server using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/bootstrap-openssh-server.sh | bash -`
 
 == Risks and Technical Debts
 Scale for Probability and Impact: Low, Medium and High
