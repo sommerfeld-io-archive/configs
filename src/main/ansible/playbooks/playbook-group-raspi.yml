@@ -1,0 +1,12 @@
+---
+- name: Setup for RasPi nodes
+  hosts: raspi
+  gather_facts: true
+  become: true
+  vars_files:
+    - ../vars/global.yml
+  tasks:
+
+    - name: Info -> Print Ubuntu codename ('lsb_release -sc')
+      debug:
+        msg: "{{ ansible_distribution_release }}"

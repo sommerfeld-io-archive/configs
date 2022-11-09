@@ -82,4 +82,4 @@ echo -e "$LOG_WARN |    Normally this user is created from the setup wizard     
 echo -e "$LOG_WARN +-----------------------------------------------------------------------------+"
 
 echo -e "$LOG_INFO Run Ansible playbook"
-ansible-playbook playbooks/main.yml --inventory hosts.ini --ask-become-pass
+ansible-playbook playbooks/main.yml --inventory hosts.yml --ask-become-pass
