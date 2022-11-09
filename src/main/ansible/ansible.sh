@@ -72,9 +72,6 @@ function ansible-playbook() {
   invoke ansible-playbook "$@"
 }
 
-echo -e "$LOG_INFO Lint yaml files"
-yamllint .
-
 echo -e "$LOG_WARN +-----------------------------------------------------------------------------+"
 echo -e "$LOG_WARN |    Ansible expects the user ${P}sebastian${D} to be present on all nodes            |"
 echo -e "$LOG_WARN |    This user is the default user for each node (workstation and RasPi)      |"
