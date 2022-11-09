@@ -26,21 +26,18 @@ Once the basic OS is installed, perform the following steps on your machine:
 
 . Choose NVIDIA graphics driver from "Additional Drivers"
 . Enable Dark Mode
-. Setup three monitors, Dock position and icon size, add favourite applications to Dock
+. Setup monitors, Dock position, icon size, add favourite applications to Dock
 . Login to Firefox Sync
 . Adjust wokspaces behavior in _Settings > Multitasking_ (Workspaces on all displays)
 . Setup Deja Dup Backup folder to "/media/sebastian/USB-1TB/.kobol-backups/deja-dup
 . Run setup from infrastructure repository
 .. Install git using `sudo apt-get install -y git` and create folder `mkdir -p ~/work/repos/sebastian-sommerfeld-io`
-.. Clone repository (`git clone https://github.com/sebastian-sommerfeld-io/infrastructure.git`) to `~/work/repos/sebastian-sommerfeld-io`
-... Run `src/main/workstations/kobol/provision/10-configure.sh` -> Basic configuration and .bashrc settings
-... Run `src/main/workstations/kobol/provision/20-install.sh` -> Install software packages
-... Run `src/main/workstations/kobol/provision/21-install-intellij.sh` -> Install IntelliJ
-... Run `src/main/workstations/kobol/provision/90-start-services.sh` -> Start basic services and docker containers which are always running
-.. Add `~/work`, `~/temp` and `~/virtualmachines` to favourites (in File Manager)
+.. Clone repository (`git clone https://github.com/sebastian-sommerfeld-io/configs.git`) to some temp directory.
+... Run `src/main/kobol/provision.sh` -> Basic configuration
+... Apply all other configs using the ansible playbook
+.. Add `~/work`, `~/tmp` and `~/virtualmachines` to favourites (in File Manager)
 .. Update file associations in Settings > Applications > Sublime Text
 .. Clone repositories
-. Enable Auto-Export for Firefox bookmarks
 . Import existing Virtualbox VMs
 
 === Steam Setup for Windows Games on Linux

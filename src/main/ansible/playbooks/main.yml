@@ -1,15 +1,13 @@
 ---
-- name: Main play
+- name: Basic setup for all nodes
   hosts: all
   gather_facts: true
   become: true
   vars_files:
     - ../vars/global.yml
   tasks:
-    - name: whoami
-      ansible.builtin.command: whoami
 
-    - name: Install required system packages
+    - name: Install -> Basic packages
       apt:
         pkg:
           - apt-transport-https
@@ -21,7 +19,7 @@
         state: latest
         update_cache: true
 
-    - name: Install tool packages
+    - name: Install -> Tool packages
       apt:
         pkg:
           - ncdu
@@ -30,6 +28,23 @@
           - neofetch
         state: latest
         update_cache: true
+
+    - name: Uninstall -> Some pre-installed packages
+      apt:
+        pkg:
+          - thunderbird
+          - libreoffice
+          - totem
+          - totem-video-thumbnailer
+        state: absent
+
+    - name: Config -> Copy git configuration
+      ansible.builtin.copy:
+        src: ../assets/.gitconfig
+        dest: "/home/{{ ansible_user }}/.gitconfig"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "{{ file_permissions }}"
 
     - name: Config -> Update bash prompt in .bashrc
       lineinfile:
@@ -57,22 +72,68 @@
         - export D="\e[0m"
         - docker run --rm mwendler/figlet:latest "$(hostname)"
 
-- name: Workstation play
+    - name: Config -> Create directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: u=rwx,g=rx,o=rx
+      with_items:
+        - "/home/{{ ansible_user }}/work"
+        - "/home/{{ ansible_user }}/work/repos"
+        - "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io"
+        - "/home/{{ ansible_user }}/tmp"
+
+- name: Basic setup for all nodes (non-root)
+  hosts: all
+  gather_facts: false
+  become: false
+  vars_files:
+    - ../vars/global.yml
+  tasks:
+
+    - name: Config -> Clone git repositories (sebastian-sommerfeld-io)
+      ansible.builtin.git:
+        repo: "git@github.com:sebastian-sommerfeld-io/{{ item }}.git"
+        dest: "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/{{ item }}"
+        key_file: "/home/{{ ansible_user }}/.ssh/id_rsa"
+      with_items:
+        - configs
+
+- name: Setup for x86 workstations
   hosts: workstations
   gather_facts: true
   become: true
   vars_files:
     - ../vars/global.yml
   tasks:
-    - name: whoami
+    - name: Info -> whoami
       ansible.builtin.command: whoami
 
-- name: RasPi play
+- name: Setup for workstation 'caprica.fritz.box'
+  hosts: caprica.fritz.box
+  gather_facts: true
+  become: true
+  vars_files:
+    - ../vars/global.yml
+  tasks:
+    - name: Config -> Create ssh keypair
+      openssh_keypair:
+        path: "/home/{{ ansible_user }}/.ssh/id_rsa"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        type: rsa
+        size: 4096
+        state: present
+        force: false
+
+- name: Setup for RasPi nodes
   hosts: raspi
   gather_facts: true
   become: true
   vars_files:
     - ../vars/global.yml
   tasks:
-    - name: whoami
+    - name: Info -> whoami
       ansible.builtin.command: whoami

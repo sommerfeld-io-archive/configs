@@ -1,2 +1,2 @@
 ---
-default_permissions: u=rw,g=r,o=r
+file_permissions: u=rw,g=r,o=r

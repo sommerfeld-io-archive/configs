@@ -8,7 +8,10 @@ Sebastian Sommerfeld <sebastian@sommerfeld.io>
 .. When prompted for a user and password, use the same information as in kobol.
 .. Remember to install and activate the OpenSSH server when the wizard prompts for this!
 .. Do not install any futher software packages. Installations take place later on when provisioning the system using Ansible.
+.. Set dark mode, dock config, etc.
 . Test connecting to `caprica` via `ssh sebastian@caprica.fritz.box` (with sebastian being the user created while installing the OS).
+. Install machine using the ansible configs from this repo.
+. Allow caprica to work with github. Use public key `id_rsa.pub`, NOT the pivate key!
 
 === Install SSH Server
 Run the following commands to install and enable ssh.

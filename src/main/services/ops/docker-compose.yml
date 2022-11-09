@@ -1,0 +1,45 @@
+---
+version: "3.3"
+services:
+
+  node_exporter:
+    image: prom/node-exporter:latest
+    container_name: node_exporter
+    restart: always
+    command:
+      - --path.rootfs=/host
+    pid: host
+    network_mode: host
+    volumes:
+      - /:/host:ro,rslave
+      - /etc/timezone:/etc/timezone:ro
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    restart: always
+    expose:
+      - 9110
+    ports:
+      - 9110:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+
+  portainer:
+    image: portainer/portainer-ce:alpine
+    container_name: portainer
+    command: -H unix:///var/run/docker.sock --admin-password-file /tmp/portainer_passwords
+    restart: always
+    ports:
+      - 9990:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+      - ./assets/portainer.passwd:/tmp/portainer_passwords
+      - /etc/timezone:/etc/timezone:ro
+
+volumes:
+  portainer_data:

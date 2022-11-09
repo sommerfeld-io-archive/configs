@@ -1,0 +1,11 @@
+[alias]
+        all = "!f() { ls | xargs -I{} git -C {} $1; }; f"
+[user]
+        email = sebastian@sommerfeld.io
+        name = sebastian
+[core]
+        excludesfile = /home/sebastian/.gitignore
+[credential]
+        helper = cache --timeout=3600
+[pull]
+        rebase = false

@@ -1,0 +1,14 @@
+---
+version: "3.3"
+services:
+
+  website:
+    image: sommerfeldio/website:latest
+    pull_policy: always
+    container_name: website
+    labels:
+      description: Image used for www.sommerfeld.io
+      url: http://caprica.fritz.box:8000
+    restart: unless-stopped
+    ports:
+      - 8000:80
