@@ -3,18 +3,6 @@ Sebastian Sommerfeld <sebastian@sommerfeld.io>
 
 Setup, configuration and documentation for my local Ubuntu workstation following an infrastructure as code approach.
 
-== Building Block View / Whitebox Overall System
-=== Services
-The following services are up and running when the machine is started.
-
-[cols="3,1,2", options="header"]
-|===
-|Service |URL |User (Password)
-|Node Exporter |http://localhost:9100 |-
-|cAdvisor |http://localhost:9110 |-
-|Portainer |http://localhost:9990 |admin (admin)
-|===
-
 == Install
 Download and install a fresh link:https://ubuntu.com[Ubuntu] from an iso image:
 
@@ -30,15 +18,14 @@ Once the basic OS is installed, perform the following steps on your machine:
 . Login to Firefox Sync
 . Adjust wokspaces behavior in _Settings > Multitasking_ (Workspaces on all displays)
 . Setup Deja Dup Backup folder to "/media/sebastian/USB-1TB/.kobol-backups/deja-dup
-. Run setup from infrastructure repository
-.. Install git using `sudo apt-get install -y git` and create folder `mkdir -p ~/work/repos/sebastian-sommerfeld-io`
-.. Clone repository (`git clone https://github.com/sebastian-sommerfeld-io/configs.git`) to some temp directory.
-... Run `src/main/kobol/provision.sh` -> Basic configuration
-... Apply all other configs using the ansible playbook
-.. Add `~/work`, `~/tmp` and `~/virtualmachines` to favourites (in File Manager)
-.. Update file associations in Settings > Applications > Sublime Text
-.. Clone repositories
-. Import existing Virtualbox VMs
+. Run setup from the link:https://github.com/sebastian-sommerfeld-io/configs[configs repository] by
+.. Run basic setup tasks from git using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/kobol/provision.sh | bash -`
+.. Run `src/main/kobol/provision.sh` -> Basic configuration
+.. Apply all other configs using the ansible playbook
+. Add `~/work`, `~/tmp` and `~/virtualmachines` to favorites (in File Manager)
+. Update file associations in Settings > Applications > Sublime Text
+. Clone repositories
+. Import existing Virtualbox VMs from USB drives
 
 === Steam Setup for Windows Games on Linux
 . Install Steam
