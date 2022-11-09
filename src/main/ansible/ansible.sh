@@ -73,9 +73,9 @@ function ansible-playbook() {
 }
 
 echo -e "$LOG_WARN +-----------------------------------------------------------------------------+"
-echo -e "$LOG_WARN |    Ansible expects the user ${P}sebastian${D} to be present on all nodes            |"
-echo -e "$LOG_WARN |    This user is the default user for each node (workstation and RasPi)      |"
-echo -e "$LOG_WARN |    Normally this user is created from the setup wizard                      |"
+echo -e "$LOG_WARN |    Ansible expects the user ${P}sebastian${D} to be present on all nodes.           |"
+echo -e "$LOG_WARN |    This user is the default user for each node (workstation and RasPi).     |"
+echo -e "$LOG_WARN |    Normally this user is created from the setup wizard.                     |"
 echo -e "$LOG_WARN +-----------------------------------------------------------------------------+"
 
 echo -e "$LOG_INFO Run Ansible playbook"
