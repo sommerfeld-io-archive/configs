@@ -15,10 +15,16 @@ set -o nounset
 # set -o xtrace
 
 
+echo -e "$LOG_INFO Update apt cache"
+echo -e "$LOG_WARN todo ..."
+
 echo -e "$LOG_INFO Install curl"
 echo -e "$LOG_WARN todo ..."
 
 echo -e "$LOG_INFO Install git"
+echo -e "$LOG_WARN todo ..."
+
+echo -e "$LOG_INFO Install openssh-server"
 echo -e "$LOG_WARN todo ..."
 
 echo -e "$LOG_INFO Install docker"
