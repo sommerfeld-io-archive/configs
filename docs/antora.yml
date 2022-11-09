@@ -1,6 +1,6 @@
 ---
-name: infrastructure-docs
-title: Infrastructure Docs
+name: config-docs
+title: Configuration Docs
 version: main
 start_page: ROOT:index.adoc
 nav:
