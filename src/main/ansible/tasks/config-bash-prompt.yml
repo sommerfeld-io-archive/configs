@@ -1,0 +1,7 @@
+---
+- name: Config -> Update prompt in .bashrc
+  lineinfile:
+    dest: "/home/{{ ansible_user }}/.bashrc"
+    regexp: '^PS1='
+    line: "PS1=\"{{ ps1 }}\""
+    state: present

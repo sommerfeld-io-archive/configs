@@ -10,3 +10,9 @@
     - name: Info -> Print Ubuntu codename ('lsb_release -sc')
       debug:
         msg: "{{ ansible_distribution_release }}"
+
+    - ansible.builtin.import_tasks: ../tasks/config-bash-prompt.yml
+    - ansible.builtin.import_tasks: ../tasks/config-bash-aliases.yml
+    - ansible.builtin.import_tasks: ../tasks/config-create-directories.yml
+    - ansible.builtin.import_tasks: ../tasks/install-basic-packages.yml
+    - ansible.builtin.import_tasks: ../tasks/config-git.yml

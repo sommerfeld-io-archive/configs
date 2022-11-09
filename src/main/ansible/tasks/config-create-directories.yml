@@ -1,0 +1,13 @@
+---
+- name: Config -> Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rwx,g=rx,o=rx
+  with_items:
+    - "/home/{{ ansible_user }}/work"
+    - "/home/{{ ansible_user }}/work/repos"
+    - "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io"
+    - "/home/{{ ansible_user }}/tmp"

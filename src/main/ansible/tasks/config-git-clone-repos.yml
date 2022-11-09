@@ -1,0 +1,8 @@
+---
+- name: Config -> Clone git repositories (sebastian-sommerfeld-io)
+  ansible.builtin.git:
+    repo: "git@github.com:sebastian-sommerfeld-io/{{ item }}.git"
+    dest: "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/{{ item }}"
+    key_file: "/home/{{ ansible_user }}/.ssh/id_rsa"
+  with_items:
+    - configs

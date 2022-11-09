@@ -7,6 +7,10 @@
     - ../vars/global.yml
   tasks:
 
+    - name: Info -> Print Ubuntu codename ('lsb_release -sc')
+      debug:
+        msg: "{{ ansible_distribution_release }}"
+
     - name: Config -> Create ssh keypair
       openssh_keypair:
         path: "/home/{{ ansible_user }}/.ssh/id_rsa"
