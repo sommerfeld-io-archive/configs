@@ -109,8 +109,9 @@
     - ../vars/global.yml
   tasks:
 
-    - name: Info -> whoami
-      ansible.builtin.command: whoami
+    - name: Info -> Print Ubuntu codename ('lsb_release -sc')
+      debug:
+        msg: "{{ ansible_distribution_release }}"
 
 - name: Setup for workstation 'caprica.fritz.box'
   hosts: caprica.fritz.box
@@ -129,10 +130,6 @@
         size: 4096
         state: present
         force: false
-
-    - name: Docker Setup -> Print 'lsb_release -sc'
-      debug:
-        msg: "{{ ansible_distribution_release }}"
 
     - name: Docker Setup -> Add GPG apt key
       apt_key:
@@ -166,5 +163,6 @@
     - ../vars/global.yml
   tasks:
 
-    - name: Info -> whoami
-      ansible.builtin.command: whoami
+    - name: Info -> Print Ubuntu codename ('lsb_release -sc')
+      debug:
+        msg: "{{ ansible_distribution_release }}"
