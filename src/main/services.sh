@@ -46,42 +46,46 @@ function logs() {
 }
 
 
-echo -e "$LOG_INFO Deploy docker services for machine $P$HOSTNAME$D"
-echo -e "$LOG_INFO ========== System Info =================================================="
-echo "        Hostname: $HOSTNAME"
-hostnamectl
-echo "          Kernel: $(uname -v)"
-echo -e "$LOG_INFO ========================================================================="
-
-
-echo -e "$LOG_INFO Select the docker-compose stack"
-select s in */; do
-  STACK="${s::-1}"
-  break
-done
-
-
 (
-  cd "$STACK" || exit
+  cd services || exit
 
-  echo -e "$LOG_INFO Select the action"
-  select s in "$OPTION_START" "$OPTION_STOP" "$OPTION_RESTART" "$OPTION_LOGS"; do
+  echo -e "$LOG_INFO Deploy docker services for machine $P$HOSTNAME$D"
+  echo -e "$LOG_INFO ========== System Info =================================================="
+  echo "        Hostname: $HOSTNAME"
+  hostnamectl
+  echo "          Kernel: $(uname -v)"
+  echo -e "$LOG_INFO ========================================================================="
 
-    case "$s" in
-      "$OPTION_START" )
-        startup
-        break;;
-      "$OPTION_STOP" )
-        shutdown
-        break;;
-      "$OPTION_RESTART" )
-        shutdown
-        startup
-        break;;
-      "$OPTION_LOGS" )
-        logs
-        break;;
-    esac
 
+  echo -e "$LOG_INFO Select the docker-compose stack"
+  select s in */; do
+    STACK="${s::-1}"
+    break
   done
+
+
+  (
+    cd "$STACK" || exit
+
+    echo -e "$LOG_INFO Select the action"
+    select s in "$OPTION_START" "$OPTION_STOP" "$OPTION_RESTART" "$OPTION_LOGS"; do
+
+      case "$s" in
+        "$OPTION_START" )
+          startup
+          break;;
+        "$OPTION_STOP" )
+          shutdown
+          break;;
+        "$OPTION_RESTART" )
+          shutdown
+          startup
+          break;;
+        "$OPTION_LOGS" )
+          logs
+          break;;
+      esac
+
+    done
+  )
 )
