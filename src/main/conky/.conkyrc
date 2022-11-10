@@ -1,0 +1,101 @@
+conky.config = {
+	own_window_title = "kobol-conky-main",
+	use_xft = true,
+	xftalpha = 0.8,
+	update_interval = 2.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+	own_window_type = 'desktop',
+	own_window_class = 'conky',
+	own_window_hints = 'undecorated',
+	background = false,
+	double_buffer = true,
+	imlib_cache_size = 0,
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	override_utf8_locale = true,
+
+	alignment = 'top_right',
+	gap_x = 25,
+	gap_y = 45,
+
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	default_bar_width = 80,
+	default_bar_height = 8,
+	default_graph_width = 150,
+	default_graph_height = 12,
+	default_gauge_width = 20,
+	default_gauge_height = 20,
+
+	default_color = '9f907d',
+	color1 = '9f907d',
+
+	template0 = [[${font Ubuntu Mono:bold:size=13}${template1}]],
+	template1 = [[${font Ubuntu Mono:size=13}${color slate grey}]],
+	template2 = [[${font Ubuntu Mono:size=10}${color #505e6d}]],
+};
+
+conky.text = [[
+# System
+${template0}${color #9f907d}SYSTEM ${color slate grey}${hr 2}${font}
+${template1}Hostname ${alignr}$nodename
+${template1}Uptime ${alignr}${uptime_short}
+${template1}OS ${alignr} ${execi 10 lsb_release -d | cut -f 2}
+${template1}Kernel ${alignr}$kernel
+
+# Wireless
+${template0}${color #9f907d}WIRELESS ${color slate grey}${hr 2}${font}
+${if_existing /proc/net/route wlan0}${template1}${wireless_essid wlan0} ${alignr}${wireless_link_qual_perc wlan0}% ${wireless_link_bar wlan0}
+${template1}Local IP ${alignr} ${addr wlan0}
+${else}${if_existing /proc/net/route eth0}${template1}Local IP ${alignr} ${addr addr0}
+${endif}${endif}${template1}Public IP ${alignr} ${exec curl -s http://checkip.amazonaws.com/}
+${template1}Up ${alignr}${upspeed wlp2s0} ${upspeedgraph wlp2s0}
+${template1}Down ${alignr}${downspeed wlp2s0} ${downspeedgraph wlp2s0}
+${template1}Signal ${alignr}${wireless_link_qual wlp2s0}%
+${template1}Bitrate ${alignr}${wireless_bitrate wlp2s0}
+
+# Filesystem
+${template0}${color #9f907d}FILESYSTEM ${color slate grey}${hr 2}${font}
+${template1}Free (/) ${alignr}${fs_free /} ${fs_free_perc /}% ${fs_bar /}
+
+# Cpu
+${template0}${color #9f907d}CPU USAGE ${color slate grey}${hr 2}${font}
+${template1}Core 1 ${alignr}${cpu cpu1}% ${cpubar cpu1}
+${template1}Core 2 ${alignr}${cpu cpu2}% ${cpubar cpu2}
+${template1}Core 3 ${alignr}${cpu cpu3}% ${cpubar cpu3}
+${template1}Core 4 ${alignr}${cpu cpu4}% ${cpubar cpu4}
+${template1}Core 5 ${alignr}${cpu cpu5}% ${cpubar cpu5}
+${template1}Core 6 ${alignr}${cpu cpu6}% ${cpubar cpu6}
+${template1}Core 7 ${alignr}${cpu cpu7}% ${cpubar cpu7}
+${template1}Core 8 ${alignr}${cpu cpu8}% ${cpubar cpu8}
+${template1}Temperature: ${alignr}${acpitemp}°C
+
+# Memory
+${template0}${color #9f907d}MEMORY USAGE ${color slate grey}${hr 2}${font}
+${template1}RAM ${alignr}$mem/$memmax $memperc% ${membar}
+${template1}Swap ${alignr}$swap/$swapmax $swapperc% ${swapbar}
+
+${template0}${color #9f907d}SHORTCUTS ${color slate grey}${hr 2}${font}${color slate grey}
+${template1}[ALT] + [F2]          ${alignr}Run Dialog
+${template1}[ALT] + [F2] -> [r]   ${alignr}Reset Screen
+${template1}[SUPER] + [E]         ${alignr}File Manager
+${template1}[SUPER] + [L]         ${alignr}Lock Screen
+${template1}[SUPER] + [T]         ${alignr}Terminal
+
+${template0}${color #9f907d}TERMINAL COMMANDS ${color slate grey}${hr 2}${font}${color slate grey}
+${template1}ff                    ${alignr}Open Firefox with Tabs
+${template1}htop                  ${alignr}Bash Util
+${template1}ncdu ${template2}    ${template1}             ${alignr}Bash Util
+${template1}neofetch              ${alignr}Bash Util
+${template1}pull-all-repos        ${alignr}Git
+${template1}reset-conky           ${alignr}Restart Conky
+${template1}reset-sound           ${alignr}pulseaudio --start
+
+]];
