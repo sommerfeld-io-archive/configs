@@ -1,0 +1,32 @@
+---
+- name: Config -> Copy git configuration
+  ansible.builtin.copy:
+    src: "../assets/scripts/docker/wrappers/{{ item }}.sh"
+    dest: "/home/{{ ansible_user }}/work/scripts/docker-wrappers/{{ item }}.sh"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rwx,g=rx,o=rx
+  with_items:
+  - groovy
+  - hadolint
+  - hugo
+  - mvn
+  - python
+  - shellcheck
+  - yamllint
+
+- name: Config -> Create symlinks in /usr/bin
+  ansible.builtin.file:
+    src: "/home/{{ ansible_user }}/work/scripts/docker-wrappers/{{ item }}.sh"
+    dest: "/usr/bin/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: link
+  with_items:
+  - groovy
+  - hadolint
+  - hugo
+  - mvn
+  - python
+  - shellcheck
+  - yamllint

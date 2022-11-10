@@ -13,7 +13,7 @@
     - ansible.builtin.import_tasks: ../tasks/config-create-directories.yml
     - ansible.builtin.import_tasks: ../tasks/install-basic-packages.yml
     - ansible.builtin.import_tasks: ../tasks/config-git.yml
-
+    
     - name: Install -> Software packages
       apt:
         pkg:
@@ -87,6 +87,8 @@
         name: code
         state: present
         classic: true
+    
+    - ansible.builtin.import_tasks: ../tasks/install-docker-wrapper-scripts.yml
 
 - name: Setup for group x86_ubuntu_desktop
   hosts: x86_ubuntu_desktop
@@ -110,6 +112,8 @@
     - ansible.builtin.import_tasks: ../tasks/config-create-directories.yml
     - ansible.builtin.import_tasks: ../tasks/install-basic-packages.yml
     - ansible.builtin.import_tasks: ../tasks/config-git.yml
+    
+    - ansible.builtin.import_tasks: ../tasks/install-docker-wrapper-scripts.yml
 
 - name: Setup for caprica
   hosts: caprica.fritz.box
