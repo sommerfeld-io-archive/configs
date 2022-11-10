@@ -1,5 +1,5 @@
 ---
-- name: Config -> Copy git configuration
+- name: Config -> Copy docker wrapper scipts configuration
   ansible.builtin.copy:
     src: "../assets/scripts/docker/wrappers/{{ item }}.sh"
     dest: "/home/{{ ansible_user }}/work/scripts/docker-wrappers/{{ item }}.sh"
@@ -15,7 +15,7 @@
     - shellcheck
     - yamllint
 
-- name: Config -> Create symlinks in /usr/bin
+- name: Config -> Create symlinks to docker wrapper scipts in /usr/bin
   ansible.builtin.file:
     src: "/home/{{ ansible_user }}/work/scripts/docker-wrappers/{{ item }}.sh"
     dest: "/usr/bin/{{ item }}"
