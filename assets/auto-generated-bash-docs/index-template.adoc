@@ -7,5 +7,3 @@ Bash scripts documentation is done inline using following the documentation patt
 // |    Auto-generated content starts here ...    |
 // |                                              |
 // +----------------------------------------------+
-
-include::auto-generated-bash-docs:partial$/nav.adoc[]
