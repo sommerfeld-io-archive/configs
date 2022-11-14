@@ -16,9 +16,6 @@
 # * *$@* (array): Original arguments
 
 
-echo -e "$LOG_INFO Using the wrapper for yamllint inside Docker"
-echo -e "$LOG_INFO Working dir = $(pwd)"
-
 IMAGE="cytopia/yamllint"
 TAG="latest"
 

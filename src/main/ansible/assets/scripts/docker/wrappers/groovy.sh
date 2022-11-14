@@ -18,9 +18,6 @@
 # * *$@* (array): Original arguments
 
 
-echo -e "$LOG_INFO Using the wrapper for Groovy inside Docker"
-echo -e "$LOG_INFO Working dir = $(pwd)"
-
 IMAGE="groovy"
 TAG="4.0.0-jdk17"
 

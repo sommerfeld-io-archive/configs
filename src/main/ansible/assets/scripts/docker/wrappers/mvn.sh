@@ -23,9 +23,6 @@
 # * *$@* (array): Original maven arguments (e.g. ``clean install``)
 
 
-echo -e "$LOG_INFO Using the wrapper for Maven inside Docker"
-echo -e "$LOG_INFO Working dir = $(pwd)"
-
 IMAGE="maven"
 TAG="3.8.4-openjdk-17"
 

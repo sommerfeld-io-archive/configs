@@ -16,9 +16,6 @@
 # * *$@* (array): Original arguments
 
 
-echo -e "$LOG_INFO Using the wrapper for hadolint inside Docker"
-echo -e "$LOG_INFO Working dir = $(pwd)"
-
 IMAGE="hadolint/hadolint"
 TAG="latest"
 

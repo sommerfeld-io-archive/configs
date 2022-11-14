@@ -16,9 +16,6 @@
 # * *$@* (array): Original arguments
 
 
-echo -e "$LOG_INFO Using the wrapper for shellcheck inside Docker"
-echo -e "$LOG_INFO Working dir = $(pwd)"
-
 IMAGE="koalaman/shellcheck"
 TAG="latest"
 

@@ -15,10 +15,6 @@
 # * *$@* (array): Original arguments (e.g. ``clean install``)
 
 
-echo -e "$LOG_INFO Using the wrapper for hugo inside Docker"
-echo -e "$LOG_INFO Working dir = $(pwd)"
-
-
 IMAGE="klakegg/hugo"
 TAG="asciidoctor"
 
