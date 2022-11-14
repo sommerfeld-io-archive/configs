@@ -1,10 +1,10 @@
 #!/bin/bash
-# @file services.sh
-# @brief Start and stop docker-compose services.
+# @file services-cli.sh
+# @brief Command line interface to control docker-compose services.
 #
 # @description This script starts and stops docker-compose services on the respective machine.
-# The script detects the the services depending on $HOSTNAME and then provides a select
-# menu to choose a stack for deployment.
+# The script auto-detects the the services from the filesystem provides a select menu to choose
+# a stack.
 #
 # ==== Arguments
 #

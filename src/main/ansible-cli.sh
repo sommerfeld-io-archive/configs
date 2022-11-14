@@ -1,6 +1,6 @@
 #!/bin/bash
-# @file ansible.sh
-# @brief Run Ansible playbooks.
+# @file ansible-cli.sh
+# @brief Command line interface to run Ansible playbooks.
 #
 # @description This script runs the Ansible playbooks. Ansible runs in Docker.
 #
