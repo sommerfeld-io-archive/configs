@@ -3,13 +3,5 @@
   lineinfile:
     dest: "/home/{{ ansible_user }}/.bashrc"
     regexp: '^PS1='
-    line: "PS1=\"{{ ps1 }}\""
+    line: "export PS1='{{ ps1 }}'"
     state: present
-
-- name: Config -> Export PS1
-  lineinfile:
-    dest: "/home/{{ ansible_user }}/.bashrc"
-    state: present
-    line: "{{ item }}"
-  with_items:
-    - export PS1"

@@ -1,8 +1,12 @@
 ---
 - name: Config -> Write aliases to .bashrc (for Ubuntu desktop)
   lineinfile:
-    dest: "/home/{{ ansible_user }}/.bashrc"
-    state: present
+    create: true
+    mode: 0600
+    dest: "/home/{{ ansible_user }}/.bash_aliases"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     line: "{{ item }}"
+    state: present
   with_items:
     - "alias reset-conky=\"(killall conky && cd /home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/configs/src/main/conky && ./run.sh)\""

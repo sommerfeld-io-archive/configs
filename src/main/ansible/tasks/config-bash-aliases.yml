@@ -1,14 +1,10 @@
 ---
-- name: Config -> Write aliases to .bashrc
+- name: Config -> Write commands to .bashrc
   lineinfile:
     dest: "/home/{{ ansible_user }}/.bashrc"
     state: present
     line: "{{ item }}"
   with_items:
-    - alias ll="ls -alFh --color=auto"
-    - alias ls="ls -a --color=auto"
-    - alias grep="grep --color=auto"
-    - alias pull-all-repos="git all pull"
     - export LOG_DONE="[\e[32mDONE\e[0m]"
     - export LOG_ERROR="[\e[1;31mERROR\e[0m]"
     - export LOG_INFO="[\e[34mINFO\e[0m]"
@@ -17,3 +13,21 @@
     - export P="\e[35m"
     - export D="\e[0m"
     - docker run --rm mwendler/figlet:latest "$(hostname)"
+
+- name: Config -> Write aliases to .bash_aliases
+  lineinfile:
+    create: true
+    mode: 0600
+    dest: "/home/{{ ansible_user }}/.bash_aliases"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - alias ll="ls -alFh --color=auto"
+    - alias ls="ls -a --color=auto"
+    - alias grep="grep --color=auto"
+    - alias pull-all-repos="git all pull"
+    - alias __ssh-caprica="ssh sebastian@caprica.fritz.box"
+    - alias __ssh-kobol="ssh sebastian@kobol.fritz.box"
+    - alias __ssh-prometheus="ssh sebastian@prometheus.fritz.box"
