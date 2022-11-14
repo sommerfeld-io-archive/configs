@@ -1,0 +1,3 @@
+= Bash Script Docs
+
+include::auto-generated-bash-docs:partial$/nav.adoc[]

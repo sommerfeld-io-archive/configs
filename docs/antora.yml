@@ -5,5 +5,4 @@ version: main
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
-  - modules/ADRs/nav.adoc
-  - modules/GUIDELINES/nav.adoc
+  - modules/auto-generated-bash-docs/nav.adoc
