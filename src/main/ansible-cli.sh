@@ -6,6 +6,10 @@
 #
 # Make sure to run ``ssh-copy-id <REMOTE_USER>@<REMOTE_SERVER>.fritz.box`` for all relevant machines.
 #
+# NOTE: Ansible expects the user ``sebastian`` to be present on all nodes. This user is the default
+# user for each node (workstation and RasPi). Normally this user is created from the setup wizard.
+# This scripts exits with ``exitcode=8`` if this user does not exist.
+#
 # [source, bash]
 # ----
 # ssh-copy-id sebastian@caprica.fritz.box
@@ -17,6 +21,8 @@
 #
 # The script does not accept any parameters.
 
+
+MANDATORY_USER="sebastian"
 
 set -o errexit
 set -o pipefail
@@ -73,14 +79,20 @@ function ansible-playbook() {
 }
 
 
+docker run --rm mwendler/figlet:latest 'Ansible CLI'
 (
   cd ansible || exit
 
-  echo -e "$LOG_WARN +-----------------------------------------------------------------------------+"
-  echo -e "$LOG_WARN |    Ansible expects the user ${P}sebastian${D} to be present on all nodes.           |"
-  echo -e "$LOG_WARN |    This user is the default user for each node (workstation and RasPi).     |"
-  echo -e "$LOG_WARN |    Normally this user is created from the setup wizard.                     |"
-  echo -e "$LOG_WARN +-----------------------------------------------------------------------------+"
+  if ! id "$MANDATORY_USER" &>/dev/null; then
+    echo -e "$LOG_ERROR +-----------------------------------------------------------------------------+"
+    echo -e "$LOG_ERROR |    MANDATORY USER NOT FOUND !!!                                             |"
+    echo -e "$LOG_ERROR |                                                                             |"
+    echo -e "$LOG_ERROR |    Ansible expects the user ${P}sebastian${D} to be present on all nodes.           |"
+    echo -e "$LOG_ERROR |    This user is the default user for each node (workstation and RasPi).     |"
+    echo -e "$LOG_ERROR |    Normally this user is created from the setup wizard.                     |"
+    echo -e "$LOG_ERROR +-----------------------------------------------------------------------------+"
+    echo -e "$LOG_ERROR exit" && exit 8
+  fi
 
 
   echo -e "$LOG_INFO Select playbook"
