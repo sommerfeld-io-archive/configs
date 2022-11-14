@@ -1,9 +1,0 @@
-= Bash Script Docs
-
-Bash scripts documentation is done inline using following the documentation pattern from link:https://github.com/reconquest/shdoc[shdoc]. These docs pages describing bash scripts are auto-generated from a pipeline using shdoc.
-
-// +----------------------------------------------+
-// |                                              |
-// |    Auto-generated content starts here ...    |
-// |                                              |
-// +----------------------------------------------+
