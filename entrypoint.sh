@@ -102,7 +102,7 @@ function generateNav() {
   # echo "include::$ANTORA_MODULE_NAME:partial\$bash-script-docs/nav.adoc[]" >> "$ANTORA_MODULE/nav.adoc"
 
   echo -e "$LOG_INFO Generate index.adoc"
-  cp assets/auto-generated-bash-docs/index-template.adoc "$ANTORA_MODULE/pages/index.adoc"
+  cp .github/resources/auto-generated-bash-docs-template.adoc "$ANTORA_MODULE/pages/index.adoc"
   # echo "= Bash Script Docs" > "$ANTORA_MODULE/pages/index.adoc"
   (
     echo

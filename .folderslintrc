@@ -1,5 +1,8 @@
 {
   "rules": [
+    ".github/resources",
+    ".github/workflows",
+
     "docs/modules/*/assets/attachments/**",
     "docs/modules/*/assets/images/**",
     "docs/modules/*/examples/*",
