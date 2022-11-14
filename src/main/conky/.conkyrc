@@ -90,12 +90,7 @@ ${template1}[SUPER] + [L]         ${alignr}Lock Screen
 ${template1}[SUPER] + [T]         ${alignr}Terminal
 
 ${template0}${color #9f907d}TERMINAL COMMANDS ${color slate grey}${hr 2}${font}${color slate grey}
-${template1}ff                    ${alignr}Open Firefox with Tabs
-${template1}htop                  ${alignr}Bash Util
-${template1}ncdu ${template2}    ${template1}             ${alignr}Bash Util
-${template1}neofetch              ${alignr}Bash Util
 ${template1}pull-all-repos        ${alignr}Git
 ${template1}reset-conky           ${alignr}Restart Conky
-${template1}reset-sound           ${alignr}pulseaudio --start
 
 ]];
