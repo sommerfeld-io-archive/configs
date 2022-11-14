@@ -46,7 +46,7 @@ function logs() {
 }
 
 
-docker run --rm mwendler/figlet:latest 'Docker Services CLI'
+docker run --rm mwendler/figlet:latest 'Services CLI'
 (
   cd services || exit
 

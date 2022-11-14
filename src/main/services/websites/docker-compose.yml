@@ -1,0 +1,27 @@
+---
+version: "3.3"
+services:
+
+  masterblender-de:
+    image: sommerfeldio/website-masterblender-de:latest
+    pull_policy: always
+    container_name: masterblender-de
+    restart: unless-stopped
+    ports:
+      - 8801:80
+
+  numero-uno-de:
+    image: sommerfeldio/website-numero-uno-de:latest
+    pull_policy: always
+    container_name: numero-uno-de
+    restart: unless-stopped
+    ports:
+      - 8802:80
+
+  tafelboy-de:
+    image: sommerfeldio/website-tafelboy-de:latest
+    pull_policy: always
+    container_name: tafelboy-de
+    restart: unless-stopped
+    ports:
+      - 8803:80
