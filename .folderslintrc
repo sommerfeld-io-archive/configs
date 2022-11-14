@@ -1,7 +1,7 @@
 {
   "rules": [
-    ".github/resources",
     ".github/workflows",
+    ".github/workflows/resources",
 
     "docs/modules/*/assets/attachments/**",
     "docs/modules/*/assets/images/**",
@@ -12,9 +12,6 @@
     "docs/modules/*/partials/*",
     "docs/modules/*/partials/**",
 
-    "resources/**",
-
-    "src/cicd/**",
     "src/main/**",
     "src/test/**",
 
