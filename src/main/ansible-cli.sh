@@ -10,6 +10,8 @@
 # user for each node (workstation and RasPi). Normally this user is created from the setup wizard.
 # This scripts exits with ``exitcode=8`` if this user does not exist.
 #
+# To seamlessly connect to all remote machines, publish your public key to all systems.
+#
 # ```
 # ssh-copy-id sebastian@caprica.fritz.box
 # ssh-copy-id sebastian@kobol.fritz.box
