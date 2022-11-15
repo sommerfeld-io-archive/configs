@@ -34,4 +34,3 @@ ignore:
   - .git
   - node_modules
   - target
-  - .github/pull_request_template.adoc
