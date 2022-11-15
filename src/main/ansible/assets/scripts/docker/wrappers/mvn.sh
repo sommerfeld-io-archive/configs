@@ -18,7 +18,7 @@
 #
 # CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
 #
-# ==== Arguments
+# === Script Arguments
 #
 # * *$@* (array): Original maven arguments (e.g. ``clean install``)
 

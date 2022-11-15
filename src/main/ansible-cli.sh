@@ -17,7 +17,7 @@
 # ssh-copy-id pi@prometheus.fritz.box
 # ----
 #
-# ==== Arguments
+# === Script Arguments
 #
 # The script does not accept any parameters.
 

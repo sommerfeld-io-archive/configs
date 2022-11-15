@@ -4,7 +4,7 @@
 #
 # @description This script runs the basic provisioning. This is a prerequisite to run the ansible steps.
 #
-# ==== Arguments
+# === Script Arguments
 #
 # The script does not accept any parameters.
 

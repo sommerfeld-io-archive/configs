@@ -10,7 +10,7 @@
 #
 # CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
 #
-# ==== Arguments
+# === Script Arguments
 #
 # * *$@* (array): Original arguments (e.g. ``clean install``)
 

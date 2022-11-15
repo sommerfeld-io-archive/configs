@@ -6,7 +6,7 @@
 # The script auto-detects the the services from the filesystem provides a select menu to choose
 # a stack.
 #
-# ==== Arguments
+# === Script Arguments
 #
 # The script does not accept any parameters.
 

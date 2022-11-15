@@ -5,7 +5,7 @@
 # @description The script starts all Conky instances. Normally this script is triggered automatically
 # when the machine starts (the script is configured as a startup application by ansible playbook).
 #
-# ==== Arguments
+# === Script Arguments
 #
 # The script does not accept any parameters.
 

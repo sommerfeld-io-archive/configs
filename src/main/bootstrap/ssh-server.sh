@@ -4,7 +4,7 @@
 #
 # @description This script installs and configures openssh-server.
 #
-# ==== Arguments
+# === Script Arguments
 #
 # The script does not accept any parameters.
 
