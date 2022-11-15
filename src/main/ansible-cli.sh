@@ -4,19 +4,17 @@
 #
 # @description This script runs the Ansible playbooks. Ansible runs in Docker.
 #
-# Make sure to run ``ssh-copy-id <REMOTE_USER>@<REMOTE_SERVER>.fritz.box`` for all relevant machines.
-#
-# NOTE: Ansible expects the user ``sebastian`` to be present on all nodes. This user is the default
-# user for each node (workstation and RasPi). Normally this user is created from the setup wizard.
-# This scripts exits with ``exitcode=8`` if this user does not exist.
-#
-# To seamlessly connect to all remote machines, publish your public key to all systems.
+# Make sure to run ``ssh-copy-id <REMOTE_USER>@<REMOTE_SERVER>.fritz.box`` to seamlessly connect to all remote machines.
 #
 # ```
 # ssh-copy-id sebastian@caprica.fritz.box
 # ssh-copy-id sebastian@kobol.fritz.box
 # ssh-copy-id pi@prometheus.fritz.box
 # ```
+#
+# NOTE: Ansible expects the user ``sebastian`` to be present on all nodes. This user is the default
+# user for each node (workstation and RasPi). Normally this user is created from the setup wizard.
+# This scripts exits with ``exitcode=8`` if this user does not exist.
 #
 # === Script Arguments
 #
