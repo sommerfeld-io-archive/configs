@@ -16,7 +16,7 @@ Wrapper to use Python from Docker container when using the `py` command.
 
 The script is a wrapper to use Python from a Docker container when using the `py`
 command. The script delegates the all tasks to the Python runtime inside a container using image
-`+link:https://hub.docker.com/_/python[python]+`.
+link:https://hub.docker.com/_/python[python].
 
 CAUTION: Since Ubuntu comes with a pre-installed python, the `python`, `python3` and `python3.9`
 commands are already allocated. To make sure only custom developments use this script, the `py`
