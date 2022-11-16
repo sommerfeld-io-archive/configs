@@ -16,6 +16,7 @@
 #
 # === Script Example
 #
+# [source, bash]
 # ```
 # hadolint < Dockerfile
 # hadolint --ignore DL3003 --ignore DL3006 < Dockerfile # exclude specific rules

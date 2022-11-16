@@ -7,6 +7,13 @@
 # === Script Arguments
 #
 # The script does not accept any parameters.
+#
+# === Script Example
+#
+# [source, bash]
+# ```
+# curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/bootstrap/kobol.sh | bash -
+# ```
 
 
 set -o errexit

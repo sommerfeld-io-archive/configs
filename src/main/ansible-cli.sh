@@ -8,6 +8,7 @@
 # To run playbooks successfully, make sure to run ``ssh-copy-id <REMOTE_USER>@<REMOTE_SERVER>.fritz.box``
 # first ensure seamless connects to all remote machines.
 #
+# [source, bash]
 # ```
 # ssh-copy-id sebastian@caprica.fritz.box
 # ssh-copy-id sebastian@kobol.fritz.box

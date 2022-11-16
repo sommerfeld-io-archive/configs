@@ -16,6 +16,7 @@
 #
 # === Script Example
 #
+# [source, bash]
 # ```
 # shellcheck ./*.sh
 # ```
