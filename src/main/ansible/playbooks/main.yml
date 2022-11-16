@@ -90,7 +90,7 @@
 
     - ansible.builtin.import_tasks: ../tasks/install-docker-wrapper-scripts.yml
 
-- name: Setup for group x86_ubuntu_desktop
+- name: Setup for group x86_ubuntu_desktop (non-root)
   hosts: x86_ubuntu_desktop
   gather_facts: true
   become: false
@@ -98,6 +98,32 @@
     - ../vars/global.yml
   tasks:
     - ansible.builtin.import_tasks: ../tasks/config-git-clone-repos.yml
+
+    - name: Install -> VSCode Extensions
+      ansible.builtin.shell: |
+        extensions=(
+          'aaron-bond.better-comments'
+          'asciidoctor.asciidoctor-vscode'
+          'chef-software.chef'
+          'hashicorp.terraform'
+          'jebbs.plantuml'
+          'ms-azuretools.vscode-docker'
+          'ms-vscode-remote.remote-containers'
+          'ms-python.python'
+          'pomdtr.markdown-kroki'
+          'recode4dev.jenkinsfile'
+          'redhat.ansible'
+          'redhat.vscode-yaml'
+          'timonwong.shellcheck'
+          'vscjava.vscode-java-pack'
+        )
+        for extension in "${extensions[@]}"
+        do
+          echo "[INFO] Install VSCode extension $extension"
+          code --install-extension "$extension"
+        done
+      args:
+        executable: /bin/bash
 
 - name: Setup for RasPi nodes
   hosts: raspi
