@@ -14,9 +14,11 @@ Command line interface to run Ansible playbooks.
 
 == Overview
 
-This script runs the Ansible playbooks. Ansible runs in Docker.
+This script allows installation / uninstallation of ansible galaxy modules (see script for
+for modules list) and running Ansible playbooks. Ansible runs in a Docker container.
 
-Make sure to run `ssh-copy-id <REMOTE_USER>@<REMOTE_SERVER>.fritz.box` to seamlessly connect to all remote machines.
+To run playbooks successfully, make sure to run `ssh-copy-id <REMOTE_USER>@<REMOTE_SERVER>.fritz.box`
+first ensure seamless connects to all remote machines.
 
 ----
 ssh-copy-id sebastian@caprica.fritz.box
@@ -37,12 +39,19 @@ The script does not accept any parameters.
 * <<invoke,invoke>>
 * <<ansible,ansible>>
 * <<ansible-playbook,ansible-playbook>>
+* <<ansible-galaxy,ansible-galaxy>>
 
 === invoke
 
-Wrapper function to encapsulate link:https://hub.docker.com/r/cytopia/ansible[ansible in a docker container].
-The current working directory is mounted into the container and selected as working directory so that all file are
-available to ansible. Paths are preserved.
+Wrapper function to encapsulate ansible in a docker container using the
+link:https://hub.docker.com/r/cytopia/ansible[cytopia/ansible] image.
+
+Ansible runs in Docker as non-root user (the current user from the host is used inside the container).
+Filesystem dependencies are mounted into the container to ensure the user inside the container shares
+all relevant information with the user from the host.
+
+The current working directory is mounted into the container and selected as working directory so that
+all file of the project are available. Paths are preserved.
 
 ==== Example
 
@@ -61,7 +70,8 @@ echo "test: $(invoke ansible --version)"
 
 === ansible
 
-Facade to map `ansible` command.
+Facade to map `ansible` command. The actual Ansible execution is delegated to
+Ansible running in a Docker container.
 
 ==== Example
 
@@ -76,7 +86,8 @@ echo "test: $(ansible --version)"
 
 === ansible-playbook
 
-Facade to map `ansible-playbook` command.
+Facade to map `ansible-playbook` command. The actual Ansible execution is delegated to
+Ansible running in a Docker container.
 
 ==== Example
 
@@ -88,3 +99,19 @@ echo "test: $(ansible-playbook playbook.yml)"
 ==== Arguments
 
 * *...* (String): The ansible-playbook commands (1-n arguments) - $1 is mandatory
+
+=== ansible-galaxy
+
+Facade to map `ansible-galaxy` command. The actual Ansible execution is delegated to
+Ansible running in a Docker container.
+
+==== Example
+
+[,bash]
+----
+echo "test: $(ansible-galaxy install <extension>)"
+----
+
+==== Arguments
+
+* *...* (String): The ansible-galaxy commands (1-n arguments) - $1 is mandatory
