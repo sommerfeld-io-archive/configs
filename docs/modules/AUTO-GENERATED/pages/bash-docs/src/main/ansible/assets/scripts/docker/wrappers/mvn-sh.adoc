@@ -34,6 +34,8 @@ CAUTION: To update scripts, adjust files at `~/work/repos/sebastian-sommerfeld-i
 
 === Script Example
 
+[source, bash]
+
 ----
 mvn clean package
 ----
