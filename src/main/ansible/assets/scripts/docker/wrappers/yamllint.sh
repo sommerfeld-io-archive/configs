@@ -6,10 +6,12 @@
 # command. The script delegates the all tasks to the yamllint runtime inside a container using image
 # ``link:https://hub.docker.com/r/cytopia/yamllint[cytopia/yamllint]``.
 #
-# In order to use the ``yamllint`` command, the ``11-configure-wrappers.sh`` script adds a symlink to
-# access this script via ``/usr/bin/yamllint``.
+# In order to use the ``yamllint`` command the symlink ``/usr/bin/yamllint`` is added.
 #
 # CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
+#
+# @example
+#    yamllint .
 #
 # === Script Arguments
 #
