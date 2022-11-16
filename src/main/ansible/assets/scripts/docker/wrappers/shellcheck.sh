@@ -6,8 +6,7 @@
 # command. The script delegates the all tasks to the shellcheck runtime inside a container using image
 # ``link:https://hub.docker.com/r/koalaman/shellcheck[koalaman/shellcheck]``.
 #
-# In order to use the ``shellcheck`` command, the ``11-configure-wrappers.sh`` script adds a symlink to
-# access this script via ``/usr/bin/shellcheck``.
+# In order to use the ``shellcheck`` command the symlink ``/usr/bin/shellcheck`` is added.
 #
 # CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
 #

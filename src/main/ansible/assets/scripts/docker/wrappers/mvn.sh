@@ -7,8 +7,7 @@
 #
 # image::https://raw.githubusercontent.com/docker-library/docs/e2782b8942c1af41419536078c8d0176665a005d/maven/logo.png[]
 #
-# In order to use the ``mvn`` command, the ``11-configure-wrappers.sh`` script adds a symlink to access this script via
-# ``/usr/bin/mvn``.
+# In order to use the ``mvn`` command the symlink ``/usr/bin/mvn`` is added.
 #
 # The maven installation from inside the container shares its repository with the host. The maven home directory is
 # located at ``$HOME/.m2`` on the Docker host.
@@ -17,6 +16,9 @@
 # systems share the same setup and versions.
 #
 # CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
+#
+# @example
+#    mvn clean package
 #
 # === Script Arguments
 #
