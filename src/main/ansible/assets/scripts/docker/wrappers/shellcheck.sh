@@ -4,7 +4,7 @@
 #
 # @description The script is a wrapper to use shellcheck from a Docker container when using the default ``shellcheck``
 # command. The script delegates the all tasks to the shellcheck runtime inside a container using image
-# ``link:https://hub.docker.com/r/koalaman/shellcheck[koalaman/shellcheck]``.
+# link:https://hub.docker.com/r/koalaman/shellcheck[koalaman/shellcheck].
 #
 # In order to use the ``shellcheck`` command the symlink ``/usr/bin/shellcheck`` is added.
 #
@@ -13,6 +13,12 @@
 # === Script Arguments
 #
 # * *$@* (array): Original arguments
+#
+# === Script Example
+#
+# ```
+# shellcheck ./*.sh
+# ```
 
 
 IMAGE="koalaman/shellcheck"

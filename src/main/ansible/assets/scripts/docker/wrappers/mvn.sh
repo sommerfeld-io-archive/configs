@@ -2,10 +2,9 @@
 # @file mvn.sh
 # @brief Wrapper to use Maven from Docker container when using the default ``mvn`` command.
 #
-# @description The script is a wrapper to use Maven from a Docker container when using the default ``mvn`` command.
-# The script delegates the Maven commands to a container using image ``link:https://hub.docker.com/_/maven[maven]``.
-#
-# image::https://raw.githubusercontent.com/docker-library/docs/e2782b8942c1af41419536078c8d0176665a005d/maven/logo.png[]
+# @description The script is a wrapper to use Maven from a Docker container when using the default
+# ``mvn`` command. The script delegates the Maven commands to a container using image
+# link:https://hub.docker.com/_/maven[maven].
 #
 # In order to use the ``mvn`` command the symlink ``/usr/bin/mvn`` is added.
 #
@@ -17,12 +16,15 @@
 #
 # CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
 #
-# @example
-#    mvn clean package
-#
 # === Script Arguments
 #
 # * *$@* (array): Original maven arguments (e.g. ``clean install``)
+#
+# === Script Example
+#
+# ```
+# mvn clean package
+# ```
 
 
 IMAGE="maven"

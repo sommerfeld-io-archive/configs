@@ -4,19 +4,22 @@
 #
 # @description The script is a wrapper to use hadolint from a Docker container when using the default ``hadolint``
 # command. The script delegates the all tasks to the hadolint runtime inside a container using image
-# ``link:https://hub.docker.com/r/hadolint/hadolint[hadolint/hadolint]``.
+# link:https://hub.docker.com/r/hadolint/hadolint[hadolint/hadolint].
 #
 # In order to use the ``hadolint`` command the symlink ``/usr/bin/hadolint`` is added.
 #
 # CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
 #
-# @example
-#    hadolint < Dockerfile
-#    hadolint --ignore DL3003 --ignore DL3006 < Dockerfile # exclude specific rules
-#
 # === Script Arguments
 #
 # * *$@* (array): Original arguments
+#
+# === Script Example
+#
+# ```
+# hadolint < Dockerfile
+# hadolint --ignore DL3003 --ignore DL3006 < Dockerfile # exclude specific rules
+# ```
 
 
 IMAGE="hadolint/hadolint"

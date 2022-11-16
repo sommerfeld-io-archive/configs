@@ -4,9 +4,7 @@
 #
 # @description The script is a wrapper to use Groovy from a Docker container when using the default ``groovy`` command.
 # The script delegates the all tasks to the Groovy runtime inside a container using image
-# ``link:https://hub.docker.com/_/groovy[groovy]``.
-#
-# image::https://raw.githubusercontent.com/docker-library/docs/bb5fc730ed18c45d86425f9fa4265d50cb795ec8/groovy/logo.png[]
+# link:https://hub.docker.com/_/groovy[groovy].
 #
 # In order to use the ``groovy`` command the symlink ``/usr/bin/groovy`` is added.
 #

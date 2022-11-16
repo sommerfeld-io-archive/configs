@@ -2,8 +2,9 @@
 # @file hugo.sh
 # @brief Wrapper to use hugo from Docker container when using the default ``hugo`` command.
 #
-# @description The script is a wrapper to use hugo from a Docker container when using the default ``hugo`` command.
-# The script delegates the hugo commands to a container using image ``link:https://hub.docker.com/r/klakegg/hugo[klakegg/hugo]``.
+# @description The script is a wrapper to use hugo from a Docker container when using the default
+# ``hugo`` command. The script delegates the hugo commands to a container using image
+# link:https://hub.docker.com/r/klakegg/hugo[klakegg/hugo].
 #
 # In order to use the ``hugo`` command the symlink ``/usr/bin/hugo`` is added.
 #
