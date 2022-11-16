@@ -22,6 +22,7 @@
 #
 # === Script Example
 #
+# [source, bash]
 # ```
 # mvn clean package
 # ```
