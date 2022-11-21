@@ -11,6 +11,7 @@
     - hadolint
     - hugo
     - mvn
+    - node-npm
     - python
     - shellcheck
     - yamllint
@@ -30,3 +31,14 @@
     - python
     - shellcheck
     - yamllint
+
+- name: Config -> Create symlinks to docker wrapper scipt 'node-npm.sh' in /usr/bin
+  ansible.builtin.file:
+    src: "/home/{{ ansible_user }}/work/scripts/docker-wrappers/node-npm.sh"
+    dest: "/usr/bin/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: link
+  with_items:
+    - node
+    - npm
