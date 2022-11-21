@@ -15,6 +15,12 @@
 # * *$@* (array): Original arguments
 
 
+set -o errexit
+set -o pipefail
+set -o nounset
+# set -o xtrace
+
+
 IMAGE="groovy"
 TAG="4.0.0-jdk17"
 

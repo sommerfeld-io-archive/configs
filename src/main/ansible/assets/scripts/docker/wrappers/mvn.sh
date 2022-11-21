@@ -28,6 +28,12 @@
 # ```
 
 
+set -o errexit
+set -o pipefail
+set -o nounset
+# set -o xtrace
+
+
 IMAGE="maven"
 TAG="3.8.4-openjdk-17"
 
