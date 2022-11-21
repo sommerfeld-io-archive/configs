@@ -19,6 +19,12 @@
 # * *$@* (array): Original arguments
 
 
+set -o errexit
+set -o pipefail
+set -o nounset
+# set -o xtrace
+
+
 IMAGE="python"
 TAG="3.9.10"
 
