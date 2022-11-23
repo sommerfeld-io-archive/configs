@@ -1,0 +1,7 @@
+---
+- name: Config -> Install jarvis from bootstrap script
+  ansible.builtin.shell: |
+    whoami
+    curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/jarvis/main/src/main/install.sh | bash -
+  args:
+    executable: /bin/bash

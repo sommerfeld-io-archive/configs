@@ -89,6 +89,7 @@
         classic: true
 
     - ansible.builtin.import_tasks: ../tasks/install-docker-wrapper-scripts.yml
+    - ansible.builtin.import_tasks: ../tasks/install-jarvis.yml
 
 - name: Setup for group x86_ubuntu_desktop (non-root)
   hosts: x86_ubuntu_desktop
