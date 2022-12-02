@@ -51,7 +51,7 @@ set -o nounset
 # all file of the project are available. Paths are preserved.
 #
 # @example
-#    invoke molecule --version"
+#    invoke molecule --version
 #
 # @arg $@ String The actual command (1-n arguments) - $1 is mandatory
 #
@@ -80,7 +80,7 @@ function invoke() {
 # to a Docker container.
 #
 # @example
-#    molecule --version"
+#    molecule --version
 #
 # @arg $@ String The molecule commands (1-n arguments) - $1 is mandatory
 function molecule() {
@@ -92,7 +92,7 @@ function molecule() {
 # to a Docker container.
 #
 # @example
-#    molecule --version"
+#    ansible-lint --version
 #
 # @arg $@ String The molecule commands (1-n arguments) - $1 is mandatory
 function ansible-lint() {
@@ -100,9 +100,10 @@ function ansible-lint() {
 }
 
 
-echo -e "$LOG_INFO Test Ansible with the following environment"
+echo -e "$LOG_INFO ========== Test Environment ============================================="
 molecule --version
 ansible-lint --version
+echo -e "$LOG_INFO ========================================================================="
 
 (
   echo -e "$LOG_INFO Lint Ansible files"
