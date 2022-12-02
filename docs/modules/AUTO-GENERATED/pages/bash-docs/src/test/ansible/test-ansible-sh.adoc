@@ -10,7 +10,7 @@
 // +-----------------------------------------------+
 
 
-Test Ansible playbooks and tasks,
+Test Ansible playbooks and tasks.
 
 == Overview
 
