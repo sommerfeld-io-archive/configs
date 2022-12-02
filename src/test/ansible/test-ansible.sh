@@ -1,6 +1,6 @@
 #!/bin/bash
 # @file test-ansible.sh
-# @brief Test Ansible playbooks and tasks,
+# @brief Test Ansible playbooks and tasks.
 #
 # @description This script vaidates and tests Ansible playbooks and tasks. It acts as a local development
 # script before adding the tests to the CI pipeline.
@@ -69,7 +69,7 @@ function invoke() {
 #     --volume "$(pwd):$(pwd)" \
 #     --workdir "$(pwd)" \
 #     quay.io/ansible/creator-ee:latest "$@"
-  docker run --rm \
+  docker run -it --rm \
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \
     quay.io/ansible/creator-ee:latest "$@"
