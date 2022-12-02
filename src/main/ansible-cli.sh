@@ -57,15 +57,6 @@ function invoke() {
     echo -e "$LOG_ERROR exit" && exit 8
   fi
 
-  # docker run -it --rm \
-  #   --volume "$HOME/.ansible:/root/.ansible:rw" \
-  #   --volume "$HOME/.ssh:/root/.ssh:ro" \
-  #   --volume /etc/timezone:/etc/timezone:ro \
-  #   --volume /etc/localtime:/etc/localtime:ro \
-  #   --volume "$(pwd):$(pwd)" \
-  #   --workdir "$(pwd)" \
-  #   --network host \
-  #   cytopia/ansible:latest-tools "$@"
   docker run -it --rm \
     --volume /etc/passwd:/etc/passwd:ro \
     --volume /etc/group:/etc/group:ro \
