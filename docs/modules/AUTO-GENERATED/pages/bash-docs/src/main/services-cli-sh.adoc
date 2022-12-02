@@ -24,9 +24,9 @@ The script does not accept any parameters.
 
 == Index
 
-* <<startup,startup>>
-* <<shutdown,shutdown>>
-* <<logs,logs>>
+* <<_startup,startup>>
+* <<_shutdown,shutdown>>
+* <<_logs,logs>>
 
 === startup
 

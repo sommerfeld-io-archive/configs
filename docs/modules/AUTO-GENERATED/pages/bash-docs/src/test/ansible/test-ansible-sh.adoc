@@ -28,7 +28,7 @@ container must not be used in production by Ansible users. It includes:
 * link:[molecule]
 
 [CAUTION]
-TODO Still Work in Progress ...
+TODO This script is still work in progress ... see https://sommerfeld-io.atlassian.net/browse/SIO-221
 
 === Script Arguments
 
@@ -44,9 +44,9 @@ The script does not accept any parameters.
 
 == Index
 
-* <<invoke,invoke>>
-* <<molecule,molecule>>
-* <<ansible-lint,ansible-lint>>
+* <<_invoke,invoke>>
+* <<_molecule,molecule>>
+* <<_ansible-lint,ansible-lint>>
 
 === invoke
 

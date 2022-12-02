@@ -38,10 +38,10 @@ The script does not accept any parameters.
 
 == Index
 
-* <<invoke,invoke>>
-* <<ansible,ansible>>
-* <<ansible-playbook,ansible-playbook>>
-* <<ansible-galaxy,ansible-galaxy>>
+* <<_invoke,invoke>>
+* <<_ansible,ansible>>
+* <<_ansible-playbook,ansible-playbook>>
+* <<_ansible-galaxy,ansible-galaxy>>
 
 === invoke
 
