@@ -13,7 +13,7 @@
 #
 # * link:https://github.com/ansible/ansible[ansible-core]
 # * link:https://github.com/ansible/ansible-lint[ansible-lint]
-# * link:[molecule]
+# * link:https://github.com/ansible-community/molecule[molecule]
 #
 # [CAUTION]
 # TODO This script is still work in progress ... see https://sommerfeld-io.atlassian.net/browse/SIO-221
