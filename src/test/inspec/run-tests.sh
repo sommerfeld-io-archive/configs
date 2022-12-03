@@ -11,9 +11,9 @@
 # in the form of a report, but puts you in control of remediation.
 #
 # Inspec runs inside a Docker container with a non-root user. The target machines are parsed from the
-# Ansible inventory file (src/main/ansible/hosts.yml).
+# Ansible inventory file (``src/main/ansible/hosts.yml``).
 #
-# IMPORTANT: This script is *not* intended for use "from anywhere". It is designed to work on my local
+# IMPORTANT: This script is **not** intended for use "from anywhere". It is designed to work on my local
 # workstations and depend on (1) all nodes up-and running, (2) network connectivity to the respective
 # node and (3) correct SSH keys to connect to the respective node.
 #
