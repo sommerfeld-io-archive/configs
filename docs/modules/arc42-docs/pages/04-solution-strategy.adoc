@@ -1,4 +1,4 @@
-= Solution Strategy
+= 04 - Solution Strategy
 
 .Contents
 A short summary and explanation of the fundamental decisions and solution strategies, that shape system architecture. It includes
