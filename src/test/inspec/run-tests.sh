@@ -60,7 +60,6 @@ function inspec() {
     echo -e "$LOG_ERROR exit" && exit 8
   fi
 
-
   docker run -it --rm \
     --volume /etc/passwd:/etc/passwd:ro \
     --volume /etc/group:/etc/group:ro \
