@@ -100,6 +100,7 @@ function ansible-lint() {
 }
 
 
+docker run --rm mwendler/figlet:latest 'Run Ansible Tests'
 echo -e "$LOG_INFO ========== Test Environment ============================================="
 molecule --version
 ansible-lint --version
