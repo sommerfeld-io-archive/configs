@@ -1,5 +1,5 @@
 #!/bin/bash
-# @file test-ansible.sh
+# @file run-tests.sh
 # @brief Test Ansible playbooks and tasks.
 #
 # @description This script vaidates and tests Ansible playbooks and tasks. It acts as a local development
@@ -26,7 +26,7 @@
 #
 # [source, bash]
 # ```
-# ./test-ansible.sh
+# ./run-tests.sh
 # ```
 
 
