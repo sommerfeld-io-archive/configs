@@ -8,3 +8,4 @@ summary: Baseline profile for all machines from the Ansible group 'x86_ubuntu_de
 version: 0.1.0
 supports:
   - platform-name: ubuntu
+  
