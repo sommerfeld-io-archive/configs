@@ -1,4 +1,4 @@
-= test-ansible.sh
+= run-tests.sh
 
 // +-----------------------------------------------+
 // |                                               |
@@ -39,7 +39,7 @@ The script does not accept any parameters.
 [source, bash]
 
 ----
-./test-ansible.sh
+./run-tests.sh
 ----
 
 == Index
