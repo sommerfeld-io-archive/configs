@@ -26,12 +26,14 @@ image:{github-actions-url}/{job-ci}/{badge}[Github Badge, link={github-actions-u
 * Where to file issues -> {url-project}/issues
 
 == About this project
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+This project defines all my infrastructure following the infrastructure as code pattern. It is intended to work specifically on my machines. You might be able to adopt some stuff from this project, but using it "as is" most likly will result in failure.
 
 == How to use this project
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+This project contains several scripts to control the respective function set. For a complete reference and information on how to use the respective script see xref:AUTO-GENERATED:bash-docs/index.adoc[].
 
-. Every machine is Ubuntu (or at least Debian-based)
+Be aware that the environment must follow some ground rules:
+
+. Every machine is Ubuntu Linux (or at least Debian-based)
 
 == Risks and Technical Debts
 Scale for Probability and Impact: Low, Medium and High
