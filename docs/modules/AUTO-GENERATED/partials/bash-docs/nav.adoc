@@ -1,4 +1,5 @@
-* xref:AUTO-GENERATED:bash-docs/src/test/ansible/test-ansible-sh.adoc[src/test/ansible/test-ansible.sh]
+* xref:AUTO-GENERATED:bash-docs/src/test/ansible/run-tests-sh.adoc[src/test/ansible/run-tests.sh]
+* xref:AUTO-GENERATED:bash-docs/src/test/inspec/run-tests-sh.adoc[src/test/inspec/run-tests.sh]
 * xref:AUTO-GENERATED:bash-docs/src/main/ansible/assets/scripts/docker/wrappers/node-npm-sh.adoc[src/main/ansible/assets/scripts/docker/wrappers/node-npm.sh]
 * xref:AUTO-GENERATED:bash-docs/src/main/ansible/assets/scripts/docker/wrappers/python-sh.adoc[src/main/ansible/assets/scripts/docker/wrappers/python.sh]
 * xref:AUTO-GENERATED:bash-docs/src/main/ansible/assets/scripts/docker/wrappers/yamllint-sh.adoc[src/main/ansible/assets/scripts/docker/wrappers/yamllint.sh]
