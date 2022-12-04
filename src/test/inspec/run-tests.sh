@@ -38,6 +38,12 @@ set -o nounset
 ANSIBLE_INVENTORY="src/main/ansible/hosts.yml"
 ANSIBLE_GROUP="x86_ubuntu_desktop"
 
+# Run all inspec profiles from this list
+INSPEC_PROFILES=(
+  "$ANSIBLE_GROUP"
+)
+
+
 
 # @description Wrapper function to encapsulate ``inspec`` in a docker container using the
 # link:https://hub.docker.com/r/chef/inspec[chef/inspec] image.
@@ -82,8 +88,12 @@ echo -e "$LOG_INFO =============================================================
 # echo -e "$LOG_INFO Create new inspec profile $P$ANSIBLE_GROUP$D"
 # inspec init profile "$ANSIBLE_GROUP"2
 
-echo -e "$LOG_INFO Validate inspec profile $P$ANSIBLE_GROUP$D"
-inspec check "$ANSIBLE_GROUP"
+
+echo -e "$LOG_INFO Validate inspec profiles"
+for profile in "${INSPEC_PROFILES[@]}"; do
+  echo -e "$LOG_INFO Validate inspec profile $P$profile$D"
+  inspec check "$profile"
+done
 
 (
   echo -e "$LOG_INFO Read hostnames for group '$ANSIBLE_GROUP' from Ansible inventory"
@@ -101,8 +111,11 @@ inspec check "$ANSIBLE_GROUP"
     for h in $HOSTS; do
       host=${h%":"}
 
-      echo -e "$LOG_INFO Run inspec profile $P$ANSIBLE_GROUP$D on host $P$host$D"
-      inspec exec "$ANSIBLE_GROUP" --target=ssh://"$USER@$host" --key-files="$HOME/.ssh/id_rsa"
+      echo -e "$LOG_INFO Run inspec profile on host $P$host$D"
+      for profile in "${INSPEC_PROFILES[@]}"; do
+        echo -e "$LOG_INFO Run inspec profile $P$profile$D on host $P$host$D"
+        inspec exec "$profile" --target=ssh://"$USER@$host" --key-files="$HOME/.ssh/id_rsa"
+      done
     done
   )
 )
