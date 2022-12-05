@@ -74,7 +74,7 @@ function inspec() {
     --volume "$SSH_AUTH_SOCK:$SSH_AUTH_SOCK" \
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \
-    chef/inspec:latest "$@" --chef-license=accept
+    chef/inspec:latest "$@" --chef-license=accept-no-persist
 }
 
 
