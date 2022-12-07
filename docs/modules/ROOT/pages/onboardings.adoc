@@ -24,6 +24,7 @@ See https://docs.github.com/en/issues/planning-and-tracking-with-projects/learni
 .... `FTP_USER` and `FTP_PASS` -> Get / create credentials from the _link:https://kas.all-inkl.com[webhosters admin panel] > FTP_.
 
 === Add collaborators to projects and repos
+When you are working on a project with more people than just yourself, all collaborators need permissions to update the source code repositories and work with issues and projects.
 
 . Projects
 .. Go to respective project
