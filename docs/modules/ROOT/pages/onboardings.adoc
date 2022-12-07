@@ -1,0 +1,34 @@
+= Onboardings and Setup Guides
+Sebastian Sommerfeld <sebastian@sommerfeld.io>
+
+== Github
+*About repositories:* A repository is usually used to organize a single project. Repositories can contain folders and files, images, videos, spreadsheets, and data sets -- anything your project needs. 
+
+*About projects:* A project is an adaptable spreadsheet that integrates with your issues and pull requests on GitHub to help you plan and track your work effectively. Your projects are built from the issues and pull requests you add, creating direct references between your project and your work. Information is synced automatically to your project as you make changes, updating your views and charts. This integration works both ways, so that when you change information about a pull request or issue in your project, the pull request or issue reflects that information. For example, change an assignee in your project and that change is shown in your issue. 
+
+See https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
+
+=== Setup new Repository
+. tbd ...
+. tbd ...
+. tbd ...
+. Add secrets for you pipelines
+.. Go to _Settings > Secrets > Actions_ and add the following secrets
+... Always needed for every repo
+.... `GOOGLE_CHAT_WEBHOOK` -> The Webhook URL for chat notifications from google spaces
+.... `GH_TOKEN_REPO_AND_PROJECT` -> The link:https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token[github personal access token] to allow your pipelines to update issues and projects. See link:https://vault.bitwarden.com[Bitwarden Vault] for the actual token
+... For Docker Images
+.... `DOCKERHUB_USER` and `DOCKERHUB_TOKEN` -> Navigate to _https://hub.docker.com > Account Settings > Access Tokens_ and create a new token on DockerHub for the new repository. Do not share tokens across multiple repos! The Username is the DockerHub username and is always the same.
+.... `SNYK_TOKEN` -> Allow snyk to scan the container images for security violations. Get the access token from _https://app.snyk.io/org/sebastian-sommerfeld-io/ > Username Dropdown (bottom left) > Acount settings > Auth Token_.
+... For static Websites
+.... `FTP_USER` and `FTP_PASS` -> Get / create credentials from the _link:https://kas.all-inkl.com[webhosters admin panel] > FTP_.
+
+=== Add collaborators to projects and repos
+
+. Projects
+.. Go to respective project
+.. Open Settings (_... > Settings_)
+.. Go to _Manage Access_ and _Invite collaborators_
+. Repositories
+.. Go to the respective repository
+.. Go to _Settings > Collaborators_ and add Users in the _Manage access_ section
