@@ -65,7 +65,7 @@ function invoke() {
 #   docker run --rm \
 #     --volume /etc/passwd:/etc/passwd:ro \
 #     --volume /etc/group:/etc/group:ro \
-#     --user "$(id -u)" \
+#     --user "$(id -u):$(id -g)" \
 #     --volume "$(pwd):$(pwd)" \
 #     --workdir "$(pwd)" \
 #     quay.io/ansible/creator-ee:latest "$@"

@@ -60,7 +60,7 @@ function invoke() {
   docker run -it --rm \
     --volume /etc/passwd:/etc/passwd:ro \
     --volume /etc/group:/etc/group:ro \
-    --user "$(id -u)" \
+    --user "$(id -u):$(id -g)" \
     --volume "$HOME/.ansible:$HOME/.ansible:rw" \
     --volume "$HOME/.ssh:$HOME/.ssh:ro" \
     --volume /etc/timezone:/etc/timezone:ro \
