@@ -12,9 +12,9 @@ See https://docs.github.com/en/issues/planning-and-tracking-with-projects/learni
 
 === Branching Strategy
 . The `main`` branch contains the latest feature set and is ready to be released.
-. Features are developed in branches (naming convention = `feat/<the-name>`)
-. Releases are prepared and tested in branches (naming convention = `release/<the-version>`)
-. Tags are created based on release branches (naming convention = `vX.X.X` -> e.g. `v0.1.0`)
+. Features are developed in branches (naming convention = `feat/<the-name>`).
+. Releases are prepared and tested in branches (naming convention = `release/<the-version>`).
+. Tags are created based on release branches (naming convention = `vX.X.X` -> e.g. `v0.1.0`). After tagging the release branch is deleted.
 
 image:ROOT:onboardings/branching-strategy.drawio.png[]
 
