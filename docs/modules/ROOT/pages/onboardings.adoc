@@ -11,7 +11,7 @@ A project is an adaptable spreadsheet that integrates with your issues and pull 
 See https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
 
 === Branching Strategy
-. The main branch contains the latest feature set and is ready to be released.
+. The `main`` branch contains the latest feature set and is ready to be released.
 . Features are developed in branches (naming convention = `feat/<the-name>`)
 . Releases are prepared and tested in branches (naming convention = `release/<the-version>`)
 . Tags are created based on release branches (naming convention = `vX.X.X` -> e.g. `v0.1.0`)
