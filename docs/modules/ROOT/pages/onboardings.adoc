@@ -2,11 +2,21 @@
 Sebastian Sommerfeld <sebastian@sommerfeld.io>
 
 == Github
-*About repositories:* A repository is usually used to organize a single project. Repositories can contain folders and files, images, videos, spreadsheets, and data sets -- anything your project needs. 
+.About repositories
+A repository is usually used to organize a single project. Repositories can contain folders and files, images, videos, spreadsheets, and data sets -- anything your project needs. 
 
-*About projects:* A project is an adaptable spreadsheet that integrates with your issues and pull requests on GitHub to help you plan and track your work effectively. Your projects are built from the issues and pull requests you add, creating direct references between your project and your work. Information is synced automatically to your project as you make changes, updating your views and charts. This integration works both ways, so that when you change information about a pull request or issue in your project, the pull request or issue reflects that information. For example, change an assignee in your project and that change is shown in your issue. 
+.About projects
+A project is an adaptable spreadsheet that integrates with your issues and pull requests on GitHub to help you plan and track your work effectively. Your projects are built from the issues and pull requests you add, creating direct references between your project and your work. Information is synced automatically to your project as you make changes, updating your views and charts. This integration works both ways, so that when you change information about a pull request or issue in your project, the pull request or issue reflects that information. For example, change an assignee in your project and that change is shown in your issue. 
 
 See https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
+
+=== Branching Strategy
+. The main branch contains the latest feature set and is ready to be released.
+. Features are developed in branches (naming convention = `feat/<the-name>`)
+. Releases are prepared and tested in branches (naming convention = `release/<the-version>`)
+. Tags are created based on release branches (naming convention = `vX.X.X` -> e.g. `v0.1.0`)
+
+image:ROOT:onboardings/branching-strategy.drawio.png[]
 
 === Setup new Repository
 . tbd ...
