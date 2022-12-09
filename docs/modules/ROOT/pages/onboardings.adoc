@@ -22,16 +22,7 @@ image:ROOT:onboardings/branching-strategy.drawio.png[]
 . tbd ...
 . tbd ...
 . tbd ...
-. Add secrets for you pipelines
-.. Go to _Settings > Secrets > Actions_ and add the following secrets
-... Always needed for every repo
-.... `GOOGLE_CHAT_WEBHOOK` -> The Webhook URL for chat notifications from google spaces
-.... `GH_TOKEN_REPO_AND_PROJECT` -> The link:https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token[github personal access token] to allow your pipelines to update issues and projects. See link:https://vault.bitwarden.com[Bitwarden Vault] for the actual token
-... For Docker Images
-.... `DOCKERHUB_USER` and `DOCKERHUB_TOKEN` -> Navigate to _https://hub.docker.com > Account Settings > Access Tokens_ and create a new token on DockerHub for the new repository. Do not share tokens across multiple repos! The Username is the DockerHub username and is always the same.
-.... `SNYK_TOKEN` -> Allow snyk to scan the container images for security violations. Get the access token from _https://app.snyk.io/org/sebastian-sommerfeld-io/ > Username Dropdown (bottom left) > Acount settings > Auth Token_.
-... For static Websites
-.... `FTP_USER` and `FTP_PASS` -> Get / create credentials from the _link:https://kas.all-inkl.com[webhosters admin panel] > FTP_.
+. Add secrets for you pipelines (use `jarvis` module)
 
 === Add collaborators to projects and repos
 When you are working on a project with more people than just yourself, all collaborators need permissions to update the source code repositories and work with issues and projects.
