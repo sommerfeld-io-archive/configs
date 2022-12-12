@@ -3,9 +3,13 @@ name: CI
 
 on:
   push:
-    branches: [ "main", "feat/*", "release/*" ]
+    # branches: [ "main", "feat/*", "release/*" ]
+    branches-ignore:
+      - dependabot/**
   pull_request:
-    branches: [ "main", "feat/*", "release/*" ]
+    # branches: [ "main", "feat/*", "release/*" ]
+    branches-ignore:
+      - dependabot/**
   schedule:
     - cron: '0 2 * * 1' # https://crontab.guru/#0_2_*_*_1
 
