@@ -28,8 +28,8 @@ set -o nounset
 # set -o xtrace
 
 
-IMAGE="cytopia/yamllint"
-TAG="latest"
+readonly IMAGE="cytopia/yamllint"
+readonly TAG="latest"
 
 docker run -it --rm \
   --volume "$(pwd):$(pwd)" \

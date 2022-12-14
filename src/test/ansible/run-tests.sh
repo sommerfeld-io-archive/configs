@@ -62,13 +62,13 @@ function invoke() {
     echo -e "$LOG_ERROR exit" && exit 8
   fi
 
-#   docker run --rm \
-#     --volume /etc/passwd:/etc/passwd:ro \
-#     --volume /etc/group:/etc/group:ro \
-#     --user "$(id -u):$(id -g)" \
-#     --volume "$(pwd):$(pwd)" \
-#     --workdir "$(pwd)" \
-#     quay.io/ansible/creator-ee:latest "$@"
+  # docker run --rm \
+  #   --volume /etc/passwd:/etc/passwd:ro \
+  #   --volume /etc/group:/etc/group:ro \
+  #   --user "$(id -u):$(id -g)" \
+  #   --volume "$(pwd):$(pwd)" \
+  #   --workdir "$(pwd)" \
+  #   quay.io/ansible/creator-ee:latest "$@"
   docker run -it --rm \
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \

@@ -21,8 +21,8 @@ set -o nounset
 # set -o xtrace
 
 
-IMAGE="groovy"
-TAG="4.0.0-jdk17"
+readonly IMAGE="groovy"
+readonly TAG="4.0.0-jdk17"
 
 docker run -it --rm \
   --volume "$(pwd):$(pwd)" \

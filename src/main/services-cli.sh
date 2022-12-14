@@ -17,10 +17,10 @@ set -o nounset
 # set -o xtrace
 
 
-OPTION_START="start"
-OPTION_STOP="stop"
-OPTION_RESTART="restart"
-OPTION_LOGS="logs"
+readonly OPTION_START="start"
+readonly OPTION_STOP="stop"
+readonly OPTION_RESTART="restart"
+readonly OPTION_LOGS="logs"
 
 STACK=""
 

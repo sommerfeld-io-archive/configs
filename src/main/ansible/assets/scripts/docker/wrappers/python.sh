@@ -25,8 +25,8 @@ set -o nounset
 # set -o xtrace
 
 
-IMAGE="python"
-TAG="3.9.10"
+readonly IMAGE="python"
+readonly TAG="3.9.10"
 
 docker run -it --rm \
   --volume "$(pwd):$(pwd)" \
