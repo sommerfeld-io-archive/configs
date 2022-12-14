@@ -11,5 +11,5 @@
 * xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/shellcheck-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/shellcheck.sh]
 * xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/hugo-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/hugo.sh]
 * xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy.sh]
-* xref:AUTO-GENERATED:bash-docs/src/test/inspec/run-tests-sh.adoc[src/test/inspec/run-tests.sh]
-* xref:AUTO-GENERATED:bash-docs/src/test/ansible/run-tests-sh.adoc[src/test/ansible/run-tests.sh]
+* xref:AUTO-GENERATED:bash-docs/src/test/homelab/inspec/run-tests-sh.adoc[src/test/homelab/inspec/run-tests.sh]
+* xref:AUTO-GENERATED:bash-docs/src/test/homelab/ansible/run-tests-sh.adoc[src/test/homelab/ansible/run-tests.sh]
