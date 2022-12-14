@@ -22,13 +22,13 @@ set -o nounset
 # set -o xtrace
 
 
-LOG_DONE="[\e[32mDONE\e[0m]"
-# LOG_ERROR="[\e[1;31mERROR\e[0m]"
-LOG_INFO="[\e[34mINFO\e[0m]"
-# LOG_WARN="[\e[93mWARN\e[0m]"
-Y="\e[93m"
-P="\e[35m"
-D="\e[0m"
+readonly LOG_DONE="[\e[32mDONE\e[0m]"
+# readonly LOG_ERROR="[\e[1;31mERROR\e[0m]"
+readonly LOG_INFO="[\e[34mINFO\e[0m]"
+# readonly LOG_WARN="[\e[93mWARN\e[0m]"
+readonly Y="\e[93m"
+readonly P="\e[35m"
+readonly D="\e[0m"
 
 
 echo -e "$LOG_INFO +---------------------------------------------------+"

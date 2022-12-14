@@ -32,8 +32,8 @@ set -o nounset
 # set -o xtrace
 
 
-IMAGE="node"
-TAG="19-bullseye"
+readonly IMAGE="node"
+readonly TAG="19-bullseye"
 
 # $0 = /usr/bin/node or /ust/bin/npm
 # $@ = arguments

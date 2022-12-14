@@ -28,8 +28,8 @@ set -o nounset
 # set -o xtrace
 
 
-IMAGE="koalaman/shellcheck"
-TAG="latest"
+readonly IMAGE="koalaman/shellcheck"
+readonly TAG="latest"
 
 docker run -it --rm \
   --volume "$(pwd):$(pwd)" \

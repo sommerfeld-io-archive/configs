@@ -24,15 +24,16 @@
 # The script does not accept any parameters.
 
 
-SELECT_OPTION_INSTALL="install_dependencies"
-SELECT_OPTION_UNINSTALL="uninstall_dependencies"
-SELECT_OPTION_PLAYBOOK="run_playbook"
-MANDATORY_USER="sebastian"
-
 set -o errexit
 set -o pipefail
 set -o nounset
 # set -o xtrace
+
+
+readonly SELECT_OPTION_INSTALL="install_dependencies"
+readonly SELECT_OPTION_UNINSTALL="uninstall_dependencies"
+readonly SELECT_OPTION_PLAYBOOK="run_playbook"
+readonly MANDATORY_USER="sebastian"
 
 
 # @description Wrapper function to encapsulate ansible in a docker container using the 
@@ -140,10 +141,12 @@ select task in "$SELECT_OPTION_PLAYBOOK" "$SELECT_OPTION_INSTALL" "$SELECT_OPTIO
     ;;
     "$SELECT_OPTION_INSTALL" )
       echo -e "$LOG_INFO Install ansible-galaxy modules"
+      echo -e "$LOG_WARN Todo ..."
       # ansible-galaxy install gantsign.visual-studio-code-extensions
     ;;
     "$SELECT_OPTION_UNINSTALL" )
       echo -e "$LOG_INFO Uninstall ansible-galaxy modules"
+      echo -e "$LOG_WARN Todo ..."
       # ansible-galaxy remove gantsign.visual-studio-code-extensions
     ;;
   esac

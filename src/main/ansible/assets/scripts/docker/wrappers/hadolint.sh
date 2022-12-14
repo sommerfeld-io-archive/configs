@@ -29,8 +29,8 @@ set -o nounset
 # set -o xtrace
 
 
-IMAGE="hadolint/hadolint"
-TAG="latest"
+readonly IMAGE="hadolint/hadolint"
+readonly TAG="latest"
 
 docker run -i --rm \
   --volume "$(pwd):$(pwd)" \

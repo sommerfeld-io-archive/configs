@@ -10,7 +10,7 @@
 # The script does not accept any parameters.
 
 
-CONKY_PATH="$HOME/work/repos/sebastian-sommerfeld-io/configs/src/main/conky"
+readonly CONKY_PATH="$HOME/work/repos/sebastian-sommerfeld-io/configs/src/main/conky"
 
 
 echo -e "$LOG_INFO Copy launcher to autostart"
@@ -19,7 +19,7 @@ cp "assets/conky-launcher.desktop" "$HOME/.config/autostart/conky-launcher.deskt
 echo -e "$LOG_INFO Start all conky instances in background"
 sleep 120
 
-conkyDefinitions=(
+readonly conkyDefinitions=(
   "$CONKY_PATH/.conkyrc"
   "$CONKY_PATH/.conkyrc_services"
 )

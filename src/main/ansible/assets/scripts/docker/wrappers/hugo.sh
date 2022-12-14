@@ -21,8 +21,8 @@ set -o nounset
 # set -o xtrace
 
 
-IMAGE="klakegg/hugo"
-TAG="asciidoctor"
+readonly IMAGE="klakegg/hugo"
+readonly TAG="asciidoctor"
 
 docker run -it --rm -p 7313:1313 \
   --volume "$(pwd):$(pwd)" \

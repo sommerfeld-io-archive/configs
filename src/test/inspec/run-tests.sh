@@ -35,11 +35,11 @@ set -o nounset
 # set -o xtrace
 
 
-ANSIBLE_INVENTORY="src/main/ansible/hosts.yml"
-ANSIBLE_GROUP="x86_ubuntu_desktop"
+readonly ANSIBLE_INVENTORY="src/main/ansible/hosts.yml"
+readonly ANSIBLE_GROUP="x86_ubuntu_desktop"
 
 # Run all inspec profiles from this list
-INSPEC_PROFILES=(
+readonly INSPEC_PROFILES=(
   "$ANSIBLE_GROUP"
 )
 
@@ -103,6 +103,7 @@ done
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \
     mikefarah/yq:latest eval ".all.children.$ANSIBLE_GROUP.hosts" "$ANSIBLE_INVENTORY")
+  readonly HOSTS
 
   (
     echo -e "$LOG_INFO Run Inspec profiles for all node from group '$ANSIBLE_GROUP'"

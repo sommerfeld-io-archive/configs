@@ -34,8 +34,8 @@ set -o nounset
 # set -o xtrace
 
 
-IMAGE="maven"
-TAG="3.8.4-openjdk-17"
+readonly IMAGE="maven"
+readonly TAG="3.8.4-openjdk-17"
 
 docker run -it --rm \
   --volume "$HOME/.m2:/root/.m2" \
