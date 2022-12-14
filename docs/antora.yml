@@ -1,7 +1,7 @@
 ---
 name: config-docs
 title: Configuration Docs
-version: main
+version: feat__16-global-github-configuration
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
