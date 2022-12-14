@@ -12,7 +12,7 @@
 #
 # [source, bash]
 # ```
-# curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/bootstrap/ssh-server.sh | bash -
+# curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/homelab/bootstrap/ssh-server.sh | bash -
 # ```
 
 

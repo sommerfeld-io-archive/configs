@@ -55,7 +55,7 @@ jobs:
   #     - name: Checkout code
   #       uses: actions/checkout@v3
   #     - name: ansible-lint
-  #       run: docker run --rm --volume "$(pwd)/src/main/ansible/playbooks:/data" cytopia/ansible-lint:latest playbook.yml
+  #       run: docker run --rm --volume "$(pwd)/src/main/homelab/ansible/playbooks:/data" cytopia/ansible-lint:latest playbook.yml
 
   molecule:
     runs-on: ubuntu-latest

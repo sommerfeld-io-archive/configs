@@ -9,4 +9,4 @@
     line: "{{ item }}"
     state: present
   with_items:
-    - "alias reset-conky=\"(killall conky && cd /home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/configs/src/main/conky && ./run.sh)\""
+    - "alias reset-conky=\"(killall conky && cd /home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/conky && ./run.sh)\""

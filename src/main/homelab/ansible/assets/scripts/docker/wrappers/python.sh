@@ -12,7 +12,7 @@
 #
 # In order to use the ``py`` command (not ``python``) the symlink ``/usr/bin/py`` is added.
 #
-# CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
+# CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
 #
 # === Script Arguments
 #

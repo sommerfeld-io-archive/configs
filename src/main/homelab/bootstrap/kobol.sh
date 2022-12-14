@@ -12,7 +12,7 @@
 #
 # [source, bash]
 # ```
-# curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/bootstrap/kobol.sh | bash -
+# curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/homelab/bootstrap/kobol.sh | bash -
 # ```
 
 

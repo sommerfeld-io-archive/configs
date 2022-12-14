@@ -108,7 +108,7 @@ echo -e "$LOG_INFO =============================================================
 
 (
   echo -e "$LOG_INFO Lint Ansible files"
-  cd ../../main/ansible || exit
+  cd ../../../main/homelab/ansible || exit
 
   ansible-lint -p playbooks/main.yml
 )

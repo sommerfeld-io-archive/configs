@@ -19,8 +19,8 @@ Once the basic OS is installed, perform the following steps on your machine:
 . Adjust wokspaces behavior in _Settings > Multitasking_ (Workspaces on all displays)
 . Setup Deja Dup Backup folder to "/media/sebastian/USB-1TB/.kobol-backups/deja-dup
 . Run setup from the link:https://github.com/sebastian-sommerfeld-io/configs[configs repository] by
-.. Run basic setup tasks using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/bootstrap/kobol.sh | bash -`
-.. Setup openssh-server using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/bootstrap/ssh-server.sh | bash -`
+.. Run basic setup tasks using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/homelab/bootstrap/kobol.sh | bash -`
+.. Setup openssh-server using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/homelab/bootstrap/ssh-server.sh | bash -`
 .. Run `src/main/kobol/provision.sh` -> Basic configuration
 .. Apply all other configs using the ansible playbook
 . Add `~/work`, `~/tmp` and `~/virtualmachines` to favorites (in File Manager)

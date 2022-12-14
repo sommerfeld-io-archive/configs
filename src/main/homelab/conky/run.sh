@@ -10,7 +10,7 @@
 # The script does not accept any parameters.
 
 
-readonly CONKY_PATH="$HOME/work/repos/sebastian-sommerfeld-io/configs/src/main/conky"
+readonly CONKY_PATH="$HOME/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/conky"
 
 
 echo -e "$LOG_INFO Copy launcher to autostart"

@@ -14,7 +14,7 @@ Sebastian Sommerfeld <sebastian@sommerfeld.io>
 . Allow caprica to work with github. Use public key `id_rsa.pub`, NOT the pivate key!
 
 === Install SSH Server
-Setup openssh-server using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/bootstrap/ssh-server.sh | bash -`
+Setup openssh-server using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/homelab/bootstrap/ssh-server.sh | bash -`
 
 == Risks and Technical Debts
 Scale for Probability and Impact: Low, Medium and High

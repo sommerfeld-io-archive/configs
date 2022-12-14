@@ -8,7 +8,7 @@
 #
 # In order to use the ``yamllint`` command the symlink ``/usr/bin/yamllint`` is added.
 #
-# CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
+# CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/ansible/assets/scripts/docker/wrappers`` and run ansible playbook.
 #
 # === Script Arguments
 #

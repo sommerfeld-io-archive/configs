@@ -11,7 +11,7 @@
 # in the form of a report, but puts you in control of remediation.
 #
 # Inspec runs inside a Docker container with a non-root user. The target machines are parsed from the
-# Ansible inventory file (``src/main/ansible/hosts.yml``).
+# Ansible inventory file (``src/main/homelab/ansible/hosts.yml``).
 #
 # IMPORTANT: This script is **not** intended for use "from anywhere". It is designed to work on my local
 # workstations and depend on (1) all nodes up-and running, (2) network connectivity to the respective
@@ -35,7 +35,7 @@ set -o nounset
 # set -o xtrace
 
 
-readonly ANSIBLE_INVENTORY="src/main/ansible/hosts.yml"
+readonly ANSIBLE_INVENTORY="src/main/homelab/ansible/hosts.yml"
 readonly ANSIBLE_GROUP="x86_ubuntu_desktop"
 
 # Run all inspec profiles from this list
@@ -97,7 +97,7 @@ done
 
 (
   echo -e "$LOG_INFO Read hostnames for group '$ANSIBLE_GROUP' from Ansible inventory"
-  cd ../../../ || exit
+  cd ../../../../ || exit
 
   HOSTS=$(docker run --rm \
     --volume "$(pwd):$(pwd)" \
@@ -107,7 +107,7 @@ done
 
   (
     echo -e "$LOG_INFO Run Inspec profiles for all node from group '$ANSIBLE_GROUP'"
-    cd src/test/inspec || exit
+    cd src/test/homelab/inspec || exit
 
     for h in $HOSTS; do
       host=${h%":"}

@@ -9,7 +9,7 @@
 # In order to use the ``node`` and ``npm`` commands the symlinks ``/usr/bin/node`` and 
 # ``/usr/bin/npm`` are added.
 #
-# CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/ansible/assets/scripts/docker/wrappers``
+# CAUTION: To update scripts, adjust files at ``~/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/ansible/assets/scripts/docker/wrappers``
 # and run ansible playbook.
 #
 # === Script Arguments
