@@ -1,4 +1,6 @@
 terraform {
+  required_version = "1.3.6"
+
   required_providers {
     github = {
       source  = "integrations/github"
@@ -7,9 +9,7 @@ terraform {
   }
 }
 
-provider "github" {
-  # token = var.gh_token
-}
+provider "github" {}
 
 module "repo-config" {
   source = "./modules/repos/sebastian-sommerfeld-io/configs"

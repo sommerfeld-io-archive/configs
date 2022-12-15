@@ -100,7 +100,7 @@ function terraform() {
 # @example
 #    apply
 function apply() {
-  terraform apply -auto-approve #-var="gh_token=$TOKEN"
+  terraform apply -auto-approve
 }
 
 
@@ -130,16 +130,22 @@ function initialize() {
 # @example
 #    plan
 function plan() {
-  terraform plan #-var="gh_token=$TOKEN"
+  terraform plan
 }
 
 
-# @description Validate Terraform configuration by running ``terraform validate``.
+# @description Validate Terraform configuration by running ``terraform validate``. Additionally the 
+# link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] linter is used
+# (specifically link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
 # Pipeline Step 3.
 #
 # @example
 #    validate
 function validate() {
+  docker run -it --rm \
+    --volume "$(pwd):/data" \
+    ghcr.io/terraform-linters/tflint-bundle:latest
+
   terraform validate
 }
 
