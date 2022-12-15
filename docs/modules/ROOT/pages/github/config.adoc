@@ -7,4 +7,5 @@ LINK TO PIPELINE
 
 == Lorem ipsum
 
-include::ROOT:[attributes]
+=== Available Terraform commands
+include::ROOT:partial$GENERATED/github/config/help.adoc[]
