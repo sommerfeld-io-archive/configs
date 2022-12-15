@@ -29,9 +29,6 @@ TODO Link to pipeline
 .Available Terraform commands
 include::ROOT:partial$GENERATED/github/config/help.adoc[]
 
-To run this script locally, run the commands in the same order as the pipeline does (see docs for
-each function).
-
 TODO link to run-in-pipeline-order.sh / simulate-pipeline.sh
 
 === Script Arguments
@@ -40,10 +37,16 @@ TODO link to run-in-pipeline-order.sh / simulate-pipeline.sh
 
 === Script Example
 
+To run this script locally, run the commands in the same order as the pipeline does (see docs for
+each function). Running this script without arguments will result in errors.
+
 [source, bash]
 
 ----
-./apply-config.sh
+./apply-config.sh validate
+./apply-config.sh fmt
+./apply-config.sh plan
+./apply-config.sh apply
 ----
 
 == Index
@@ -79,7 +82,7 @@ terraform -version
 
 === apply
 
-Apply this configuration by running `terraform apply -auto-approve`.
+Apply this configuration by running `terraform apply -auto-approve -var="gh_token=<GITHUB_PAT>"`.
 Pipeline Step 6.
 
 ==== Example
@@ -115,7 +118,7 @@ initialize
 
 === plan
 
-Plan this configuration by running `terraform plan`.
+Plan this configuration by running `terraform plan -var="gh_token=<GITHUB_PAT>"`.
 Pipeline Step 5.
 
 ==== Example
