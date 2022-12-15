@@ -17,9 +17,6 @@
 # .Available Terraform commands
 # include::ROOT:partial$GENERATED/github/config/help.adoc[]
 #
-# To run this script locally, run the commands in the same order as the pipeline does (see docs for
-# each function).
-#
 # TODO link to run-in-pipeline-order.sh / simulate-pipeline.sh
 #
 # === Script Arguments
@@ -28,9 +25,15 @@
 #
 # === Script Example
 #
+# To run this script locally, run the commands in the same order as the pipeline does (see docs for
+# each function). Running this script without arguments will result in errors.
+#
 # [source, bash]
 # ```
-# ./apply-config.sh
+# ./apply-config.sh validate
+# ./apply-config.sh fmt
+# ./apply-config.sh plan
+# ./apply-config.sh apply
 # ```
 
 
@@ -86,18 +89,17 @@ function terraform() {
     --volume /etc/localtime:/etc/localtime:ro \
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \
-    --env "GITHUB_TOKEN=$TOKEN" \
     hashicorp/terraform:1.3.6 "$@"
 }
 
 
-# @description Apply this configuration by running ``terraform apply -auto-approve``.
+# @description Apply this configuration by running ``terraform apply -auto-approve -var="gh_token=<GITHUB_PAT>"``.
 # Pipeline Step 6.
 #
 # @example
 #    apply
 function apply() {
-  terraform apply -auto-approve
+  terraform apply -auto-approve -var="gh_token=$TOKEN"
 }
 
 
@@ -121,13 +123,13 @@ function initialize() {
 }
 
 
-# @description Plan this configuration by running ``terraform plan``.
+# @description Plan this configuration by running ``terraform plan -var="gh_token=<GITHUB_PAT>"``.
 # Pipeline Step 5.
 #
 # @example
 #    plan
 function plan() {
-  terraform plan
+  terraform plan -var="gh_token=$TOKEN"
 }
 
 

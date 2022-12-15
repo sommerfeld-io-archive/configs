@@ -7,8 +7,6 @@ terraform {
   }
 }
 
-# To authenticate using OAuth tokens, ensure that the `token` argument or
-# the `GITHUB_TOKEN` environment variable is set.
 provider "github" {
-  #token = var.token # or `GITHUB_TOKEN`
+  token = var.gh_token
 }
