@@ -82,7 +82,7 @@ terraform -version
 
 === apply
 
-Apply this configuration by running `terraform apply -auto-approve -var="gh_token=<GITHUB_PAT>"`.
+Apply this configuration by running `terraform apply -auto-approve`.
 Pipeline Step 6.
 
 ==== Example
@@ -118,7 +118,7 @@ initialize
 
 === plan
 
-Plan this configuration by running `terraform plan -var="gh_token=<GITHUB_PAT>"`.
+Plan this configuration by running `terraform plan`.
 Pipeline Step 5.
 
 ==== Example
