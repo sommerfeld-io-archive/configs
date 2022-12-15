@@ -15,10 +15,11 @@ Apply Github config for all repositories based.
 == Overview
 
 This script applies a consistent configuration across all
-link:https://github.com/sebastian-sommerfeld-io?tab=repositories[Github repositories]. using
-Terraform. The link:https://registry.terraform.io/providers/integrations/github/latest/docs[Terraform Github Provider]
-allows interaction with Github. Terraform is started inside a docker container, so there is no
-need to install Terraform on your machine.
+link:https://github.com/sebastian-sommerfeld-io?tab=repositories[Github repositories]. using Terraform.
+The link:https://registry.terraform.io/providers/integrations/github/latest/docs[Terraform Github Provider]
+allows interaction with Github. Terraform is started inside a docker container, so there is no need
+to install Terraform or any other software (other than link:https://www.docker.com/[Docker]) on your
+machine.
 
 Terraform is an open-source infrastructure as code software tool that enables you to safely and
 predictably create, change, and improve infrastructure. It provides infrastructure automation with
@@ -38,7 +39,7 @@ TODO link to run-in-pipeline-order.sh / simulate-pipeline.sh
 === Script Example
 
 To run this script locally, run the commands in the same order as the pipeline does (see docs for
-each function). Running this script without arguments will result in errors.
+each function). Running this script without arguments will result in an error.
 
 [source, bash]
 
