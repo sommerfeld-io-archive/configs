@@ -130,7 +130,9 @@ plan
 
 === validate
 
-Validate Terraform configuration by running `terraform validate`.
+Validate Terraform configuration by running `terraform validate`. Additionally the
+link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] linter is used
+(specifically link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
 Pipeline Step 3.
 
 ==== Example
