@@ -1,18 +1,20 @@
 #!/bin/bash
 # @file apply-config.sh
-# @brief Apply Github config for all repositories based.
+# @brief Apply a consistent configuration for all (relevant) Github repositories.
 #
 # @description This script applies a consistent configuration across all
-# link:https://github.com/sebastian-sommerfeld-io?tab=repositories[Github repositories]. using Terraform.
-# The link:https://registry.terraform.io/providers/integrations/github/latest/docs[Terraform Github Provider]
-# allows interaction with Github. Terraform is started inside a docker container, so there is no need
-# to install Terraform or any other software (other than link:https://www.docker.com/[Docker]) on your
-# machine.
+# link:https://github.com/sebastian-sommerfeld-io?tab=repositories[Github repositories]. using
+# Terraform. The link:https://registry.terraform.io/providers/integrations/github/latest/docs[Terraform Github Provider]
+# allows interaction with Github.
+#
+# Terraform is started inside a link:https://www.docker.com/[Docker] container, so there is no need
+# to install Terraform or any other software other than Docker on your machine.
 #
 # Terraform is an open-source infrastructure as code software tool that enables you to safely and
 # predictably create, change, and improve infrastructure. It provides infrastructure automation with
 # workflows to build composition, collaboration, and reuse of infrastructure as code.
 #
+# .Github Actions workflow "Apply Github configuration"
 # TODO Link to pipeline
 #
 # .Available Terraform commands
@@ -31,6 +33,7 @@
 #
 # [source, bash]
 # ```
+# ./apply-config.sh init
 # ./apply-config.sh validate
 # ./apply-config.sh fmt
 # ./apply-config.sh plan
