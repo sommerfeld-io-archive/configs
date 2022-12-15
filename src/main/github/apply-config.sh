@@ -40,7 +40,7 @@
 TF_COMMAND="$1"
 if [ -z "$TF_COMMAND" ]; then
   echo -e "$LOG_ERROR Param missing: Terraform command"
-  echo -e "$LOG_ERROR Available parameters are:"
+  echo -e "$LOG_ERROR Available arguments are:"
   cat assets/help.adoc
   echo -e "$LOG_ERROR exit" && exit 8
 fi
@@ -161,4 +161,9 @@ case "$TF_COMMAND" in
   "$OPTION_PLAN" ) plan ;;
   "$OPTION_VALIDATE" ) validate ;;
   "$OPTION_VERSION" ) version ;;
+  * )
+    echo -e "$LOG_ERROR Invalid argument"
+    echo -e "$LOG_ERROR Available arguments are:"
+    cat assets/help.adoc
+    ;;
 esac

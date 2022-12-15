@@ -39,3 +39,10 @@ resource "github_issue_label" "prio_high" {
   description = "High priority issues"
   color       = "D93F0B"
 }
+
+resource "github_issue_label" "github_actions" {
+  repository  = data.github_repository.trashbox.id
+  name        = "github_actions"
+  description = "Pull requests that update GitHub Actions code"
+  color       = "000000"
+}

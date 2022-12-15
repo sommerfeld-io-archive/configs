@@ -4,8 +4,8 @@ variable "gh_token" {
   sensitive   = true
 }
 
-variable "github_user" {
-  description = "Github User containing the repositories"
-  type        = string
-  default     = "sebastian-sommerfeld-io"
-}
+# variable "gh_user" {
+#   description = "Github User containing the repositories"
+#   type        = string
+#   default     = "sebastian-sommerfeld-io"
+# }
