@@ -25,6 +25,10 @@ set -o nounset
 # set -o xtrace
 
 
+TOKEN="$(cat .secrets/github.token)"
+readonly TOKEN
+
+
 readonly OPTION_CLEAN="clean_local_filesystem"
 readonly OPTION_INIT="terraform_init"
 readonly OPTION_PLAN="terraform_plan"
@@ -40,16 +44,16 @@ select task in "$OPTION_CLEAN" "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY"; do
         rm -rf terraform*
     ;;
     "$OPTION_INIT" )
-        bash ./apply-config.sh init
+        bash ./apply-config.sh init "$TOKEN"
     ;;
     "$OPTION_PLAN" )
-        bash ./apply-config.sh lint
-        bash ./apply-config.sh validate
-        bash ./apply-config.sh fmt
-        bash ./apply-config.sh plan
+        bash ./apply-config.sh lint "$TOKEN"
+        bash ./apply-config.sh validate "$TOKEN"
+        bash ./apply-config.sh fmt "$TOKEN"
+        bash ./apply-config.sh plan "$TOKEN"
     ;;
     "$OPTION_APPLY" )
-        bash ./apply-config.sh apply
+        bash ./apply-config.sh apply "$TOKEN"
     ;;
   esac
 

@@ -26,8 +26,8 @@ Terraform is an open-source infrastructure as code software tool that enables yo
 predictably create, change, and improve infrastructure. It provides infrastructure automation with
 workflows to build composition, collaboration, and reuse of infrastructure as code.
 
-.Github Actions workflow "Apply Github configuration"
-TODO Link to pipeline
+.Github Actions workflow
+link:https://github.com/sebastian-sommerfeld-io/configs/actions/workflows/configure-github.yml[Apply global Github config]
 
 .Available Terraform commands
 include::ROOT:partial$GENERATED/github/config/help.adoc[]
@@ -37,6 +37,7 @@ TODO link to run-in-pipeline-order.sh / simulate-pipeline.sh
 === Script Arguments
 
 * _$1_ (string): The `terraform` command to run.
+* _$2_ (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass `${{ secrets.GITHUB_TOKEN }}`
 
 === Script Example
 
@@ -46,11 +47,12 @@ each function). Running this script without arguments will result in an error.
 [source, bash]
 
 ----
-./apply-config.sh init
-./apply-config.sh validate
-./apply-config.sh fmt
-./apply-config.sh plan
-./apply-config.sh apply
+./apply-config.sh init "$TOKEN"
+./apply-config.sh lint "$TOKEN"
+./apply-config.sh validate "$TOKEN"
+./apply-config.sh fmt "$TOKEN"
+./apply-config.sh plan "$TOKEN"
+./apply-config.sh apply "$TOKEN"
 ----
 
 == Index

@@ -24,7 +24,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: tflint
-        run: src/main/github/apply-config.sh lint
+        run: src/main/github/apply-config.sh lint ${{ secrets.GITHUB_TOKEN }}
         shell: bash
 
   # TODO run terratest etc ...
@@ -37,16 +37,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: initialize
-        run: src/main/github/apply-config.sh init
+        run: src/main/github/apply-config.sh init ${{ secrets.GITHUB_TOKEN }}
         shell: bash
       - name: validate
-        run: src/main/github/apply-config.sh validate
+        run: src/main/github/apply-config.sh validate ${{ secrets.GITHUB_TOKEN }}
         shell: bash
       - name: plan
-        run: src/main/github/apply-config.sh plan
+        run: src/main/github/apply-config.sh plan ${{ secrets.GITHUB_TOKEN }}
         shell: bash
       - name: apply
-        run: src/main/github/apply-config.sh apply
+        run: src/main/github/apply-config.sh apply ${{ secrets.GITHUB_TOKEN }}
         shell: bash
 
   create-docs:
@@ -57,7 +57,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: format
-        run: src/main/github/apply-config.sh fmt
+        run: src/main/github/apply-config.sh fmt ${{ secrets.GITHUB_TOKEN }}
         shell: bash
       - name: Copy help.adoc to Antora partial
         run: echo "Implement me ..."
