@@ -23,11 +23,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Debug
+        run: pwd && ls -alF
       - name: tflint
         run: |
           (
             cd src/main/github || exit
-            apply-config.sh lint ${{ secrets.GITHUB_TOKEN }}
+            ./apply-config.sh lint ${{ secrets.GITHUB_TOKEN }}
           )
         shell: bash
 
@@ -72,8 +74,8 @@ jobs:
           )
         shell: bash
 
-  create-docs:
-    name: Lint Terraform config
+  generate-docs:
+    name: Generate Adoc contents
     runs-on: ubuntu-latest
     needs: apply-github-config
     steps:
