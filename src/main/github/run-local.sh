@@ -43,6 +43,7 @@ select task in "$OPTION_CLEAN" "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY"; do
         bash ./apply-config.sh init
     ;;
     "$OPTION_PLAN" )
+        bash ./apply-config.sh lint
         bash ./apply-config.sh validate
         bash ./apply-config.sh fmt
         bash ./apply-config.sh plan

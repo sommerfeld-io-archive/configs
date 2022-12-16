@@ -64,6 +64,7 @@ readonly TOKEN
 readonly OPTION_APPLY="apply"
 readonly OPTION_FORMAT="fmt"
 readonly OPTION_INITIALIZE="init"
+readonly OPTION_LINT="lint"
 readonly OPTION_PLAN="plan"
 readonly OPTION_VALIDATE="validate"
 readonly OPTION_VERSION="-version"
@@ -99,7 +100,7 @@ function terraform() {
 
 
 # @description Apply this configuration by running ``terraform apply -auto-approve``.
-# Pipeline Step 6.
+# Pipeline Step 7.
 #
 # @example
 #    apply
@@ -109,7 +110,7 @@ function apply() {
 
 
 # @description Apply consistent format to all .tf files by running ``terraform fmt -recursive``.
-# Pipeline Step 4.
+# Pipeline Step 5.
 #
 # @example
 #    fmt
@@ -128,8 +129,22 @@ function initialize() {
 }
 
 
+# @description Use link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] linter
+# to check terraform config (specifically
+# link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
+# Pipeline Step 3.
+#
+# @example
+#    lint
+function lint() {
+  docker run -it --rm \
+    --volume "$(pwd):/data" \
+    ghcr.io/terraform-linters/tflint-bundle:latest
+}
+
+
 # @description Plan this configuration by running ``terraform plan``.
-# Pipeline Step 5.
+# Pipeline Step 6.
 #
 # @example
 #    plan
@@ -138,17 +153,12 @@ function plan() {
 }
 
 
-# @description Validate Terraform configuration by running ``terraform validate``. Additionally the 
-# link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] linter is used
-# (specifically link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
-# Pipeline Step 3.
+# @description Validate Terraform configuration by running ``terraform validate``.
+# Pipeline Step 4.
 #
 # @example
 #    validate
 function validate() {
-  docker run -it --rm \
-    --volume "$(pwd):/data" \
-    ghcr.io/terraform-linters/tflint-bundle:latest
 
   terraform validate
 }
@@ -169,6 +179,7 @@ case "$TF_COMMAND" in
   "$OPTION_APPLY" ) apply ;;
   "$OPTION_FORMAT" ) format ;;
   "$OPTION_INITIALIZE" ) initialize ;;
+  "$OPTION_LINT" ) lint ;;
   "$OPTION_PLAN" ) plan ;;
   "$OPTION_VALIDATE" ) validate ;;
   "$OPTION_VERSION" ) version ;;
