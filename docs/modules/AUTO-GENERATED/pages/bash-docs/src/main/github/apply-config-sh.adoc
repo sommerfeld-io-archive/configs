@@ -59,6 +59,7 @@ each function). Running this script without arguments will result in an error.
 * <<_apply,apply>>
 * <<_format,format>>
 * <<_initialize,initialize>>
+* <<_lint,lint>>
 * <<_plan,plan>>
 * <<_validate,validate>>
 * <<_version,version>>
@@ -87,7 +88,7 @@ terraform -version
 === apply
 
 Apply this configuration by running `terraform apply -auto-approve`.
-Pipeline Step 6.
+Pipeline Step 7.
 
 ==== Example
 
@@ -99,7 +100,7 @@ apply
 === format
 
 Apply consistent format to all .tf files by running `terraform fmt -recursive`.
-Pipeline Step 4.
+Pipeline Step 5.
 
 ==== Example
 
@@ -120,10 +121,24 @@ Pipeline Step 2.
 initialize
 ----
 
+=== lint
+
+Use link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] linter
+to check terraform config (specifically
+link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
+Pipeline Step 3.
+
+==== Example
+
+[,bash]
+----
+lint
+----
+
 === plan
 
 Plan this configuration by running `terraform plan`.
-Pipeline Step 5.
+Pipeline Step 6.
 
 ==== Example
 
@@ -134,10 +149,8 @@ plan
 
 === validate
 
-Validate Terraform configuration by running `terraform validate`. Additionally the
-link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] linter is used
-(specifically link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
-Pipeline Step 3.
+Validate Terraform configuration by running `terraform validate`.
+Pipeline Step 4.
 
 ==== Example
 
