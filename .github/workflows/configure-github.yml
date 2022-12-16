@@ -1,5 +1,5 @@
 ---
-name: "Apply global Github config"
+name: "Global: Apply Github Configuration"
 
 on:
   push:
