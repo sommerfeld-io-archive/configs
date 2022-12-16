@@ -1,0 +1,46 @@
+---
+name: "Apply global Github config"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/configure-github.yml
+      - src/main/github
+  schedule:
+    - cron: '0 6 * * 1' # https://crontab.guru
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  lint-terraform:
+    name: Lint Terraform config
+    runs-on: ubuntu-latest
+    steps:
+      - name: tflint
+        run: echo "Implement me ..."
+
+  apply-github-config:
+    name: Lint Terraform config
+    runs-on: ubuntu-latest
+    needs: lint-terraform
+    steps:
+      - name: Terraform
+        run: echo "Implement me ..."
+
+  on-failure:
+    runs-on: ubuntu-latest
+    needs: ['lint-terraform', 'apply-github-config']
+    if: failure()
+    steps:
+      - name: Send Pipeline Status to Google Chat
+        if: always()
+        uses: Co-qn/google-chat-notification@releases/v1
+        with:
+          name: ${{ github.workflow }}
+          url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+          status: failure
