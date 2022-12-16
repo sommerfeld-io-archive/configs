@@ -115,8 +115,6 @@ jobs:
       - name: Generate some other docs
         run: echo "Implement me ..."
       - name: Commit and Push
-        run: echo "Implement me ..."
-      - name: Commit and push
         uses: EndBug/add-and-commit@v9
         with:
           author_name: sebastian
