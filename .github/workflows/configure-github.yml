@@ -97,7 +97,7 @@ jobs:
 
   on-failure:
     runs-on: ubuntu-latest
-    needs: ['lint-terraform', 'apply-github-config', 'create-docs']
+    needs: ['lint-terraform', 'apply-github-config', 'generate-docs']
     if: failure()
     steps:
       - name: Send Pipeline Status to Google Chat
