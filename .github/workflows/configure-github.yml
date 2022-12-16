@@ -74,8 +74,8 @@ jobs:
           )
         shell: bash
 
-  generate-docs:
-    name: Generate Adoc contents
+  update-repo:
+    name: Format *.tf files
     runs-on: ubuntu-latest
     needs: apply-github-config
     steps:
@@ -88,16 +88,45 @@ jobs:
             ./apply-config.sh fmt ${{ secrets.TERRAFORM }}
           )
         shell: bash
+      - name: Commit and push
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: sebastian
+          author_email: sebastian@sommerfeld.io
+          message: "[Actions Bot] refactor: formatted terraform files"
+          add: src/main/github
       - name: Copy help.adoc to Antora partial
-        run: echo "Implement me ..."
+        run: |
+          TARGET_ADOC="docs/modules/ROOT/partials/GENERATED/github/config/help.adoc"
+
+          (
+              echo "// +---------------------------------------------+"
+              echo "// |                                             |"
+              echo "// |    DO NOT EDIT DIRECTLY !!!!!               |"
+              echo "// |                                             |"
+              echo "// |    See: src/main/github/assets/help.adoc    |"
+              echo "// |                                             |"
+              echo "// +---------------------------------------------+"
+              echo
+          ) > "$TARGET_ADOC"
+
+          cat src/main/github/assets/help.adoc >> "$TARGET_ADOC"
+        shell: bash
       - name: Generate some other docs
         run: echo "Implement me ..."
       - name: Commit and Push
         run: echo "Implement me ..."
+      - name: Commit and push
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: sebastian
+          author_email: sebastian@sommerfeld.io
+          message: "[Actions Bot] refactor: formatted terraform files"
+          add: docs
 
   on-failure:
     runs-on: ubuntu-latest
-    needs: ['lint-terraform', 'apply-github-config', 'generate-docs']
+    needs: ['lint-terraform', 'apply-github-config', 'update-repo']
     if: failure()
     steps:
       - name: Send Pipeline Status to Google Chat
