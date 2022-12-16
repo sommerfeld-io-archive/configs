@@ -4,13 +4,12 @@
 # easier way.
 #
 # @description This script is just a wrapper script to apply the Github configuration during
-# development from localhost in an easier way. It provides a menu to select the action of choise
-# and delegates all commands to `apply-config.sh`.
+# development from localhost in an easier way. It provides a menu to select the action of choise and
+# delegates all commands to `xref:AUTO-GENERATED:bash-docs/src/main/github/apply-config-sh.adoc[apply-config.sh]`.
 #
 # === Script Arguments
 #
 # The script does not accept any parameters.
-# * *$1* (string): Some var
 #
 # === Script Example
 #
@@ -26,4 +25,32 @@ set -o nounset
 # set -o xtrace
 
 
-echo -e "$LOG_INFO Run $0"
+readonly OPTION_CLEAN="clean_local_filesystem"
+readonly OPTION_INIT="terraform_init"
+readonly OPTION_PLAN="terraform_plan"
+readonly OPTION_APPLY="terraform_apply"
+
+
+echo -e "$LOG_INFO Apply Github configuration"
+echo -e "$LOG_INFO ${Y}What do you want me to do?${D}"
+select task in "$OPTION_CLEAN" "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY"; do
+  case "$task" in
+    "$OPTION_CLEAN" )
+        rm -rf .terraform*
+        rm -rf terraform*
+    ;;
+    "$OPTION_INIT" )
+        bash ./apply-config.sh init
+    ;;
+    "$OPTION_PLAN" )
+        bash ./apply-config.sh validate
+        bash ./apply-config.sh fmt
+        bash ./apply-config.sh plan
+    ;;
+    "$OPTION_APPLY" )
+        bash ./apply-config.sh apply
+    ;;
+  esac
+
+  break
+done
