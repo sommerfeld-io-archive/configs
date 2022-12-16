@@ -148,7 +148,7 @@ function initialize() {
 # @example
 #    lint
 function lint() {
-  docker run -it --rm \
+  docker run --rm \
     --volume "$(pwd):/data" \
     ghcr.io/terraform-linters/tflint-bundle:latest
 }
