@@ -29,7 +29,7 @@ jobs:
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh lint ${{ secrets.GITHUB_TOKEN }}
+            ./apply-config.sh lint ${{ secrets.TERRAFORM }}
           )
         shell: bash
 
@@ -49,28 +49,28 @@ jobs:
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh init ${{ secrets.GITHUB_TOKEN }}
+            ./apply-config.sh init ${{ secrets.TERRAFORM }}
           )
         shell: bash
       - name: validate
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh validate ${{ secrets.GITHUB_TOKEN }}
+            ./apply-config.sh validate ${{ secrets.TERRAFORM }}
           )
         shell: bash
       - name: plan
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh plan ${{ secrets.GITHUB_TOKEN }}
+            ./apply-config.sh plan ${{ secrets.TERRAFORM }}
           )
         shell: bash
       - name: apply
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh apply ${{ secrets.GITHUB_TOKEN }}
+            ./apply-config.sh apply ${{ secrets.TERRAFORM }}
           )
         shell: bash
 
@@ -85,7 +85,7 @@ jobs:
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh fmt ${{ secrets.GITHUB_TOKEN }}
+            ./apply-config.sh fmt ${{ secrets.TERRAFORM }}
           )
         shell: bash
       - name: Copy help.adoc to Antora partial
