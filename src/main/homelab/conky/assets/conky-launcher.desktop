@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/sebastian/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/conky/run.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=conky
+Name=conky
+Comment[en_US]=Configured via script
+Comment=Configured via script

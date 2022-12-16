@@ -1,0 +1,7 @@
+* `apply`      -> Executes the actions proposed in a Terraform plan.
+* `fmt`        -> Rewrite Terraform configuration files to a canonical format and style.
+* `init`       -> Initializes a working directory containing Terraform configuration files. This is the first command that should be run.
+* `lint`       -> Run TFLint in Docker container to check the Terraform config.
+* `plan`       -> Create an execution plan, which lets you preview the changes that Terraform plans to make.
+* `validate`   -> Validates configuration files in a directory, referring only to configuration and not accessing any remote services.
+* `-version`   -> Display Terraform version.

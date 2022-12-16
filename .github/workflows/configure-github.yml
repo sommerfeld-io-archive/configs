@@ -1,0 +1,80 @@
+---
+name: "Apply global Github config"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/configure-github.yml
+      - src/main/github
+  schedule:
+    - cron: '0 6 * * 1' # https://crontab.guru
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  lint-terraform:
+    name: Lint Terraform config
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: tflint
+        run: src/main/github/apply-config.sh lint
+        shell: bash
+
+  # TODO run terratest etc ...
+
+  apply-github-config:
+    name: Apply config by running Terraform
+    runs-on: ubuntu-latest
+    needs: lint-terraform
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: initialize
+        run: src/main/github/apply-config.sh init
+        shell: bash
+      - name: validate
+        run: src/main/github/apply-config.sh validate
+        shell: bash
+      - name: plan
+        run: src/main/github/apply-config.sh plan
+        shell: bash
+      - name: apply
+        run: src/main/github/apply-config.sh apply
+        shell: bash
+
+  create-docs:
+    name: Lint Terraform config
+    runs-on: ubuntu-latest
+    needs: apply-github-config
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: format
+        run: src/main/github/apply-config.sh fmt
+        shell: bash
+      - name: Copy help.adoc to Antora partial
+        run: echo "Implement me ..."
+      - name: Generate some other docs
+        run: echo "Implement me ..."
+      - name: Commit and Push
+        run: echo "Implement me ..."
+
+  on-failure:
+    runs-on: ubuntu-latest
+    needs: ['lint-terraform', 'apply-github-config', 'create-docs']
+    if: failure()
+    steps:
+      - name: Send Pipeline Status to Google Chat
+        if: always()
+        uses: Co-qn/google-chat-notification@releases/v1
+        with:
+          name: ${{ github.workflow }}
+          url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+          status: failure

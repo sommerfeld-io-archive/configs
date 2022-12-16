@@ -1,0 +1,11 @@
+= Guthub Configuration
+
+LINK TO PIPELINE
+
+== Prerequisites
+. link:https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token[Create a Personal Access Token] for your Github Account to use with Terraform. The minimum required scopes are `repo` and `read:user`
+
+== Lorem ipsum
+
+=== Available Terraform commands
+include::ROOT:partial$GENERATED/github/config/help.adoc[]
