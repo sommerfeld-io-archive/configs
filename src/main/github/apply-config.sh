@@ -14,8 +14,8 @@
 # predictably create, change, and improve infrastructure. It provides infrastructure automation with
 # workflows to build composition, collaboration, and reuse of infrastructure as code.
 #
-# .Github Actions workflow "Apply Github configuration"
-# TODO Link to pipeline
+# .Github Actions workflow
+# link:https://github.com/sebastian-sommerfeld-io/configs/actions/workflows/configure-github.yml[Apply global Github config]
 #
 # .Available Terraform commands
 # include::ROOT:partial$GENERATED/github/config/help.adoc[]
@@ -25,6 +25,7 @@
 # === Script Arguments
 #
 # * *$1* (string): The ``terraform`` command to run.
+# * *$2* (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass ``${{ secrets.GITHUB_TOKEN }}``
 #
 # === Script Example
 #
@@ -33,11 +34,12 @@
 #
 # [source, bash]
 # ```
-# ./apply-config.sh init
-# ./apply-config.sh validate
-# ./apply-config.sh fmt
-# ./apply-config.sh plan
-# ./apply-config.sh apply
+# ./apply-config.sh init "$TOKEN"
+# ./apply-config.sh lint "$TOKEN"
+# ./apply-config.sh validate "$TOKEN"
+# ./apply-config.sh fmt "$TOKEN"
+# ./apply-config.sh plan "$TOKEN"
+# ./apply-config.sh apply "$TOKEN"
 # ```
 
 
@@ -51,14 +53,18 @@ fi
 readonly TF_COMMAND
 
 
+TOKEN="$2"
+if [ -z "$TF_COMMAND" ]; then
+  echo -e "$LOG_ERROR Param missing: Github Token"
+  echo -e "$LOG_ERROR exit" && exit 8
+fi
+readonly TOKEN
+
+
 set -o errexit
 set -o pipefail
 set -o nounset
 # set -o xtrace
-
-
-TOKEN="$(cat .secrets/github.token)"
-readonly TOKEN
 
 
 readonly OPTION_APPLY="apply"
