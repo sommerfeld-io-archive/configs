@@ -43,6 +43,11 @@
 # ```
 
 
+# Avoid 'unbound variable' errors in pipeline
+readonly LOG_ERROR="[\e[1;31mERROR\e[0m]"
+readonly LOG_INFO="[\e[34mINFO\e[0m]"
+
+
 TF_COMMAND="$1"
 if [ -z "$TF_COMMAND" ]; then
   echo -e "$LOG_ERROR Param missing: Terraform command"
@@ -143,7 +148,7 @@ function initialize() {
 # @example
 #    lint
 function lint() {
-  docker run -it --rm \
+  docker run --rm \
     --volume "$(pwd):/data" \
     ghcr.io/terraform-linters/tflint-bundle:latest
 }
