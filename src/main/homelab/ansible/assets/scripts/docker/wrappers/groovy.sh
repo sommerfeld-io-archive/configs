@@ -22,9 +22,12 @@ set -o nounset
 
 
 readonly IMAGE="groovy"
-readonly TAG="4.0.0-jdk17"
+readonly TAG="4.0.6-jdk17-jammy"
 
 docker run -it --rm \
+  --volume /etc/passwd:/etc/passwd:ro \
+  --volume /etc/group:/etc/group:ro \
+  --user "$(id -u):$(id -g)" \
   --volume "$(pwd):$(pwd)" \
   --workdir "$(pwd)" \
   "$IMAGE:$TAG" groovy "$@"
