@@ -8,6 +8,7 @@
 * xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/yamllint-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/yamllint.sh]
 * xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/shellcheck-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/shellcheck.sh]
 * xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/node-npm-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/node-npm.sh]
+* xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/go-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/go.sh]
 * xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/hugo-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/hugo.sh]
 * xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/python-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/python.sh]
 * xref:AUTO-GENERATED:bash-docs/src/main/homelab/bootstrap/ssh-server-sh.adoc[src/main/homelab/bootstrap/ssh-server.sh]
