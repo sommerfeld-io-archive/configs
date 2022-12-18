@@ -28,6 +28,7 @@ docker run -it --rm \
   --volume /etc/passwd:/etc/passwd:ro \
   --volume /etc/group:/etc/group:ro \
   --user "$(id -u):$(id -g)" \
+  --volume "/home/sebastian/.cache:/home/sebastian/.cache" \
   --volume "$(pwd):$(pwd)" \
   --workdir "$(pwd)" \
   "$IMAGE:$TAG" go "$@"

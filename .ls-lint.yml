@@ -4,6 +4,7 @@ ls:
   .puml: kebab-case
   .md: kebab-case | SCREAMING_SNAKE_CASE
 
+  .go: snake_case
   .json: kebab-case
   .rb: kebab-case
   .tf: kebab-case

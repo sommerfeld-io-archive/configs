@@ -170,7 +170,6 @@ function plan() {
 # @example
 #    validate
 function validate() {
-
   terraform validate
 }
 
