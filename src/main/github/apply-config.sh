@@ -159,6 +159,7 @@ function terraform() {
 #    apply
 function apply() {
   terraform apply -auto-approve "$TF_PLAN_FILE"
+  rm "$TF_PLAN_FILE"
 }
 
 
