@@ -24,8 +24,11 @@
 #
 # === Script Arguments
 #
-# * *$1* (string): The ``terraform`` command to run.
-# * *$2* (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass ``${{ secrets.GITHUB_TOKEN }}``
+# * *$1* (string): The ``terraform`` command to run - mandatory
+# * *$2* (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass ``${{ secrets.GITHUB_TOKEN }}`` - mandatory
+# * *$3* (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - mandatory
+# * *$4* (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - mandatory
+# * *$5* (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - mandatory
 #
 # === Script Example
 #
@@ -59,11 +62,35 @@ readonly TF_COMMAND
 
 
 TOKEN="$2"
-if [ -z "$TF_COMMAND" ]; then
+if [ -z "$TOKEN" ]; then
   echo -e "$LOG_ERROR Param missing: Github Token"
   echo -e "$LOG_ERROR exit" && exit 8
 fi
 readonly TOKEN
+
+
+BW_CLIENT_ID="$3"
+if [ -z "$BW_CLIENT_ID" ]; then
+  echo -e "$LOG_ERROR Param missing: Bitwarden client id"
+  echo -e "$LOG_ERROR exit" && exit 8
+fi
+readonly BW_CLIENT_ID
+
+
+BW_CLIENT_SECRET="$4"
+if [ -z "$BW_CLIENT_SECRET" ]; then
+  echo -e "$LOG_ERROR Param missing: Bitwarden client secret"
+  echo -e "$LOG_ERROR exit" && exit 8
+fi
+readonly BW_CLIENT_SECRET
+
+
+BW_MASTER_PASS="$5"
+if [ -z "$BW_MASTER_PASS" ]; then
+  echo -e "$LOG_ERROR Param missing: Bitwarden client master pass"
+  echo -e "$LOG_ERROR exit" && exit 8
+fi
+readonly BW_MASTER_PASS
 
 
 set -o errexit
@@ -79,6 +106,8 @@ readonly OPTION_LINT="lint"
 readonly OPTION_PLAN="plan"
 readonly OPTION_VALIDATE="validate"
 readonly OPTION_VERSION="-version"
+
+readonly TF_PLAN_FILE="tfplan"
 
 
 # @description Wrapper function to encapsulate terraform in a docker container. The current working
@@ -96,6 +125,15 @@ function terraform() {
     echo -e "$LOG_ERROR No command passed to the terraform container"
     echo -e "$LOG_ERROR exit" && exit 8
   fi
+
+  local DOCKER_IMAGE="local/terraform:dev"
+
+  (
+    cd docker-image-terraform || exit
+
+    echo -e "$LOG_INFO Build Docker image $DOCKER_IMAGE"
+    docker build --no-cache -t "$DOCKER_IMAGE" .
+  )
   
   docker run --rm \
     --volume /etc/passwd:/etc/passwd:ro \
@@ -106,7 +144,10 @@ function terraform() {
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \
     --env "GITHUB_TOKEN=$TOKEN" \
-    hashicorp/terraform:1.3.6 "$@"
+    --env "TF_VAR_bw_client_id=$BW_CLIENT_ID" \
+    --env "TF_VAR_bw_client_secret=$BW_CLIENT_SECRET" \
+    --env "TF_VAR_bw_password=$BW_MASTER_PASS" \
+    "$DOCKER_IMAGE" "$@"
 }
 
 
@@ -116,7 +157,7 @@ function terraform() {
 # @example
 #    apply
 function apply() {
-  terraform apply -auto-approve
+  terraform apply -auto-approve "$TF_PLAN_FILE"
 }
 
 
@@ -160,7 +201,7 @@ function lint() {
 # @example
 #    plan
 function plan() {
-  terraform plan
+  terraform plan -out="$TF_PLAN_FILE"
 }
 
 

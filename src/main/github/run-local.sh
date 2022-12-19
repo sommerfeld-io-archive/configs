@@ -28,6 +28,12 @@ set -o nounset
 TOKEN="$(cat .secrets/github.token)"
 readonly TOKEN
 
+BW_CLIENT_ID="$(cat .secrets/BW_CLIENT_ID.secret)"
+readonly BW_CLIENT_ID
+BW_CLIENT_SECRET="$(cat .secrets/BW_CLIENT_SECRET.secret)"
+readonly BW_CLIENT_SECRET
+BW_MASTER_PASS="$(cat .secrets/BW_MASTER_PASS.secret)"
+readonly BW_MASTER_PASS
 
 readonly OPTION_CLEAN="clean_local_filesystem"
 readonly OPTION_INIT="terraform_init"
@@ -44,16 +50,16 @@ select task in "$OPTION_CLEAN" "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY"; do
         rm -rf terraform*
     ;;
     "$OPTION_INIT" )
-        bash ./apply-config.sh init "$TOKEN"
+        bash ./apply-config.sh init "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
     ;;
     "$OPTION_PLAN" )
-        bash ./apply-config.sh lint "$TOKEN"
-        bash ./apply-config.sh validate "$TOKEN"
-        bash ./apply-config.sh fmt "$TOKEN"
-        bash ./apply-config.sh plan "$TOKEN"
+        bash ./apply-config.sh lint "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+        bash ./apply-config.sh validate "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+        bash ./apply-config.sh fmt "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+        bash ./apply-config.sh plan "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
     ;;
     "$OPTION_APPLY" )
-        bash ./apply-config.sh apply "$TOKEN"
+        bash ./apply-config.sh apply "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
     ;;
   esac
 

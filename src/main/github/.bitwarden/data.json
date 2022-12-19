@@ -3912,7 +3912,7 @@
       "hasPremiumFromOrganization": false,
       "usesKeyConnector": false,
       "convertAccountToKeyConnector": null,
-      "lastSync": "2022-12-19T22:05:16.739Z",
+      "lastSync": "2022-12-19T22:39:53.820Z",
       "keyHash": "f+AcXOvUPWfAS+MEgCE3r/1tTT9vAd7CGUBRMpQkkMQ="
     },
     "settings": {
@@ -3944,5 +3944,5 @@
     "2a98553b-0a41-48db-bafe-ae2000ed3a92": 1671485282147
   },
   "activeUserId": "2a98553b-0a41-48db-bafe-ae2000ed3a92",
-  "__PROTECTED__2a98553b-0a41-48db-bafe-ae2000ed3a92_masterkey_auto": "AuTdrr1AQ9wI7qb6wisYn0ULwdbNt7+YzP3cf8f/8Em7MhdBztqt3LGP20oosAJNG6UohMyHcRMPsh4NfOua7xfpSZgpfUdDtSaFX8FdL8Weo9rfcEVw37cbuUp5x7auNA=="
+  "__PROTECTED__2a98553b-0a41-48db-bafe-ae2000ed3a92_masterkey_auto": "AurjhNXrH3CRWO9XVIbAf0ic6hLC+QAGykIcES2D8XjUe+M7RW+b9z9qkFjA25sPdOOlOBG7HYA2e5eVQubGf/86Fuh3vtn7kZn8qzvFjThJ/NrgBEN7oxQL8iGOaa+sow=="
 }

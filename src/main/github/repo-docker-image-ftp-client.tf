@@ -1,3 +1,11 @@
-module "repo-docker-image-ftp-client" {
-  source = "./modules/repos/sebastian-sommerfeld-io/docker-image-ftp-client"
+# Repository
+# https://github.com/sebastian-sommerfeld-io/docker-image-ftp-client
+
+data "github_repository" "docker-image-ftp-client" {
+  full_name = "sebastian-sommerfeld-io/docker-image-ftp-client"
+}
+
+module "docker-image-ftp-client-labels" {
+  source    = "./modules/issue-labels"
+  repo_name = data.github_repository.docker-image-ftp-client.id
 }

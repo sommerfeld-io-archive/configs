@@ -29,11 +29,9 @@ jobs:
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh lint ${{ secrets.TERRAFORM }}
+            ./apply-config.sh lint ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
           )
         shell: bash
-
-  # TODO run terratest etc ...
 
   apply-github-config:
     name: Apply config by running Terraform
@@ -49,28 +47,28 @@ jobs:
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh init ${{ secrets.TERRAFORM }}
+            ./apply-config.sh init ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
           )
         shell: bash
       - name: validate
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh validate ${{ secrets.TERRAFORM }}
+            ./apply-config.sh validate ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
           )
         shell: bash
       - name: plan
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh plan ${{ secrets.TERRAFORM }}
+            ./apply-config.sh plan ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
           )
         shell: bash
       - name: apply
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh apply ${{ secrets.TERRAFORM }}
+            ./apply-config.sh apply ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
           )
         shell: bash
 
@@ -85,7 +83,7 @@ jobs:
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh fmt ${{ secrets.TERRAFORM }}
+            ./apply-config.sh fmt ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
           )
         shell: bash
       - name: Commit and push

@@ -1,3 +1,11 @@
-module "repo-docker-image-tf-graph-beautifier" {
-  source = "./modules/repos/sebastian-sommerfeld-io/docker-image-tf-graph-beautifier"
+# Repository
+# https://github.com/sebastian-sommerfeld-io/docker-image-tf-graph-beautifier
+
+data "github_repository" "docker-image-tf-graph-beautifier" {
+  full_name = "sebastian-sommerfeld-io/docker-image-tf-graph-beautifier"
+}
+
+module "docker-image-tf-graph-beautifier-labels" {
+  source    = "./modules/issue-labels"
+  repo_name = data.github_repository.docker-image-tf-graph-beautifier.id
 }

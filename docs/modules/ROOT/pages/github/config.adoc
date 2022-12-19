@@ -1,11 +1,69 @@
-= Guthub Configuration
+= Github Configuration
 
-LINK TO PIPELINE
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+
+* Github Actions workflow: link:https://github.com/sebastian-sommerfeld-io/configs/actions/workflows/configure-github.yml[Apply global Github config ]
 
 == Prerequisites
 . link:https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token[Create a Personal Access Token] for your Github Account to use with Terraform. The minimum required scopes are `repo` and `read:user`
+. Create Actions secrets for link:https://github.com/sebastian-sommerfeld-io/configs[sebastian-sommerfeld-io/configs] repo
+.. `BW_CLIENT_ID`: _https://vault.bitwarden.com -> Account Settings -> Security -> View API key_
+.. `BW_CLIENT_SECRET`: _https://vault.bitwarden.com -> Account Settings -> Security -> View API key_
+.. `BW_MASTER_PASS`: _https://vault.bitwarden.com -> Account Settings -> Security -> View API key_
+.. `TERRAFORM`: The Github Personal Access Token _link:https://github.com/settings/tokens[github.com/settings/tokens -> Settings Developer settings -> Tokens (classic)]_
 
-== Lorem ipsum
+== Building Blocks
+The Github Actions workflow configures issue labels and secrets for lots of other Github repositories. It needs 4 Actions secrets configured (see Prerequisites) to access Bitwarden (`BW_*` -> load other secrets) and to access Github repositories and projects (`TERRAFORM`).
 
-=== Available Terraform commands
+[plantuml, puml-build-image, svg]
+----
+@startuml
+
+skinparam linetype ortho
+skinparam monochrome false
+skinparam componentStyle uml2
+skinparam backgroundColor transparent
+skinparam ArrowColor black
+skinparam ComponentBackgroundColor #fdfdfd
+skinparam CollectionsBackgroundColor #ffffff
+skinparam NoteBorderColor Grey
+skinparam NoteBackgroundColor #fdfdfd
+skinparam defaultTextAlignment center
+skinparam activity {
+FontName Ubuntu
+}
+
+component configs <<Github Repo>> {
+  queue wf as "Global: Apply Github Configuration" <<Github Actions Workflow>>
+  collections s1 as "BW_CLIENT_ID\nBW_CLIENT_SECRET\nBW_MASTER_PASS\nTERRAFORM" <<Actions Secret>>
+  
+  s1 -right-> wf
+}
+
+component bitwarden <<Secrets Provider>> {
+  collections s2 as "Repo-specific secrets"
+}
+
+wf -up-> s2
+s2 -down-> wf
+
+component repo_1 <<Github Repo>>
+component repo_2 <<Github Repo>>
+component repo_x as "repo_..." <<Github Repo>>
+component repo_n <<Github Repo>>
+
+wf -down-> repo_1
+wf -down-> repo_2
+wf -down-> repo_x
+wf -down-> repo_n
+
+@enduml
+----
+
+== Lorem Ipsum Dolor
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+TODO: Something about the scripts and how to run from localhost and from a pipeline.
+
+=== Available (Terraform) commands
 include::ROOT:partial$GENERATED/github/config/help.adoc[]

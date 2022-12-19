@@ -1,3 +1,11 @@
-module "repo-github-action-generate-docs" {
-  source = "./modules/repos/sebastian-sommerfeld-io/github-action-generate-docs"
+# Repository
+# https://github.com/sebastian-sommerfeld-io/github-action-generate-docs
+
+data "github_repository" "github-action-generate-docs" {
+  full_name = "sebastian-sommerfeld-io/github-action-generate-docs"
+}
+
+module "github-action-generate-docs-labels" {
+  source    = "./modules/issue-labels"
+  repo_name = data.github_repository.github-action-generate-docs.id
 }
