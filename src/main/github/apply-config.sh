@@ -14,21 +14,22 @@
 # predictably create, change, and improve infrastructure. It provides infrastructure automation with
 # workflows to build composition, collaboration, and reuse of infrastructure as code.
 #
-# .Github Actions workflow
-# link:https://github.com/sebastian-sommerfeld-io/configs/actions/workflows/configure-github.yml[Apply global Github config]
+# Github Actions workflow: # link:https://github.com/sebastian-sommerfeld-io/configs/actions/workflows/configure-github.yml[Apply global Github config]
 #
 # .Available Terraform commands
 # include::ROOT:partial$GENERATED/github/config/help.adoc[]
 #
-# TODO link to run-in-pipeline-order.sh / simulate-pipeline.sh
+# Use `xref:AUTO-GENERATED:bash-docs/src/main/github/run-local-sh.adoc[run-local.sh]` while developing
+# on your localhost instead of direct calls to this script. `run-local.sh` provides a more conviniert
+# way to trigger the terraform commands.
 #
 # === Script Arguments
 #
-# * *$1* (string): The ``terraform`` command to run - mandatory
-# * *$2* (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass ``${{ secrets.GITHUB_TOKEN }}`` - mandatory
-# * *$3* (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - mandatory
-# * *$4* (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - mandatory
-# * *$5* (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - mandatory
+# * *$1* (string): The ``terraform`` command to run - _Mandatory_
+# * *$2* (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass ``${{ secrets.GITHUB_TOKEN }}`` - _Mandatory_
+# * *$3* (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory_
+# * *$4* (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory_
+# * *$5* (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory_
 #
 # === Script Example
 #
@@ -37,12 +38,12 @@
 #
 # [source, bash]
 # ```
-# ./apply-config.sh init "$TOKEN"
-# ./apply-config.sh lint "$TOKEN"
-# ./apply-config.sh validate "$TOKEN"
-# ./apply-config.sh fmt "$TOKEN"
-# ./apply-config.sh plan "$TOKEN"
-# ./apply-config.sh apply "$TOKEN"
+# ./apply-config.sh init "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+# ./apply-config.sh lint "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+# ./apply-config.sh validate "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+# ./apply-config.sh fmt "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+# ./apply-config.sh plan "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+# ./apply-config.sh apply "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 # ```
 
 

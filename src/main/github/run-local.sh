@@ -1,11 +1,13 @@
 #!/bin/bash
 # @file run-local.sh
-# @brief Wrapper script to apply the Github configuration during development from localhost in an
-# easier way.
+# @brief Wrapper script to apply Github configuration during development from localhost in an easy way.
 #
 # @description This script is just a wrapper script to apply the Github configuration during
 # development from localhost in an easier way. It provides a menu to select the action of choise and
-# delegates all commands to `xref:AUTO-GENERATED:bash-docs/src/main/github/apply-config-sh.adoc[apply-config.sh]`.
+# delegates all commands to `xref:AUTO-GENERATED:bash-docs/src/main/github/apply-config-sh.adoc[apply-config.sh]`
+# so there is no need to type the whole commands over and over again. These shortcuts are a much
+# simpler way. Additionally it allows `apply-config.sh` to work the same way from localhost and from a
+# Github Actions pipeline (both must supply the same params).
 #
 # === Script Arguments
 #
