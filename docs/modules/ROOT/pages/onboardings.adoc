@@ -22,11 +22,11 @@ image:ROOT:onboardings/branching-strategy.drawio.png[]
 . tbd ...
 . tbd ...
 . tbd ...
-. Add secrets for you pipelines (use `jarvis` module)
-. Setup Dependabot by configuring the repo (_Settings -> Code security and analysis -> Dependabot security updates_) and running the `github-actions` module from `jarvis`, then adjust (if necessary):
-.. The build triggers of `auto-generate-docs.yml` and `ci.yml`
-.. Add `if: ${{ github.actor != 'dependabot[bot]' }}` to Docker Login, the push setting from Docker build and both Snyk steps
-.. Adjust `dependabot.yml` to your needs
+. Setup Dependabot by configuring the repo (_Settings -> Code security and analysis -> Dependabot security updates_) and running the `github-actions` module from `jarvis`, then (if necessary) ...
+.. ... adjust  the build triggers of `auto-generate-docs.yml` and `ci.yml`.
+.. ... add `if: ${{ github.actor != 'dependabot[bot]' }}` to Docker Login, the push settings from Docker build and both Snyk steps.
+.. ... adjust `dependabot.yml` to your needs.
+. Apply xref:github/config.adoc[]
 
 === Add collaborators to projects and repos
 When you are working on a project with more people than just yourself, all collaborators need permissions to update the source code repositories and work with issues and projects.
