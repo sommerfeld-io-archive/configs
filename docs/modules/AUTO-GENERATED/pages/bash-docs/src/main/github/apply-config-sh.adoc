@@ -36,8 +36,11 @@ TODO link to run-in-pipeline-order.sh / simulate-pipeline.sh
 
 === Script Arguments
 
-* _$1_ (string): The `terraform` command to run.
-* _$2_ (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass `${{ secrets.GITHUB_TOKEN }}`
+* _$1_ (string): The `terraform` command to run - mandatory
+* _$2_ (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass `${{ secrets.GITHUB_TOKEN }}` - mandatory
+* _$3_ (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - mandatory
+* _$4_ (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - mandatory
+* _$5_ (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - mandatory
 
 === Script Example
 
