@@ -28,10 +28,11 @@ ls:
 
 ignore:
   - .adoc-links.json
+  - .gitpod.yml
   - .ls-lint.yml
   - .yamllint.yml
-  - .gitpod.yml
-  - .idea
   - .git
+  - .idea
   - node_modules
+  - src/main/github/.terraform-docs.yml
   - target
