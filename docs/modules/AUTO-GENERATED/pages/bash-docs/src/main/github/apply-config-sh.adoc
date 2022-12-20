@@ -94,6 +94,7 @@ terraform -version
 === apply
 
 Apply this configuration by running `terraform apply -auto-approve`.
+
 Pipeline Step 7.
 
 ==== Example
@@ -106,6 +107,7 @@ apply
 === format
 
 Apply consistent format to all .tf files by running `terraform fmt -recursive`.
+
 Pipeline Step 5.
 
 ==== Example
@@ -118,6 +120,7 @@ fmt
 === initialize
 
 Initialize this configuration by running `terraform init`.
+
 Pipeline Step 2.
 
 ==== Example
@@ -132,6 +135,7 @@ initialize
 Use link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] linter
 to check terraform config (specifically
 link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
+
 Pipeline Step 3.
 
 ==== Example
@@ -144,6 +148,7 @@ lint
 === plan
 
 Plan this configuration by running `terraform plan`.
+
 Pipeline Step 6.
 
 ==== Example
@@ -156,6 +161,7 @@ plan
 === validate
 
 Validate Terraform configuration by running `terraform validate`.
+
 Pipeline Step 4.
 
 ==== Example
@@ -168,6 +174,7 @@ validate
 === version
 
 Show Terraform version by running `terraform -version`.
+
 Pipeline Step 1.
 
 ==== Example
