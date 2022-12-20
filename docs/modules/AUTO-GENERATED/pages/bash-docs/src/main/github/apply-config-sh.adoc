@@ -57,12 +57,14 @@ each function). Running this script without arguments will result in an error.
 ./apply-config.sh fmt "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 ./apply-config.sh plan "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 ./apply-config.sh apply "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+./apply-config.sh docs "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 ----
 
 == Index
 
 * <<_terraform,terraform>>
 * <<_apply,apply>>
+* <<_docs,docs>>
 * <<_format,format>>
 * <<_initialize,initialize>>
 * <<_lint,lint>>
@@ -102,6 +104,21 @@ Pipeline Step 7.
 [,bash]
 ----
 apply
+----
+
+=== docs
+
+Generate documentation about this terraform configuratio by running
+link:https://github.com/terraform-docs/terraform-docs[terraform-docs] inside a Docker container.
+The generated docs are stored as an Antora partials file.
+
+Pipeline Step 7.
+
+==== Example
+
+[,bash]
+----
+validate
 ----
 
 === format
