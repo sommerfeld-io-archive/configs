@@ -26,13 +26,6 @@ resource "github_issue_label" "cancelled" {
   color       = "726b73"
 }
 
-resource "github_issue_label" "dependencies" {
-  repository  = var.repo_name
-  name        = "dependencies"
-  description = "Pull requests that update a dependency file (from Dependabot)"
-  color       = "0366d6"
-}
-
 resource "github_issue_label" "prio_high" {
   repository  = var.repo_name
   name        = "prio-high"
@@ -40,9 +33,23 @@ resource "github_issue_label" "prio_high" {
   color       = "D93F0B"
 }
 
+resource "github_issue_label" "dependencies" {
+  repository  = var.repo_name
+  name        = "dependencies"
+  description = "Dependabot: Pull requests that update a dependency file"
+  color       = "000000"
+}
+
 resource "github_issue_label" "github_actions" {
   repository  = var.repo_name
   name        = "github_actions"
-  description = "Pull requests that update GitHub Actions code"
+  description = "Dependabot: Pull requests that update GitHub Actions code"
+  color       = "000000"
+}
+
+resource "github_issue_label" "docker" {
+  repository  = var.repo_name
+  name        = "docker"
+  description = "Dependabot: Pull requests that update Docker code"
   color       = "000000"
 }
