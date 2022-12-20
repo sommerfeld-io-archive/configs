@@ -30,7 +30,7 @@
 
 === Inputs
 
-[cols="a,a,a,a,a",options="header"]
+[cols="a,3a,a,a,a",options="header"]
 |===
 |Name |Description |Type |Default |Required
 |[[input_bw_client_id]] <<input_bw_client_id,bw_client_id>>

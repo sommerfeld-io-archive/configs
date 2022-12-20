@@ -185,6 +185,10 @@ function docs() {
   old='== '
   new='=== '
   sed -i "s|$old|$new|g" "$PARTIALS_DIR/$ADOC_FILE"
+
+  old='a,a,a,a,a'
+  new='a,3a,a,a,a'
+  sed -i "s|$old|$new|g" "$PARTIALS_DIR/$ADOC_FILE"
 }
 
 
