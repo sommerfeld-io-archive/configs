@@ -127,14 +127,7 @@ function terraform() {
     echo -e "$LOG_ERROR exit" && exit 8
   fi
 
-  local DOCKER_IMAGE="local/terraform:dev"
-
-  (
-    cd docker-image-terraform || exit
-
-    echo -e "$LOG_INFO Build Docker image $DOCKER_IMAGE"
-    docker build --no-cache -t "$DOCKER_IMAGE" .
-  )
+  local DOCKER_IMAGE="sommerfeldio/terraform:0.1.0"
   
   docker run --rm \
     --volume /etc/passwd:/etc/passwd:ro \
