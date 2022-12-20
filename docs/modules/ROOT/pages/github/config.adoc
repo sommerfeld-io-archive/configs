@@ -67,3 +67,6 @@ TODO: Something about the scripts and how to run from localhost and from a pipel
 
 === Available (Terraform) commands
 include::ROOT:partial$GENERATED/github/config/help.adoc[]
+
+== Terraform Config
+include::ROOT:partial$GENERATED/github/config/terraform-docs.adoc[]

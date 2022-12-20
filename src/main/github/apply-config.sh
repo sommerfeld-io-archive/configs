@@ -44,6 +44,7 @@
 # ./apply-config.sh fmt "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 # ./apply-config.sh plan "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 # ./apply-config.sh apply "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+# ./apply-config.sh docs "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 # ```
 
 
@@ -101,6 +102,7 @@ set -o nounset
 
 
 readonly OPTION_APPLY="apply"
+readonly OPTION_DOCS="docs"
 readonly OPTION_FORMAT="fmt"
 readonly OPTION_INITIALIZE="init"
 readonly OPTION_LINT="lint"
@@ -154,6 +156,35 @@ function terraform() {
 function apply() {
   terraform apply -auto-approve "$TF_PLAN_FILE"
   rm "$TF_PLAN_FILE"
+}
+
+# @description Generate documentation about this terraform configuratio by running 
+# link:https://github.com/terraform-docs/terraform-docs[terraform-docs] inside a Docker container.
+# The generated docs are stored as an Antora partials file.
+#
+# Pipeline Step 7.
+#
+# @example
+#    validate
+function docs() {
+  local PARTIALS_DIR="../../../docs/modules/ROOT/partials/GENERATED/github/config"
+  local ADOC_FILE="terraform-docs.adoc"
+
+  docker run --rm \
+    --volume /etc/passwd:/etc/passwd:ro \
+    --volume /etc/group:/etc/group:ro \
+    --user "$(id -u):$(id -g)" \
+    --volume "$(pwd):$(pwd)" \
+    --workdir "$(pwd)" \
+    quay.io/terraform-docs/terraform-docs:0.16.0 asciidoc "$(pwd)" > "$PARTIALS_DIR/$ADOC_FILE"
+
+  old='header,autowidth'
+  new='header'
+  sed -i "s|$old|$new|g" "$PARTIALS_DIR/$ADOC_FILE"
+
+  old='== '
+  new='=== '
+  sed -i "s|$old|$new|g" "$PARTIALS_DIR/$ADOC_FILE"
 }
 
 
@@ -230,6 +261,7 @@ function version() {
 echo -e "$LOG_INFO Run Github configuration steps: $TF_COMMAND"
 case "$TF_COMMAND" in
   "$OPTION_APPLY" ) apply ;;
+  "$OPTION_DOCS" ) docs ;;
   "$OPTION_FORMAT" ) format ;;
   "$OPTION_INITIALIZE" ) initialize ;;
   "$OPTION_LINT" ) lint ;;
