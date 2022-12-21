@@ -38,10 +38,10 @@ way to trigger the terraform commands.
 === Script Arguments
 
 * _$1_ (string): The `terraform` command to run - _Mandatory_
-* _$2_ (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass `${{ secrets.GITHUB_TOKEN }}` - _Mandatory_
-* _$3_ (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory_
-* _$4_ (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory_
-* _$5_ (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory_
+* _$2_ (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass `${{ secrets.GITHUB_TOKEN }}` - _Mandatory for `plan` and `apply`_
+* _$3_ (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for `plan` and `apply`_
+* _$4_ (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for `plan` and `apply`_
+* _$5_ (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for `plan` and `apply`_
 
 === Script Example
 
@@ -51,13 +51,13 @@ each function). Running this script without arguments will result in an error.
 [source, bash]
 
 ----
-./apply-config.sh init "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
-./apply-config.sh lint "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
-./apply-config.sh validate "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
-./apply-config.sh fmt "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+./apply-config.sh init
+./apply-config.sh lint
+./apply-config.sh validate
+./apply-config.sh fmt
 ./apply-config.sh plan "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 ./apply-config.sh apply "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
-./apply-config.sh docs "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+./apply-config.sh docs
 ----
 
 == Index
