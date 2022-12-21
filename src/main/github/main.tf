@@ -6,75 +6,40 @@ terraform {
       source  = "integrations/github"
       version = "5.12.0"
     }
+
+    bitwarden = {
+      source  = "maxlaverse/bitwarden"
+      version = "0.4.0"
+    }
   }
 }
 
 provider "github" {}
 
-module "repo-config" {
-  source = "./modules/repos/sebastian-sommerfeld-io/configs"
+provider "bitwarden" {
+  master_password = var.bw_password
+  client_id       = var.bw_client_id
+  client_secret   = var.bw_client_secret
+  email           = var.bw_email
+  server          = "https://vault.bitwarden.com"
 }
 
-module "repo-docker-image-adoc-antora" {
-  source = "./modules/repos/sebastian-sommerfeld-io/docker-image-adoc-antora"
+# Github Actions Secret - Global - Relevant for all repos
+data "bitwarden_item_login" "GOOGLE_CHAT_WEBHOOK" {
+  id = "e2e02ec2-580b-4823-94bb-af70014ca324"
 }
 
-module "repo-docker-image-folderslint" {
-  source = "./modules/repos/sebastian-sommerfeld-io/docker-image-folderslint"
+# Github Actions Secret - Global - Relevant for all repos
+data "bitwarden_item_login" "GH_TOKEN_REPO_AND_PROJECT" {
+  id = "7bab7564-62d2-4709-9769-af700168cfa9"
 }
 
-module "repo-docker-image-ftp-client" {
-  source = "./modules/repos/sebastian-sommerfeld-io/docker-image-ftp-client"
+# Github Actions Secret - Global - Relevant for all repos
+data "bitwarden_item_login" "SNYK_TOKEN" {
+  id = "18d29e31-c440-4b59-9992-af7100cc6990"
 }
 
-module "repo-docker-image-git" {
-  source = "./modules/repos/sebastian-sommerfeld-io/docker-image-git"
-}
-
-module "repo-docker-image-jq" {
-  source = "./modules/repos/sebastian-sommerfeld-io/docker-image-jq"
-}
-
-module "repo-docker-image-tf-graph-beautifier" {
-  source = "./modules/repos/sebastian-sommerfeld-io/docker-image-tf-graph-beautifier"
-}
-
-module "repo-github-action-generate-docs" {
-  source = "./modules/repos/sebastian-sommerfeld-io/github-action-generate-docs"
-}
-
-module "repo-github-action-generate-readme" {
-  source = "./modules/repos/sebastian-sommerfeld-io/github-action-generate-readme"
-}
-
-module "repo-github-action-update-antora-yml" {
-  source = "./modules/repos/sebastian-sommerfeld-io/github-action-update-antora-yml"
-}
-
-module "repo-jarvis" {
-  source = "./modules/repos/sebastian-sommerfeld-io/jarvis"
-}
-
-module "repo-monitoring" {
-  source = "./modules/repos/sebastian-sommerfeld-io/monitoring"
-}
-
-module "repo-website-masterblender-de" {
-  source = "./modules/repos/sebastian-sommerfeld-io/website-masterblender-de"
-}
-
-module "repo-website-numero-uno-de" {
-  source = "./modules/repos/sebastian-sommerfeld-io/website-numero-uno-de"
-}
-
-module "repo-website-sommerfeld-io" {
-  source = "./modules/repos/sebastian-sommerfeld-io/website-sommerfeld-io"
-}
-
-module "repo-website-tafelboy-de" {
-  source = "./modules/repos/sebastian-sommerfeld-io/website-tafelboy-de"
-}
-
-module "repo-trashbox" {
-  source = "./modules/repos/sebastian-sommerfeld-io/trashbox"
+# Github Actions Secret - Global - Relevant for all repos
+data "bitwarden_item_login" "DOCKERHUB_USER" {
+  id = "58479137-3c07-4592-86c2-af7100d020ba"
 }

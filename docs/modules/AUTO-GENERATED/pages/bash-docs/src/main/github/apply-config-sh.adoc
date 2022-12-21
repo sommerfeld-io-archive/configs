@@ -26,18 +26,22 @@ Terraform is an open-source infrastructure as code software tool that enables yo
 predictably create, change, and improve infrastructure. It provides infrastructure automation with
 workflows to build composition, collaboration, and reuse of infrastructure as code.
 
-.Github Actions workflow
-link:https://github.com/sebastian-sommerfeld-io/configs/actions/workflows/configure-github.yml[Apply global Github config]
+Github Actions workflow: # link:https://github.com/sebastian-sommerfeld-io/configs/actions/workflows/configure-github.yml[Apply global Github config]
 
 .Available Terraform commands
 include::ROOT:partial$GENERATED/github/config/help.adoc[]
 
-TODO link to run-in-pipeline-order.sh / simulate-pipeline.sh
+Use `xref:AUTO-GENERATED:bash-docs/src/main/github/run-local-sh.adoc[run-local.sh]` while developing
+on your localhost instead of direct calls to this script. `run-local.sh` provides a more conviniert
+way to trigger the terraform commands.
 
 === Script Arguments
 
-* _$1_ (string): The `terraform` command to run.
-* _$2_ (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass `${{ secrets.GITHUB_TOKEN }}`
+* _$1_ (string): The `terraform` command to run - _Mandatory_
+* _$2_ (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass `${{ secrets.GITHUB_TOKEN }}` - _Mandatory for `plan` and `apply`_
+* _$3_ (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for `plan` and `apply`_
+* _$4_ (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for `plan` and `apply`_
+* _$5_ (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for `plan` and `apply`_
 
 === Script Example
 
@@ -47,18 +51,20 @@ each function). Running this script without arguments will result in an error.
 [source, bash]
 
 ----
-./apply-config.sh init "$TOKEN"
-./apply-config.sh lint "$TOKEN"
-./apply-config.sh validate "$TOKEN"
-./apply-config.sh fmt "$TOKEN"
-./apply-config.sh plan "$TOKEN"
-./apply-config.sh apply "$TOKEN"
+./apply-config.sh init
+./apply-config.sh lint
+./apply-config.sh validate
+./apply-config.sh fmt
+./apply-config.sh plan "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+./apply-config.sh apply "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+./apply-config.sh docs
 ----
 
 == Index
 
 * <<_terraform,terraform>>
 * <<_apply,apply>>
+* <<_docs,docs>>
 * <<_format,format>>
 * <<_initialize,initialize>>
 * <<_lint,lint>>
@@ -90,6 +96,7 @@ terraform -version
 === apply
 
 Apply this configuration by running `terraform apply -auto-approve`.
+
 Pipeline Step 7.
 
 ==== Example
@@ -99,9 +106,25 @@ Pipeline Step 7.
 apply
 ----
 
+=== docs
+
+Generate documentation about this terraform configuratio by running
+link:https://github.com/terraform-docs/terraform-docs[terraform-docs] inside a Docker container.
+The generated docs are stored as an Antora partials file.
+
+Pipeline Step 7.
+
+==== Example
+
+[,bash]
+----
+validate
+----
+
 === format
 
 Apply consistent format to all .tf files by running `terraform fmt -recursive`.
+
 Pipeline Step 5.
 
 ==== Example
@@ -114,6 +137,7 @@ fmt
 === initialize
 
 Initialize this configuration by running `terraform init`.
+
 Pipeline Step 2.
 
 ==== Example
@@ -128,6 +152,7 @@ initialize
 Use link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] linter
 to check terraform config (specifically
 link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
+
 Pipeline Step 3.
 
 ==== Example
@@ -140,6 +165,7 @@ lint
 === plan
 
 Plan this configuration by running `terraform plan`.
+
 Pipeline Step 6.
 
 ==== Example
@@ -152,6 +178,7 @@ plan
 === validate
 
 Validate Terraform configuration by running `terraform validate`.
+
 Pipeline Step 4.
 
 ==== Example
@@ -164,6 +191,7 @@ validate
 === version
 
 Show Terraform version by running `terraform -version`.
+
 Pipeline Step 1.
 
 ==== Example

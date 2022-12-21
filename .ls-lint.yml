@@ -4,6 +4,7 @@ ls:
   .puml: kebab-case
   .md: kebab-case | SCREAMING_SNAKE_CASE
 
+  .go: snake_case
   .json: kebab-case
   .rb: kebab-case
   .tf: kebab-case
@@ -27,10 +28,11 @@ ls:
 
 ignore:
   - .adoc-links.json
+  - .gitpod.yml
   - .ls-lint.yml
   - .yamllint.yml
-  - .gitpod.yml
-  - .idea
   - .git
+  - .idea
   - node_modules
+  - src/main/github/.terraform-docs.yml
   - target

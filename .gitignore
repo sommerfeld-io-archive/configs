@@ -11,8 +11,11 @@ node_modules
 .terraform
 .terraform.lock*
 *.tfstate*
+tfplan
+.bitwarden*
 
 # secrets
 *.token
 *.pass
 *.user
+*.secret
