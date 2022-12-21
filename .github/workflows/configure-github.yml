@@ -29,7 +29,7 @@ jobs:
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh lint ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
+            ./apply-config.sh lint
           )
         shell: bash
 
@@ -47,14 +47,14 @@ jobs:
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh init ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
+            ./apply-config.sh init
           )
         shell: bash
       - name: validate
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh validate ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
+            ./apply-config.sh validate
           )
         shell: bash
       - name: plan
@@ -83,7 +83,7 @@ jobs:
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh fmt ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
+            ./apply-config.sh fmt
           )
         shell: bash
       - name: Commit and push
@@ -114,7 +114,7 @@ jobs:
         run: |
           (
             cd src/main/github || exit
-            ./apply-config.sh docs ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
+            ./apply-config.sh docs
           )
       - name: Commit and Push
         uses: EndBug/add-and-commit@v9

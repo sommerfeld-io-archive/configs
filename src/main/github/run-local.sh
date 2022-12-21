@@ -53,19 +53,19 @@ select task in "$OPTION_CLEAN" "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY" "$O
         rm -rf terraform*
     ;;
     "$OPTION_INIT" )
-        bash ./apply-config.sh init "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+        bash ./apply-config.sh init
     ;;
     "$OPTION_PLAN" )
-        bash ./apply-config.sh lint "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
-        bash ./apply-config.sh validate "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
-        bash ./apply-config.sh fmt "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+        bash ./apply-config.sh lint
+        bash ./apply-config.sh validate
+        bash ./apply-config.sh fmt
         bash ./apply-config.sh plan "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
     ;;
     "$OPTION_APPLY" )
         bash ./apply-config.sh apply "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
     ;;
     "$OPTION_DOCS" )
-        bash ./apply-config.sh docs "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+        bash ./apply-config.sh docs
     ;;
   esac
 

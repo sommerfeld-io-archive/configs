@@ -26,10 +26,10 @@
 # === Script Arguments
 #
 # * *$1* (string): The ``terraform`` command to run - _Mandatory_
-# * *$2* (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass ``${{ secrets.GITHUB_TOKEN }}`` - _Mandatory_
-# * *$3* (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory_
-# * *$4* (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory_
-# * *$5* (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory_
+# * *$2* (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass ``${{ secrets.GITHUB_TOKEN }}`` - _Mandatory for ``plan`` and ``apply``_
+# * *$3* (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for ``plan`` and ``apply``_
+# * *$4* (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for ``plan`` and ``apply``_
+# * *$5* (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for ``plan`` and ``apply``_
 #
 # === Script Example
 #
@@ -38,19 +38,30 @@
 #
 # [source, bash]
 # ```
-# ./apply-config.sh init "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
-# ./apply-config.sh lint "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
-# ./apply-config.sh validate "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
-# ./apply-config.sh fmt "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+# ./apply-config.sh init
+# ./apply-config.sh lint
+# ./apply-config.sh validate
+# ./apply-config.sh fmt
 # ./apply-config.sh plan "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 # ./apply-config.sh apply "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
-# ./apply-config.sh docs "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
+# ./apply-config.sh docs
 # ```
 
 
 # Avoid 'unbound variable' errors in pipeline
 readonly LOG_ERROR="[\e[1;31mERROR\e[0m]"
 readonly LOG_INFO="[\e[34mINFO\e[0m]"
+
+readonly OPTION_APPLY="apply"
+readonly OPTION_DOCS="docs"
+readonly OPTION_FORMAT="fmt"
+readonly OPTION_INITIALIZE="init"
+readonly OPTION_LINT="lint"
+readonly OPTION_PLAN="plan"
+readonly OPTION_VALIDATE="validate"
+readonly OPTION_VERSION="-version"
+
+readonly TF_PLAN_FILE="tfplan"
 
 
 TF_COMMAND="$1"
@@ -63,54 +74,46 @@ fi
 readonly TF_COMMAND
 
 
-TOKEN="$2"
-if [ -z "$TOKEN" ]; then
-  echo -e "$LOG_ERROR Param missing: Github Token"
-  echo -e "$LOG_ERROR exit" && exit 8
+if [ "$TF_COMMAND" = "$OPTION_PLAN" ] || [ "$TF_COMMAND" = "$OPTION_APPLY" ]; then
+
+  TOKEN="$2"
+  if [ -z "$TOKEN" ]; then
+    echo -e "$LOG_ERROR Param missing: Github Token"
+    echo -e "$LOG_ERROR exit" && exit 8
+  fi
+  readonly TOKEN
+
+
+  BW_CLIENT_ID="$3"
+  if [ -z "$BW_CLIENT_ID" ]; then
+    echo -e "$LOG_ERROR Param missing: Bitwarden client id"
+    echo -e "$LOG_ERROR exit" && exit 8
+  fi
+  readonly BW_CLIENT_ID
+
+
+  BW_CLIENT_SECRET="$4"
+  if [ -z "$BW_CLIENT_SECRET" ]; then
+    echo -e "$LOG_ERROR Param missing: Bitwarden client secret"
+    echo -e "$LOG_ERROR exit" && exit 8
+  fi
+  readonly BW_CLIENT_SECRET
+
+
+  BW_MASTER_PASS="$5"
+  if [ -z "$BW_MASTER_PASS" ]; then
+    echo -e "$LOG_ERROR Param missing: Bitwarden client master pass"
+    echo -e "$LOG_ERROR exit" && exit 8
+  fi
+  readonly BW_MASTER_PASS
+
 fi
-readonly TOKEN
-
-
-BW_CLIENT_ID="$3"
-if [ -z "$BW_CLIENT_ID" ]; then
-  echo -e "$LOG_ERROR Param missing: Bitwarden client id"
-  echo -e "$LOG_ERROR exit" && exit 8
-fi
-readonly BW_CLIENT_ID
-
-
-BW_CLIENT_SECRET="$4"
-if [ -z "$BW_CLIENT_SECRET" ]; then
-  echo -e "$LOG_ERROR Param missing: Bitwarden client secret"
-  echo -e "$LOG_ERROR exit" && exit 8
-fi
-readonly BW_CLIENT_SECRET
-
-
-BW_MASTER_PASS="$5"
-if [ -z "$BW_MASTER_PASS" ]; then
-  echo -e "$LOG_ERROR Param missing: Bitwarden client master pass"
-  echo -e "$LOG_ERROR exit" && exit 8
-fi
-readonly BW_MASTER_PASS
 
 
 set -o errexit
 set -o pipefail
 set -o nounset
 # set -o xtrace
-
-
-readonly OPTION_APPLY="apply"
-readonly OPTION_DOCS="docs"
-readonly OPTION_FORMAT="fmt"
-readonly OPTION_INITIALIZE="init"
-readonly OPTION_LINT="lint"
-readonly OPTION_PLAN="plan"
-readonly OPTION_VALIDATE="validate"
-readonly OPTION_VERSION="-version"
-
-readonly TF_PLAN_FILE="tfplan"
 
 
 # @description Wrapper function to encapsulate terraform in a docker container. The current working
@@ -131,19 +134,31 @@ function terraform() {
 
   local DOCKER_IMAGE="sommerfeldio/terraform:0.1.0"
   
-  docker run --rm \
-    --volume /etc/passwd:/etc/passwd:ro \
-    --volume /etc/group:/etc/group:ro \
-    --user "$(id -u):$(id -g)" \
-    --volume /etc/timezone:/etc/timezone:ro \
-    --volume /etc/localtime:/etc/localtime:ro \
-    --volume "$(pwd):$(pwd)" \
-    --workdir "$(pwd)" \
-    --env "GITHUB_TOKEN=$TOKEN" \
-    --env "TF_VAR_bw_client_id=$BW_CLIENT_ID" \
-    --env "TF_VAR_bw_client_secret=$BW_CLIENT_SECRET" \
-    --env "TF_VAR_bw_password=$BW_MASTER_PASS" \
-    "$DOCKER_IMAGE" "$@"
+  if [ "$TF_COMMAND" = "$OPTION_PLAN" ] || [ "$TF_COMMAND" = "$OPTION_APPLY" ]; then
+    docker run --rm \
+      --volume /etc/passwd:/etc/passwd:ro \
+      --volume /etc/group:/etc/group:ro \
+      --user "$(id -u):$(id -g)" \
+      --volume /etc/timezone:/etc/timezone:ro \
+      --volume /etc/localtime:/etc/localtime:ro \
+      --volume "$(pwd):$(pwd)" \
+      --workdir "$(pwd)" \
+      --env "GITHUB_TOKEN=$TOKEN" \
+      --env "TF_VAR_bw_client_id=$BW_CLIENT_ID" \
+      --env "TF_VAR_bw_client_secret=$BW_CLIENT_SECRET" \
+      --env "TF_VAR_bw_password=$BW_MASTER_PASS" \
+      "$DOCKER_IMAGE" "$@"
+  else
+    docker run --rm \
+      --volume /etc/passwd:/etc/passwd:ro \
+      --volume /etc/group:/etc/group:ro \
+      --user "$(id -u):$(id -g)" \
+      --volume /etc/timezone:/etc/timezone:ro \
+      --volume /etc/localtime:/etc/localtime:ro \
+      --volume "$(pwd):$(pwd)" \
+      --workdir "$(pwd)" \
+      "$DOCKER_IMAGE" "$@"
+  fi
 }
 
 
