@@ -117,6 +117,7 @@
           'redhat.vscode-yaml'
           'timonwong.shellcheck'
           'vscjava.vscode-java-pack'
+          'golang.go'
         )
         for extension in "${extensions[@]}"
         do
