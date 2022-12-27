@@ -67,14 +67,14 @@ ${template1}Free (/) ${alignr}${fs_free /} ${fs_free_perc /}% ${fs_bar /}
 
 # Cpu
 ${template0}${color #9f907d}CPU USAGE ${color slate grey}${hr 2}${font}
-${template1}Core 1 ${alignr}${cpu cpu1}% ${cpubar cpu1}
-${template1}Core 2 ${alignr}${cpu cpu2}% ${cpubar cpu2}
-${template1}Core 3 ${alignr}${cpu cpu3}% ${cpubar cpu3}
-${template1}Core 4 ${alignr}${cpu cpu4}% ${cpubar cpu4}
-${template1}Core 5 ${alignr}${cpu cpu5}% ${cpubar cpu5}
-${template1}Core 6 ${alignr}${cpu cpu6}% ${cpubar cpu6}
-${template1}Core 7 ${alignr}${cpu cpu7}% ${cpubar cpu7}
-${template1}Core 8 ${alignr}${cpu cpu8}% ${cpubar cpu8}
+${template1}Core  1 ${alignr}${cpu cpu1}% ${cpubar cpu1}
+${template1}Core  2 ${alignr}${cpu cpu2}% ${cpubar cpu2}
+${template1}Core  3 ${alignr}${cpu cpu3}% ${cpubar cpu3}
+${template1}Core  4 ${alignr}${cpu cpu4}% ${cpubar cpu4}
+${template1}Core  5 ${alignr}${cpu cpu5}% ${cpubar cpu5}
+${template1}Core  6 ${alignr}${cpu cpu6}% ${cpubar cpu6}
+${template1}Core  7 ${alignr}${cpu cpu7}% ${cpubar cpu7}
+${template1}Core  8 ${alignr}${cpu cpu8}% ${cpubar cpu8}
 ${template1}Temperature: ${alignr}${acpitemp}°C
 
 # Memory
