@@ -56,10 +56,10 @@ ${if_existing /proc/net/route wlan0}${template1}${wireless_essid wlan0} ${alignr
 ${template1}Local IP ${alignr} ${addr wlan0}
 ${else}${if_existing /proc/net/route eth0}${template1}Local IP ${alignr} ${addr addr0}
 ${endif}${endif}${template1}Public IP ${alignr} ${exec curl -s http://checkip.amazonaws.com/}
-${template1}Up ${alignr}${upspeed wlp2s0} ${upspeedgraph wlp2s0}
-${template1}Down ${alignr}${downspeed wlp2s0} ${downspeedgraph wlp2s0}
-${template1}Signal ${alignr}${wireless_link_qual wlp2s0}%
-${template1}Bitrate ${alignr}${wireless_bitrate wlp2s0}
+${template1}Up ${alignr}${upspeed wlo1} ${upspeedgraph wlo1}
+${template1}Down ${alignr}${downspeed wlo1} ${downspeedgraph wlo1}
+${template1}Signal ${alignr}${wireless_link_qual wlo1}%
+${template1}Bitrate ${alignr}${wireless_bitrate wlo1}
 
 # Filesystem
 ${template0}${color #9f907d}FILESYSTEM ${color slate grey}${hr 2}${font}
