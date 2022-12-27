@@ -1,0 +1,44 @@
+---
+- name: Virtualbox Setup -> Install Virtualbox and dependencies
+  apt:
+    pkg:
+      - virtualbox
+      - virtualbox-qt
+      - virtualbox-dkms
+    state: latest
+    update_cache: true
+
+- name: Virtualbox Setup -> Create virtual machines folder
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rwx,g=rx,o=rx
+  with_items:
+    - "/home/{{ ansible_user }}/virtualmachines"
+
+- name: Virtualbox Setup -> Set virtual machines folder
+  ansible.builtin.shell: "vboxmanage setproperty machinefolder /home/{{ ansible_user}}/virtualmachines"
+  become_user: "{{ ansible_user }}"
+  args:
+    executable: /bin/bash
+
+- name: Vagrant Setup -> Install Vagrant
+  ansible.builtin.shell: |
+    curl https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb --output vagrant.deb
+    sudo dpkg -i vagrant.deb
+    rm vagrant.deb
+  args:
+    executable: /bin/bash
+
+- name: Vagrant Setup -> Install Vagrant plugins
+  ansible.builtin.shell: |
+    echo "$USER"
+    vagrant plugin install vagrant-cachier
+    vagrant plugin install vagrant-vbguest
+    vagrant plugin install vagrant-docker-compose
+  become: true
+  become_user: "{{ ansible_user }}"
+  args:
+    executable: /bin/bash

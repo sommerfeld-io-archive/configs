@@ -88,6 +88,7 @@
         state: present
         classic: true
 
+    - ansible.builtin.import_tasks: ../tasks/install-virtualization.yml
     - ansible.builtin.import_tasks: ../tasks/install-docker-wrapper-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/install-jarvis.yml
 
