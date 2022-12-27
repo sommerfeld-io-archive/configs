@@ -49,7 +49,8 @@ echo -e "$LOG_INFO ${Y}What do you want me to do?${D}"
 select task in "$OPTION_CLEAN" "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY" "$OPTION_DOCS"; do
   case "$task" in
     "$OPTION_CLEAN" )
-        rm -rf .terraform*
+        rm -rf .terraform
+        rm -rf .terraform.lock*
         rm -rf terraform*
     ;;
     "$OPTION_INIT" )
