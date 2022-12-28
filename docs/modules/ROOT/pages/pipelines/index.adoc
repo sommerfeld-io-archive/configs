@@ -1,0 +1,9 @@
+= Github Actions Workflows
+
+This project uses these workflows for its automation and continuous integration / continuous deployment tasks.
+
+include::ROOT:partial$/pipelines/auto-generate-docs.adoc[]
+
+include::ROOT:partial$/pipelines/ci.adoc[]
+
+include::ROOT:partial$/pipelines/configure-github.adoc[]
