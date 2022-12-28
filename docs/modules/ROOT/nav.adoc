@@ -1,4 +1,5 @@
 * xref:index.adoc[]
+** xref:pipelines/index.adoc[]
 ** xref:github/config.adoc[]
 ** xref:homelab/caprica/index.adoc[]
 ** xref:homelab/kobol/index.adoc[]
