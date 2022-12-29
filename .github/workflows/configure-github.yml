@@ -54,7 +54,7 @@ jobs:
         with:
           repository: sebastian-sommerfeld-io/configs-persistent-data
           token: ${{ secrets.TERRAFORM }}
-          path: src/main/github/tmp-repos
+          path: src/main/github/tmp-repos/configs-persistent-data
       - name: Debug
         run: |
           whoami
