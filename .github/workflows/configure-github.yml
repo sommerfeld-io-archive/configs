@@ -40,9 +40,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Debug
-        run: pwd && ls -alF
-        shell: bash
       - name: initialize
         run: |
           (
@@ -52,6 +49,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
+      - name: Checkout code of configs-persistent-data repository
+        uses: actions/checkout@v3
+        with:
+          repository: orgname/reponamesebastian-sommerfeld-io/configs-persistent-data
+          # token: ${{ secrets.GITHUB_TOKEN }}
+          path: /tmp/repos
       - name: validate
         run: |
           (

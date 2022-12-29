@@ -250,8 +250,10 @@ function format() {
 }
 
 
-# @description Initialize this configuration by running ``terraform init``. Before running
-# ``terraform init`` the link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
+# @description Initialize this configuration by running ``terraform init``.
+# 
+# *When running on a local machine during development:* Before running ``terraform init`` the
+# link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
 # repo is cloned and the terraform state is copied to its correct location. This is done to
 # use terraform as it is intended. Without a state, terraform assumes that every config must
 # be applied (which mostly is not necessary). Terraform sould only apply the settings that
@@ -264,14 +266,14 @@ function format() {
 function initialize() {
   mkdir -p "$DATA_REPO_PATH"
 
-  (
-    cd "$DATA_REPO_PATH" || exit
-    git clone "git@github.com:sebastian-sommerfeld-io/$DATA_REPO_NAME.git"
-  )
+  if [ "$HOSTNAME" = "caprica" ] || [ "$HOSTNAME" = "kobol" ]; then
+    (
+      cd "$DATA_REPO_PATH" || exit
+      git clone "git@github.com:sebastian-sommerfeld-io/$DATA_REPO_NAME.git"
+    )
+  fi
 
   terraform init
-
-  cp "$DATA_REPO_PATH/$DATA_REPO_NAME/configs/github/$TF_STATE_FILE" "$TF_STATE_FILE"
 }
 
 
@@ -297,6 +299,7 @@ function lint() {
 # @example
 #    plan
 function plan() {
+  cp "$DATA_REPO_PATH/$DATA_REPO_NAME/configs/github/$TF_STATE_FILE" "$TF_STATE_FILE"
   terraform plan -out="$TF_PLAN_FILE"
 }
 
