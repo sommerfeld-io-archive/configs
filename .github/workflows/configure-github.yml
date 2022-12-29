@@ -40,6 +40,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Debug
+        run: |
+          pwd
+          ls -alF
+        shell: bash
       - name: initialize
         run: |
           (
@@ -129,7 +134,7 @@ jobs:
             cd src/main/github || exit
             ./apply-config.sh docs
           )
-      - name: Commit and Push
+      - name: Commit and push
         uses: EndBug/add-and-commit@v9
         with:
           author_name: sebastian
