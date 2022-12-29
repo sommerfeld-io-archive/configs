@@ -40,13 +40,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Debug
-        run: |
-          echo "$HOSTNAME"
-          whoami
-          pwd
-          ls -alF
-        shell: bash
       - name: initialize
         run: |
           (
@@ -62,6 +55,16 @@ jobs:
           repository: sebastian-sommerfeld-io/configs-persistent-data
           token: ${{ secrets.TERRAFORM }}
           path: tmp-repos
+      - name: Debug
+        run: |
+          whoami
+          echo "----------"
+          pwd
+          echo "----------"
+          ls -alF
+          echo "----------"
+          ls -alF src/main/github
+        shell: bash
       - name: validate
         run: |
           (

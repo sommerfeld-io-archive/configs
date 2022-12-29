@@ -67,6 +67,7 @@ readonly TF_PLAN_FILE="tfplan"
 readonly TF_STATE_FILE="terraform.tfstate"
 readonly DATA_REPO_PATH="tmp-repos" # intentionally without leading / -> otherwise pipeline fails
 readonly DATA_REPO_NAME="configs-persistent-data"
+readonly GITHUB_ACTIONS_USER="runner"
 
 
 TF_COMMAND="$1"
@@ -256,7 +257,7 @@ function format() {
 function initialize() {
   mkdir -p "$DATA_REPO_PATH"
 
-  if [ "$HOSTNAME" = "caprica" ] || [ "$HOSTNAME" = "kobol" ]; then
+  if [ "$USER" != "$GITHUB_ACTIONS_USER" ]; then
     (
       cd "$DATA_REPO_PATH" || exit
       git clone "git@github.com:sebastian-sommerfeld-io/$DATA_REPO_NAME.git"
