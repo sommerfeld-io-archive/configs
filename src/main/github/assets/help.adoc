@@ -1,5 +1,6 @@
 * `apply`      -> Executes the actions proposed in a Terraform plan.
-+ `docs`       -> Generate Asciidoc for this Terraform configration and write into Antora partials directory.
+* `cleanup`    -> Cleanup local filesystem.
+* `docs`       -> Generate Asciidoc for this Terraform configration and write into Antora partials directory.
 * `fmt`        -> Rewrite Terraform configuration files to a canonical format and style.
 * `init`       -> Initializes a working directory containing Terraform configuration files. This is the first command that should be run.
 * `lint`       -> Run TFLint in Docker container to check the Terraform config.

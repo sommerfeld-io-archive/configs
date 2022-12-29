@@ -45,6 +45,7 @@
 # ./apply-config.sh plan "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 # ./apply-config.sh apply "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 # ./apply-config.sh docs
+# ./apply-config.sh cleanup
 # ```
 
 
@@ -54,6 +55,7 @@ readonly LOG_INFO="[\e[34mINFO\e[0m]"
 
 readonly OPTION_APPLY="apply"
 readonly OPTION_DOCS="docs"
+readonly OPTION_CLEANUP="cleanup"
 readonly OPTION_FORMAT="fmt"
 readonly OPTION_INITIALIZE="init"
 readonly OPTION_LINT="lint"
@@ -62,6 +64,9 @@ readonly OPTION_VALIDATE="validate"
 readonly OPTION_VERSION="-version"
 
 readonly TF_PLAN_FILE="tfplan"
+readonly TF_STATE_FILE="terraform.tfstate"
+readonly DATA_REPO_PATH="/tmp/repos"
+readonly DATA_REPO_NAME="configs-persistent-data"
 
 
 TF_COMMAND="$1"
@@ -162,7 +167,10 @@ function terraform() {
 }
 
 
-# @description Apply this configuration by running ``terraform apply -auto-approve``.
+# @description Apply this configuration by running ``terraform apply -auto-approve``. After
+# applying the configuration the ``terraform.state`` file is copied back to the local clone of the
+# link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
+# repository. This updated is committed and pushed back to the remote repository.
 #
 # Pipeline Step 7.
 #
@@ -171,13 +179,37 @@ function terraform() {
 function apply() {
   terraform apply -auto-approve "$TF_PLAN_FILE"
   rm "$TF_PLAN_FILE"
+
+  cp "$TF_STATE_FILE" "$DATA_REPO_PATH/$DATA_REPO_NAME/configs/github/$TF_STATE_FILE"
+
+  (
+    cd "$DATA_REPO_PATH/$DATA_REPO_NAME" || exit
+    git add "configs/github/$TF_STATE_FILE"
+    git commit -m "[Actions Bot] auto-updated terraform state"
+    git push
+  )
+}
+
+
+# @description Remove all temporary files. When running in a pipeline, this step is always invoked.
+#
+# Pipeline Step 9.
+#
+# @example
+#    apply
+function cleanup() {
+  rm -rf .terraform
+  rm -f .terraform.lock*
+  rm -f "$TF_STATE_FILE"*
+  rm -rf "$DATA_REPO_PATH"
+  rm -rf .bitwarden
 }
 
 # @description Generate documentation about this terraform configuratio by running 
 # link:https://github.com/terraform-docs/terraform-docs[terraform-docs] inside a Docker container.
 # The generated docs are stored as an Antora partials file.
 #
-# Pipeline Step 7.
+# Pipeline Step 8.
 #
 # @example
 #    validate
@@ -218,14 +250,28 @@ function format() {
 }
 
 
-# @description Initialize this configuration by running ``terraform init``.
+# @description Initialize this configuration by running ``terraform init``. Before running
+# ``terraform init`` the link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
+# repo is cloned and the terraform state is copied to its correct location. This is done to
+# use terraform as it is intended. Without a state, terraform assumes that every config must
+# be applied (which mostly is not necessary). Terraform sould only apply the settings that
+# don't match the defintion.
 #
 # Pipeline Step 2.
 #
 # @example
 #    initialize
 function initialize() {
+  mkdir -p "$DATA_REPO_PATH"
+
+  (
+    cd "$DATA_REPO_PATH" || exit
+    git clone "git@github.com:sebastian-sommerfeld-io/$DATA_REPO_NAME.git"
+  )
+
   terraform init
+
+  cp "$DATA_REPO_PATH/$DATA_REPO_NAME/configs/github/$TF_STATE_FILE" "$TF_STATE_FILE"
 }
 
 
@@ -280,6 +326,7 @@ function version() {
 echo -e "$LOG_INFO Run Github configuration steps: $TF_COMMAND"
 case "$TF_COMMAND" in
   "$OPTION_APPLY" ) apply ;;
+  "$OPTION_CLEANUP" ) cleanup ;;
   "$OPTION_DOCS" ) docs ;;
   "$OPTION_FORMAT" ) format ;;
   "$OPTION_INITIALIZE" ) initialize ;;

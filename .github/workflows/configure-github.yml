@@ -71,6 +71,14 @@ jobs:
             ./apply-config.sh apply ${{ secrets.TERRAFORM }} ${{ secrets.BW_CLIENT_ID }} ${{ secrets.BW_CLIENT_SECRET }} ${{ secrets.BW_MASTER_PASS }}
           )
         shell: bash
+      - name: ALWAYS cleanup
+        if: always()
+        run: |
+          (
+            cd src/main/github || exit
+            ./apply-config.sh cleanup
+          )
+        shell: bash
 
   update-repo:
     name: Format *.tf files

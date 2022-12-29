@@ -37,22 +37,17 @@ readonly BW_CLIENT_SECRET
 BW_MASTER_PASS="$(cat .secrets/BW_MASTER_PASS.secret)"
 readonly BW_MASTER_PASS
 
-readonly OPTION_CLEAN="clean_local_filesystem"
 readonly OPTION_INIT="terraform_init"
 readonly OPTION_PLAN="terraform_plan"
 readonly OPTION_APPLY="terraform_apply"
 readonly OPTION_DOCS="generate_docs"
+readonly OPTION_CLEANUP="cleanup"
 
 
 echo -e "$LOG_INFO Apply Github configuration"
 echo -e "$LOG_INFO ${Y}What do you want me to do?${D}"
-select task in "$OPTION_CLEAN" "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY" "$OPTION_DOCS"; do
+select task in "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY" "$OPTION_DOCS" "$OPTION_CLEANUP"; do
   case "$task" in
-    "$OPTION_CLEAN" )
-        rm -rf .terraform
-        rm -rf .terraform.lock*
-        rm -rf terraform*
-    ;;
     "$OPTION_INIT" )
         bash ./apply-config.sh init
     ;;
@@ -67,6 +62,9 @@ select task in "$OPTION_CLEAN" "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY" "$O
     ;;
     "$OPTION_DOCS" )
         bash ./apply-config.sh docs
+    ;;
+    "$OPTION_CLEANUP" )
+        bash ./apply-config.sh cleanup
     ;;
   esac
 

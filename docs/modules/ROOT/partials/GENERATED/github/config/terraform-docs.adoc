@@ -65,6 +65,7 @@
 |===
 |Name |Source |Version
 |[[module_configs-labels]] <<module_configs-labels,configs-labels>> |./modules/issue-labels |
+|[[module_configs-persistent-data-labels]] <<module_configs-persistent-data-labels,configs-persistent-data-labels>> |./modules/issue-labels |
 |[[module_docker-image-adoc-antora-labels]] <<module_docker-image-adoc-antora-labels,docker-image-adoc-antora-labels>> |./modules/issue-labels |
 |[[module_docker-image-folderslint-labels]] <<module_docker-image-folderslint-labels,docker-image-folderslint-labels>> |./modules/issue-labels |
 |[[module_docker-image-ftp-client-labels]] <<module_docker-image-ftp-client-labels,docker-image-ftp-client-labels>> |./modules/issue-labels |
@@ -194,6 +195,7 @@
 |https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-tafelboy-de_FTP_PASS] |data source
 |https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-tafelboy-de_FTP_USER] |data source
 |https://registry.terraform.io/providers/integrations/github/5.12.0/docs/data-sources/repository[github_repository.configs] |data source
+|https://registry.terraform.io/providers/integrations/github/5.12.0/docs/data-sources/repository[github_repository.configs-persistent-data] |data source
 |https://registry.terraform.io/providers/integrations/github/5.12.0/docs/data-sources/repository[github_repository.docker-image-adoc-antora] |data source
 |https://registry.terraform.io/providers/integrations/github/5.12.0/docs/data-sources/repository[github_repository.docker-image-folderslint] |data source
 |https://registry.terraform.io/providers/integrations/github/5.12.0/docs/data-sources/repository[github_repository.docker-image-ftp-client] |data source
