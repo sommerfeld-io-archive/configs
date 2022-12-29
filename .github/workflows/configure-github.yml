@@ -64,6 +64,14 @@ jobs:
           ls -alF
           echo "----------"
           ls -alF src/main/github
+          echo "----------"
+          ls -alF src/main/github/tmp-repos
+          echo "----------"
+          ls -alF src/main/github/tmp-repos/configs-persistent-data
+          echo "----------"
+          ls -alF src/main/github/tmp-repos/configs-persistent-data/configs
+          echo "----------"
+          ls -alF src/main/github/tmp-repos/configs-persistent-data/configs/github
         shell: bash
       - name: validate
         run: |
