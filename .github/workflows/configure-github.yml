@@ -49,6 +49,8 @@ jobs:
             cd src/main/github || exit
             ./apply-config.sh init
           )
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
       - name: validate
         run: |
