@@ -102,8 +102,6 @@ applying the configuration the `terraform.state` file is copied back to the loca
 link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
 repository. This updated is committed and pushed back to the remote repository.
 
-Pipeline Step 7.
-
 ==== Example
 
 [,bash]
@@ -114,8 +112,6 @@ apply
 === cleanup
 
 Remove all temporary files. When running in a pipeline, this step is always invoked.
-
-Pipeline Step 9.
 
 ==== Example
 
@@ -130,8 +126,6 @@ Generate documentation about this terraform configuratio by running
 link:https://github.com/terraform-docs/terraform-docs[terraform-docs] inside a Docker container.
 The generated docs are stored as an Antora partials file.
 
-Pipeline Step 8.
-
 ==== Example
 
 [,bash]
@@ -141,9 +135,7 @@ validate
 
 === format
 
-Apply consistent format to all .tf files by running `terraform fmt -recursive`.
-
-Pipeline Step 5.
+Apply consistent format to all `*.tf` files by running `terraform fmt -recursive`.
 
 ==== Example
 
@@ -163,8 +155,6 @@ use terraform as it is intended. Without a state, terraform assumes that every c
 be applied (which mostly is not necessary). Terraform sould only apply the settings that
 don't match the defintion.
 
-Pipeline Step 2.
-
 ==== Example
 
 [,bash]
@@ -178,8 +168,6 @@ Use link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] l
 to check terraform config (specifically
 link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
 
-Pipeline Step 3.
-
 ==== Example
 
 [,bash]
@@ -190,8 +178,6 @@ lint
 === plan
 
 Plan this configuration by running `terraform plan`.
-
-Pipeline Step 6.
 
 ==== Example
 
@@ -204,8 +190,6 @@ plan
 
 Validate Terraform configuration by running `terraform validate`.
 
-Pipeline Step 4.
-
 ==== Example
 
 [,bash]
@@ -216,8 +200,6 @@ validate
 === version
 
 Show Terraform version by running `terraform -version`.
-
-Pipeline Step 1.
 
 ==== Example
 
