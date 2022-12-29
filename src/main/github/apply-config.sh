@@ -65,7 +65,7 @@ readonly OPTION_VERSION="-version"
 
 readonly TF_PLAN_FILE="tfplan"
 readonly TF_STATE_FILE="terraform.tfstate"
-readonly DATA_REPO_PATH="/tmp/repos"
+readonly DATA_REPO_PATH="tmp-repos" # intentionally without leading / -> otherwise pipeline fails
 readonly DATA_REPO_NAME="configs-persistent-data"
 
 
@@ -172,8 +172,6 @@ function terraform() {
 # link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
 # repository. This updated is committed and pushed back to the remote repository.
 #
-# Pipeline Step 7.
-#
 # @example
 #    apply
 function apply() {
@@ -193,8 +191,6 @@ function apply() {
 
 # @description Remove all temporary files. When running in a pipeline, this step is always invoked.
 #
-# Pipeline Step 9.
-#
 # @example
 #    apply
 function cleanup() {
@@ -208,8 +204,6 @@ function cleanup() {
 # @description Generate documentation about this terraform configuratio by running 
 # link:https://github.com/terraform-docs/terraform-docs[terraform-docs] inside a Docker container.
 # The generated docs are stored as an Antora partials file.
-#
-# Pipeline Step 8.
 #
 # @example
 #    validate
@@ -239,9 +233,7 @@ function docs() {
 }
 
 
-# @description Apply consistent format to all .tf files by running ``terraform fmt -recursive``.
-#
-# Pipeline Step 5.
+# @description Apply consistent format to all ``*.tf`` files by running ``terraform fmt -recursive``.
 #
 # @example
 #    fmt
@@ -258,8 +250,6 @@ function format() {
 # use terraform as it is intended. Without a state, terraform assumes that every config must
 # be applied (which mostly is not necessary). Terraform sould only apply the settings that
 # don't match the defintion.
-#
-# Pipeline Step 2.
 #
 # @example
 #    initialize
@@ -281,8 +271,6 @@ function initialize() {
 # to check terraform config (specifically
 # link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
 #
-# Pipeline Step 3.
-#
 # @example
 #    lint
 function lint() {
@@ -294,8 +282,6 @@ function lint() {
 
 # @description Plan this configuration by running ``terraform plan``.
 #
-# Pipeline Step 6.
-#
 # @example
 #    plan
 function plan() {
@@ -306,8 +292,6 @@ function plan() {
 
 # @description Validate Terraform configuration by running ``terraform validate``.
 #
-# Pipeline Step 4.
-#
 # @example
 #    validate
 function validate() {
@@ -316,8 +300,6 @@ function validate() {
 
 
 # @description Show Terraform version by running ``terraform -version``.
-#
-# Pipeline Step 1.
 #
 # @example
 #    version

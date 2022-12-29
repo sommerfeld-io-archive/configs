@@ -13,6 +13,7 @@ node_modules
 *.tfstate*
 tfplan
 .bitwarden*
+src/main/github/tmp-repos
 
 # secrets
 *.token
