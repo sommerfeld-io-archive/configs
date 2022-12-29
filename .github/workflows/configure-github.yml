@@ -55,24 +55,6 @@ jobs:
           repository: sebastian-sommerfeld-io/configs-persistent-data
           token: ${{ secrets.TERRAFORM }}
           path: src/main/github/tmp-repos/configs-persistent-data
-      - name: Debug
-        run: |
-          whoami
-          echo "----------"
-          pwd
-          echo "----------"
-          ls -alF
-          echo "----------"
-          ls -alF src/main/github
-          echo "----------"
-          ls -alF src/main/github/tmp-repos
-          echo "----------"
-          ls -alF src/main/github/tmp-repos/configs-persistent-data
-          echo "----------"
-          ls -alF src/main/github/tmp-repos/configs-persistent-data/configs
-          echo "----------"
-          ls -alF src/main/github/tmp-repos/configs-persistent-data/configs/github
-        shell: bash
       - name: validate
         run: |
           (

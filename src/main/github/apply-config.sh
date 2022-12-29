@@ -183,6 +183,12 @@ function apply() {
 
   (
     cd "$DATA_REPO_PATH/$DATA_REPO_NAME" || exit
+
+    if [ "$USER" != "$GITHUB_ACTIONS_USER" ]; then
+      git config --global user.email "sebastian@sommerfeld.io"
+      git config --global user.name "sebastian"
+    fi
+
     git add "configs/github/$TF_STATE_FILE"
     git commit -m "[Actions Bot] auto-updated terraform state"
     git push
