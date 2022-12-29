@@ -8,13 +8,14 @@
 # allows interaction with Github.
 #
 # Terraform is started inside a link:https://www.docker.com/[Docker] container, so there is no need
-# to install Terraform or any other software other than Docker on your machine.
+# to install Terraform or any other software on your machine - only Docker is required.
 #
 # Terraform is an open-source infrastructure as code software tool that enables you to safely and
 # predictably create, change, and improve infrastructure. It provides infrastructure automation with
 # workflows to build composition, collaboration, and reuse of infrastructure as code.
 #
-# Github Actions workflow: # link:https://github.com/sebastian-sommerfeld-io/configs/actions/workflows/configure-github.yml[Apply global Github config]
+# The Github Actions workflow:
+# link:https://github.com/sebastian-sommerfeld-io/configs/actions/workflows/configure-github.yml[Global: Apply Github Configuration]
 #
 # .Available Terraform commands
 # include::ROOT:partial$GENERATED/github/config/help.adoc[]
@@ -25,11 +26,11 @@
 #
 # === Script Arguments
 #
-# * *$1* (string): The ``terraform`` command to run - _Mandatory_
-# * *$2* (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass ``${{ secrets.GITHUB_TOKEN }}`` - _Mandatory for ``plan`` and ``apply``_
-# * *$3* (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for ``plan`` and ``apply``_
-# * *$4* (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for ``plan`` and ``apply``_
-# * *$5* (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - _Mandatory for ``plan`` and ``apply``_
+# * *$1* (string): The ``terraform`` command to run - Mandatory
+# * *$2* (string): Github token ... when running on localhost pass a token from anywhere, when running in a Github Actions workflow pass ``${{ secrets.GITHUB_TOKEN }}`` - Mandatory for ``plan`` and ``apply``
+# * *$3* (string): Bitwarden client id ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - Mandatory for ``plan`` and ``apply``
+# * *$4* (string): Bitwarden client secret ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - Mandatory for ``plan`` and ``apply``
+# * *$5* (string): Bitwarden master password ... when running on localhost pass a data from anywhere, when running in a Github Actions workflow pass the correct Actions secret - Mandatory for ``plan`` and ``apply``
 #
 # === Script Example
 #
@@ -123,7 +124,7 @@ set -o nounset
 
 
 # @description Wrapper function to encapsulate terraform in a docker container. The current working
-# directory is mounted into the container and selected as working directory so that all file are
+# directory is mounted into the container and selected as working directory so that all files are
 # available to terraform. Paths are preserved. The container runs with the current user.
 #
 # @example
@@ -251,7 +252,9 @@ function format() {
 
 # @description Initialize this configuration by running ``terraform init``.
 # 
-# *When running on a local machine during development:* Before running ``terraform init`` the
+# ==== When running on a local machine during development
+# 
+# Before running ``terraform init`` the
 # link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
 # repo is cloned and the terraform state is copied to its correct location. This is done to
 # use terraform as it is intended. Without a state, terraform assumes that every config must
@@ -275,8 +278,8 @@ function initialize() {
 
 
 # @description Use link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] linter
-# to check terraform config (specifically
-# link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle]).
+# (or link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle] to be
+# precice) to check terraform config .
 #
 # @example
 #    lint
@@ -297,7 +300,7 @@ function plan() {
 }
 
 
-# @description Validate Terraform configuration by running ``terraform validate``.
+# @description Validate this configuration by running ``terraform validate``.
 #
 # @example
 #    validate
