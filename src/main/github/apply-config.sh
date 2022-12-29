@@ -184,7 +184,7 @@ function apply() {
   (
     cd "$DATA_REPO_PATH/$DATA_REPO_NAME" || exit
 
-    if [ "$USER" != "$GITHUB_ACTIONS_USER" ]; then
+    if [ "$USER" = "$GITHUB_ACTIONS_USER" ]; then
       git config --global user.email "sebastian@sommerfeld.io"
       git config --global user.name "sebastian"
     fi
