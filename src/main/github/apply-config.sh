@@ -8,7 +8,7 @@
 # allows interaction with Github.
 #
 # Terraform is started inside a link:https://www.docker.com/[Docker] container, so there is no need
-# to install Terraform or any other software on your machine - only Docker is required.
+# to install Terraform or any other software on your machine. Only Docker is required.
 #
 # Terraform is an open-source infrastructure as code software tool that enables you to safely and
 # predictably create, change, and improve infrastructure. It provides infrastructure automation with
