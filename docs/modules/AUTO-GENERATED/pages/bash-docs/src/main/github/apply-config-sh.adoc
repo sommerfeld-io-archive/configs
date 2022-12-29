@@ -154,8 +154,10 @@ fmt
 
 === initialize
 
-Initialize this configuration by running `terraform init`. Before running
-`terraform init` the link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
+Initialize this configuration by running `terraform init`.
+
+_When running on a local machine during development:_ Before running `terraform init` the
+link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
 repo is cloned and the terraform state is copied to its correct location. This is done to
 use terraform as it is intended. Without a state, terraform assumes that every config must
 be applied (which mostly is not necessary). Terraform sould only apply the settings that
