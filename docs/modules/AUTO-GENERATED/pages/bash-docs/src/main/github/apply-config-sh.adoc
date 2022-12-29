@@ -58,12 +58,14 @@ each function). Running this script without arguments will result in an error.
 ./apply-config.sh plan "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 ./apply-config.sh apply "$TOKEN" "$BW_CLIENT_ID" "$BW_CLIENT_SECRET" "$BW_MASTER_PASS"
 ./apply-config.sh docs
+./apply-config.sh cleanup
 ----
 
 == Index
 
 * <<_terraform,terraform>>
 * <<_apply,apply>>
+* <<_cleanup,cleanup>>
 * <<_docs,docs>>
 * <<_format,format>>
 * <<_initialize,initialize>>
@@ -95,9 +97,25 @@ terraform -version
 
 === apply
 
-Apply this configuration by running `terraform apply -auto-approve`.
+Apply this configuration by running `terraform apply -auto-approve`. After
+applying the configuration the `terraform.state` file is copied back to the local clone of the
+link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
+repository. This updated is committed and pushed back to the remote repository.
 
 Pipeline Step 7.
+
+==== Example
+
+[,bash]
+----
+apply
+----
+
+=== cleanup
+
+Remove all temporary files. When running in a pipeline, this step is always invoked.
+
+Pipeline Step 9.
 
 ==== Example
 
@@ -112,7 +130,7 @@ Generate documentation about this terraform configuratio by running
 link:https://github.com/terraform-docs/terraform-docs[terraform-docs] inside a Docker container.
 The generated docs are stored as an Antora partials file.
 
-Pipeline Step 7.
+Pipeline Step 8.
 
 ==== Example
 
@@ -136,7 +154,12 @@ fmt
 
 === initialize
 
-Initialize this configuration by running `terraform init`.
+Initialize this configuration by running `terraform init`. Before running
+`terraform init` the link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
+repo is cloned and the terraform state is copied to its correct location. This is done to
+use terraform as it is intended. Without a state, terraform assumes that every config must
+be applied (which mostly is not necessary). Terraform sould only apply the settings that
+don't match the defintion.
 
 Pipeline Step 2.
 
