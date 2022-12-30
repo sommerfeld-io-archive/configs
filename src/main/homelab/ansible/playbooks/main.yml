@@ -119,6 +119,7 @@
           'timonwong.shellcheck'
           'vscjava.vscode-java-pack'
           'golang.go'
+          'SonarSource.sonarlint-vscode'
         )
         for extension in "${extensions[@]}"
         do
