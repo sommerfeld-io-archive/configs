@@ -40,6 +40,13 @@ resource "github_issue_label" "enhancement" {
   color       = "0052CC"
 }
 
+resource "github_issue_label" "story" {
+  repository  = var.repo_name
+  name        = "user-story"
+  description = "User Story to describe a new feature"
+  color       = "0E8A16"
+}
+
 resource "github_issue_label" "dependencies" {
   repository  = var.repo_name
   name        = "dependencies"
