@@ -53,6 +53,7 @@
 # Avoid 'unbound variable' errors in pipeline
 readonly LOG_ERROR="[\e[1;31mERROR\e[0m]"
 readonly LOG_INFO="[\e[34mINFO\e[0m]"
+readonly LOG_DONE="[\e[32mDONE\e[0m]"
 
 readonly OPTION_APPLY="apply"
 readonly OPTION_DOCS="docs"
@@ -318,7 +319,7 @@ function version() {
 }
 
 
-echo -e "$LOG_INFO Run Github configuration steps: $TF_COMMAND"
+echo -e "$LOG_INFO Run Github configuration step: $TF_COMMAND"
 case "$TF_COMMAND" in
   "$OPTION_APPLY" ) apply ;;
   "$OPTION_CLEANUP" ) cleanup ;;
@@ -335,3 +336,4 @@ case "$TF_COMMAND" in
     cat assets/help.adoc
     ;;
 esac
+echo -e "$LOG_DONE Finished Github configuration step: $TF_COMMAND"
