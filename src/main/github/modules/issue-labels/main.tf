@@ -33,13 +33,6 @@ resource "github_issue_label" "prio_high" {
   color       = "D93F0B"
 }
 
-resource "github_issue_label" "enhancement" {
-  repository  = var.repo_name
-  name        = "enhancement"
-  description = "Small update or refactoring to enhance usability and/or maintainability. Never a breaking change!"
-  color       = "0052CC"
-}
-
 resource "github_issue_label" "story" {
   repository  = var.repo_name
   name        = "user-story"
