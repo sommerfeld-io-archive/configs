@@ -99,7 +99,7 @@
   vars_files:
     - ../vars/global.yml
   tasks:
-    - ansible.builtin.import_tasks: ../tasks/config-git-clone-repos.yml
+    - ansible.builtin.import_tasks: ../tasks/config-cron-jobs.yml
 
     - name: Install -> VSCode Extensions
       ansible.builtin.shell: |
@@ -128,6 +128,13 @@
         done
       args:
         executable: /bin/bash
+
+    #  +-----------------------------------------------------------------------------+
+    #! |    Must be last task in this play !!!                                       |
+    #  |    Local changes result in a failure for this task.                         |
+    #  |    In case of failure, all other tasks for the affected node are skipped    |
+    #  +-----------------------------------------------------------------------------+
+    - ansible.builtin.import_tasks: ../tasks/config-git-clone-repos.yml
 
 - name: Setup for RasPi nodes
   hosts: raspi
