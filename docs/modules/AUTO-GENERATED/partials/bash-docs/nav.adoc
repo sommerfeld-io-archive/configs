@@ -2,6 +2,7 @@
 * `xref:AUTO-GENERATED:bash-docs/src/test/homelab/inspec/run-tests-sh.adoc[src/test/homelab/inspec/run-tests.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/github/run-local-sh.adoc[src/main/github/run-local.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/github/apply-config-sh.adoc[src/main/github/apply-config.sh]`
+* `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/cron/cleanup-filesystem-sh.adoc[src/main/homelab/ansible/assets/scripts/cron/cleanup-filesystem.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/hadolint-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/hadolint.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/mvn-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/mvn.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy.sh]`
