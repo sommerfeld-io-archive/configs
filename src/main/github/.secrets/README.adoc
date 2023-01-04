@@ -1,6 +1,7 @@
-Expected files:
+= Expected files:
 
 * github.token
 * BW_CLIENT_ID.secret
 * BW_CLIENT_SECRET.secret
 * BW_MASTER_PASS.secret
+
