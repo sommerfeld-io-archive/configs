@@ -5,8 +5,8 @@ data "github_repository" "docker-image-jq" {
   full_name = "sebastian-sommerfeld-io/docker-image-jq"
 }
 
-module "docker-image-jq-labels" {
-  source    = "./modules/issue-labels"
+module "docker-image-jq-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.docker-image-jq.id
 }
 

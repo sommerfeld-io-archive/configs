@@ -5,8 +5,8 @@ data "github_repository" "docker-image-folderslint" {
   full_name = "sebastian-sommerfeld-io/docker-image-folderslint"
 }
 
-module "docker-image-folderslint-labels" {
-  source    = "./modules/issue-labels"
+module "docker-image-folderslint-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.docker-image-folderslint.id
 }
 

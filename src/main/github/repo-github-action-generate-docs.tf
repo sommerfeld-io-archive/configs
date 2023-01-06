@@ -5,8 +5,8 @@ data "github_repository" "github-action-generate-docs" {
   full_name = "sebastian-sommerfeld-io/github-action-generate-docs"
 }
 
-module "github-action-generate-docs-labels" {
-  source    = "./modules/issue-labels"
+module "github-action-generate-docs-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.github-action-generate-docs.id
 }
 

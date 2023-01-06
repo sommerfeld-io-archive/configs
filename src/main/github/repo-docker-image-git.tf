@@ -5,8 +5,8 @@ data "github_repository" "docker-image-git" {
   full_name = "sebastian-sommerfeld-io/docker-image-git"
 }
 
-module "docker-image-git-labels" {
-  source    = "./modules/issue-labels"
+module "docker-image-git-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.docker-image-git.id
 }
 

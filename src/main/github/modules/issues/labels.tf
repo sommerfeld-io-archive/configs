@@ -40,6 +40,13 @@ resource "github_issue_label" "story" {
   color       = "0E8A16"
 }
 
+resource "github_issue_label" "task" {
+  repository  = var.repo_name
+  name        = "task"
+  description = "Implementation task - relates to a user story (mostly)"
+  color       = "0052CC"
+}
+
 resource "github_issue_label" "dependencies" {
   repository  = var.repo_name
   name        = "dependencies"

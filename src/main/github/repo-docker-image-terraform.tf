@@ -5,8 +5,8 @@ data "github_repository" "docker-image-terraform" {
   full_name = "sebastian-sommerfeld-io/docker-image-terraform"
 }
 
-module "docker-image-terraform-labels" {
-  source    = "./modules/issue-labels"
+module "docker-image-terraform-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.docker-image-terraform.id
 }
 

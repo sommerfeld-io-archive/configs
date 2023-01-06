@@ -5,8 +5,8 @@ data "github_repository" "jarvis" {
   full_name = "sebastian-sommerfeld-io/jarvis"
 }
 
-module "jarvis-labels" {
-  source    = "./modules/issue-labels"
+module "jarvis-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.jarvis.id
 }
 

@@ -5,8 +5,8 @@ data "github_repository" "website-sommerfeld-io" {
   full_name = "sebastian-sommerfeld-io/website-sommerfeld-io"
 }
 
-module "website-sommerfeld-io-labels" {
-  source    = "./modules/issue-labels"
+module "website-sommerfeld-io-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.website-sommerfeld-io.id
 }
 

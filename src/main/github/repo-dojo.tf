@@ -5,8 +5,8 @@ data "github_repository" "dojo" {
   full_name = "sebastian-sommerfeld-io/dojo"
 }
 
-module "dojo-labels" {
-  source    = "./modules/issue-labels"
+module "dojo-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.dojo.id
 }
 

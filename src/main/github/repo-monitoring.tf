@@ -5,8 +5,8 @@ data "github_repository" "monitoring" {
   full_name = "sebastian-sommerfeld-io/monitoring"
 }
 
-module "monitoring-labels" {
-  source    = "./modules/issue-labels"
+module "monitoring-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.monitoring.id
 }
 
