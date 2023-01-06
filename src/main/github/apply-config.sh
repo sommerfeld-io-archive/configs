@@ -54,6 +54,9 @@
 readonly LOG_ERROR="[\e[1;31mERROR\e[0m]"
 readonly LOG_INFO="[\e[34mINFO\e[0m]"
 readonly LOG_DONE="[\e[32mDONE\e[0m]"
+#readonly Y="\e[93m"
+readonly P="\e[35m"
+readonly D="\e[0m"
 
 readonly OPTION_APPLY="apply"
 readonly OPTION_DOCS="docs"
@@ -124,7 +127,7 @@ set -o nounset
 # set -o xtrace
 
 
-# @description Wrapper function to encapsulate terraform in a docker container. The current working
+# @description Wrapper function to encapsulate terraform in a Docker container. The current working
 # directory is mounted into the container and selected as working directory so that all files are
 # available to terraform. Paths are preserved. The container runs with the current user.
 #
@@ -140,7 +143,7 @@ function terraform() {
     echo -e "$LOG_ERROR exit" && exit 8
   fi
 
-  local DOCKER_IMAGE="sommerfeldio/terraform:0.1.0"
+  local DOCKER_IMAGE="sommerfeldio/terraform:0.1.1"
   
   if [ "$TF_COMMAND" = "$OPTION_PLAN" ] || [ "$TF_COMMAND" = "$OPTION_APPLY" ]; then
     docker run --rm \
@@ -206,6 +209,7 @@ function cleanup() {
   rm -rf .terraform
   rm -f .terraform.lock*
   rm -f "$TF_STATE_FILE"*
+  rm -f "$TF_PLAN_FILE"*
   rm -rf "$DATA_REPO_PATH"
   rm -rf .bitwarden
 }
@@ -319,7 +323,7 @@ function version() {
 }
 
 
-echo -e "$LOG_INFO Run Github configuration step: $TF_COMMAND"
+echo -e "$LOG_INFO Run Github configuration step: $P$TF_COMMAND$D"
 case "$TF_COMMAND" in
   "$OPTION_APPLY" ) apply ;;
   "$OPTION_CLEANUP" ) cleanup ;;
@@ -336,4 +340,4 @@ case "$TF_COMMAND" in
     cat assets/help.adoc
     ;;
 esac
-echo -e "$LOG_DONE Finished Github configuration step: $TF_COMMAND"
+echo -e "$LOG_DONE Finished Github configuration step: $P$TF_COMMAND$D"

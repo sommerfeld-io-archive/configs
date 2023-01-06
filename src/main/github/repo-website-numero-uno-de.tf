@@ -5,8 +5,8 @@ data "github_repository" "website-numero-uno-de" {
   full_name = "sebastian-sommerfeld-io/website-numero-uno-de"
 }
 
-module "website-numero-uno-de-labels" {
-  source    = "./modules/issue-labels"
+module "website-numero-uno-de-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.website-numero-uno-de.id
 }
 

@@ -5,8 +5,8 @@ data "github_repository" "trashbox" {
   full_name = "sebastian-sommerfeld-io/trashbox"
 }
 
-module "trashbox-labels" {
-  source    = "./modules/issue-labels"
+module "trashbox-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.trashbox.id
 }
 

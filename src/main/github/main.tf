@@ -1,7 +1,12 @@
 terraform {
-  required_version = "1.3.6"
+  required_version = "1.3.7"
 
   required_providers {
+    local = {
+      source  = "hashicorp/local"
+      version = "2.2.3"
+    }
+
     github = {
       source  = "integrations/github"
       version = "5.12.0"
@@ -13,6 +18,8 @@ terraform {
     }
   }
 }
+
+provider "local" {}
 
 provider "github" {}
 

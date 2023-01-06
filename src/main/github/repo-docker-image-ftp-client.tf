@@ -5,8 +5,8 @@ data "github_repository" "docker-image-ftp-client" {
   full_name = "sebastian-sommerfeld-io/docker-image-ftp-client"
 }
 
-module "docker-image-ftp-client-labels" {
-  source    = "./modules/issue-labels"
+module "docker-image-ftp-client-issues" {
+  source    = "./modules/issues"
   repo_name = data.github_repository.docker-image-ftp-client.id
 }
 

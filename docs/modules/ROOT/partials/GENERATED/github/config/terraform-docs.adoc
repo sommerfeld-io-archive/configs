@@ -64,25 +64,25 @@
 [cols="a,a,a",options="header"]
 |===
 |Name |Source |Version
-|[[module_configs-labels]] <<module_configs-labels,configs-labels>> |./modules/issue-labels |
-|[[module_configs-persistent-data-labels]] <<module_configs-persistent-data-labels,configs-persistent-data-labels>> |./modules/issue-labels |
-|[[module_docker-image-adoc-antora-labels]] <<module_docker-image-adoc-antora-labels,docker-image-adoc-antora-labels>> |./modules/issue-labels |
-|[[module_docker-image-folderslint-labels]] <<module_docker-image-folderslint-labels,docker-image-folderslint-labels>> |./modules/issue-labels |
-|[[module_docker-image-ftp-client-labels]] <<module_docker-image-ftp-client-labels,docker-image-ftp-client-labels>> |./modules/issue-labels |
-|[[module_docker-image-git-labels]] <<module_docker-image-git-labels,docker-image-git-labels>> |./modules/issue-labels |
-|[[module_docker-image-jq-labels]] <<module_docker-image-jq-labels,docker-image-jq-labels>> |./modules/issue-labels |
-|[[module_docker-image-terraform-labels]] <<module_docker-image-terraform-labels,docker-image-terraform-labels>> |./modules/issue-labels |
-|[[module_dojo-labels]] <<module_dojo-labels,dojo-labels>> |./modules/issue-labels |
-|[[module_github-action-generate-docs-labels]] <<module_github-action-generate-docs-labels,github-action-generate-docs-labels>> |./modules/issue-labels |
-|[[module_github-action-generate-readme-labels]] <<module_github-action-generate-readme-labels,github-action-generate-readme-labels>> |./modules/issue-labels |
-|[[module_github-action-update-antora-yml-labels]] <<module_github-action-update-antora-yml-labels,github-action-update-antora-yml-labels>> |./modules/issue-labels |
-|[[module_jarvis-labels]] <<module_jarvis-labels,jarvis-labels>> |./modules/issue-labels |
-|[[module_monitoring-labels]] <<module_monitoring-labels,monitoring-labels>> |./modules/issue-labels |
-|[[module_trashbox-labels]] <<module_trashbox-labels,trashbox-labels>> |./modules/issue-labels |
-|[[module_website-masterblender-de-labels]] <<module_website-masterblender-de-labels,website-masterblender-de-labels>> |./modules/issue-labels |
-|[[module_website-numero-uno-de-labels]] <<module_website-numero-uno-de-labels,website-numero-uno-de-labels>> |./modules/issue-labels |
-|[[module_website-sommerfeld-io-labels]] <<module_website-sommerfeld-io-labels,website-sommerfeld-io-labels>> |./modules/issue-labels |
-|[[module_website-tafelboy-de-labels]] <<module_website-tafelboy-de-labels,website-tafelboy-de-labels>> |./modules/issue-labels |
+|[[module_configs-labels]] <<module_configs-labels,configs-labels>> |./modules/issues |
+|[[module_configs-persistent-data-labels]] <<module_configs-persistent-data-labels,configs-persistent-data-labels>> |./modules/issues |
+|[[module_docker-image-adoc-antora-labels]] <<module_docker-image-adoc-antora-labels,docker-image-adoc-antora-labels>> |./modules/issues |
+|[[module_docker-image-folderslint-labels]] <<module_docker-image-folderslint-labels,docker-image-folderslint-labels>> |./modules/issues |
+|[[module_docker-image-ftp-client-labels]] <<module_docker-image-ftp-client-labels,docker-image-ftp-client-labels>> |./modules/issues |
+|[[module_docker-image-git-labels]] <<module_docker-image-git-labels,docker-image-git-labels>> |./modules/issues |
+|[[module_docker-image-jq-labels]] <<module_docker-image-jq-labels,docker-image-jq-labels>> |./modules/issues |
+|[[module_docker-image-terraform-labels]] <<module_docker-image-terraform-labels,docker-image-terraform-labels>> |./modules/issues |
+|[[module_dojo-labels]] <<module_dojo-labels,dojo-labels>> |./modules/issues |
+|[[module_github-action-generate-docs-labels]] <<module_github-action-generate-docs-labels,github-action-generate-docs-labels>> |./modules/issues |
+|[[module_github-action-generate-readme-labels]] <<module_github-action-generate-readme-labels,github-action-generate-readme-labels>> |./modules/issues |
+|[[module_github-action-update-antora-yml-labels]] <<module_github-action-update-antora-yml-labels,github-action-update-antora-yml-labels>> |./modules/issues |
+|[[module_jarvis-labels]] <<module_jarvis-labels,jarvis-labels>> |./modules/issues |
+|[[module_monitoring-labels]] <<module_monitoring-labels,monitoring-labels>> |./modules/issues |
+|[[module_trashbox-labels]] <<module_trashbox-labels,trashbox-labels>> |./modules/issues |
+|[[module_website-masterblender-de-labels]] <<module_website-masterblender-de-labels,website-masterblender-de-labels>> |./modules/issues |
+|[[module_website-numero-uno-de-labels]] <<module_website-numero-uno-de-labels,website-numero-uno-de-labels>> |./modules/issues |
+|[[module_website-sommerfeld-io-labels]] <<module_website-sommerfeld-io-labels,website-sommerfeld-io-labels>> |./modules/issues |
+|[[module_website-tafelboy-de-labels]] <<module_website-tafelboy-de-labels,website-tafelboy-de-labels>> |./modules/issues |
 |===
 
 === Resources

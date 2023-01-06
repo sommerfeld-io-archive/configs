@@ -1,10 +1,9 @@
 ---
 name: User Story
-about: Describe a new features (only a single feature at best)
+about: Describe a new features (only one single feature at best)
 title: ''
 labels: user-story
 assignees: ''
-
 ---
 
 As a _role_ I can _capability_, so that _receive benefit_.
