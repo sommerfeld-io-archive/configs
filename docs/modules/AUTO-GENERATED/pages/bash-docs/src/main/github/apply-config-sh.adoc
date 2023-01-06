@@ -77,7 +77,7 @@ each function). Running this script without arguments will result in an error.
 
 === terraform
 
-Wrapper function to encapsulate terraform in a docker container. The current working
+Wrapper function to encapsulate terraform in a Docker container. The current working
 directory is mounted into the container and selected as working directory so that all files are
 available to terraform. Paths are preserved. The container runs with the current user.
 
