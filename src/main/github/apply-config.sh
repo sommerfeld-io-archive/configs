@@ -198,6 +198,7 @@ function apply() {
       git config --global user.name "sebastian"
     fi
 
+    git pull
     git add "configs/github/$TF_STATE_FILE"
     git commit -m "[Actions Bot] auto-updated terraform state"
     git push
