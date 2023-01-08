@@ -1,0 +1,51 @@
+---
+name: "Organize: Auto-Close Issues"
+
+# +-------------------------------------------+
+# |                                           |
+# |    DO NOT EDIT DIRECTLY !!!!!             |
+# |                                           |
+# |    File is managed by terraform.          |
+# |    Update file in the configs repo so     |
+# |    you can apply changes to all repos.    |
+# |                                           |
+# +-------------------------------------------+
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/organize-auto-close-issues.yml
+  schedule:
+    - cron: '0 8 * * *' # https://crontab.guru
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  auto-close-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Close issues labelled as cancelled
+        uses: bdougie/close-issues-based-on-label@master
+        env:
+          LABEL: cancelled
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  on-failure:
+    runs-on: ubuntu-latest
+    needs: ['auto-close-issues']
+    if: failure()
+
+    steps:
+      - name: Send Pipeline Status to Google Chat
+        if: always()
+        uses: Co-qn/google-chat-notification@releases/v1
+        with:
+          name: ${{ github.workflow }}
+          url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+          status: failure

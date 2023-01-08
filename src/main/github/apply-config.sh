@@ -131,6 +131,10 @@ set -o nounset
 # directory is mounted into the container and selected as working directory so that all files are
 # available to terraform. Paths are preserved. The container runs with the current user.
 #
+# When running ``plan`` or ``apply``: All mandatory tokens, secrets, etc. which are passed to the
+# script (see "link:#_script_arguments[Script Arguments]"), are  configured as environment variables
+# for the container.
+# 
 # @example
 #    terraform -version
 #
@@ -194,6 +198,7 @@ function apply() {
       git config --global user.name "sebastian"
     fi
 
+    git pull
     git add "configs/github/$TF_STATE_FILE"
     git commit -m "[Actions Bot] auto-updated terraform state"
     git push

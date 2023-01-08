@@ -81,6 +81,10 @@ Wrapper function to encapsulate terraform in a Docker container. The current wor
 directory is mounted into the container and selected as working directory so that all files are
 available to terraform. Paths are preserved. The container runs with the current user.
 
+When running `plan` or `apply`: All mandatory tokens, secrets, etc. which are passed to the
+script (see "link:#_script_arguments[Script Arguments]"), are  configured as environment variables
+for the container.
+
 ==== Example
 
 [,bash]
