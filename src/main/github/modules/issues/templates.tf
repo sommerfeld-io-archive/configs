@@ -18,7 +18,7 @@ resource "github_repository_file" "template_user_story" {
     ### Acceptance Criteria
     - [ ] Describe what criteria the user story must meet.
     - [ ] Be precise! 
-    - [ ] You should be able to create a dedicated implementation task (and a test case at best) for each criteria.
+    - [ ] You should be able to create a dedicated implementation task (and an automated test case at best) for each criteria.
   EOT
 }
 
