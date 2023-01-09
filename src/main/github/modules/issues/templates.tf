@@ -7,7 +7,7 @@ resource "github_repository_file" "template_user_story" {
   content             = <<-EOT
     ---
     name: User Story
-    about: Describe a new features (only one single feature at best)
+    about: Describe a new feature (only one single feature at best)
     title: ''
     labels: ${resource.github_issue_label.story.name}
     assignees: ''
