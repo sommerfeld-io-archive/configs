@@ -10,6 +10,14 @@ module "docker-image-jq-issues" {
   repo_name = data.github_repository.docker-image-jq.id
 }
 
+module "docker-image-jq-docker-pipelines" {
+  source     = "./modules/docker-pipelines"
+  repo_name  = data.github_repository.docker-image-jq.id
+  image_name = "sommerfeldio/jq"
+  image_tag  = "latest"
+  dockerfile = "src/main/Dockerfile"
+}
+
 resource "github_actions_secret" "docker-image-jq_GOOGLE_CHAT_WEBHOOK" {
   repository      = data.github_repository.docker-image-jq.id
   secret_name     = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.username

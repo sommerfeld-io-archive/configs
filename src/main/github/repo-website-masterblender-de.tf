@@ -10,6 +10,14 @@ module "website-masterblender-de-issues" {
   repo_name = data.github_repository.website-masterblender-de.id
 }
 
+module "website-masterblender-de-docker-pipelines" {
+  source     = "./modules/docker-pipelines"
+  repo_name  = data.github_repository.website-masterblender-de.id
+  image_name = "sommerfeldio/website-masterblender-de"
+  image_tag  = "latest"
+  dockerfile = "Dockerfile"
+}
+
 resource "github_actions_secret" "website-masterblender-de_GOOGLE_CHAT_WEBHOOK" {
   repository      = data.github_repository.website-masterblender-de.id
   secret_name     = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.username

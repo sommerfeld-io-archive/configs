@@ -10,6 +10,14 @@ module "docker-image-ftp-client-issues" {
   repo_name = data.github_repository.docker-image-ftp-client.id
 }
 
+module "docker-image-ftp-client-docker-pipelines" {
+  source     = "./modules/docker-pipelines"
+  repo_name  = data.github_repository.docker-image-ftp-client.id
+  image_name = "sommerfeldio/ftp-client"
+  image_tag  = "latest"
+  dockerfile = "src/main/Dockerfile"
+}
+
 resource "github_actions_secret" "docker-image-ftp-client_GOOGLE_CHAT_WEBHOOK" {
   repository      = data.github_repository.docker-image-ftp-client.id
   secret_name     = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.username

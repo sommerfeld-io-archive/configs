@@ -10,6 +10,14 @@ module "website-sommerfeld-io-issues" {
   repo_name = data.github_repository.website-sommerfeld-io.id
 }
 
+module "website-sommerfeld-io-docker-pipelines" {
+  source     = "./modules/docker-pipelines"
+  repo_name  = data.github_repository.website-sommerfeld-io.id
+  image_name = "sommerfeldio/website"
+  image_tag  = "latest"
+  dockerfile = "src/main/Dockerfile"
+}
+
 resource "github_actions_secret" "website-sommerfeld-io_GOOGLE_CHAT_WEBHOOK" {
   repository      = data.github_repository.website-sommerfeld-io.id
   secret_name     = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.username

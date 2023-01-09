@@ -54,6 +54,14 @@ resource "github_issue_label" "dependencies" {
   color       = "000000"
 }
 
+resource "github_issue_label" "docker" {
+  repository  = var.repo_name
+  name        = "docker"
+  description = "Dependabot: Pull requests that update Docker code"
+  color       = "000000"
+}
+
+
 resource "github_issue_label" "github_actions" {
   repository  = var.repo_name
   name        = "github_actions"
@@ -61,9 +69,9 @@ resource "github_issue_label" "github_actions" {
   color       = "000000"
 }
 
-resource "github_issue_label" "docker" {
+resource "github_issue_label" "terraform" {
   repository  = var.repo_name
-  name        = "docker"
-  description = "Dependabot: Pull requests that update Docker code"
+  name        = "terraform"
+  description = "Dependabot: Pull requests that update Terraform code"
   color       = "000000"
 }

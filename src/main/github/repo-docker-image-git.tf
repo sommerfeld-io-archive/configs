@@ -10,6 +10,14 @@ module "docker-image-git-issues" {
   repo_name = data.github_repository.docker-image-git.id
 }
 
+module "docker-image-git-docker-pipelines" {
+  source     = "./modules/docker-pipelines"
+  repo_name  = data.github_repository.docker-image-git.id
+  image_name = "sommerfeldio/git"
+  image_tag  = "latest"
+  dockerfile = "src/main/Dockerfile"
+}
+
 resource "github_actions_secret" "docker-image-git_GOOGLE_CHAT_WEBHOOK" {
   repository      = data.github_repository.docker-image-git.id
   secret_name     = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.username

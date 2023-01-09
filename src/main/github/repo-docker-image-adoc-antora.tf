@@ -10,6 +10,14 @@ module "docker-image-adoc-antora-issues" {
   repo_name = data.github_repository.docker-image-adoc-antora.id
 }
 
+module "docker-image-adoc-antora-docker-pipelines" {
+  source     = "./modules/docker-pipelines"
+  repo_name  = data.github_repository.docker-image-adoc-antora.id
+  image_name = "sommerfeldio/adoc-antora"
+  image_tag  = "latest"
+  dockerfile = "src/main/Dockerfile"
+}
+
 resource "github_actions_secret" "docker-image-adoc-antora_GOOGLE_CHAT_WEBHOOK" {
   repository      = data.github_repository.docker-image-adoc-antora.id
   secret_name     = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.username

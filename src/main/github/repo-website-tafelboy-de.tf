@@ -10,6 +10,14 @@ module "website-tafelboy-de-issues" {
   repo_name = data.github_repository.website-tafelboy-de.id
 }
 
+module "website-tafelboy-de-docker-pipelines" {
+  source     = "./modules/docker-pipelines"
+  repo_name  = data.github_repository.website-tafelboy-de.id
+  image_name = "sommerfeldio/website-tafelboy-de"
+  image_tag  = "latest"
+  dockerfile = "Dockerfile"
+}
+
 resource "github_actions_secret" "website-tafelboy-de_GOOGLE_CHAT_WEBHOOK" {
   repository      = data.github_repository.website-tafelboy-de.id
   secret_name     = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.username
