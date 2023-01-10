@@ -8,6 +8,7 @@ data "github_repository" "docker-image-terraform" {
 module "docker-image-terraform-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.docker-image-terraform.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 module "docker-image-terraform-docker-pipelines" {

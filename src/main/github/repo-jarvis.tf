@@ -8,6 +8,7 @@ data "github_repository" "jarvis" {
 module "jarvis-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.jarvis.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 resource "github_actions_secret" "jarvis_GOOGLE_CHAT_WEBHOOK" {

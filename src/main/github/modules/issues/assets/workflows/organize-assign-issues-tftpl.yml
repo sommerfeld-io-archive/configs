@@ -29,24 +29,24 @@ jobs:
   add-to-project:
     name: Add to project
     runs-on: ubuntu-latest
-    if: ${{ github.actor != 'dependabot[bot]' }}
+    if: $${{ github.actor != "dependabot[bot]" }}
     steps:
       - name: Add to project (issues and PRs)
         uses: actions/add-to-project@main
         with:
-          project-url: https://github.com/users/sebastian-sommerfeld-io/projects/1
-          github-token: ${{ secrets.GH_TOKEN_REPO_AND_PROJECT }}
+          project-url: ${project}
+          github-token: $${{ secrets.GH_TOKEN_REPO_AND_PROJECT }}
 
   assign-to-user:
     name: Assign to user
     runs-on: ubuntu-latest
-    if: ${{ github.actor != 'dependabot[bot]' }}
+    if: $${{ github.actor != "dependabot[bot]" }}
     steps:
       - name: Assign issue to user when moved into column
         uses: pozil/auto-assign-issue@v1
         # https://github.com/marketplace/actions/auto-assign-issue
         with:
-          assignees: ${{ github.actor }}
+          assignees: $${{ github.actor }}
           numOfAssignee: 1
           allowSelfAssign: true
           abortIfPreviousAssignees: true
@@ -55,7 +55,7 @@ jobs:
     name: Set label for issues (if not user-story)
     runs-on: ubuntu-latest
     needs: add-to-project
-    if: ${{ github.event.issue && !contains(github.event.issue.labels.*.name, 'user-story') }}
+    if: $${{ github.event.issue && !contains(github.event.issue.labels.*.name, "user-story") }}
     steps:
       - name: Set label
         uses: actions/github-script@v6
@@ -70,13 +70,13 @@ jobs:
 
   on-failure:
     runs-on: ubuntu-latest
-    needs: ['add-to-project', 'assign-to-user', 'set-label']
+    needs: ["add-to-project", "assign-to-user", "set-label"]
     if: failure()
     steps:
       - name: Send Pipeline Status to Google Chat
         if: always()
         uses: Co-qn/google-chat-notification@releases/v1
         with:
-          name: ${{ github.workflow }}
-          url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+          name: $${{ github.workflow }}
+          url: $${{ secrets.GOOGLE_CHAT_WEBHOOK }}
           status: failure

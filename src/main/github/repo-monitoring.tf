@@ -8,6 +8,7 @@ data "github_repository" "monitoring" {
 module "monitoring-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.monitoring.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 resource "github_actions_secret" "monitoring_GOOGLE_CHAT_WEBHOOK" {

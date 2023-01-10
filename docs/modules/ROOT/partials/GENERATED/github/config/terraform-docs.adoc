@@ -180,6 +180,7 @@
 |https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/actions_secret[github_actions_secret.website-tafelboy-de_GOOGLE_CHAT_WEBHOOK] |resource
 |https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/actions_secret[github_actions_secret.website-tafelboy-de_SNYK_TOKEN] |resource
 |https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/issue_label[github_issue_label.provinzial_19_1] |resource
+|https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/issue_label[github_issue_label.provinzial_organzation] |resource
 |https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/issue_label[github_issue_label.provinzial_training_certs] |resource
 |https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.DOCKERHUB_USER] |data source
 |https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.GH_TOKEN_REPO_AND_PROJECT] |data source

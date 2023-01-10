@@ -8,6 +8,7 @@ data "github_repository" "website-sommerfeld-io" {
 module "website-sommerfeld-io-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.website-sommerfeld-io.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 module "website-sommerfeld-io-docker-pipelines" {

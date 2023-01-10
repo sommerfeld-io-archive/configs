@@ -8,6 +8,7 @@ data "github_repository" "provinzial" {
 module "provinzial-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.provinzial.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/2"
 }
 
 resource "github_actions_secret" "provinzial_GOOGLE_CHAT_WEBHOOK" {
@@ -35,4 +36,11 @@ resource "github_issue_label" "provinzial_training_certs" {
   name        = "trainings / certificates"
   description = "External trainings"
   color       = "5319E7"
+}
+
+resource "github_issue_label" "provinzial_organzation" {
+  repository  = data.github_repository.provinzial.id
+  name        = "organization"
+  description = "Non-technical tasks"
+  color       = "FBCA04"
 }

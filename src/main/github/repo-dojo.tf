@@ -8,6 +8,7 @@ data "github_repository" "dojo" {
 module "dojo-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.dojo.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 resource "github_actions_secret" "dojo_GOOGLE_CHAT_WEBHOOK" {

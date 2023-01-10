@@ -8,6 +8,7 @@ data "github_repository" "github-action-generate-readme" {
 module "github-action-generate-readme-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.github-action-generate-readme.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 resource "github_actions_secret" "github-action-generate-readme_GOOGLE_CHAT_WEBHOOK" {

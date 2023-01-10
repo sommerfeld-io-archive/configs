@@ -4,7 +4,9 @@ resource "github_repository_file" "workflow_assign_issues" {
   commit_message      = "[Actions Bot] Update Github Actions workflow"
   overwrite_on_create = true
   file                = ".github/workflows/organize-assign-issues.yml"
-  content             = file("${path.module}/assets/workflows/organize-assign-issues.yml")
+  content = templatefile("${path.module}/assets/workflows/organize-assign-issues-tftpl.yml", {
+    project = "${var.project}"
+  })
 }
 
 resource "github_repository_file" "workflow_auto_close_issues" {

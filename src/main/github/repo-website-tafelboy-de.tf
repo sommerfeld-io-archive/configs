@@ -8,6 +8,7 @@ data "github_repository" "website-tafelboy-de" {
 module "website-tafelboy-de-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.website-tafelboy-de.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 module "website-tafelboy-de-docker-pipelines" {

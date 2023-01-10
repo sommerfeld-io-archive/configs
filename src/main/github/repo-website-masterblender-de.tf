@@ -8,6 +8,7 @@ data "github_repository" "website-masterblender-de" {
 module "website-masterblender-de-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.website-masterblender-de.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 module "website-masterblender-de-docker-pipelines" {

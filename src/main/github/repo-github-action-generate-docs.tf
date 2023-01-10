@@ -8,6 +8,7 @@ data "github_repository" "github-action-generate-docs" {
 module "github-action-generate-docs-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.github-action-generate-docs.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 resource "github_actions_secret" "github-action-generate-docs_GOOGLE_CHAT_WEBHOOK" {

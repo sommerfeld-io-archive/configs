@@ -8,6 +8,7 @@ data "github_repository" "trashbox" {
 module "trashbox-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.trashbox.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 resource "github_actions_secret" "trashbox_GOOGLE_CHAT_WEBHOOK" {

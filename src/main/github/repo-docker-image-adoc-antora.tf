@@ -8,6 +8,7 @@ data "github_repository" "docker-image-adoc-antora" {
 module "docker-image-adoc-antora-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.docker-image-adoc-antora.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 module "docker-image-adoc-antora-docker-pipelines" {

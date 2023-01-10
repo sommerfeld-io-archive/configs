@@ -8,6 +8,7 @@ data "github_repository" "docker-image-git" {
 module "docker-image-git-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.docker-image-git.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 module "docker-image-git-docker-pipelines" {

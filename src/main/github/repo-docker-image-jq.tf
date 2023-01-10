@@ -8,6 +8,7 @@ data "github_repository" "docker-image-jq" {
 module "docker-image-jq-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.docker-image-jq.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 module "docker-image-jq-docker-pipelines" {

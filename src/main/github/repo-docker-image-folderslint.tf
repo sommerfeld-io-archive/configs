@@ -8,6 +8,7 @@ data "github_repository" "docker-image-folderslint" {
 module "docker-image-folderslint-issues" {
   source    = "./modules/issues"
   repo_name = data.github_repository.docker-image-folderslint.id
+  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/1"
 }
 
 module "docker-image-folderslint-docker-pipelines" {
