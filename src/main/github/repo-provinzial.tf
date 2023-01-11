@@ -40,7 +40,7 @@ resource "github_issue_label" "provinzial_training_certs" {
 
 resource "github_issue_label" "provinzial_organzation" {
   repository  = data.github_repository.provinzial.id
-  name        = "organization"
+  name        = "organizational"
   description = "Non-technical tasks"
   color       = "FBCA04"
 }
