@@ -19,21 +19,17 @@ See https://docs.github.com/en/issues/planning-and-tracking-with-projects/learni
 image:ROOT:onboardings/branching-strategy.drawio.png[]
 
 === Setup new Repository
-. tbd ...
-. tbd ...
-. tbd ...
+. Create a new repository on link:https://github.com[Github]
 . Apply xref:github/config.adoc[]
-. Setup Dependabot by configuring the repo (_Settings -> Code security and analysis -> Dependabot security updates_) and running the `github-actions` module from `jarvis`, then (if necessary) ...
-.. ... adjust  the build triggers of `auto-generate-docs.yml` and `ci.yml`.
-.. ... add `if: ${{ github.actor != 'dependabot[bot]' }}` to Docker Login, the push settings from Docker build and both Snyk steps.
-.. ... adjust `dependabot.yml` to your needs.
+. Setup Dependabot (Github UI: _Settings -> Code security and analysis -> Dependabot security updates_)
+.. Adjust `dependabot.yml` to your needs.
 
 === Add collaborators to projects and repos
 When you are working on a project with more people than just yourself, all collaborators need permissions to update the source code repositories and work with issues and projects.
 
 . Projects
 .. Go to respective project
-.. Open Settings (_... > Settings_)
+.. Open Settings (_... (ths symbol in the top-right corner) > Settings_)
 .. Go to _Manage Access_ and _Invite collaborators_
 . Repositories
 .. Go to the respective repository
