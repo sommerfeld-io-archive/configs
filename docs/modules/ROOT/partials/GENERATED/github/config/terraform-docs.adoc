@@ -136,6 +136,7 @@
 |https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/actions_secret[github_actions_secret.docker-image-terraform_SNYK_TOKEN] |resource
 |https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/actions_secret[github_actions_secret.dojo_GH_TOKEN_REPO_AND_PROJECT] |resource
 |https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/actions_secret[github_actions_secret.dojo_GOOGLE_CHAT_WEBHOOK] |resource
+|https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/actions_secret[github_actions_secret.dojo_SONARCLOUD_TOKEN] |resource
 |https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/actions_secret[github_actions_secret.github-action-generate-docs_GH_TOKEN_REPO_AND_PROJECT] |resource
 |https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/actions_secret[github_actions_secret.github-action-generate-docs_GOOGLE_CHAT_WEBHOOK] |resource
 |https://registry.terraform.io/providers/integrations/github/5.13.0/docs/resources/actions_secret[github_actions_secret.github-action-generate-readme_GH_TOKEN_REPO_AND_PROJECT] |resource
@@ -192,6 +193,7 @@
 |https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-git_DOCKERHUB_TOKEN] |data source
 |https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-jq_DOCKERHUB_TOKEN] |data source
 |https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-terraform_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.dojo_SONARCLOUD_TOKEN] |data source
 |https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-masterblender-de_DOCKERHUB_TOKEN] |data source
 |https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-masterblender-de_FTP_PASS] |data source
 |https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-masterblender-de_FTP_USER] |data source

@@ -23,3 +23,11 @@ resource "github_actions_secret" "dojo_GH_TOKEN_REPO_AND_PROJECT" {
   plaintext_value = data.bitwarden_item_login.GH_TOKEN_REPO_AND_PROJECT.password
 }
 
+data "bitwarden_item_login" "dojo_SONARCLOUD_TOKEN" {
+  id = "9a961169-6655-4634-bc26-af8c00ff7971"
+}
+resource "github_actions_secret" "dojo_SONARCLOUD_TOKEN" {
+  repository      = data.github_repository.dojo.id
+  secret_name     = data.bitwarden_item_login.dojo_SONARCLOUD_TOKEN.username
+  plaintext_value = data.bitwarden_item_login.dojo_SONARCLOUD_TOKEN.password
+}
