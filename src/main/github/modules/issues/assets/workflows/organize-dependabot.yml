@@ -18,7 +18,7 @@ on:
     paths:
       - .github/workflows/organize-dependabot.yml
   schedule:
-    - cron: '0 12 * * *' # https://crontab.guru
+    - cron: '30 7 * * *' # https://crontab.guru
 
 permissions:
   contents: read
