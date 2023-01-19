@@ -5,7 +5,8 @@ resource "github_repository_file" "workflow_assign_issues" {
   overwrite_on_create = true
   file                = ".github/workflows/organize-assign-issues.yml"
   content = templatefile("${path.module}/assets/workflows/organize-assign-issues-tftpl.yml", {
-    project = "${var.project}"
+    project      = "${var.project}",
+    issue_labels = "${var.issue_labels}"
   })
 }
 

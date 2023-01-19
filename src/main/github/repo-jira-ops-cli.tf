@@ -6,9 +6,10 @@ data "github_repository" "jira-ops-cli" {
 }
 
 module "jira-ops-cli-issues" {
-  source    = "./modules/issues"
-  repo_name = data.github_repository.jira-ops-cli.id
-  project   = "https://github.com/users/sebastian-sommerfeld-io/projects/2"
+  source       = "./modules/issues"
+  repo_name    = data.github_repository.jira-ops-cli.id
+  project      = "https://github.com/users/sebastian-sommerfeld-io/projects/2"
+  issue_labels = "'task', '19+1'"
 }
 
 resource "github_issue_label" "jira-ops-cli_19_1" {
