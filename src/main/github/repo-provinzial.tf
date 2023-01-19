@@ -11,19 +11,6 @@ module "provinzial-issues" {
   project   = "https://github.com/users/sebastian-sommerfeld-io/projects/2"
 }
 
-resource "github_actions_secret" "provinzial_GOOGLE_CHAT_WEBHOOK" {
-  repository      = data.github_repository.provinzial.id
-  secret_name     = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.username
-  plaintext_value = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.password
-}
-
-resource "github_actions_secret" "provinzial_GH_TOKEN_REPO_AND_PROJECT" {
-  repository      = data.github_repository.provinzial.id
-  secret_name     = data.bitwarden_item_login.GH_TOKEN_REPO_AND_PROJECT.username
-  plaintext_value = data.bitwarden_item_login.GH_TOKEN_REPO_AND_PROJECT.password
-}
-
-# Specific for this repository
 resource "github_issue_label" "provinzial_19_1" {
   repository  = data.github_repository.provinzial.id
   name        = "19+1"
@@ -43,4 +30,16 @@ resource "github_issue_label" "provinzial_organzation" {
   name        = "organizational"
   description = "Non-technical tasks"
   color       = "FBCA04"
+}
+
+resource "github_actions_secret" "provinzial_GOOGLE_CHAT_WEBHOOK" {
+  repository      = data.github_repository.provinzial.id
+  secret_name     = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.username
+  plaintext_value = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.password
+}
+
+resource "github_actions_secret" "provinzial_GH_TOKEN_REPO_AND_PROJECT" {
+  repository      = data.github_repository.provinzial.id
+  secret_name     = data.bitwarden_item_login.GH_TOKEN_REPO_AND_PROJECT.username
+  plaintext_value = data.bitwarden_item_login.GH_TOKEN_REPO_AND_PROJECT.password
 }
