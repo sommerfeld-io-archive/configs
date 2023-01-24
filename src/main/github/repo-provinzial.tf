@@ -32,6 +32,13 @@ resource "github_issue_label" "provinzial_organzation" {
   color       = "FBCA04"
 }
 
+resource "github_issue_label" "provinzial_recurring" {
+  repository  = data.github_repository.provinzial.id
+  name        = "recurring"
+  description = "Recurring tasks (daily / weekly / monthly)"
+  color       = "FBCA04"
+}
+
 resource "github_actions_secret" "provinzial_GOOGLE_CHAT_WEBHOOK" {
   repository      = data.github_repository.provinzial.id
   secret_name     = data.bitwarden_item_login.GOOGLE_CHAT_WEBHOOK.username
