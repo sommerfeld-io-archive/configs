@@ -31,5 +31,5 @@ CAUTION: To update scripts, adjust files at `~/work/repos/sebastian-sommerfeld-i
 [source, bash]
 
 ----
-shellcheck ./*.sh
+"shellcheck" ./*.sh
 ----

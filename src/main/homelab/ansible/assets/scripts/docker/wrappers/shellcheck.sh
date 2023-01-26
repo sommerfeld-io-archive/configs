@@ -18,7 +18,7 @@
 #
 # [source, bash]
 # ```
-# shellcheck ./*.sh
+# "shellcheck" ./*.sh
 # ```
 
 
