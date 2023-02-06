@@ -75,3 +75,10 @@ resource "github_issue_label" "terraform" {
   description = "Dependabot: Pull requests that update Terraform code"
   color       = "000000"
 }
+
+resource "github_issue_label" "javascript" {
+  repository  = var.repo_name
+  name        = "javascript"
+  description = "Dependabot: Pull requests that update Javascript code"
+  color       = "000000"
+}
