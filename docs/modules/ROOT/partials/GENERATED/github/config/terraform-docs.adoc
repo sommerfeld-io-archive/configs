@@ -15,7 +15,7 @@
 |===
 |Name |Version
 |[[requirement_terraform]] <<requirement_terraform,terraform>> |1.3.7
-|[[requirement_bitwarden]] <<requirement_bitwarden,bitwarden>> |0.4.0
+|[[requirement_bitwarden]] <<requirement_bitwarden,bitwarden>> |0.5.0
 |[[requirement_github]] <<requirement_github,github>> |5.16.0
 |[[requirement_local]] <<requirement_local,local>> |2.3.0
 |===
@@ -25,7 +25,7 @@
 [cols="a,a",options="header"]
 |===
 |Name |Version
-|[[provider_bitwarden]] <<provider_bitwarden,bitwarden>> |0.4.0
+|[[provider_bitwarden]] <<provider_bitwarden,bitwarden>> |0.5.0
 |[[provider_github]] <<provider_github,github>> |5.16.0
 |===
 
@@ -192,31 +192,31 @@
 |https://registry.terraform.io/providers/integrations/github/5.16.0/docs/resources/issue_label[github_issue_label.provinzial_organzation] |resource
 |https://registry.terraform.io/providers/integrations/github/5.16.0/docs/resources/issue_label[github_issue_label.provinzial_recurring] |resource
 |https://registry.terraform.io/providers/integrations/github/5.16.0/docs/resources/issue_label[github_issue_label.provinzial_training_certs] |resource
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.DOCKERHUB_USER] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.GH_TOKEN_REPO_AND_PROJECT] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.GOOGLE_CHAT_WEBHOOK] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.SNYK_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-adoc-antora_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-folderslint_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-ftp-client_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-git_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-jq_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-terraform_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.dojo_SONARCLOUD_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.jira-ops-cli_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.jira-ops-cli_SONARCLOUD_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-masterblender-de_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-masterblender-de_FTP_PASS] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-masterblender-de_FTP_USER] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-numero-uno-de_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-numero-uno-de_FTP_PASS] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-numero-uno-de_FTP_USER] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-sommerfeld-io_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-sommerfeld-io_FTP_PASS] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-sommerfeld-io_FTP_USER] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-tafelboy-de_DOCKERHUB_TOKEN] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-tafelboy-de_FTP_PASS] |data source
-|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.4.0/docs/data-sources/item_login[bitwarden_item_login.website-tafelboy-de_FTP_USER] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.DOCKERHUB_USER] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.GH_TOKEN_REPO_AND_PROJECT] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.GOOGLE_CHAT_WEBHOOK] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.SNYK_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-adoc-antora_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-folderslint_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-ftp-client_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-git_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-jq_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.docker-image-terraform_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.dojo_SONARCLOUD_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.jira-ops-cli_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.jira-ops-cli_SONARCLOUD_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-masterblender-de_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-masterblender-de_FTP_PASS] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-masterblender-de_FTP_USER] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-numero-uno-de_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-numero-uno-de_FTP_PASS] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-numero-uno-de_FTP_USER] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-sommerfeld-io_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-sommerfeld-io_FTP_PASS] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-sommerfeld-io_FTP_USER] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-tafelboy-de_DOCKERHUB_TOKEN] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-tafelboy-de_FTP_PASS] |data source
+|https://registry.terraform.io/providers/maxlaverse/bitwarden/0.5.0/docs/data-sources/item_login[bitwarden_item_login.website-tafelboy-de_FTP_USER] |data source
 |https://registry.terraform.io/providers/integrations/github/5.16.0/docs/data-sources/repository[github_repository.configs] |data source
 |https://registry.terraform.io/providers/integrations/github/5.16.0/docs/data-sources/repository[github_repository.configs-persistent-data] |data source
 |https://registry.terraform.io/providers/integrations/github/5.16.0/docs/data-sources/repository[github_repository.docker-image-adoc-antora] |data source
