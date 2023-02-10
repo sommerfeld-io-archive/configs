@@ -5,6 +5,14 @@ data "github_repository" "jiracli" {
   full_name = "sebastian-sommerfeld-io/jiracli"
 }
 
+module "jiracli-docker-pipelines" {
+  source     = "./modules/docker-pipelines"
+  repo_name  = data.github_repository.jiracli.id
+  image_name = "sommerfeldio/jiracli"
+  image_tag  = "latest"
+  dockerfile = "src/main/Dockerfile"
+}
+
 module "jiracli-issues" {
   source       = "./modules/issues"
   repo_name    = data.github_repository.jiracli.id
