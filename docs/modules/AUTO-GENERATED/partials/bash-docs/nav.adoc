@@ -8,7 +8,6 @@
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/conky/run-sh.adoc[src/main/homelab/conky/run.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible-cli-sh.adoc[src/main/homelab/ansible-cli.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/cron/cleanup-filesystem-sh.adoc[src/main/homelab/ansible/assets/scripts/cron/cleanup-filesystem.sh]`
-* `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/go-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/go.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/yamllint-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/yamllint.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/hadolint-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/hadolint.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy.sh]`
