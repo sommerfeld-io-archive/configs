@@ -82,6 +82,13 @@
           - postman
         state: present
 
+    - name: Install -> Snap packages (classic confinement)
+      community.general.snap:
+        name:
+          - go
+        classic: true
+        state: present
+
     - name: Install -> VSCode
       community.general.snap:
         name: code
