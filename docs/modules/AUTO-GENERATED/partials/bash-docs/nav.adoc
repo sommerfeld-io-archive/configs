@@ -1,7 +1,7 @@
 * `xref:AUTO-GENERATED:bash-docs/src/main/github/apply-config-sh.adoc[src/main/github/apply-config.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/github/run-local-sh.adoc[src/main/github/run-local.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/bootstrap/ssh-server-sh.adoc[src/main/homelab/bootstrap/ssh-server.sh]`
-* `xref:AUTO-GENERATED:bash-docs/src/main/homelab/bootstrap/kobol-sh.adoc[src/main/homelab/bootstrap/kobol.sh]`
+* `xref:AUTO-GENERATED:bash-docs/src/main/homelab/bootstrap/install-basics-sh.adoc[src/main/homelab/bootstrap/install-basics.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/hugo-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/hugo.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/node-npm-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/node-npm.sh]`
