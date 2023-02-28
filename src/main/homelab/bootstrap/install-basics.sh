@@ -1,5 +1,5 @@
 #!/bin/bash
-# @file bootstrap-kobol.sh
+# @file install-basics.sh
 # @brief Run basic provisioning.
 #
 # @description This script runs the basic provisioning. This is a prerequisite to run the ansible steps.
@@ -12,7 +12,7 @@
 #
 # [source, bash]
 # ```
-# curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/homelab/bootstrap/kobol.sh | bash -
+# curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/homelab/bootstrap/install-basics.sh | bash -
 # ```
 
 

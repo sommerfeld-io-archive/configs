@@ -1,14 +1,17 @@
 = Workstation `caprica`
 Sebastian Sommerfeld <sebastian@sommerfeld.io>
+:description: Installation guide for machine 'caprica'
 
 == Install Ubuntu from bootable USB stick
 . Download Ubuntu from the link:https://ubuntu.com[Ubuntu website].
 . Create a bootable USB stick from the downloaded iso image with a tool like link:https://www.balena.io/etcher[Etcher] or the Startup Disk Creator (shipped with Ubuntu).
 . Install machine from stick (the setup wizard takes care of the hostname, network settings, ssh, ...)
-.. When prompted for a user and password, use the same information as in kobol.
+.. When prompted for a user and password, use the username `sebastian` and the default password.
 .. Remember to install and activate the OpenSSH server when the wizard prompts for this!
-.. Do not install any futher software packages. Installations take place later on when provisioning the system using Ansible.
+.. Do not install any futher software packages. Installations take place later when provisioning the system with Ansible.
 .. Set dark mode, dock config, etc.
+.. Add `~/work`, `~/tmp` and `~/virtualmachines` to favorites (in File Manager) and update file associations in "Settings > Applications > Sublime Text"
+. Run basic setup tasks using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/homelab/bootstrap/install-basics.sh | bash -`
 . Test connecting to `caprica` via `ssh sebastian@caprica.fritz.box` (with sebastian being the user created while installing the OS).
 . Install machine using the ansible configs from this repo.
 . Allow caprica to work with github. Use public key `id_rsa.pub`, NOT the pivate key!
