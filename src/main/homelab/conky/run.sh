@@ -19,7 +19,7 @@ echo -e "$LOG_INFO Copy launcher to autostart"
 cp "assets/conky-launcher.desktop" "$HOME/.config/autostart/conky-launcher.desktop"
 
 echo -e "$LOG_INFO Start all conky instances in background"
-sleep 2
+sleep 2m
 
 for rc in "$CONKYRC_PATH"/*.conkyrc; do
   echo -e "$LOG_INFO Start Instance ${P}${rc}${D}"
