@@ -82,3 +82,10 @@ resource "github_issue_label" "javascript" {
   description = "Dependabot: Pull requests that update Javascript code"
   color       = "000000"
 }
+
+resource "github_issue_label" "go" {
+  repository  = var.repo_name
+  name        = "go"
+  description = "Dependabot: Pull requests that update Go code"
+  color       = "000000"
+}
