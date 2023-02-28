@@ -21,7 +21,7 @@ sleep 120
 
 readonly conkyDefinitions=(
   "$CONKY_PATH/.conkyrc_$HOSTNAME"
-  "$CONKY_PATH/.conkyrc_services"
+  "$CONKY_PATH/.conkyrc_services_$HOSTNAME"
 )
 for def in "${conkyDefinitions[@]}"
 do
