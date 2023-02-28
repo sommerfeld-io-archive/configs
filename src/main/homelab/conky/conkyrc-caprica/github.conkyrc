@@ -1,8 +1,8 @@
 conky.config = {
-	own_window_title = "kobol-conky-services",
+	own_window_title = "kobol-conky-main",
 	use_xft = true,
 	xftalpha = 0.8,
-	update_interval = 5.0,
+	update_interval = 2.0,
 	total_run_times = 0,
 	own_window = true,
 	own_window_transparent = true,
@@ -19,9 +19,10 @@ conky.config = {
 	cpu_avg_samples = 2,
 	override_utf8_locale = true,
 
-	alignment = 'bottom_right',
-	gap_x = 25,
-	gap_y = 5,
+	xinerama_head = 2,
+	alignment = 'top_left',
+	gap_x = 450,
+	gap_y = 25,
 
 	draw_shades = false,
 	draw_outline = false,
@@ -38,19 +39,13 @@ conky.config = {
 	color1 = '9f907d',
 
 	template0 = [[${font Ubuntu Mono:bold:size=13}${template1}]],
-	template1 = [[${font Ubuntu Mono:size=13}]],
+	template1 = [[${font Ubuntu Mono:size=13}${color slate grey}]],
+	template2 = [[${font Ubuntu Mono:size=10}${color #505e6d}]],
 };
 
 conky.text = [[
-# Nodes
-# ${template0}${color #9f907d}NODES ON NETWORK ${color slate grey}${hr 2}${font}
-# ${template1}${exec cat ~/work/workspace/workspace-github/kobol/target/conky/nodes.txt}
+# Github
+${template0}${color #9f907d}Github ${color slate grey}${hr 2}${font}
+${template1}Hostname ${alignr}$nodename
 
-# Vagrantboxes
-#${template0}${color #9f907d}VAGRANTBOXES ${color slate grey}${hr 2}${font}
-#${template1}${exec vagrant global-status --prune}
-
-# Docker Containers -> kobol
-${template0}${color #9f907d}DOCKER CONTAINERS ${color slate grey}${hr 2}${font}
-${template1}${exec docker ps --format="table {{.Image}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"}
 ]];
