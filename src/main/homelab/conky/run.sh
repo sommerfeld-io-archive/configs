@@ -20,8 +20,8 @@ echo -e "$LOG_INFO Start all conky instances in background"
 sleep 120
 
 readonly conkyDefinitions=(
-  "$CONKY_PATH/.conkyrc_$HOSTNAME"
-  "$CONKY_PATH/.conkyrc_services_$HOSTNAME"
+  "$CONKY_PATH/config-$HOSTNAME/.conkyrc"
+  "$CONKY_PATH/config-$HOSTNAME/.conkyrc_services"
 )
 for def in "${conkyDefinitions[@]}"
 do
