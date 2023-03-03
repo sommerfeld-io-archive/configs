@@ -61,7 +61,7 @@ jobs:
       - name: hadolint
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: src/main/homelab/conky/data/from-github/Dockerfile
+          dockerfile: src/main/homelab/conky/from-github/Dockerfile
 
   # lint-ansible:
   #   runs-on: ubuntu-latest
