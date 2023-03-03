@@ -9,3 +9,7 @@ updates:
     directory: src/main/github
     schedule:
       interval: weekly
+  - package-ecosystem: docker
+    directory: src/main/homelab/conky/data/from-github
+    schedule:
+      interval: weekly
