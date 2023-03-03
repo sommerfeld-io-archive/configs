@@ -1,4 +1,4 @@
-= build.sh
+= query-github.sh
 
 // +-----------------------------------------------+
 // |                                               |
@@ -10,21 +10,21 @@
 // +-----------------------------------------------+
 
 
-Build Docker image for local Github CLI use.
+Query data from github and store locally for conky.
 
 == Overview
 
-The script builds, Docker image to use link:https://cli.github.com/manual/[Github CLI]
-locally.
+The script queries information from github and stores them in local files for
+conky to pick up.
 
 === Script Arguments
 
-The script does not accept any parameters.
+* _$@_ (...): The same parameters as the Github CLI app.
 
 === Script Example
 
 [source, bash]
 
 ----
-./build.sh
+./run.sh --version
 ----
