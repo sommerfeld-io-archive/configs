@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  update-antora-yml:
+  generate-docs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -33,44 +33,10 @@ jobs:
         uses: ibiqlik/action-yamllint@v3
         with:
           file_or_dir: docs/antora.yml
-      - name: Commit and push
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: sebastian
-          author_email: sebastian@sommerfeld.io
-          message: "[Actions Bot] refactor: set antora version to branchname"
-          add: docs/antora.yml
-
-  README:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    needs: update-antora-yml
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
       - name: README.adoc
         uses: sebastian-sommerfeld-io/github-action-generate-readme@main
         with:
           caption: Configurations Startpage
-      - name: Commit and push
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: sebastian
-          author_email: sebastian@sommerfeld.io
-          message: "[Actions Bot] docs: auto-generated adoc contents"
-          add: README.adoc
-
-  bash-script-docs:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    needs: README
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
       - name: Generate docs from bash scripts
         uses: sebastian-sommerfeld-io/github-action-generate-docs@main
       - name: Commit and push
@@ -78,14 +44,13 @@ jobs:
         with:
           author_name: sebastian
           author_email: sebastian@sommerfeld.io
-          message: "[Actions Bot] docs: auto-generated bash script documentation from *.sh files"
-          add: docs/modules
+          message: "[Actions Bot] docs: auto-generated docs"
 
-  check-links-in-adoc-files:
+  validate-links:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: bash-script-docs
+    needs: generate-docs
 
     steps:
       - name: Checkout code
@@ -101,7 +66,7 @@ jobs:
 
   on-failure:
     runs-on: ubuntu-latest
-    needs: ['README', 'update-antora-yml', 'bash-script-docs', 'check-links-in-adoc-files']
+    needs: ['generate-docs', 'validate-links']
     if: failure()
 
     steps:
