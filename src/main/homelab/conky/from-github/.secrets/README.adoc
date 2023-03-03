@@ -1,0 +1,5 @@
+= Secrets
+
+Expected files:
+
+. gh.token -> Github Personal Access Token with read permissions only
