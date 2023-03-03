@@ -44,13 +44,10 @@ conky.config = {
 };
 
 conky.text = [[
-${template0}${color #9f907d}GITHUB PULL REQUESTS (only open) ${color slate grey}${hr 2}${font}
-${template1}Hostname ${alignr}$nodename
+${template0}${color #9f907d}GITHUB PROJECTS ${color slate grey}${hr 2}${font}
+${template1}Hostname ${alignr}Project | Open Issues | Open PRs
 
-${template0}${color #9f907d}GITHUB ACTIONS (only failed) ${color slate grey}${hr 2}${font}
-${template1}Hostname ${alignr}$nodename
-
-${template0}${color #9f907d}GITHUB ISSUES / PROJECTS ${color slate grey}${hr 2}${font}
+${template0}${color #9f907d}GITHUB ACTIONS WORKFLOWS${color slate grey}${hr 2}${font}
 ${template1}Hostname ${alignr}$nodename
 
 ]];
