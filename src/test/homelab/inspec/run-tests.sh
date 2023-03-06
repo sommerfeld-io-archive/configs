@@ -2,16 +2,18 @@
 # @file run-tests.sh
 # @brief Run Inspec tests against several machines.
 #
-# @description This script run link:https://docs.chef.io/inspec[Chef Inspec] tests against several
-# machines.
+# @description This script runs link:https://docs.chef.io/inspec[Chef Inspec] test profiles against
+# several machines.
 #
-# Chef InSpec is an open-source framework for testing and auditing your applications and infrastructure.
-# Chef InSpec works by comparing the actual state of your system with the desired state that you express
-# in easy-to-read and easy-to-write Chef InSpec code. Chef InSpec detects violations and displays findings
-# in the form of a report, but puts you in control of remediation.
+# Chef InSpec is an open-source framework for testing and auditing your applications and
+# infrastructure. Chef InSpec works by comparing the actual state of your system with the desired
+# state that you express in easy-to-read and easy-to-write Chef InSpec code. Chef InSpec detects
+# violations and displays findings in the form of a report, but puts you in control of remediation.
 #
-# Inspec runs inside a Docker container with a non-root user. The target machines are parsed from the
-# Ansible inventory file (``src/main/homelab/ansible/hosts.yml``).
+# Inspec runs inside a Docker container with a non-root user. The profiles are auto-detected from
+# the filesystem). Profiles must be stored in a dedicated folder. The folder-name must mach the
+# group-name from the Ansible host inventory. The target machines are parsed from the Ansible
+# inventory file (``src/main/homelab/ansible/hosts.yml``).
 #
 # IMPORTANT: This script is **not** intended for use "from anywhere". It is designed to work on my local
 # workstations and depend on (1) all nodes up-and running, (2) network connectivity to the respective
@@ -36,15 +38,6 @@ set -o nounset
 
 
 readonly ANSIBLE_INVENTORY="src/main/homelab/ansible/hosts.yml"
-readonly ANSIBLE_GROUP="ubuntu_desktop"
-
-# Run all inspec profiles from this list.
-# Profiles must be stored in a dedicated folder matching this name.
-# The foldername must mach the group-name from the Ansible host inventory.
-readonly INSPEC_PROFILES=(
-  "$ANSIBLE_GROUP"
-)
-
 
 
 # @description Wrapper function to encapsulate ``inspec`` in a docker container using the
@@ -88,7 +81,9 @@ echo -e "$LOG_INFO =============================================================
 
 
 echo -e "$LOG_INFO Validate inspec profiles"
-for profile in "${INSPEC_PROFILES[@]}"; do
+for p in */ ; do
+  profile=${p::-1}
+
   echo -e "$LOG_INFO Validate inspec profile $P$profile$D"
   inspec check "$profile"
 done
@@ -97,7 +92,9 @@ done
 # Iterate all profiles and run inspec tests. For each profile a second iteration (see below)
 # reads the hostnames from the Ansible inventory and executes the tests against the respective
 # machine.
-for profile in "${INSPEC_PROFILES[@]}"; do
+for p in */ ; do
+  profile=${p::-1}
+
   (
     echo -e "$LOG_INFO Read hostnames for group '$profile' from Ansible inventory"
     cd ../../../../ || exit
