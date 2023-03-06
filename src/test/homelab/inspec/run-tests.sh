@@ -38,7 +38,9 @@ set -o nounset
 readonly ANSIBLE_INVENTORY="src/main/homelab/ansible/hosts.yml"
 readonly ANSIBLE_GROUP="ubuntu_desktop"
 
-# Run all inspec profiles from this list
+# Run all inspec profiles from this list.
+# Profiles must be stored in a dedicated folder matching this name.
+# The foldername must mach the group-name from the Ansible host inventory.
 readonly INSPEC_PROFILES=(
   "$ANSIBLE_GROUP"
 )
@@ -85,43 +87,37 @@ inspec --version
 echo -e "$LOG_INFO ========================================================================="
 
 
-# echo -e "$LOG_INFO Create new inspec profile $P$ANSIBLE_GROUP$D"
-# inspec init profile "$ANSIBLE_GROUP"2
-
-
 echo -e "$LOG_INFO Validate inspec profiles"
 for profile in "${INSPEC_PROFILES[@]}"; do
   echo -e "$LOG_INFO Validate inspec profile $P$profile$D"
   inspec check "$profile"
 done
 
-# Only run inspec tests for machines from $ANSIBLE_GROUP
-# The following lines do not support additional groups because the list of hosts in $HOST
-# is limited to the machines from $ANSIBLE_GROUP.
-# todo: support raspi groups with its own test specification in its own folder as well
 
-(
-  echo -e "$LOG_INFO Read hostnames for group '$ANSIBLE_GROUP' from Ansible inventory"
-  cd ../../../../ || exit
-
-  HOSTS=$(docker run --rm \
-    --volume "$(pwd):$(pwd)" \
-    --workdir "$(pwd)" \
-    mikefarah/yq:latest eval ".all.children.$ANSIBLE_GROUP.hosts" "$ANSIBLE_INVENTORY")
-  readonly HOSTS
-
+# Iterate all profiles and run inspec tests. For each profile a second iteration (see below)
+# reads the hostnames from the Ansible inventory and executes the tests against the respective
+# machine.
+for profile in "${INSPEC_PROFILES[@]}"; do
   (
-    echo -e "$LOG_INFO Run Inspec profiles for all node from group '$ANSIBLE_GROUP'"
-    cd src/test/homelab/inspec || exit
+    echo -e "$LOG_INFO Read hostnames for group '$profile' from Ansible inventory"
+    cd ../../../../ || exit
 
-    for h in $HOSTS; do
-      host=${h%":"}
+    HOSTS=$(docker run --rm \
+      --volume "$(pwd):$(pwd)" \
+      --workdir "$(pwd)" \
+      mikefarah/yq:latest eval ".all.children.$profile.hosts" "$ANSIBLE_INVENTORY")
+    readonly HOSTS
 
-      echo -e "$LOG_INFO Run inspec profile on host $P$host$D"
-      for profile in "${INSPEC_PROFILES[@]}"; do
+    (
+      echo -e "$LOG_INFO Run Inspec profiles for all node from group '$profile'"
+      cd src/test/homelab/inspec || exit
+
+      for h in $HOSTS; do
+        host=${h%":"}
+
         echo -e "$LOG_INFO Run inspec profile $P$profile$D on host $P$host$D"
         inspec exec "$profile" --target=ssh://"$USER@$host" --key-files="$HOME/.ssh/id_rsa"
       done
-    done
+    )
   )
-)
+done
