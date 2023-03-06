@@ -36,7 +36,7 @@ set -o nounset
 
 
 readonly ANSIBLE_INVENTORY="src/main/homelab/ansible/hosts.yml"
-readonly ANSIBLE_GROUP="x86_ubuntu_desktop"
+readonly ANSIBLE_GROUP="ubuntu_desktop"
 
 # Run all inspec profiles from this list
 readonly INSPEC_PROFILES=(
@@ -94,6 +94,11 @@ for profile in "${INSPEC_PROFILES[@]}"; do
   echo -e "$LOG_INFO Validate inspec profile $P$profile$D"
   inspec check "$profile"
 done
+
+# Only run inspec tests for machines from $ANSIBLE_GROUP
+# The following lines do not support additional groups because the list of hosts in $HOST
+# is limited to the machines from $ANSIBLE_GROUP.
+# todo: support raspi groups with its own test specification in its own folder as well
 
 (
   echo -e "$LOG_INFO Read hostnames for group '$ANSIBLE_GROUP' from Ansible inventory"

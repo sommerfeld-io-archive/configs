@@ -1,18 +1,19 @@
 ---
-- name: Setup for group x86_ubuntu_desktop
-  hosts: x86_ubuntu_desktop
+- name: Setup for group ubuntu_desktop
+  hosts: ubuntu_desktop
   gather_facts: true
   become: true
   vars_files:
     - ../vars/global.yml
   tasks:
 
-    - ansible.builtin.import_tasks: ../tasks/config-bash-prompt.yml
-    - ansible.builtin.import_tasks: ../tasks/config-bash-aliases.yml
+    - ansible.builtin.import_tasks: ../tasks/common-config-bash-prompt.yml
+    - ansible.builtin.import_tasks: ../tasks/common-config-bash-aliases.yml
+    - ansible.builtin.import_tasks: ../tasks/common-config-create-directories.yml
+    - ansible.builtin.import_tasks: ../tasks/common-install-packages.yml
+    - ansible.builtin.import_tasks: ../tasks/common-config-git.yml
+
     - ansible.builtin.import_tasks: ../tasks/config-bash-aliases-x86-ubuntu-desktop.yml
-    - ansible.builtin.import_tasks: ../tasks/config-create-directories.yml
-    - ansible.builtin.import_tasks: ../tasks/install-basic-packages.yml
-    - ansible.builtin.import_tasks: ../tasks/config-git.yml
 
     - name: Install -> Software packages
       apt:
@@ -61,6 +62,40 @@
           - totem-video-thumbnailer
         state: absent
 
+    - name: Config -> Create ssh keypair
+      openssh_keypair:
+        path: "/home/{{ ansible_user }}/.ssh/id_rsa"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        type: rsa
+        size: 4096
+        state: present
+        force: false
+
+    - name: Docker Setup -> Add GPG apt key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Docker Setup -> Add apt repository
+      apt_repository:
+        repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    - name: Docker Setup -> Install docker-ce and docker-compose
+      apt:
+        name:
+          - docker-ce
+          - docker-compose
+        state: latest
+        update_cache: true
+
+    - name: Docker Setup -> Add default user to docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: true
+
     - name: Sublime Setup -> Add GPG apt key
       apt_key:
         url: https://download.sublimetext.com/sublimehq-pub.gpg
@@ -71,7 +106,7 @@
         repo: deb https://download.sublimetext.com apt/stable/
         state: present
 
-    - name: Sublime Setup -> Install docker-ce and docker-compose
+    - name: Sublime Setup -> Install sublime
       apt:
         name:
           - sublime-text
@@ -91,16 +126,17 @@
         classic: true
 
     - ansible.builtin.import_tasks: ../tasks/install-virtualization.yml
-    - ansible.builtin.import_tasks: ../tasks/install-docker-wrapper-scripts.yml
-    - ansible.builtin.import_tasks: ../tasks/install-jarvis.yml
+    - ansible.builtin.import_tasks: ../tasks/common-install-docker-wrapper-scripts.yml
+    - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
 
-- name: Setup for group x86_ubuntu_desktop (non-root)
-  hosts: x86_ubuntu_desktop
+- name: Setup for group ubuntu_desktop (non-root)
+  hosts: ubuntu_desktop
   gather_facts: true
   become: false
   vars_files:
     - ../vars/global.yml
   tasks:
+
     - ansible.builtin.import_tasks: ../tasks/config-cron-jobs.yml
 
     - name: Install -> VSCode Extensions
@@ -136,61 +172,3 @@
     #  |    In case of failure, all other tasks for the affected node are skipped    |
     #  +-----------------------------------------------------------------------------+
     - ansible.builtin.import_tasks: ../tasks/config-git-clone-repos.yml
-
-- name: Setup for RasPi nodes
-  hosts: raspi
-  gather_facts: true
-  become: true
-  vars_files:
-    - ../vars/global.yml
-  tasks:
-
-    - ansible.builtin.import_tasks: ../tasks/config-bash-prompt.yml
-    - ansible.builtin.import_tasks: ../tasks/config-bash-aliases.yml
-    - ansible.builtin.import_tasks: ../tasks/config-create-directories.yml
-    - ansible.builtin.import_tasks: ../tasks/install-basic-packages.yml
-    - ansible.builtin.import_tasks: ../tasks/config-git.yml
-
-    - ansible.builtin.import_tasks: ../tasks/install-docker-wrapper-scripts.yml
-
-- name: Setup for caprica
-  hosts: caprica.fritz.box
-  gather_facts: true
-  become: true
-  vars_files:
-    - ../vars/global.yml
-  tasks:
-
-    - name: Config -> Create ssh keypair
-      openssh_keypair:
-        path: "/home/{{ ansible_user }}/.ssh/id_rsa"
-        owner: "{{ ansible_user }}"
-        group: "{{ ansible_user }}"
-        type: rsa
-        size: 4096
-        state: present
-        force: false
-
-    - name: Docker Setup -> Add GPG apt key
-      apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
-
-    - name: Docker Setup -> Add apt repository
-      apt_repository:
-        repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-        state: present
-
-    - name: Docker Setup -> Install docker-ce and docker-compose
-      apt:
-        name:
-          - docker-ce
-          - docker-compose
-        state: latest
-        update_cache: true
-
-    - name: Docker Setup -> Add default user to docker group
-      user:
-        name: "{{ ansible_user }}"
-        groups: docker
-        append: true

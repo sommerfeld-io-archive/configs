@@ -1,6 +1,6 @@
 ---
-- name: Setup for group x86_ubuntu_desktop
-  hosts: x86_ubuntu_desktop
+- name: Setup for group ubuntu_desktop
+  hosts: ubuntu_desktop
   gather_facts: true
   become: true
   tasks:

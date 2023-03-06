@@ -1,0 +1,51 @@
+---
+- name: Setup for RasPi nodes
+  hosts: raspi
+  gather_facts: true
+  become: true
+  vars_files:
+    - ../vars/global.yml
+  tasks:
+
+    - ansible.builtin.import_tasks: ../tasks/common-config-bash-prompt.yml
+    - ansible.builtin.import_tasks: ../tasks/common-config-bash-aliases.yml
+    - ansible.builtin.import_tasks: ../tasks/common-config-create-directories.yml
+    - ansible.builtin.import_tasks: ../tasks/common-install-packages.yml
+    - ansible.builtin.import_tasks: ../tasks/common-config-git.yml
+
+    - ansible.builtin.import_tasks: ../tasks/common-install-docker-wrapper-scripts.yml
+    - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
+
+    - name: Config -> Create ssh keypair
+      openssh_keypair:
+        path: "/home/{{ ansible_user }}/.ssh/id_rsa"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        type: rsa
+        size: 4096
+        state: present
+        force: false
+
+    - name: Docker Setup -> Add GPG apt key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Docker Setup -> Add apt repository
+      apt_repository:
+        repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    - name: Docker Setup -> Install docker-ce and docker-compose
+      apt:
+        name:
+          - docker-ce
+          - docker-compose
+        state: latest
+        update_cache: true
+
+    - name: Docker Setup -> Add default user to docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: true
