@@ -8,7 +8,7 @@ services:
     container_name: masterblender-de
     restart: unless-stopped
     ports:
-      - 8801:80
+      - 8001:80
 
   numero-uno-de:
     image: sommerfeldio/website-numero-uno-de:latest
@@ -16,7 +16,7 @@ services:
     container_name: numero-uno-de
     restart: unless-stopped
     ports:
-      - 8802:80
+      - 8002:80
 
   tafelboy-de:
     image: sommerfeldio/website-tafelboy-de:latest
@@ -24,4 +24,4 @@ services:
     container_name: tafelboy-de
     restart: unless-stopped
     ports:
-      - 8803:80
+      - 8003:80
