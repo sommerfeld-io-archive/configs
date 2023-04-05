@@ -35,7 +35,7 @@ set -o nounset
 readonly IMAGE="node"
 readonly TAG="19-bullseye"
 
-# $0 = /usr/bin/node or /ust/bin/npm
+# $0 = /usr/bin/node or /usr/bin/npm
 # $@ = arguments
 cmd="${0##*/}"
 
