@@ -1,8 +1,18 @@
 ---
+- name: Config -> Create directories for docker wrappers
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rwx,g=rx,o=rx
+  with_items:
+    - /opt/docker-wrappers
+
 - name: Config -> Copy docker wrapper scipts configuration
   ansible.builtin.copy:
     src: "../assets/scripts/docker/wrappers/{{ item }}.sh"
-    dest: "/home/{{ ansible_user }}/work/scripts/docker-wrappers/{{ item }}.sh"
+    dest: "/opt/docker-wrappers/{{ item }}.sh"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: u=rwx,g=rx,o=rx
@@ -18,7 +28,7 @@
 
 - name: Config -> Create symlinks to docker wrapper scipts in /usr/bin
   ansible.builtin.file:
-    src: "/home/{{ ansible_user }}/work/scripts/docker-wrappers/{{ item }}.sh"
+    src: "/opt/docker-wrappers/{{ item }}.sh"
     dest: "/usr/bin/{{ item }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
@@ -34,7 +44,7 @@
 
 - name: Config -> Create symlinks to docker wrapper scipt 'node-npm.sh' in /usr/bin
   ansible.builtin.file:
-    src: "/home/{{ ansible_user }}/work/scripts/docker-wrappers/node-npm.sh"
+    src: "/opt/docker-wrappers/node-npm.sh"
     dest: "/usr/bin/{{ item }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
