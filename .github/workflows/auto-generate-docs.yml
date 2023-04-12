@@ -3,7 +3,6 @@ name: Auto-generate docs
 
 on:
   push:
-    # branches: [ "main", "feat/*", "release/*" ]
     branches-ignore:
       - dependabot/**
 
