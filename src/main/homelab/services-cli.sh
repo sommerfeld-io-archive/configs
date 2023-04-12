@@ -26,45 +26,28 @@ STACK=""
 
 
 # @description Utility function to startup docker-compose services.
-function startup() {
+function docker_startup() {
   echo -e "$LOG_INFO Startup stack $P$STACK$D on $P$HOSTNAME$D"
   docker-compose up -d
 }
 
 
 # @description Utility function to shutdown docker-compose services.
-function shutdown() {
+function docker_shutdown() {
   echo -e "$LOG_INFO Shutdown stack $P$STACK$D on $P$HOSTNAME$D"
   docker-compose down -v --rmi all
 }
 
 
 # @description Utility function to show docker-compose logs.
-function logs() {
+function docker_logs() {
   echo -e "$LOG_INFO Show logs for stack $P$STACK$D on $P$HOSTNAME$D"
   docker-compose logs -f
 }
 
 
-docker run --rm mwendler/figlet:latest 'Services CLI'
-(
-  cd services/docker || exit
-
-  echo -e "$LOG_INFO Deploy docker services for machine $P$HOSTNAME$D"
-  echo -e "$LOG_INFO ========== System Info =================================================="
-  echo "        Hostname: $HOSTNAME"
-  hostnamectl
-  echo "          Kernel: $(uname -v)"
-  echo -e "$LOG_INFO ========================================================================="
-
-
-  echo -e "$LOG_INFO Select the docker-compose stack"
-  select s in */; do
-    STACK="${s::-1}"
-    break
-  done
-
-
+# @description Utility function to provide the select menu for docker services.
+function docker_menu() {
   (
     cd "$STACK" || exit
 
@@ -73,20 +56,66 @@ docker run --rm mwendler/figlet:latest 'Services CLI'
 
       case "$s" in
         "$OPTION_START" )
-          startup
+          docker_startup
           break;;
         "$OPTION_STOP" )
-          shutdown
+          docker_shutdown
           break;;
         "$OPTION_RESTART" )
-          shutdown
-          startup
+          docker_shutdown
+          docker_startup
           break;;
         "$OPTION_LOGS" )
-          logs
+          docker_logs
           break;;
       esac
 
     done
   )
+}
+
+
+# @description Utility function to provide the select menu for terraform services.
+function terraform_menu() {
+  pwd
+}
+
+# @description Print information about the current system (= the host which is running this script).
+function sysinfo() {
+  grey='\033[1;30m'
+
+  echo -e "$LOG_INFO Deploy docker services for machine $P$HOSTNAME$D"
+  echo -e "$LOG_INFO ========== System Info ==================================================$grey"
+  echo "        Hostname: $HOSTNAME"
+  hostnamectl
+  echo "          Kernel: $(uname -v)"
+  echo -e "$D$LOG_INFO ========================================================================="
+}
+
+
+docker run --rm mwendler/figlet:latest 'Services CLI'
+sysinfo
+(
+  cd services || exit
+  
+  echo -e "$LOG_INFO Select the type of service"
+  select type in */; do
+    echo "$type"
+
+    (
+      cd "$type" || exit
+      echo -e "$LOG_INFO Select the services stack"
+      select s in */; do
+        STACK="${s::-1}"
+        break
+      done
+
+      case $type in
+        *"docker"*) docker_menu ;;
+        *"terraform"*) terraform_menu ;;
+      esac
+    )
+
+    break
+  done
 )
