@@ -48,7 +48,7 @@ function logs() {
 
 docker run --rm mwendler/figlet:latest 'Services CLI'
 (
-  cd services || exit
+  cd services/docker || exit
 
   echo -e "$LOG_INFO Deploy docker services for machine $P$HOSTNAME$D"
   echo -e "$LOG_INFO ========== System Info =================================================="
