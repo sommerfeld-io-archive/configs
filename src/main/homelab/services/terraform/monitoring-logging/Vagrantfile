@@ -1,0 +1,37 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+IMAGE_NAME = "ubuntu/kinetic64" # = 20.10
+NODE_NAME_PREFIX="monlog-"
+N = 3 # number of nodes
+
+Vagrant.configure("2") do |config|
+
+    (1..N).each do |i|
+        config.vm.define "#{NODE_NAME_PREFIX}#{i}" do |node|
+            node.vm.box = IMAGE_NAME
+            node.vm.network "private_network", ip: "192.168.56.#{i + 10}"
+            node.vm.hostname = "#{NODE_NAME_PREFIX}#{i}"
+
+            node.vm.provider "virtualbox" do |v|
+                v.memory = 2048
+                v.cpus = 1
+                v.name = "#{NODE_NAME_PREFIX}#{i}"
+                v.customize ["modifyvm", :id, "--groups", "/monitoring-logging"]
+            end
+            
+            # Only execute once when all nodes are up and ready.
+            # if i == N
+            #     node.vm.provision :ansible do |ansible|
+            #         # Disable default limit to connect to all the machines
+            #         ansible.limit = "all"
+            #         ansible.playbook = "../../../ansible/playbooks/raspi.yml"
+            #         ansible.extra_vars = {
+            #             node_ip: "192.168.50.#{i + 10}",
+            #         }
+            #     end
+            # end
+        end
+    end
+
+end
