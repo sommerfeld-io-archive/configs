@@ -1,7 +1,7 @@
 ---
 name: config-docs
 title: Configuration Docs
-version: main
+version: promehteus-grafana-setup
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
