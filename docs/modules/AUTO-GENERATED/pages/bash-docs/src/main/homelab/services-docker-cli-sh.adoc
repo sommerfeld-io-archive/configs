@@ -1,4 +1,4 @@
-= services-cli.sh
+= services-docker-cli.sh
 
 // +-----------------------------------------------+
 // |                                               |
@@ -15,8 +15,8 @@ Command line interface to control docker-compose services.
 == Overview
 
 This script starts and stops docker-compose services on the respective machine.
-The script auto-detects the the services from the filesystem provides a select menu to choose
-a stack.
+The script auto-detects the the services from the filesystem and provides a select menu to
+choose a stack.
 
 === Script Arguments
 
