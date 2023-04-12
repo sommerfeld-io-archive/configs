@@ -289,7 +289,7 @@ function initialize() {
 
 # @description Use link:https://github.com/terraform-linters/tflint[terraform-linters/tflint] linter
 # (or link:https://github.com/terraform-linters/tflint-bundle[terraform-linters/tflint-bundle] to be
-# precice) to check terraform config .
+# precice) to check terraform config.
 #
 # @example
 #    lint
