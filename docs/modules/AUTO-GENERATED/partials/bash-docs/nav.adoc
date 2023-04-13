@@ -10,7 +10,6 @@
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/hadolint-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/hadolint.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/mvn-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/mvn.sh]`
-* `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/docker/wrappers/ansible-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/ansible.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible/assets/scripts/cron/cleanup-filesystem-sh.adoc[src/main/homelab/ansible/assets/scripts/cron/cleanup-filesystem.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/bootstrap/install-basics-sh.adoc[src/main/homelab/bootstrap/install-basics.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/bootstrap/ssh-server-sh.adoc[src/main/homelab/bootstrap/ssh-server.sh]`
