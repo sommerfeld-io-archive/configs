@@ -19,9 +19,13 @@ set -o nounset
 grey='\033[1;30m'
 
 echo -e "$LOG_INFO Deploy docker services for machine $P$HOSTNAME$D"
-echo -e "$LOG_INFO ========== System Info ==================================================$grey"
+echo -e "$LOG_INFO $grey========== System Info =================================================="
 echo "        Hostname: $HOSTNAME"
 hostnamectl
 echo "          Kernel: $(uname -v)"
-echo " Ansible version: ..."
-echo -e "$D$LOG_INFO ========================================================================="
+echo -e "$D$LOG_INFO $grey========================================================================="
+echo " Ansible version: $(ansible --version)"
+echo -e "$D$LOG_INFO $grey========================================================================="
+echo "  Docker version: $(docker --version)"
+echo " Compose version: $(docker-compose --version)"
+echo -e "$D$LOG_INFO $grey=========================================================================$D"

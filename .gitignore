@@ -2,7 +2,7 @@
 target
 node_modules
 .target
-.vagrant
+.vagrant*
 *.log
 *.lock
 yamllint-*

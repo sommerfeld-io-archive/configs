@@ -22,6 +22,9 @@ readonly OPTION_PLAN="plan"
 readonly OPTION_APPLY="apply"
 readonly OPTION_DESTROY="destroy"
 
+readonly TF_PLAN_FILE="tfplan"
+readonly VAGRANT_SSH_CONFIG=".vagrant-ssh.config"
+
 STACK=""
 
 
@@ -56,21 +59,34 @@ function terraform() {
 # @description Utility function to initialize terraform using ``terraform init``.
 function init() {
   echo -e "$LOG_INFO Run $P$OPTION_INIT$D for stack $P$STACK$D"
+
   vagrant up
+  terraform init
+  vagrant ssh-config > "$VAGRANT_SSH_CONFIG"
 }
 
 
 # @description Utility function to run ``terraform plan``.
 function plan() {
   echo -e "$LOG_INFO Run $P$OPTION_PLAN$D for stack $P$STACK$D"
-  terraform --version
+  
+  terraform validate
+  terraform fmt -recursive
+
+  docker run --rm \
+    --volume "$(pwd):/data" \
+    ghcr.io/terraform-linters/tflint-bundle:latest
+
+  terraform plan -out="$TF_PLAN_FILE"
 }
 
 
 # @description Utility function to run ``terraform apply``.
 function apply() {
   echo -e "$LOG_INFO Run $P$OPTION_APPLY$D for stack $P$STACK$D"
-  terraform --version
+
+  terraform apply -auto-approve "$TF_PLAN_FILE"
+  rm "$TF_PLAN_FILE"
 }
 
 
@@ -80,9 +96,15 @@ function apply() {
 # not used! All resources are destroyed right away!
 function destroy() {
   echo -e "$LOG_INFO Run $P$OPTION_DESTROY$D for stack $P$STACK$D"
+
   vagrant halt
   vagrant destroy -f
+
   rm -rf .vagrant
+  rm -f "$VAGRANT_SSH_CONFIG"
+  rm -rf .terraform
+  rm -f .terraform.lock*
+  rm -f "$TF_PLAN_FILE"*
 }
 
 
