@@ -92,20 +92,17 @@ bash .lib/system-info.sh
 (
   cd services/terraform || exit
 
-
   echo -e "$LOG_INFO Select the terraform configuration"
   select s in */; do
     STACK="${s::-1}"
     break
   done
 
-
   (
     cd "$STACK" || exit
 
     echo -e "$LOG_INFO Select the action"
     select s in "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY" "$OPTION_DESTROY"; do
-
       case "$s" in
         "$OPTION_INIT" )
           init
@@ -120,7 +117,6 @@ bash .lib/system-info.sh
           destroy
           break;;
       esac
-
     done
   )
 )

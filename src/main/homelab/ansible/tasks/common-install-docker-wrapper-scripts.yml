@@ -17,7 +17,6 @@
     group: "{{ ansible_user }}"
     mode: u=rwx,g=rx,o=rx
   with_items:
-    - ansible
     - groovy
     - hadolint
     - hugo
@@ -35,7 +34,6 @@
     group: "{{ ansible_user }}"
     state: link
   with_items:
-    - ansible
     - groovy
     - hadolint
     - hugo

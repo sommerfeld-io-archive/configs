@@ -58,13 +58,11 @@ bash .lib/system-info.sh
     break
   done
 
-
   (
     cd "$STACK" || exit
 
     echo -e "$LOG_INFO Select the action"
     select s in "$OPTION_START" "$OPTION_STOP" "$OPTION_RESTART" "$OPTION_LOGS"; do
-
       case "$s" in
         "$OPTION_START" )
           startup
@@ -80,7 +78,6 @@ bash .lib/system-info.sh
           logs
           break;;
       esac
-
     done
   )
 )
