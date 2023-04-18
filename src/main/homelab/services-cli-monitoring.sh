@@ -38,7 +38,7 @@ readonly OPTION_RESTART="restart"
 
 
 readonly BASE_PATH="services/docker"
-readonly STACK_MONITORING="$BASE_PATH/monitoring"
+readonly STACK_MONITORING="$BASE_PATH/monitoring.fritz.box"
 readonly STACK_OPS="$BASE_PATH/ops"
 
 
