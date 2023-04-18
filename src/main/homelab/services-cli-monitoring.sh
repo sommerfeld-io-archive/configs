@@ -14,10 +14,10 @@
 #
 # === Services
 #
-# | Container           | Port | URL                                     |
-# | ------------------- | ---- | --------------------------------------- |
-# | ``prom/prometheus`` | 9090 | http://monitoring.fritz.box:9090 (prod) |
-# | ``grafana/grafana`` | 3000 | http://monitoring.fritz.box:3000 (prod) |
+# | Container           | URL                                     |
+# | ------------------- | --------------------------------------- |
+# | ``prom/prometheus`` | http://monitoring.fritz.box:9090 (prod) |
+# | ``grafana/grafana`` | http://monitoring.fritz.box:3000 (prod) |
 #
 # === Script Arguments
 #
