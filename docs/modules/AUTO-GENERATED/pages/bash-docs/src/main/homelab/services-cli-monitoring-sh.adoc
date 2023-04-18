@@ -22,6 +22,8 @@ The purpose of this script is to provide a convenient, consistent and repoducibl
 the Docker containers for the monitoring stack. With this script, you can quickly set up the
 monitoring stack on any given machine for development and production purposes.
 
+=== Setup Overview
+
 All clients (including all RasPi nodes) report their metrics to `prometheus`. This allows for
 centralized collection of metrics from all clients, which can then be analyzed and visualized
 using a web-based UI provided by Grafana.
