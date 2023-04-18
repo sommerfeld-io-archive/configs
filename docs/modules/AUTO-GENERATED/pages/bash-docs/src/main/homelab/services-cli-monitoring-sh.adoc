@@ -27,14 +27,12 @@ include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
 === Services
 
 |===
-| Container | Port | URL
+| Container | URL
 
 | `prom/prometheus`
-| 9090
 | http://monitoring.fritz.box:9090 (prod)
 
 | `grafana/grafana`
-| 3000
 | http://monitoring.fritz.box:3000 (prod)
 |===
 
