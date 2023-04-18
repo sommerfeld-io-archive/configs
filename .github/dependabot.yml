@@ -10,6 +10,6 @@ updates:
     schedule:
       interval: weekly
   - package-ecosystem: terraform
-    directory: src/main/homelab/services/terraform/monitoring-logging
+    directory: src/main/homelab/services/terraform/local-website
     schedule:
       interval: weekly

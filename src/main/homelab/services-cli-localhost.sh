@@ -1,8 +1,8 @@
 #!/bin/bash
-# @file services-docker-cli.sh
-# @brief Command line interface to control docker-compose services.
+# @file services-cli-localhost
+# @brief Command line interface to control docker-compose services on your local machine.
 #
-# @description This script starts and stops docker-compose services on the respective machine.
+# @description This script starts and stops docker-compose services on your local machine.
 # The script auto-detects the the services from the filesystem and provides a select menu to
 # choose a stack.
 #
@@ -46,7 +46,7 @@ function logs() {
 }
 
 
-docker run --rm mwendler/figlet:latest 'Docker'
+docker run --rm mwendler/figlet:latest 'Docker Localhost'
 bash .lib/system-info.sh
 
 (
