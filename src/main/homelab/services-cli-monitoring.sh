@@ -7,7 +7,14 @@
 # environment). The script provides a select menu to choose between local testing and production
 # deployments
 #
-# INCLUDE PLANTUML DIAGRAM HERE
+# [plantuml, rendered-plantuml-image, svg]
+# ----
+# include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
+# ----
+#
+# | Container | URL          | Port | Protocol |
+# | --------- | ------------ | ---- | -------- |
+# | ``...``   | ... (prod)   | ...  | http     |
 #
 # === Script Arguments
 #

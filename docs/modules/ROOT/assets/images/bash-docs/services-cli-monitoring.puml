@@ -1,0 +1,32 @@
+@startuml monitoring
+
+skinparam linetype ortho
+skinparam monochrome false
+skinparam componentStyle uml2
+skinparam backgroundColor #fff
+skinparam ArrowColor black
+skinparam NoteBorderColor Grey
+skinparam NoteBackgroundColor #fdfdfd
+skinparam defaultTextAlignment center
+skinparam activity {
+FontName Ubuntu
+}
+
+rectangle node_prometheus as "prometheus.fritz.box" <<RasPi>> {
+  component grafana
+  component prometheus
+}
+
+rectangle node_auditor as "auditor.fritz.box" <<RasPi>> {
+  component tmp_grafana as "grafana"
+  component tmp_prometheus as "prometheus"
+}
+note right of node_auditor: Temporary stack to check if the actual\nmonitoring stack in prometheus.fritz.box is stable\nand the RasPi node provides enough resources.
+
+collections clients
+note bottom of clients: kobol.fritz.box\ncaprica.fritz.box\nall RasPi nodes
+
+clients -left-> node_prometheus
+node_prometheus -down-> node_auditor
+
+@enduml
