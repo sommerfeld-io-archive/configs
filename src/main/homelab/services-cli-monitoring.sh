@@ -10,9 +10,12 @@
 # [plantuml, rendered-plantuml-image, svg]
 # include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
 #
-# | Container | URL          | Port | Protocol |
-# | --------- | ------------ | ---- | -------- |
-# | ``...``   | ... (prod)   | ...  | http     |
+# === Services
+#
+# | Container           | Port | URL                                     |
+# | ------------------- | ---- | --------------------------------------- |
+# | ``prom/prometheus`` | 9090 | http://monitoring.fritz.box:9090 (prod) |
+# | ``grafana/grafana`` | 3000 | http://monitoring.fritz.box:3000 (prod) |
 #
 # === Script Arguments
 #
@@ -25,11 +28,79 @@ set -o nounset
 # set -o xtrace
 
 
-# readonly OPTION_START="start"
-# readonly OPTION_STOP="stop"
-# readonly OPTION_RESTART="restart"
-# readonly OPTION_LOGS="logs"
+readonly OPTION_TEST="localhost"
+readonly OPTION_PROD="monitoring.fritz.box"
+HOST=""
 
-# STACK=""
-# MODE_TEST="localhost"
-# MODE_PROD="prometheus.fritz.box"
+readonly OPTION_START="start"
+readonly OPTION_STOP="stop"
+readonly OPTION_RESTART="restart"
+
+
+readonly BASE_PATH="services/docker"
+readonly STACK_MONITORING="$BASE_PATH/monitoring"
+readonly STACK_OPS="$BASE_PATH/ops"
+
+
+# @description Utility function to startup docker-compose services.
+function startup() {
+stack="$STACK_OPS"
+  (
+    cd "$stack" || exit
+    echo -e "$LOG_INFO Startup stack $P$stack$D on $P$HOST$D"
+    docker-compose up -d
+  )
+
+  stack="$STACK_MONITORING"
+  (
+    cd "$stack" || exit
+    echo -e "$LOG_INFO Startup stack $P$stack$D on $P$HOST$D"
+    docker-compose up -d
+  )
+}
+
+
+# @description Utility function to shutdown docker-compose services.
+function shutdown() {
+  stack="$STACK_MONITORING"
+  (
+    cd "$stack" || exit
+    echo -e "$LOG_INFO Shutdown stack $P$stack$D on $P$HOST$D"
+    docker-compose down -v --rmi all
+  )
+
+  stack="$STACK_OPS"
+  (
+    cd "$stack" || exit
+    echo -e "$LOG_INFO Shutdown stack $P$stack$D on $P$HOST$D"
+    docker-compose down -v --rmi all
+  )
+}
+
+
+docker run --rm mwendler/figlet:latest 'Docker Localhost'
+bash .lib/system-info.sh
+
+echo -e "$LOG_INFO Select the target host"
+select s in "$OPTION_TEST" "$OPTION_PROD"; do
+  HOST="$s"
+  break
+done
+
+echo -e "$LOG_INFO Select the action"
+select s in "$OPTION_START" "$OPTION_STOP" "$OPTION_RESTART"; do
+  case "$s" in
+    "$OPTION_START" )
+      startup
+      ;;
+    "$OPTION_STOP" )
+      shutdown
+      ;;
+    "$OPTION_RESTART" )
+      shutdown
+      startup
+      ;;
+  esac
+
+  break
+done
