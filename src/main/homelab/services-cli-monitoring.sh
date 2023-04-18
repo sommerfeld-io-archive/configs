@@ -8,7 +8,12 @@
 # deployments
 #
 # [plantuml, rendered-plantuml-image, svg]
+#
+# ----
+#
 # include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
+#
+# ----
 #
 # === Services
 #
