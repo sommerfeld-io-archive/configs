@@ -80,7 +80,7 @@ function shutdown() {
 }
 
 
-docker run --rm mwendler/figlet:latest 'Docker Localhost'
+docker run --rm mwendler/figlet:latest 'Monitoring'
 bash .lib/system-info.sh
 
 echo -e "$LOG_INFO Select the target host"
