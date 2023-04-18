@@ -22,15 +22,33 @@ deployments
 [plantuml, rendered-plantuml-image, svg]
 include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
 
-|===
-| Container | URL | Port | Protocol
+=== Services
 
-| `+...+`
-| ... (prod)
-| ...
-| http
+|===
+| Container | Port | URL
+
+| `prom/prometheus`
+| 9090
+| http://monitoring.fritz.box:9090 (prod)
+
+| `grafana/grafana`
+| 3000
+| http://monitoring.fritz.box:3000 (prod)
 |===
 
 === Script Arguments
 
 The script does not accept any parameters.
+
+== Index
+
+* <<_startup,startup>>
+* <<_shutdown,shutdown>>
+
+=== startup
+
+Utility function to startup docker-compose services.
+
+=== shutdown
+
+Utility function to shutdown docker-compose services.
