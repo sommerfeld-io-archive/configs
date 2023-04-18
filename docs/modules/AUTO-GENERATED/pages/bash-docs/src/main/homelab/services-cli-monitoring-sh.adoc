@@ -19,6 +19,13 @@ on your local machine (for testing purposes) or on the desired remote host (= th
 environment). The script provides a select menu to choose between local testing and production
 deployments
 
+[plantuml, rendered-plantuml-image, svg]
+....
+include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
+....
+
+The following services are accessible through their respective web ui.
+
 |===
 | Container | URL
 
@@ -28,11 +35,6 @@ deployments
 | `grafana/grafana`
 | http://monitoring.fritz.box:3000 (prod)
 |===
-
-[plantuml, rendered-plantuml-image, svg]
-....
-include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
-....
 
 === Script Arguments
 
