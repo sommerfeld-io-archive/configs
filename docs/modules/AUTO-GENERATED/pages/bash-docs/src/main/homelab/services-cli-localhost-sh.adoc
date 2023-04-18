@@ -1,4 +1,4 @@
-= services-docker-cli.sh
+= services-cli-localhost.sh
 
 // +-----------------------------------------------+
 // |                                               |
@@ -10,11 +10,11 @@
 // +-----------------------------------------------+
 
 
-Command line interface to control docker-compose services.
+Command line interface to control docker-compose services on your local machine.
 
 == Overview
 
-This script starts and stops docker-compose services on the respective machine.
+This script starts and stops docker-compose services on your local machine.
 The script auto-detects the the services from the filesystem and provides a select menu to
 choose a stack.
 
