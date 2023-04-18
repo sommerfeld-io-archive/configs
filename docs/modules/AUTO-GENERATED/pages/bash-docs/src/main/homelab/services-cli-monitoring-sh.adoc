@@ -19,7 +19,9 @@ on your local machine (for testing purposes) or on the desired remote host (= th
 environment). The script provides a select menu to choose between local testing and production
 deployments
 
-== [plantuml, rendered-plantuml-image, svg]
+[plantuml, rendered-plantuml-image, svg]
+
+'''
 
 include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
 ---
