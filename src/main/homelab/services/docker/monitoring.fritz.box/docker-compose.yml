@@ -1,9 +1,9 @@
 ---
 version: "3.3"
 services:
-  prometheus_server:
+  prometheus:
     image: prom/prometheus:v2.43.0
-    container_name: prometheus_server
+    container_name: prometheus
     restart: unless-stopped
     volumes:
       - ./assets/config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
@@ -23,7 +23,7 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_AUTH_ANONYMOUS_ENABLED=true
     depends_on:
-      - prometheus_server
+      - prometheus
     volumes:
       - ./assets/provisioning/grafana:/etc/grafana/provisioning:ro
       - grafana_data:/var/lib/grafana
