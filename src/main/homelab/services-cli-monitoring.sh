@@ -7,17 +7,15 @@
 # environment). The script provides a select menu to choose between local testing and production
 # deployments
 #
-# [plantuml, rendered-plantuml-image, svg]
-# ....
-# include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
-# ....
-#
-# === Services
-#
 # | Container           | URL                                     |
 # | ------------------- | --------------------------------------- |
 # | ``prom/prometheus`` | http://monitoring.fritz.box:9090 (prod) |
 # | ``grafana/grafana`` | http://monitoring.fritz.box:3000 (prod) |
+#
+# [plantuml, rendered-plantuml-image, svg]
+# ....
+# include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
+# ....
 #
 # === Script Arguments
 #
