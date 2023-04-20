@@ -12,7 +12,7 @@ resource "github_repository_file" "template_risk_technical_debt" {
   branch              = "main"
   commit_message      = "[Actions Bot] Template update"
   overwrite_on_create = true
-  file                = ".github/ISSUE_TEMPLATE/user-story.md"
+  file                = ".github/ISSUE_TEMPLATE/risk-technical-debt.md"
   content             = file("${path.module}/assets/templates/risk-technical-debt.md")
 }
 
