@@ -25,19 +25,5 @@ include::ROOT:partial$homelab/services/docker/ops.adoc[]
 include::ROOT:partial$homelab/services/docker/monitoring-fritz-box.adoc[]
 
 == Risks and Technical Debts
-Scale for Probability and Impact: Low, Medium and High
 
-[cols="1,3,5,1,1,5", options="header"]
-|===
-|# |Title |Description |Probability |Impact |Response
-// ---------- new line --------------------------------------------------------
-|{counter:usage}
-|Unstable setup / insufficient resources
-|Running Prometheus, Grafana, and Loki on a single Raspberry Pi node might carry the risk that the machine may become overwhelmed and experience unexpected and/or repeated crashes due to insufficient resources.
-
-A temporary supervisor node has been installed to monitor the stability of the primary monitoring node.
-|Medium
-|Medium
-|If unexpected or repeated crashes occur, the solution is to split Prometheus, Grafana, and Loki and move each service to a dedicated Raspberry Pi node. By dedicating separate Raspberry Pi nodes to each service, the load can be distributed more evenly, reducing the strain on each machine and improving overall system stability.
-// ---------- new line --------------------------------------------------------
-|===
+. https://github.com/sebastian-sommerfeld-io/configs/issues/98
