@@ -86,7 +86,7 @@ jobs:
         shell: bash
 
   update-repo:
-    name: Format *.tf files
+    name: Format and Docs
     runs-on: ubuntu-latest
     needs: apply-github-config
     steps:
@@ -99,13 +99,6 @@ jobs:
             ./apply-config.sh fmt
           )
         shell: bash
-      - name: Commit and push
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: sebastian
-          author_email: sebastian@sommerfeld.io
-          message: "[Actions Bot] refactor: formatted terraform files"
-          add: src/main/github
       - name: Copy help.adoc to Antora partial
         run: |
           TARGET_ADOC="docs/modules/ROOT/partials/GENERATED/github/config/help.adoc"
@@ -134,8 +127,7 @@ jobs:
         with:
           author_name: sebastian
           author_email: sebastian@sommerfeld.io
-          message: "[Actions Bot] docs: auto-generated terraform docs"
-          add: docs
+          message: "[Actions Bot] formatted terraform files and auto-generated docs"
 
   on-failure:
     runs-on: ubuntu-latest
