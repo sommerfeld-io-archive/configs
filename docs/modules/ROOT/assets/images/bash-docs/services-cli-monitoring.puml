@@ -17,16 +17,16 @@ rectangle monitoring as "monitoring.fritz.box" <<RasPi>> {
   component prometheus
 }
 
-rectangle auditor as "supervisor.fritz.box" <<RasPi>> {
+rectangle supervisor as "supervisor.fritz.box" <<RasPi>> {
   component tmp_grafana as "grafana"
   component tmp_prometheus as "prometheus"
 }
-note right of auditor: Temporary stack to check if the actual\nmonitoring stack in prometheus.fritz.box is stable\nand the RasPi node provides enough resources.
+note right of supervisor: Temporary stack to check if the actual\nmonitoring stack in prometheus.fritz.box is stable\nand the RasPi node provides enough resources.
 
 collections clients
 note bottom of clients: kobol.fritz.box\ncaprica.fritz.box\nall RasPi nodes
 
 clients -left-> monitoring
-monitoring -down-> auditor
+monitoring -down-> supervisor
 
 @enduml
