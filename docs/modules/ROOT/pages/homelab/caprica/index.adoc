@@ -2,6 +2,8 @@
 Sebastian Sommerfeld <sebastian@sommerfeld.io>
 :description: Installation guide for machine 'caprica'
 
+Caprica is my primary workstation for all my development tasks and daily to-dos. It runs link:https://ubuntu.com/download/desktop[Ubuntu Desktop]. I have set up Caprica to suit my requirements, installing all necessary tools and development environments. Caprica is heavily reliant on Docker to provide virtually every development tool that I use. By using Docker, I can easily install and manage various development tools without worrying about dependencies or compatibility issues. This allows me to work on multiple projects simultaneously, each with its own set of specific requirements, without having to worry about conflicts.
+
 == Install Ubuntu from bootable USB stick
 . Download Ubuntu from the link:https://ubuntu.com[Ubuntu website].
 . Create a bootable USB stick from the downloaded iso image with a tool like link:https://www.balena.io/etcher[Etcher] or the Startup Disk Creator (shipped with Ubuntu).
