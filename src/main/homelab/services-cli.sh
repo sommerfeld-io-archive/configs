@@ -89,7 +89,7 @@
 # ==== Stack: websites
 #
 # The ``websites`` Docker stack is a Docker Compose configuration for the websites
-# https://www.masterblender.de, https:// www.tafelbox.de and https://www.numero-uno.de. This Docker
+# https://www.masterblender.de, https://www.tafelbox.de and https://www.numero-uno.de. This Docker
 # Compose configuration is used to start these websites locally in Docker containers.
 #
 # === Script Arguments
