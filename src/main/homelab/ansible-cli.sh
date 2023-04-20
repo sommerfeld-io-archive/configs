@@ -36,6 +36,29 @@
 # system. The script assumes that the Docker engine is running, and the user has necessary
 # permissions to execute Docker commands.
 #
+# === Ansible Playbook
+#
+# ==== Ansible Playbook: desktops.yml
+#
+# This Ansible playbook is designed to configure basic settings, directory structure, and software
+# packages for Ubuntu desktop machines. The playbook also includes some tasks that are shared with
+# other playbooks to ensure a consistent setup among all machines.
+#
+# ==== Ansible Playbook: raspi.yml
+#
+# This Ansible playbook is designed to configure basic settings, directory structure, and software
+# packages for Raspberry Pi machines. The playbook also includes some tasks that are shared with
+# other playbooks to ensure a consistent setup among all machines but uses a reduced tasks set.
+#
+# ==== Ansible Playbook: steam.yml
+#
+# This Ansible playbook is designed to install Steam on Ubuntu desktop machines.
+#
+# ==== Ansible Playbook: update-upgrade.yml
+#
+# This Ansible playbook is designed to update all packages to their latest version and perform an
+# aptitude safe-upgrade on Ubuntu and RaspberryPi OS machines (both are Debian-based).
+#
 # === Script Arguments
 #
 # The script does not accept any parameters.

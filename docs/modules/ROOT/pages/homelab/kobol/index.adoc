@@ -13,7 +13,7 @@ Sebastian Sommerfeld <sebastian@sommerfeld.io>
 .. Add `~/work`, `~/tmp` and `~/virtualmachines` to favorites (in File Manager) and update file associations in "Settings > Applications > Sublime Text"
 . Run basic setup tasks using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/homelab/bootstrap/install-basics.sh | bash -`
 . Test connecting to `caprica` via `ssh sebastian@caprica.fritz.box` (with sebastian being the user created while installing the OS).
-. Install machine using the ansible configs from this repo.
+. Install machine using the ansible configs from this repo (`xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible-cli-sh.adoc[src/main/homelab/ansible-cli.sh]`).
 . Allow caprica to work with github. Use public key `id_rsa.pub`, NOT the pivate key!
 
 === Install SSH Server
