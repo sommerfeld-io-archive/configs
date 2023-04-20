@@ -38,23 +38,23 @@ permissions to execute Docker commands.
 
 === Docker Compose Stacks
 
-==== Stack: monitoring.fritz.box
+==== Docker Compose Stack: monitoring.fritz.box
 
 include::ROOT:partial$homelab/services/docker/monitoring-fritz-box.adoc[]
 
-==== Stack: supervisor.fritz.box
+==== Docker Compose Stack: supervisor.fritz.box
 
 include::ROOT:partial$homelab/services/docker/supervisor-fritz-box.adoc[]
 
-==== Stack: ops
+==== Docker Compose Stack: ops
 
 include::ROOT:partial$homelab/services/docker/ops.adoc[]
 
-==== Stack: sommerfeld-io
+==== Docker Compose Stack: sommerfeld-io
 
 include::ROOT:partial$homelab/services/docker/sommerfeld-io.adoc[]
 
-==== Stack: websites
+==== Docker Compose Stack: websites
 
 include::ROOT:partial$homelab/services/docker/websites.adoc[]
 
