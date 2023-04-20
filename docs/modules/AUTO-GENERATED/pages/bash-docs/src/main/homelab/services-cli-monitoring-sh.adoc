@@ -29,7 +29,7 @@ centralized collection of metrics from all clients, which can then be analyzed a
 using a web-based UI provided by Grafana.
 
 However, there is another Prometheus-Grafana stack that will only exist temporarily
-(`auditor.fritz.box`). This temporary stack will be set up to monitor the actual
+(`supervisor.fritz.box`). This temporary stack will be set up to monitor the actual
 Prometheus-Grafana setup (`monitoring.fritz.box`) to check if the host's resources are
 sufficient. This will help ensure that the monitoring stack is running efficiently and that
 there are no performance issues. Once the temporary stack has completed its monitoring task,

@@ -17,7 +17,7 @@ rectangle monitoring as "monitoring.fritz.box" <<RasPi>> {
   component prometheus
 }
 
-rectangle auditor as "auditor.fritz.box" <<RasPi>> {
+rectangle auditor as "supervisor.fritz.box" <<RasPi>> {
   component tmp_grafana as "grafana"
   component tmp_prometheus as "prometheus"
 }
