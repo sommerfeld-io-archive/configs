@@ -49,7 +49,7 @@ Before using this script, you need to ensure that Docker and Docker Compose is i
 system. The script assumes that the Docker engine is running, and the user has necessary
 permissions to execute Docker commands.
 
-=== Ansible Playbook
+=== Ansible Playbooks
 
 ==== Ansible Playbook: desktops.yml
 
