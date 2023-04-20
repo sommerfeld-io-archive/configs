@@ -1,0 +1,91 @@
+---
+global:
+  scrape_interval: 5s
+  external_labels:
+    monitor: 'prometheus-grafana-stack'
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  ##############################################################################
+  #    node exporter                                                           #
+  ##############################################################################
+  - job_name: 'node-metrics-physical'
+    scrape_interval: 5s
+    static_configs:
+      - targets:
+          - caprica.fritz.box:9100
+          - kobol.fritz.box:9100
+          - monitoring.fritz.box:9100
+        labels:
+          group: "node-metrics"
+      - targets:
+          - caprica.fritz.box:9110
+          - kobol.fritz.box:9110
+          - monitoring.fritz.box:9110
+        labels:
+          group: "docker-metrics"
+  ##############################################################################
+  #    blackbox exporter                                                       #
+  ##############################################################################
+  - job_name: 'homelab-services'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+          - kobol.fritz.box:9990
+          - caprica.fritz.box:9990
+          - monitoring.fritz.box:9990
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115
+  - job_name: 'website-sommerfeld-io'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+          - www.sommerfeld.io
+          - apps.sommerfeld.io
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115
+  - job_name: 'website-sommerfeld-shop'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+          - www.sommerfeld.shop
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115
+  - job_name: 'websites-mixed'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+          - www.masterblender.de
+          - www.numero-uno.de
+          - www.tafelboy.de
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115

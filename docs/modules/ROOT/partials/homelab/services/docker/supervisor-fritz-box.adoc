@@ -1,0 +1,10 @@
+There is another Prometheus-Grafana stack that will only exist temporarily (`supervisor.fritz.box`). This temporary stack will be set up to monitor the actual Prometheus-Grafana setup (`monitoring.fritz.box`) to check if the host's resources are sufficient. This will help ensure that the monitoring stack is running efficiently and that there are no performance issues. Once the temporary stack has completed its monitoring task, (i.e. `monitoring.fritz.box` works withput performance issues) it can be taken down to conserve resources.
+
+The services listed below are accessible through their respective web UI.
+
+[cols="1,2", options="header"]
+|===
+|Container |URL
+|`prom/prometheus` |http://supervisor.fritz.box:9090 (prod)
+|`grafana/grafana` |http://supervisor.fritz.box:3000 (prod)
+|===

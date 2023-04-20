@@ -14,11 +14,19 @@ Command line interface to run Ansible playbooks.
 
 == Overview
 
-This script allows installation / uninstallation of ansible galaxy modules (see script for
-for modules list) and running Ansible playbooks. Ansible runs in a Docker container.
+This Bash script allows the installation and uninstallation of Ansible Galaxy
+modules and running Ansible playbooks. The script is designed to simplify the management of
+Ansible modules and playbooks
+
+The script uses a Docker container to run Ansible, ensuring that your system remains clean and
+free from dependencies. The Docker container is pre-configured with Ansible and all required
+dependencies.
+
+In addition to module installation and uninstallation, the main purpose ot this script is to run
+Ansible playbooks within the Docker container.
 
 To run playbooks successfully, make sure to run `ssh-copy-id <REMOTE_USER>@<REMOTE_SERVER>.fritz.box`
-first ensure seamless connects to all remote machines.
+first to ensure seamless connects to all remote machines.
 
 [source, bash]
 
@@ -31,6 +39,38 @@ ssh-copy-id pi@prometheus.fritz.box
 NOTE: Ansible expects the user `sebastian` to be present on all nodes. This user is the default
 user for each node (workstation and RasPi). Normally this user is created from the setup wizard.
 This scripts exits with `exitcode=8` if this user does not exist.
+
+Overall, this script is designed to simplify the management of Ansible modules and playbooks by
+providing a clean and automated environment for running them.
+
+=== Prerequisites
+
+Before using this script, you need to ensure that Docker and Docker Compose is installed on the
+system. The script assumes that the Docker engine is running, and the user has necessary
+permissions to execute Docker commands.
+
+=== Ansible Playbooks
+
+==== Ansible Playbook: desktops.yml
+
+This Ansible playbook is designed to configure basic settings, directory structure, and software
+packages for Ubuntu desktop machines. The playbook also includes some tasks that are shared with
+other playbooks to ensure a consistent setup among all machines.
+
+==== Ansible Playbook: raspi.yml
+
+This Ansible playbook is designed to configure basic settings, directory structure, and software
+packages for Raspberry Pi machines. The playbook also includes some tasks that are shared with
+other playbooks to ensure a consistent setup among all machines but uses a reduced tasks set.
+
+==== Ansible Playbook: steam.yml
+
+This Ansible playbook is designed to install Steam on Ubuntu desktop machines.
+
+==== Ansible Playbook: update-upgrade.yml
+
+This Ansible playbook is designed to update all packages to their latest version and perform an
+aptitude safe-upgrade on Ubuntu and RaspberryPi OS machines (both are Debian-based).
 
 === Script Arguments
 

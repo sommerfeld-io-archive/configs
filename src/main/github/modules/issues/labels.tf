@@ -12,6 +12,13 @@ resource "github_issue_label" "security" {
   color       = "cd3ad7"
 }
 
+resource "github_issue_label" "risk" {
+  repository  = var.repo_name
+  name        = "risk"
+  description = "Risks and technical debts"
+  color       = "cd3ad7"
+}
+
 resource "github_issue_label" "blocked_waiting" {
   repository  = var.repo_name
   name        = "blocked / waiting"

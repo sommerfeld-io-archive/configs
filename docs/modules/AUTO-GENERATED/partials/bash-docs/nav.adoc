@@ -14,5 +14,6 @@
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/bootstrap/ssh-server-sh.adoc[src/main/homelab/bootstrap/ssh-server.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/conky/run-sh.adoc[src/main/homelab/conky/run.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible-cli-sh.adoc[src/main/homelab/ansible-cli.sh]`
+* `xref:AUTO-GENERATED:bash-docs/src/main/homelab/.lib/system-info-sh.adoc[src/main/homelab/.lib/system-info.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/github/apply-config-sh.adoc[src/main/github/apply-config.sh]`
 * `xref:AUTO-GENERATED:bash-docs/src/main/github/run-local-sh.adoc[src/main/github/run-local.sh]`
