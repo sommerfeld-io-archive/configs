@@ -1,0 +1,25 @@
+All clients (including all RasPi nodes) report their metrics to ``prometheus``. This allows for
+centralized collection of metrics from all clients, which can then be analyzed and visualized
+using a web-based UI provided by Grafana.
+
+[plantuml, rendered-plantuml-image, svg]
+....
+include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
+....
+
+The services listed below are accessible through their respective web UI.
+
+. link:https://prometheus.io[Prometheus] is an open-source monitoring system that collects metrics from various sources and stores them in a time-series database.
+. link:https://grafana.com[Grafana] is an open-source analytics and monitoring platform. It provides a web-based UI that allows users to visualize and analyze data from (in this case) Prometheus.
+
+| Container           | URL                                     |
+| ------------------- | --------------------------------------- |
+| ``prom/prometheus`` | http://monitoring.fritz.box:9090 (prod) |
+| ``grafana/grafana`` | http://monitoring.fritz.box:3000 (prod) |
+
+When you start the monitoring stack on your local machine, the same ports are used as in the
+production instance and when started will collect data from all configured sources, just as it
+does in the production instance. This allows you to test the monitoring stack locally and ensure 
+that it is configured correctly before deploying it to production. Additionally, you can use the
+local monitoring stack to develop and test new dashboards and alerts before deploying them to the
+production environment.

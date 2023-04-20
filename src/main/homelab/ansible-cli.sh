@@ -36,7 +36,7 @@
 # system. The script assumes that the Docker engine is running, and the user has necessary
 # permissions to execute Docker commands.
 #
-# === Ansible Playbook
+# === Ansible Playbooks
 #
 # ==== Ansible Playbook: desktops.yml
 #
