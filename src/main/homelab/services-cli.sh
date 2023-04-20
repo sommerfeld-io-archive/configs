@@ -1,6 +1,6 @@
 #!/bin/bash
 # @file services-cli.sh
-# @brief Command line interface to control docker-compose services on your local machine.
+# @brief Command line interface to control Docker Compose services on your local machine.
 #
 # @description This Bash script that acts as a command line interface to control Docker Compose
 # services on your local machine. The script provides an easy-to-use interface for managing your
@@ -24,7 +24,7 @@
 # system. The script assumes that the Docker engine is running, and the user has necessary
 # permissions to execute Docker commands.
 #
-# === Docker Stacks
+# === Docker Compose Stacks
 #
 # ==== Stack: monitoring.fritz.box
 #
@@ -32,41 +32,19 @@
 #
 # ==== Stack: supervisor.fritz.box
 #
-# There is another Prometheus-Grafana stack that will only exist temporarily
-# (``supervisor.fritz.box``). This temporary stack will be set up to monitor the actual
-# Prometheus-Grafana setup (``monitoring.fritz.box``) to check if the host's resources are
-# sufficient. This will help ensure that the monitoring stack is running efficiently and that
-# there are no performance issues. Once the temporary stack has completed its monitoring task,
-# (i.e. ``monitoring.fritz.box`` works withput performance issues) it can be taken down to
-# conserve resources.
-#
-# The services listed below are accessible through their respective web UI.
-#
-# | Container           | URL                                     |
-# | ------------------- | --------------------------------------- |
-# | ``prom/prometheus`` | http://supervisor.fritz.box:9090 (prod) |
-# | ``grafana/grafana`` | http://supervisor.fritz.box:3000 (prod) |
+# include::ROOT:partial$homelab/services/docker/supervisor-fritz-box.adoc[]
 #
 # ==== Stack: ops
 #
-# The ``ops`` Docker stack is a Docker Compose configuration that manages all of the needed exporters
-# to monitor system metrics with Prometheus and Grafana. Additionally, it starts a local Portainer
-# instance. By using the Ops Docker stack, you can quickly and easily deploy all of the necessary
-# components for monitoring your system metrics. This includes exporters for various system metrics,
-# such as CPU usage, disk usage, and network activity. The local Portainer instance makes it easy to
-# manage and monitor the Docker containers running in the Ops Docker stack.
+# include::ROOT:partial$homelab/services/docker/ops.adoc[]
 #
 # ==== Stack: sommerfeld-io
 #
-# The ``sommerfeld-io`` Docker stack is a Docker Compose configuration for the website
-# https://www.sommerfeld.io. This Docker Compose configuration is used to start the website locally
-# in a Docker container.
+# include::ROOT:partial$homelab/services/docker/sommerfeld-io.adoc[]
 #
 # ==== Stack: websites
 #
-# The ``websites`` Docker stack is a Docker Compose configuration for the websites
-# https://www.masterblender.de, https://www.tafelbox.de and https://www.numero-uno.de. This Docker
-# Compose configuration is used to start these websites locally in Docker containers.
+# include::ROOT:partial$homelab/services/docker/websites.adoc[]
 #
 # === Script Arguments
 #

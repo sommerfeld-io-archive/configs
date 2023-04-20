@@ -1,0 +1,1 @@
+The `sommerfeld-io` Docker stack is a Docker Compose configuration for the website https://www.sommerfeld.io. This Docker Compose configuration is used to start the website locally in a Docker container.
