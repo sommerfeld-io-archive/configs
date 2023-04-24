@@ -42,16 +42,10 @@ include::ROOT:partial$homelab/services/docker/ops.adoc[]
 
 Connect via SSH and start the stack by using `xref:AUTO-GENERATED:bash-docs/src/main/homelab/services-cli-sh.adoc[~/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/services-cli.sh]`.
 
-=== Docker Compose Stack: monitoring.fritz.box
-include::ROOT:partial$homelab/services/docker/monitoring-fritz-box.adoc[]
-
-Connect via SSH and start the stack by using `xref:AUTO-GENERATED:bash-docs/src/main/homelab/services-cli-sh.adoc[~/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/services-cli.sh]`.
-
-=== Docker Compose Stack: Ops
-include::ROOT:partial$homelab/services/docker/ops.adoc[]
-
 === Docker Compose Stack: supervisor.fritz.box
 include::ROOT:partial$homelab/services/docker/supervisor-fritz-box.adoc[]
+
+Connect via SSH and start the stack by using `xref:AUTO-GENERATED:bash-docs/src/main/homelab/services-cli-sh.adoc[~/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/services-cli.sh]`.
 
 == Risks and Technical Debts
 
