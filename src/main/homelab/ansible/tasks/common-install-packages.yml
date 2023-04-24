@@ -12,7 +12,5 @@
       - htop
       - git
       - neofetch
-      - rar
-      - unrar
     state: latest
     update_cache: true
