@@ -15,7 +15,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
 
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.36.0
+    image: gcr.io/cadvisor/cadvisor:v0.47.0
     container_name: cadvisor
     restart: always
     # expose:
