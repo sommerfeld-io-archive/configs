@@ -18,13 +18,7 @@ Be aware that the environment must follow some ground rules:
 . Every machine is Ubuntu Linux (or at least Debian-based)
 
 == Risks and Technical Debts
-Scale for Probability and Impact: Low, Medium and High
-
-[cols="^1,2,5a,1,1,5a", options="header"]
-|===
-|# |Title |Description |Probability |Impact |Response
-|{counter:usage} |- |- |- |- |-
-|===
+See https://github.com/users/sebastian-sommerfeld-io/projects/1/views/9 for all issus labeles as `risk` (= some sort of risk or a technical debt) or `security` (= related to security issues). Make sure to filter for repository"sebastian-sommerfeld-io/configs".
 
 == Contact
 Feel free to contact me via sebastian@sommerfeld.io or visit my website https://www.sommerfeld.io.

@@ -1,0 +1,4 @@
+. Slot 1 = xref:homelab/monitoring.fritz.box/index.adoc[]
+. Slot 2 = xref:homelab/supervisor.fritz.box/index.adoc[]
+. Slot 3 = Empty SD card
+. Slot 4 = Empty
