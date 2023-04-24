@@ -1,0 +1,43 @@
+---
+global:
+  scrape_interval: 5s
+  external_labels:
+    monitor: 'prometheus-grafana-stack'
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  ##############################################################################
+  #    node exporter                                                           #
+  ##############################################################################
+  - job_name: 'node-metrics-physical'
+    scrape_interval: 5s
+    static_configs:
+      - targets:
+          - monitoring.fritz.box:9100
+          - supervisor.fritz.box:9100
+        labels:
+          group: "node-metrics"
+      - targets:
+          - monitoring.fritz.box:9110
+          - supervisor.fritz.box:9110
+        labels:
+          group: "docker-metrics"
+  ##############################################################################
+  #    blackbox exporter                                                       #
+  ##############################################################################
+  - job_name: 'monitoring-stack'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+          - monitoring.fritz.box:9100
+          - monitoring.fritz.box:9110
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115

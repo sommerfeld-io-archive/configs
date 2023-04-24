@@ -13,8 +13,8 @@ The services listed below are accessible through their respective web UI.
 [cols="1,2", options="header"]
 |===
 |Container |URL
-|`prom/prometheus` |http://supervisor.fritz.box:9090 (prod)
-|`grafana/grafana` |http://supervisor.fritz.box:3000 (prod)
+|`prom/prometheus` |http://monitoring.fritz.box:9090 (prod)
+|`grafana/grafana` |http://monitoring.fritz.box:3000 (prod)
 |===
 
 
