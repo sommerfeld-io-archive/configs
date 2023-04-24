@@ -9,6 +9,16 @@
 
     - ansible.builtin.import_tasks: ../tasks/common-config-bash-prompt.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-bash-aliases.yml
+
+    - name: Config -> Write commands to .bashrc (desktop machines only)
+      lineinfile:
+        dest: "/home/{{ ansible_user }}/.bashrc"
+        state: present
+        line: "{{ item }}"
+      with_items:
+        - docker run --rm mwendler/figlet:latest "$(hostname)"
+
+
     - ansible.builtin.import_tasks: ../tasks/common-config-create-directories.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-packages.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-git.yml

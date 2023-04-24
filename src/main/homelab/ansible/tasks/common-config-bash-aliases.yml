@@ -12,7 +12,6 @@
     - export Y="\e[93m"
     - export P="\e[35m"
     - export D="\e[0m"
-    - docker run --rm mwendler/figlet:latest "$(hostname)"
 
 - name: Config -> Write aliases to .bash_aliases
   lineinfile:

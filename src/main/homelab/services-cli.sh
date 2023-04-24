@@ -86,7 +86,6 @@ function logs() {
 }
 
 
-docker run --rm mwendler/figlet:latest 'Docker Localhost'
 bash .lib/system-info.sh
 
 (
