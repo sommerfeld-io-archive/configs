@@ -10,8 +10,7 @@ The Prometheus and Grafana stack running on the supervisor node collects data ab
 
 If I find that the monitoring node is stable and runs without any crashes or unexpected behavior, I will tear down the supervisor node. However, if I notice any issues or problems with the monitoring node, I can quickly identify and address them using the data collected by the Prometheus and Grafana stack running on the supervisor node.
 
-== Install
-[cols="^1,3", options="header"]
+[cols="1,4", options="header"]
 |===
 |Metric |Value
 |Model |Raspberry Pi 4 Model B
@@ -19,6 +18,7 @@ If I find that the monitoring node is stable and runs without any crashes or une
 
 include::ROOT:partial$homelab/workstations/common/raspi-rack.adoc[]
 
+== Install
 === Operating System
 // "Raspberry Pi OS Lite (64-bit)" (which is a port of Debian Bullseye without and desktop environment)
 Use the Raspberry Pi Imager to install "Ubuntu Server 23.04 (64-bit)" onto a SD card. Use the following settings:
@@ -27,10 +27,25 @@ image:ROOT:homelab/raspi-imager-settings.png[]
 
 CAUTION: Make sure to enter a valid hostname and user `sebastian` uses the correct password!
 
-Then insert the SD card into the RasPi and boot your system.
+=== Configuration and package installation
+. Steps to run on you normal workstation (= a machine with SSH access to the RasPi node which is probably the ony you used to setup the SD card)
+.. Enable passwordless SSH connections: `ssh sebastian@monitoring.fritz.box` and `ssh-copy-id sebastian@monitoring.fritz.box` or by using the Jarvis modules link:/docs/projects/jarvis-cli-docs/main/AUTO-GENERATED/bash-docs/src/main/modules/ssh-connect-setup-passwordless/module-sh.html[ssh-connect-setup-passwordless] and link:/docs/projects/jarvis-cli-docs/main/AUTO-GENERATED/bash-docs/src/main/modules/ssh-connect/module-sh.html[ssh-connect] (all from your workstation, not on the RasPi node).
+.. Apply ansible configs from this repo (`xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible-cli-sh.adoc[src/main/homelab/ansible-cli.sh]`)
+. Setps to run on the RasPi node
+.. Allow caprica to work with github. Use public key `id_rsa.pub`, NOT the pivate key! The SSH keypair was created from the Ansible playbook.
+
+NOTE: This machine is not intended for development purposes so there is no need to push any data to Github. Therefore there is no SSH key configuration for GitHub on this machine. It is only possible to clone public repositories via HTTPS.
 
 == Start Services
-Use `xref:AUTO-GENERATED:bash-docs/src/main/homelab/services-cli-sh.adoc[src/main/homelab/services-cli.sh]` to start Docker Compose services.
+=== Docker Compose Stack: Ops
+include::ROOT:partial$homelab/services/docker/ops.adoc[]
+
+Connect via SSH and start the stack by using `xref:AUTO-GENERATED:bash-docs/src/main/homelab/services-cli-sh.adoc[~/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/services-cli.sh]`.
+
+=== Docker Compose Stack: monitoring.fritz.box
+include::ROOT:partial$homelab/services/docker/monitoring-fritz-box.adoc[]
+
+Connect via SSH and start the stack by using `xref:AUTO-GENERATED:bash-docs/src/main/homelab/services-cli-sh.adoc[~/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/services-cli.sh]`.
 
 === Docker Compose Stack: Ops
 include::ROOT:partial$homelab/services/docker/ops.adoc[]
