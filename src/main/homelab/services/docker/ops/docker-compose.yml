@@ -18,8 +18,6 @@ services:
     image: gcr.io/cadvisor/cadvisor:v0.47.0
     container_name: cadvisor
     restart: always
-    # expose:
-    #   - 9110
     ports:
       - 9110:8080
     volumes:

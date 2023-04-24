@@ -6,7 +6,7 @@ services:
     container_name: prometheus
     restart: unless-stopped
     volumes:
-      - ./assets/config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./assets/config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus
       - /etc/timezone:/etc/timezone:ro
     command:
@@ -35,13 +35,25 @@ services:
     image: prom/blackbox-exporter:v0.23.0
     container_name: blackbox_exporter
     restart: unless-stopped
+    depends_on:
+      - prometheus
     ports:
       - 9115:9115
     volumes:
-      - ./assets/config/blackbox-exporter.yml:/etc/prometheus/blackbox-exporter.yml:ro
+      - ./assets/config/prometheus/blackbox-exporter.yml:/etc/prometheus/blackbox-exporter.yml:ro
       - /etc/timezone:/etc/timezone:ro
     command:
       - "--config.file=/etc/prometheus/blackbox-exporter.yml"
+  
+  reverse_proxy:
+    image: nginx:1.24.0-bullseye
+    container_name: reverse_proxy
+    # ports:
+    #   - 80:80
+    network_mode: host
+    volumes:
+      - ./assets/config/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    privileged: true
 
 volumes:
   prometheus_data:

@@ -7,9 +7,10 @@ include::ROOT:image$bash-docs/services-cli-monitoring.puml[]
 
 The services listed below are accessible through their respective web UI.
 
-[cols="1,2", options="header"]
+[cols="1,3", options="header"]
 |===
-|Container |URL
+|Container Image |URL
+|`nginx` |http://supervisor.fritz.box (prod) *Preferred way to access Grafana*
 |`prom/prometheus` |http://supervisor.fritz.box:9090 (prod)
 |`grafana/grafana` |http://supervisor.fritz.box:3000 (prod)
 |===

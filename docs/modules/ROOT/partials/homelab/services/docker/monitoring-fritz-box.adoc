@@ -10,9 +10,10 @@ The services listed below are accessible through their respective web UI.
 . link:https://prometheus.io[Prometheus] is an open-source monitoring system that collects metrics from various sources and stores them in a time-series database.
 . link:https://grafana.com[Grafana] is an open-source analytics and monitoring platform. It provides a web-based UI that allows users to visualize and analyze data from (in this case) Prometheus.
 
-[cols="1,2", options="header"]
+[cols="1,3", options="header"]
 |===
-|Container |URL
+|Container Image |URL
+|`nginx` |http://monitoring.fritz.box (prod) *Preferred way to access Grafana*
 |`prom/prometheus` |http://monitoring.fritz.box:9090 (prod)
 |`grafana/grafana` |http://monitoring.fritz.box:3000 (prod)
 |===
