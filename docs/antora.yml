@@ -1,7 +1,7 @@
 ---
 name: config-docs
 title: Configuration Docs
-version: setup-supervisor-fritz-box
+version: main
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
