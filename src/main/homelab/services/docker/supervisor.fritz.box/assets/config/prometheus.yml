@@ -34,6 +34,9 @@ scrape_configs:
       - targets:
           - monitoring.fritz.box:9100
           - monitoring.fritz.box:9110
+          - monitoring.fritz.box:9090
+          - monitoring.fritz.box:3000
+          - monitoring.fritz.box:9115
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
