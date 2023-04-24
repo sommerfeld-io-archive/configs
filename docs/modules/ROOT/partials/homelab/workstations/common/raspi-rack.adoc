@@ -4,16 +4,16 @@
 | RasPi Rack               |
 |                          |
 |   +----------------------+
-|   | Slot 1               |
+|   |               Slot 1 |
 |   | monitoring.fritz.box |
 |   +----------------------+
-|   | Slot 2               |
+|   |               Slot 2 |
 |   | supervisor.fritz.box |
 |   +----------------------+
-|   | Slot 3               |
-|   | Empty SD card        |
+|   |               Slot 3 |
+|   |        Empty SD card |
 |   +----------------------+
-|   | Slot 4               |
-|   | Empty                |
+|   |               Slot 4 |
+|   |                Empty |
 +---+----------------------+
 ....
