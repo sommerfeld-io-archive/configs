@@ -28,6 +28,3 @@
     - alias ls="ls -a --color=auto"
     - alias grep="grep --color=auto"
     - alias pull-all-repos="git all pull"
-    - alias __ssh-caprica="ssh sebastian@caprica.fritz.box"
-    - alias __ssh-kobol="ssh sebastian@kobol.fritz.box"
-    - alias __ssh-prometheus="ssh sebastian@prometheus.fritz.box"
