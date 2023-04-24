@@ -44,7 +44,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
     command:
       - "--config.file=/etc/prometheus/blackbox-exporter.yml"
-  
+
   reverse_proxy:
     image: nginx:1.24.0-bullseye
     container_name: reverse_proxy
