@@ -55,7 +55,7 @@ services:
       - grafana
     network_mode: host
     volumes:
-      - ./assets/config/nginx:/etc/nginx/conf.d
+      - ./assets/config/nginx:/etc/nginx/conf.d:ro
     privileged: true
 
 volumes:
