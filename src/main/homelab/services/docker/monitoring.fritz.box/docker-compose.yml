@@ -6,6 +6,8 @@ services:
     container_name: prometheus
     restart: unless-stopped
     volumes:
+      # - /etc/passwd:/etc/passwd:ro
+      # - /etc/group:/etc/group:ro
       - ./assets/config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus
       - /etc/timezone:/etc/timezone:ro
