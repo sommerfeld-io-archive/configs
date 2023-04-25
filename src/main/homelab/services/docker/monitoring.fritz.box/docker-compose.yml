@@ -56,8 +56,30 @@ services:
     network_mode: host
     volumes:
       - ./assets/config/nginx:/etc/nginx/conf.d:ro
+      - webroot:/var/www/certbot
+      - certbot_etc:/etc/letsencrypt
+      - certbot_var:/var/lib/letsencrypt
     privileged: true
+
+  certbot:
+    image: certbot/certbot:v2.5.0
+    container_name: certbot
+    volumes:
+      - certbot_etc:/etc/letsencrypt
+      - certbot_var:/var/lib/letsencrypt
+      - webroot:/var/www/certbot
+    depends_on:
+      - reverse_proxy
+    command: certonly --staging -d monitoring.fritz.box --webroot --webroot-path=/var/www/certbot --email sebastian@sommerfeld.io --agree-tos --no-eff-email
 
 volumes:
   prometheus_data:
   grafana_data:
+  certbot_etc:
+  certbot_var:
+  webroot:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./assets/config/certbot
+      o: bind
