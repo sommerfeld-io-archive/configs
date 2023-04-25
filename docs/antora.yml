@@ -1,7 +1,7 @@
 ---
 name: config-docs
 title: Configuration Docs
-version: nginx-https-config
+version: main
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
