@@ -16,16 +16,14 @@ set -o nounset
 # set -o xtrace
 
 
-grey='\033[1;30m'
-
 echo -e "$LOG_INFO Deploy docker services for machine $P$HOSTNAME$D"
-echo -e "$LOG_INFO $grey========== System Info =================================================="
+echo -e "$LOG_INFO $G========== System Info =================================================="
 echo "        Hostname: $HOSTNAME"
 hostnamectl
 echo "          Kernel: $(uname -v)"
-echo -e "$D$LOG_INFO $grey========================================================================="
+echo -e "$D$LOG_INFO $G========================================================================="
 echo " Ansible version: $(ansible --version)"
-echo -e "$D$LOG_INFO $grey========================================================================="
+echo -e "$D$LOG_INFO $G========================================================================="
 echo "  Docker version: $(docker --version)"
 echo " Compose version: $(docker-compose --version)"
-echo -e "$D$LOG_INFO $grey=========================================================================$D"
+echo -e "$D$LOG_INFO $G=========================================================================$D"

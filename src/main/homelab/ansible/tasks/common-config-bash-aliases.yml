@@ -12,6 +12,7 @@
     - export Y="\e[93m"
     - export P="\e[35m"
     - export D="\e[0m"
+    - export G='\033[1;30m'
 
 - name: Config -> Write aliases to .bash_aliases
   lineinfile:
