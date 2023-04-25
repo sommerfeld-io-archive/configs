@@ -11,6 +11,7 @@ The services listed below are accessible through their respective web UI.
 |===
 |Container Image |URL
 |`nginx` |http://supervisor.fritz.box (prod) *Preferred way to access Grafana*
-|`prom/prometheus` |http://supervisor.fritz.box:9090 (prod)
 |`grafana/grafana` |http://supervisor.fritz.box:3000 (prod)
+|`prom/prometheus` |http://supervisor.fritz.box:9090 (prod)
+|`blackbox_exporter` |http://supervisor.fritz.box:9115 (prod)
 |===
