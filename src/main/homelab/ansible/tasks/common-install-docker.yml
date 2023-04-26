@@ -1,8 +1,13 @@
 ---
-- name: Docker Setup -> Purge docker-compose (if needed)
+- name: Docker Setup -> Purge deprecated docker installations
   apt:
     name:
       - docker-compose
+      - docker
+      - docker-engine
+      - docker.io
+      - containerd
+      - runc
     state: absent
     update_cache: true
 
