@@ -1,9 +1,9 @@
 ---
-- name: Docker Setup -> Install docker-ce and docker compose
+- name: Docker Setup -> Purge docker-compose (if needed)
   apt:
     name:
       - docker-compose
-    state: latest
+    state: absent
     update_cache: true
 
 - name: Docker Setup -> Add GPG apt key
@@ -16,7 +16,7 @@
     repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
     state: present
 
-- name: Docker Setup -> Install docker-ce and docker compose
+- name: Docker Setup -> Install docker packages
   apt:
     name:
       - docker-ce
