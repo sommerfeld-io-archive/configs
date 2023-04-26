@@ -85,29 +85,7 @@
         state: present
         force: false
 
-    - name: Docker Setup -> Add GPG apt key
-      apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
-
-    - name: Docker Setup -> Add apt repository
-      apt_repository:
-        repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-        state: present
-
-    - name: Docker Setup -> Install docker-ce and docker compose
-      apt:
-        name:
-          - docker-ce
-          - docker compose
-        state: latest
-        update_cache: true
-
-    - name: Docker Setup -> Add default user to docker group
-      user:
-        name: "{{ ansible_user }}"
-        groups: docker
-        append: true
+    - ansible.builtin.import_tasks: ../tasks/common-install-docker.yml
 
     - name: Ansible Setup -> Add apt repository
       apt_repository:
