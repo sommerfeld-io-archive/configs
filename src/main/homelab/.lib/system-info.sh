@@ -25,5 +25,5 @@ echo -e "$D$LOG_INFO $G=========================================================
 echo " Ansible version: $(ansible --version)"
 echo -e "$D$LOG_INFO $G========================================================================="
 echo "  Docker version: $(docker --version)"
-echo " Compose version: $(docker-compose --version)"
+echo " Compose version: $(docker compose --version)"
 echo -e "$D$LOG_INFO $G=========================================================================$D"

@@ -70,12 +70,12 @@ The script does not accept any parameters.
 
 === startup
 
-Utility function to startup docker-compose services.
+Utility function to startup docker compose services.
 
 === shutdown
 
-Utility function to shutdown docker-compose services.
+Utility function to shutdown docker compose services.
 
 === logs
 
-Utility function to show docker-compose logs.
+Utility function to show docker compose logs.

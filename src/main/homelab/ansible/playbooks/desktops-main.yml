@@ -95,11 +95,11 @@
         repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
         state: present
 
-    - name: Docker Setup -> Install docker-ce and docker-compose
+    - name: Docker Setup -> Install docker-ce and docker compose
       apt:
         name:
           - docker-ce
-          - docker-compose
+          - docker compose
         state: latest
         update_cache: true
 
