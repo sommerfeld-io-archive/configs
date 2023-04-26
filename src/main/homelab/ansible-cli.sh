@@ -38,7 +38,7 @@
 #
 # === Ansible Playbooks
 #
-# ==== Ansible Playbook: desktops.yml
+# ==== Ansible Playbook: desktops_main.yml
 #
 # This Ansible playbook is designed to configure basic settings, directory structure, and software
 # packages for Ubuntu desktop machines. The playbook also includes some tasks that are shared with
@@ -48,7 +48,7 @@
 #
 # This Ansible playbook is designed to install Steam on Ubuntu desktop machines.
 #
-# ==== Ansible Playbook: raspi.yml
+# ==== Ansible Playbook: raspi_main.yml
 #
 # This Ansible playbook is designed to configure basic settings, directory structure, and software
 # packages for Raspberry Pi machines. The playbook also includes some tasks that are shared with
