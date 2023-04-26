@@ -24,8 +24,10 @@ CAUTION: Make sure to enter a valid hostname and user `sebastian` uses the corre
 . Steps to run on you normal workstation (= a machine with SSH access to the RasPi node which is probably the ony you used to setup the SD card)
 .. Enable passwordless SSH connections: `ssh sebastian@openappsec.fritz.box` and `ssh-copy-id sebastian@openappsec.fritz.box` or by using the Jarvis modules link:/docs/projects/jarvis-cli-docs/main/AUTO-GENERATED/bash-docs/src/main/modules/ssh-connect-setup-passwordless/module-sh.html[ssh-connect-setup-passwordless] and link:/docs/projects/jarvis-cli-docs/main/AUTO-GENERATED/bash-docs/src/main/modules/ssh-connect/module-sh.html[ssh-connect] (all from your workstation, not on the RasPi node).
 .. Apply ansible configs from this repo (`xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible-cli-sh.adoc[src/main/homelab/ansible-cli.sh]`)
+. FritzBox Settings
+.. It is recommended to always assign the same IP address to this RasPi node. This can help avoid issues with IP address conflicts or changes that could cause the communication between services to fail or become unreliable.
 
-NOTE: This machine is not intended for development purposes so there is no need to push any data to Github. Therefore there is no SSH key configuration for GitHub on this machine. It is only possible to clone public repositories via HTTPS.
+NOTE: This machine acts as a testing ground for open-appsec, so it not critical to any production environment. But still it is not intended for development purposes so there is no need to push any data to Github. Therefore there is no SSH key configuration for GitHub on this machine. It is only possible to clone public repositories via HTTPS.
 
 === IPTables
 CAUTION: TODO ... Docs ... Best with ansible!!!
