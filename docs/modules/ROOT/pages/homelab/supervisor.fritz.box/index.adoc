@@ -20,7 +20,6 @@ include::ROOT:partial$homelab/workstations/common/raspi-rack.adoc[]
 
 == Install
 === Operating System
-// "Raspberry Pi OS Lite (64-bit)" (which is a port of Debian Bullseye without and desktop environment)
 Use the Raspberry Pi Imager to install "Ubuntu Server 23.04 (64-bit)" onto a SD card. Use the following settings:
 
 image:ROOT:homelab/raspi-imager-settings.png[]
@@ -31,8 +30,6 @@ CAUTION: Make sure to enter a valid hostname and user `sebastian` uses the corre
 . Steps to run on you normal workstation (= a machine with SSH access to the RasPi node which is probably the ony you used to setup the SD card)
 .. Enable passwordless SSH connections: `ssh sebastian@monitoring.fritz.box` and `ssh-copy-id sebastian@monitoring.fritz.box` or by using the Jarvis modules link:/docs/projects/jarvis-cli-docs/main/AUTO-GENERATED/bash-docs/src/main/modules/ssh-connect-setup-passwordless/module-sh.html[ssh-connect-setup-passwordless] and link:/docs/projects/jarvis-cli-docs/main/AUTO-GENERATED/bash-docs/src/main/modules/ssh-connect/module-sh.html[ssh-connect] (all from your workstation, not on the RasPi node).
 .. Apply ansible configs from this repo (`xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible-cli-sh.adoc[src/main/homelab/ansible-cli.sh]`)
-. Setps to run on the RasPi node
-.. Allow caprica to work with github. Use public key `id_rsa.pub`, NOT the pivate key! The SSH keypair was created from the Ansible playbook.
 
 NOTE: This machine is not intended for development purposes so there is no need to push any data to Github. Therefore there is no SSH key configuration for GitHub on this machine. It is only possible to clone public repositories via HTTPS.
 
