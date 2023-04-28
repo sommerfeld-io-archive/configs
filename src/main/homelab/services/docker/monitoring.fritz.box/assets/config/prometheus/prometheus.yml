@@ -17,14 +17,12 @@ scrape_configs:
           - caprica.fritz.box:9100
           - kobol.fritz.box:9100
           - monitoring.fritz.box:9100
-          - openappsec.fritz.box:9100
         labels:
           group: "node-metrics"
       - targets:
           - caprica.fritz.box:9110
           - kobol.fritz.box:9110
           - monitoring.fritz.box:9110
-          - openappsec.fritz.box:9110
         labels:
           group: "docker-metrics"
   ##############################################################################
@@ -39,9 +37,6 @@ scrape_configs:
           - kobol.fritz.box:9990
           - caprica.fritz.box:9990
           - monitoring.fritz.box:9990
-          - openappsec.fritz.box:9990
-          - openappsec.fritz.box:80
-          - openappsec.fritz.box:443
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target

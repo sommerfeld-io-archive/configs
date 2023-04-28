@@ -11,7 +11,7 @@
 |  | supervisor.fritz.box |  |
 |  +----------------------+  |
 |  |               Slot 3 |  |
-|  | openappsec.fritz.box |  |
+|  |        Empty SD card |  |
 |  +----------------------+  |
 |  |               Slot 4 |  |
 |  |                Empty |  |
