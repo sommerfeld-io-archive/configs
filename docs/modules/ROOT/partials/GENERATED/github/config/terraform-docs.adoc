@@ -82,6 +82,7 @@
 |[[module_github-action-generate-readme-issues]] <<module_github-action-generate-readme-issues,github-action-generate-readme-issues>> |./modules/issues |
 |[[module_github-action-update-antora-yml-issues]] <<module_github-action-update-antora-yml-issues,github-action-update-antora-yml-issues>> |./modules/issues |
 |[[module_jarvis-issues]] <<module_jarvis-issues,jarvis-issues>> |./modules/issues |
+|[[module_job-issues]] <<module_job-issues,job-issues>> |./modules/issues |
 |[[module_open-appsec-poc-issues]] <<module_open-appsec-poc-issues,open-appsec-poc-issues>> |./modules/issues |
 |[[module_provinzial-issues]] <<module_provinzial-issues,provinzial-issues>> |./modules/issues |
 |[[module_trashbox-issues]] <<module_trashbox-issues,trashbox-issues>> |./modules/issues |
@@ -137,6 +138,8 @@
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/resources/actions_secret[github_actions_secret.github-action-update-antora-yml_GOOGLE_CHAT_WEBHOOK] |resource
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/resources/actions_secret[github_actions_secret.jarvis_GH_TOKEN_REPO_AND_PROJECT] |resource
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/resources/actions_secret[github_actions_secret.jarvis_GOOGLE_CHAT_WEBHOOK] |resource
+|https://registry.terraform.io/providers/integrations/github/5.23.0/docs/resources/actions_secret[github_actions_secret.job_GH_TOKEN_REPO_AND_PROJECT] |resource
+|https://registry.terraform.io/providers/integrations/github/5.23.0/docs/resources/actions_secret[github_actions_secret.job_GOOGLE_CHAT_WEBHOOK] |resource
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/resources/actions_secret[github_actions_secret.open-appsec-poc_GH_TOKEN_REPO_AND_PROJECT] |resource
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/resources/actions_secret[github_actions_secret.open-appsec-poc_GOOGLE_CHAT_WEBHOOK] |resource
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/resources/actions_secret[github_actions_secret.provinzial_GH_TOKEN_REPO_AND_PROJECT] |resource
@@ -209,6 +212,7 @@
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/data-sources/repository[github_repository.github-action-generate-readme] |data source
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/data-sources/repository[github_repository.github-action-update-antora-yml] |data source
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/data-sources/repository[github_repository.jarvis] |data source
+|https://registry.terraform.io/providers/integrations/github/5.23.0/docs/data-sources/repository[github_repository.job] |data source
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/data-sources/repository[github_repository.open-appsec-poc] |data source
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/data-sources/repository[github_repository.provinzial] |data source
 |https://registry.terraform.io/providers/integrations/github/5.23.0/docs/data-sources/repository[github_repository.trashbox] |data source

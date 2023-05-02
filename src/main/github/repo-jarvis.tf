@@ -22,4 +22,3 @@ resource "github_actions_secret" "jarvis_GH_TOKEN_REPO_AND_PROJECT" {
   secret_name     = data.bitwarden_item_login.GH_TOKEN_REPO_AND_PROJECT.username
   plaintext_value = data.bitwarden_item_login.GH_TOKEN_REPO_AND_PROJECT.password
 }
-
