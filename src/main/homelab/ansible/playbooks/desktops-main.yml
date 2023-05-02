@@ -66,7 +66,7 @@
         state: latest
         update_cache: true
 
-    # https://wiki.ubuntuusers.de/Asunder/
+    # https://wiki.ubuntuusers.de/Asunder
     - name: Install -> Install audio CD ripper
       apt:
         pkg:
@@ -75,7 +75,7 @@
           - vorbis-tools
           - flac
           - libopus0
-          - wavpack 
+          - wavpack
         state: latest
         update_cache: true
 
