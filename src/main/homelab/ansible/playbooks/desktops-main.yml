@@ -66,6 +66,19 @@
         state: latest
         update_cache: true
 
+    # https://wiki.ubuntuusers.de/Asunder/
+    - name: Install -> Install audio CD ripper
+      apt:
+        pkg:
+          - asunder
+          - lame
+          - vorbis-tools
+          - flac
+          - libopus0
+          - wavpack 
+        state: latest
+        update_cache: true
+
     - name: Uninstall -> Some pre-installed packages
       apt:
         pkg:
