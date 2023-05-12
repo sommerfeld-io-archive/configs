@@ -12,7 +12,7 @@ module "k8s-playground-issues" {
 }
 
 resource "github_issue_label" "k8s-playground_19_1" {
-  repository  = data.github_repository.provinzial.id
+  repository  = data.github_repository.k8s-playground.id
   name        = "19+1"
   description = "Education and trainings (leaning by doing)"
   color       = "5319E7"

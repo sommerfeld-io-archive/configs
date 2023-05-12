@@ -49,6 +49,7 @@ echo -e "$LOG_INFO ${Y}What do you want me to do?${D}"
 select task in "$OPTION_INIT" "$OPTION_PLAN" "$OPTION_APPLY" "$OPTION_DOCS" "$OPTION_CLEANUP"; do
   case "$task" in
     "$OPTION_INIT" )
+        bash ./apply-config.sh cleanup
         bash ./apply-config.sh init
     ;;
     "$OPTION_PLAN" )
