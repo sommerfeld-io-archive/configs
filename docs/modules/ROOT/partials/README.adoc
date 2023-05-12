@@ -18,7 +18,7 @@ Be aware that the environment must follow some ground rules:
 . Every machine is Ubuntu Linux (or at least Debian-based)
 
 == Risks and Technical Debts
-See https://github.com/users/sebastian-sommerfeld-io/projects/1/views/9 for all issus labeles as `risk` (= some sort of risk or a technical debt) or `security` (= related to security issues). Make sure to filter for repository"sebastian-sommerfeld-io/configs".
+See https://github.com/sebastian-sommerfeld-io/configs/issues?q=is%3Aissue+is%3Aopen+label%3Asecurity%2Crisk+ for all issus labeles as `risk` (= some sort of risk or a technical debt) or `security` (= related to security issues).
 
 == Contact
 Feel free to contact me via sebastian@sommerfeld.io or visit my website https://www.sommerfeld.io.
