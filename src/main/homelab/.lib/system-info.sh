@@ -2,7 +2,7 @@
 # @file system-info.sh
 # @brief Utility script to print some information abount the current environment.
 #
-# @description This script is a utility scriptprints some information abount the current
+# @description This script is a utility script prints some information abount the current
 # environment. This script is called from the ``services-*-cli.sh`` scripts.
 #
 # === Script Arguments
