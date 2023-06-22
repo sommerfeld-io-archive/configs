@@ -1,6 +1,13 @@
 = Onboardings and Setup Guides
 Sebastian Sommerfeld <sebastian@sommerfeld.io>
 
+[IMPORTANT]
+====
+*DEPRECATED !!!*
+
+Replace with docs from https://github.com/sommerfeld-io/dev-environment-config
+====
+
 == Github
 .About repositories
 A repository is usually used to organize a single project. Repositories can contain folders and files, images, videos, spreadsheets, and data sets -- anything your project needs. 
