@@ -141,6 +141,23 @@
         state: present
         classic: true
 
+    - name: GitHub CLI Setup -> Add GPG apt key
+      apt_key:
+        url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
+        state: present
+
+    - name: GitHub CLI Setup -> Add apt repository
+      apt_repository:
+        repo: deb https://cli.github.com/packages stable main
+        state: present
+
+    - name: GitHub CLI Setup -> Install gh
+      apt:
+        name:
+          - gh
+        state: latest
+        update_cache: true
+
     - ansible.builtin.import_tasks: ../tasks/install-virtualization.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-docker-wrapper-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
