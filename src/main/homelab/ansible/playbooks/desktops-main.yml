@@ -79,6 +79,14 @@
         state: latest
         update_cache: true
 
+    - name: Install -> Install CD/DVD writer
+      apt:
+        pkg:
+          - brasero
+          - gstreamer1.0-plugins-ugly
+        state: latest
+        update_cache: true
+
     - name: Uninstall -> Some pre-installed packages
       apt:
         pkg:
