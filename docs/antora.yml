@@ -1,5 +1,5 @@
 ---
-name: config-docs
+name: configs
 title: Configuration Docs
 version: main
 start_page: ROOT:index.adoc
