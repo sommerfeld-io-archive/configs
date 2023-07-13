@@ -27,6 +27,7 @@ skinparam ArrowColor #e6edf3
 skinparam NoteBorderColor #e6edf3
 skinparam NoteFontColor #e6edf3
 skinparam NoteBackgroundColor transparent
+skinparam ComponentBackgroundColor #444
 skinparam ComponentBorderColor #e6edf3
 skinparam ComponentFontColor #e6edf3
 skinparam DatabaseBorderColor #e6edf3
@@ -48,9 +49,15 @@ skinparam HexagonFontColor #e6edf3
 skinparam ArtifactBackgroundColor #444
 skinparam ArtifactBorderColor #e6edf3
 skinparam ArtifactFontColor #e6edf3
+skinparam CollectionsBackgroundColor #444
+skinparam CollectionsBorderColor #e6edf3
+skinparam CollectionsFontColor #e6edf3
+skinparam QueueBackgroundColor #444
+skinparam QueueBorderColor #e6edf3
+skinparam QueueFontColor #e6edf3
 skinparam defaultTextAlignment center
 skinparam activity {
-FontName Ubuntu
+  FontName Ubuntu
 }
 
 component configs <<Github Repo>> {
