@@ -42,6 +42,13 @@
         state: latest
         update_cache: true
 
+    - name: Install -> Development tools
+      apt:
+        pkg:
+          - hugo
+        state: latest
+        update_cache: true
+
     - name: Install -> Chromium packages
       apt:
         pkg:
