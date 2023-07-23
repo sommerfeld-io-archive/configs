@@ -1,1 +1,3 @@
-* xref:AUTO-GENERATED:bash-docs/index.adoc[]
+* Source Code Docs
+** xref:AUTO-GENERATED:bash-docs/index.adoc[]
+** xref:AUTO-GENERATED:docker-docs/index.adoc[]

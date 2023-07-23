@@ -1,0 +1,5 @@
+* `xref:AUTO-GENERATED:docker-docs/src/main/homelab/services/docker/supervisor-fritz.box/docker-compose.yml-docker-docs.adoc[src/main/homelab/services/docker/supervisor-fritz.box/docker-compose.yml]`
+* `xref:AUTO-GENERATED:docker-docs/src/main/homelab/services/docker/websites/docker-compose-yml-docker-docs.adoc[src/main/homelab/services/docker/websites/docker-compose.yml]`
+* `xref:AUTO-GENERATED:docker-docs/src/main/homelab/services/docker/sommerfeld-io/docker-compose-yml-docker-docs.adoc[src/main/homelab/services/docker/sommerfeld-io/docker-compose.yml]`
+* `xref:AUTO-GENERATED:docker-docs/src/main/homelab/services/docker/monitoring-fritz.box/docker-compose.yml-docker-docs.adoc[src/main/homelab/services/docker/monitoring-fritz.box/docker-compose.yml]`
+* `xref:AUTO-GENERATED:docker-docs/src/main/homelab/services/docker/ops/docker-compose-yml-docker-docs.adoc[src/main/homelab/services/docker/ops/docker-compose.yml]`
