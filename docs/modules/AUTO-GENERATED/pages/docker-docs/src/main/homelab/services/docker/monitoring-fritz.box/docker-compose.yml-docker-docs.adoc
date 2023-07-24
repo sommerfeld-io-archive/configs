@@ -1,4 +1,4 @@
-= system-info.sh
+= docker-compose.yml
 
 // +-------------------------------------------+
 // |                                           |
@@ -9,16 +9,5 @@
 // |                                           |
 // +-------------------------------------------+
 
-// Source file = /github/workspace/src/main/homelab/.lib/system-info.sh
+// Source file = /github/workspace/src/main/homelab/services/docker/monitoring.fritz.box/docker-compose.yml
 
-
-Utility script to print some information abount the current environment.
-
-== Overview
-
-This script is a utility script prints some information abount the current
-environment. This script is called from the `services-*-cli.sh` scripts.
-
-=== Script Arguments
-
-The script does not accept any parameters.
