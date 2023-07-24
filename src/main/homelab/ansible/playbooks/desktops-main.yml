@@ -46,6 +46,7 @@
       apt:
         pkg:
           - hugo
+          - 2.0.18-2
         state: latest
         update_cache: true
 
