@@ -2,7 +2,7 @@
 Sebastian Sommerfeld <sebastian@sommerfeld.io>
 :description: Installation guide for machine 'caprica'
 
-CAUTION: The Raspberry Pi node "supervisor.fritz.box" is a temporary node (as described below).
+CAUTION: The Raspberry Pi node "supervisor.fritz.box" is a temporary node (see below).
 
 The Raspberry Pi node called "supervisor.fritz.box" is a node to analyze the stability of my monitoring setup. To achieve this, I have installed a stack of Prometheus and Grafana on the supervisor node to monitor my primary Raspberry Pi monitoring node, `xref:homelab/monitoring.fritz.box/index.adoc[]`.
 
