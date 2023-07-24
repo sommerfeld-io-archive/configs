@@ -46,7 +46,7 @@
       apt:
         pkg:
           - hugo
-          - 2.0.18-2
+          - asciidoctor
         state: latest
         update_cache: true
 
