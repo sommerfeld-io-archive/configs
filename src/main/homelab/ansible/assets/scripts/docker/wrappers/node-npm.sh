@@ -43,6 +43,7 @@ echo -e "$LOG_INFO Run: $cmd" "$@"
 docker run -it --rm \
   --volume /etc/passwd:/etc/passwd:ro \
   --volume /etc/group:/etc/group:ro \
+  --volume "$HOME/.npm:$HOME/.npm" \
   --user "$(id -u):$(id -g)" \
   --volume "$(pwd):$(pwd)" \
   --workdir "$(pwd)" \
