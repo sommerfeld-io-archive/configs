@@ -12,5 +12,10 @@
       - htop
       - git
       - neofetch
+      - python3-pip # python package manager
     state: latest
     update_cache: true
+
+- name: Install -> Python package
+  ansible.builtin.pip:
+    name: pre-commit
