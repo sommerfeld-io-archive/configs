@@ -21,7 +21,6 @@
     - hadolint
     - mvn
     - node-npm
-    - python
     - shellcheck
     - yamllint
 
@@ -36,7 +35,6 @@
     - groovy
     - hadolint
     - mvn
-    - python
     - shellcheck
     - yamllint
 

@@ -12,5 +12,6 @@
       - htop
       - git
       - neofetch
+      - python3
     state: latest
     update_cache: true
