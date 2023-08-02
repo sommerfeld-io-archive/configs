@@ -151,9 +151,11 @@
           - postman
         state: present
 
-    - name: Install -> VSCode
+    - name: Install -> Snap packages (classic)
       community.general.snap:
-        name: code
+        name:
+          - code # vscode
+          - pre-commit
         state: present
         classic: true
 
