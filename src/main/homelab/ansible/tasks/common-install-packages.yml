@@ -12,14 +12,5 @@
       - htop
       - git
       - neofetch
-      - python3
     state: latest
     update_cache: true
-
-- name: Install -> Basic packages (python symlink)
-  ansible.builtin.file:
-    src: "/usr/bin/python"
-    dest: "/usr/bin/python3"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    state: link
