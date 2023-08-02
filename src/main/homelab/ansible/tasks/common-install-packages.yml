@@ -16,6 +16,8 @@
     state: latest
     update_cache: true
 
-- name: Install -> Python package
+- name: Install -> Python packages
   ansible.builtin.pip:
-    name: pre-commit
+    name: "{{ item }}"
+  with_items:
+    - pre-commit
