@@ -54,7 +54,7 @@ readonly ANSIBLE_INVENTORY="src/main/homelab/ansible/hosts.yml"
 #
 # @arg $@ String The command arguments (1-n arguments) - $1 is mandatory
 #
-## @exitcode 8 If param with command arguments is missing
+# @exitcode 8 If param with command arguments is missing
 function inspec() {
   if [ -z "$1" ]; then
     echo -e "$LOG_ERROR No command arguments passed to the container"

@@ -55,7 +55,7 @@ set -o nounset
 #
 # @arg $@ String The actual command (1-n arguments) - $1 is mandatory
 #
-## @exitcode 8 If param with command arguments is missing
+# @exitcode 8 If param with command arguments is missing
 function invoke() {
   if [ -z "$1" ]; then
     echo -e "$LOG_ERROR No command passed to the container"
