@@ -18,7 +18,6 @@
       with_items:
         - docker run --rm mwendler/figlet:latest "$(hostname)"
 
-
     - ansible.builtin.import_tasks: ../tasks/common-config-create-directories.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-packages.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-git.yml
@@ -45,6 +44,7 @@
     - name: Install -> Development tools
       apt:
         pkg:
+          - yarn
           - hugo
           - asciidoctor
         state: latest
