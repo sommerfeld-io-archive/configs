@@ -11,12 +11,15 @@ ls:
   .tf: kebab-case
   .yml: kebab-case
   .yaml: kebab-case
+  .feature: kebab-case # cucumber
 
   .sh: kebab-case
 
   .css: kebab-case
   .html: kebab-case
   .js: kebab-case
+  .hbs: kebab-case
+  .svg: kebab-case
 
   Dockerfile: PascalCase
   Vagrantfile: PascalCase
@@ -24,16 +27,28 @@ ls:
 
   .env: lowercase
   .folderslintrc: lowercase
+  .shellcheckrc: lowercase
   .gitignore: lowercase
   .gitkeep: lowercase
 
 ignore:
-  - .adoc-links.json
-  - .gitpod.yml
-  - .ls-lint.yml
-  - .yamllint.yml
+  # globals
   - .git
   - .idea
+  - .vscode
   - node_modules
-  - src/main/github/.terraform-docs.yml
+  - .gitpod.yml
   - target
+
+  # linter definitions
+  - .adoc-links.json
+  - .gherkin-lintrc.json
+  - .ls-lint.yml
+  - .pre-commit-config.yaml
+  - .yamllint.yml
+  - resources/sync
+
+  # antora ui
+  - src/main/ui-docs/.gulp.json
+  - src/main/ui-docs/src/js/vendor/highlight.bundle.js
+  - src/templates/falcon-v3.17.0
