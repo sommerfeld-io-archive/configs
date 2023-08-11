@@ -70,3 +70,7 @@ inspec --version
 ==== Arguments
 
 * *...* (String): The command arguments (1-n arguments) - $1 is mandatory
+
+==== Exit codes
+
+* *8*: If param with command arguments is missing

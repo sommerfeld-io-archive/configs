@@ -75,6 +75,10 @@ invoke molecule --version
 
 * *...* (String): The actual command (1-n arguments) - $1 is mandatory
 
+==== Exit codes
+
+* *8*: If param with command arguments is missing
+
 === molecule
 
 Facade to map `molecule` command. The actual execution is delegated
