@@ -1,6 +1,6 @@
-* `xref:AUTO-GENERATED:github-actions-docs/-github/workflows/auto-generate-docs-yml-github-actions-docs.adoc[.github/workflows/auto-generate-docs-yml]`
-* `xref:AUTO-GENERATED:github-actions-docs/-github/workflows/configure-github-yml-github-actions-docs.adoc[.github/workflows/configure-github-yml]`
 * `xref:AUTO-GENERATED:github-actions-docs/-github/workflows/organize-dependabot-yml-github-actions-docs.adoc[.github/workflows/organize-dependabot-yml]`
+* `xref:AUTO-GENERATED:github-actions-docs/-github/workflows/configure-github-yml-github-actions-docs.adoc[.github/workflows/configure-github-yml]`
+* `xref:AUTO-GENERATED:github-actions-docs/-github/workflows/ci-yml-github-actions-docs.adoc[.github/workflows/ci-yml]`
+* `xref:AUTO-GENERATED:github-actions-docs/-github/workflows/auto-generate-docs-yml-github-actions-docs.adoc[.github/workflows/auto-generate-docs-yml]`
 * `xref:AUTO-GENERATED:github-actions-docs/-github/workflows/organize-auto-close-issues-yml-github-actions-docs.adoc[.github/workflows/organize-auto-close-issues-yml]`
 * `xref:AUTO-GENERATED:github-actions-docs/-github/workflows/organize-assign-issues-yml-github-actions-docs.adoc[.github/workflows/organize-assign-issues-yml]`
-* `xref:AUTO-GENERATED:github-actions-docs/-github/workflows/ci-yml-github-actions-docs.adoc[.github/workflows/ci-yml]`
