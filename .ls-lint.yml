@@ -1,6 +1,6 @@
 ---
 ls:
-  .adoc: kebab-case | SCREAMING_SNAKE_CASE
+  .adoc: kebab-case | SCREAMING_SNAKE_CASE | PascalCase
   .puml: kebab-case
   .md: kebab-case | SCREAMING_SNAKE_CASE
 

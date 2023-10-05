@@ -68,7 +68,6 @@
 |[[module_archive-issues]] <<module_archive-issues,archive-issues>> |./modules/issues |
 |[[module_configs-issues]] <<module_configs-issues,configs-issues>> |./modules/issues |
 |[[module_configs-persistent-data-issues]] <<module_configs-persistent-data-issues,configs-persistent-data-issues>> |./modules/issues |
-|[[module_github-action-generate-docs-issues]] <<module_github-action-generate-docs-issues,github-action-generate-docs-issues>> |./modules/issues |
 |[[module_github-action-generate-readme-issues]] <<module_github-action-generate-readme-issues,github-action-generate-readme-issues>> |./modules/issues |
 |[[module_github-action-update-antora-yml-issues]] <<module_github-action-update-antora-yml-issues,github-action-update-antora-yml-issues>> |./modules/issues |
 |[[module_jarvis-issues]] <<module_jarvis-issues,jarvis-issues>> |./modules/issues |
@@ -94,8 +93,6 @@
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/resources/actions_secret[github_actions_secret.archive_GOOGLE_CHAT_WEBHOOK] |resource
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/resources/actions_secret[github_actions_secret.configs_GH_TOKEN_REPO_AND_PROJECT] |resource
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/resources/actions_secret[github_actions_secret.configs_GOOGLE_CHAT_WEBHOOK] |resource
-|https://registry.terraform.io/providers/integrations/github/5.32.0/docs/resources/actions_secret[github_actions_secret.github-action-generate-docs_GH_TOKEN_REPO_AND_PROJECT] |resource
-|https://registry.terraform.io/providers/integrations/github/5.32.0/docs/resources/actions_secret[github_actions_secret.github-action-generate-docs_GOOGLE_CHAT_WEBHOOK] |resource
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/resources/actions_secret[github_actions_secret.github-action-generate-readme_GH_TOKEN_REPO_AND_PROJECT] |resource
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/resources/actions_secret[github_actions_secret.github-action-generate-readme_GOOGLE_CHAT_WEBHOOK] |resource
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/resources/actions_secret[github_actions_secret.github-action-update-antora-yml_GH_TOKEN_REPO_AND_PROJECT] |resource
@@ -155,7 +152,6 @@
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/data-sources/repository[github_repository.archive] |data source
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/data-sources/repository[github_repository.configs] |data source
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/data-sources/repository[github_repository.configs-persistent-data] |data source
-|https://registry.terraform.io/providers/integrations/github/5.32.0/docs/data-sources/repository[github_repository.github-action-generate-docs] |data source
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/data-sources/repository[github_repository.github-action-generate-readme] |data source
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/data-sources/repository[github_repository.github-action-update-antora-yml] |data source
 |https://registry.terraform.io/providers/integrations/github/5.32.0/docs/data-sources/repository[github_repository.jarvis] |data source
@@ -172,5 +168,3 @@
 === Outputs
 
 No outputs.
-
-
