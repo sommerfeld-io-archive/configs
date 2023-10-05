@@ -1,0 +1,100 @@
+= run-tests.sh
+
+Test Ansible playbooks and tasks.
+
+== Overview
+
+This script vaidates and tests Ansible playbooks and tasks. It acts as a local development
+script before adding the tests to the CI pipeline.
+
+This script uses link:https://molecule.readthedocs.io/en/latest/index.html[Molecule] to test Ansible.
+Molecule is built into a Docker image by the link:https://github.com/ansible/creator-ee[Ansible Creator Execution Environment]
+project. The Ansible Creator Execution Environment is a container (execution environment) aimed towards
+being used for the development and testing of the Ansible content. We should also mention that this
+container must not be used in production by Ansible users. It includes:
+
+* link:https://github.com/ansible/ansible[ansible-core]
+* link:https://github.com/ansible/ansible-lint[ansible-lint]
+* link:https://github.com/ansible-community/molecule[molecule]
+
+[CAUTION]
+TODO This script is still work in progress ... see https://sommerfeld-io.atlassian.net/browse/SIO-221
+
+=== Script Arguments
+
+The script does not accept any parameters.
+
+=== Script Example
+
+[source, bash]
+
+----
+./run-tests.sh
+----
+
+== Index
+
+* <<_invoke,invoke>>
+* <<_molecule,molecule>>
+* <<_ansible-lint,ansible-lint>>
+
+=== invoke
+
+Wrapper function to encapsulate `molecule` and `ansible-lint` in a docker container
+using the link:https://quay.io/repository/ansible/creator-ee[quay.io/ansible/creator-ee] image (for
+additional info see link:https://github.com/ansible/creator-ee[ ansible/creator-ee] on Github).
+
+// Ansible runs in Docker as non-root user (the current user from the host is used inside the container).
+
+Filesystem dependencies are mounted into the container to ensure the user inside the container shares
+all relevant information with the user from the host.
+
+The current working directory is mounted into the container and selected as working directory so that
+all file of the project are available. Paths are preserved.
+
+==== Example
+
+[,bash]
+----
+invoke molecule --version
+----
+
+==== Arguments
+
+* *...* (String): The actual command (1-n arguments) - $1 is mandatory
+
+==== Exit codes
+
+* *8*: If param with command arguments is missing
+
+=== molecule
+
+Facade to map `molecule` command. The actual execution is delegated
+to a Docker container.
+
+==== Example
+
+[,bash]
+----
+molecule --version
+----
+
+==== Arguments
+
+* *...* (String): The molecule commands (1-n arguments) - $1 is mandatory
+
+=== ansible-lint
+
+Facade to map `ansible-lint` command. The actual execution is delegated
+to a Docker container.
+
+==== Example
+
+[,bash]
+----
+ansible-lint --version
+----
+
+==== Arguments
+
+* *...* (String): The molecule commands (1-n arguments) - $1 is mandatory
