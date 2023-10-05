@@ -134,7 +134,7 @@ set -o nounset
 # When running ``plan`` or ``apply``: All mandatory tokens, secrets, etc. which are passed to the
 # script (see "link:#_script_arguments[Script Arguments]"), are  configured as environment variables
 # for the container.
-# 
+#
 # @example
 #    terraform -version
 #
@@ -147,8 +147,8 @@ function terraform() {
     echo -e "$LOG_ERROR exit" && exit 8
   fi
 
-  local DOCKER_IMAGE="sommerfeldio/terraform:0.1.1"
-  
+  local DOCKER_IMAGE="sommerfeldio/terraform:0.1.0-beta.0"
+
   if [ "$TF_COMMAND" = "$OPTION_PLAN" ] || [ "$TF_COMMAND" = "$OPTION_APPLY" ]; then
     docker run --rm \
       --volume /etc/passwd:/etc/passwd:ro \
@@ -219,7 +219,7 @@ function cleanup() {
   rm -rf .bitwarden
 }
 
-# @description Generate documentation about this terraform configuratio by running 
+# @description Generate documentation about this terraform configuratio by running
 # link:https://github.com/terraform-docs/terraform-docs[terraform-docs] inside a Docker container.
 # The generated docs are stored as an Antora partials file.
 #
@@ -261,9 +261,9 @@ function format() {
 
 
 # @description Initialize this configuration by running ``terraform init``.
-# 
+#
 # ==== When running on a local machine during development
-# 
+#
 # Before running ``terraform init`` the
 # link:https://github.com/sebastian-sommerfeld-io/configs-persistent-data[configs-persistent-data]
 # repo is cloned and the terraform state is copied to its correct location. This is done to
