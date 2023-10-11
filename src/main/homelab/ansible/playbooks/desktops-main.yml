@@ -59,6 +59,14 @@
         state: latest
         update_cache: true
 
+    - name: Install -> Chrome
+      ansible.builtin.shell: |
+        curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb --output /tmp/chrome.deb
+        sudo dpkg -i /tmp/chrome.deb
+        rm /tmp/chrome.deb
+      args:
+        executable: /bin/bash
+
     - name: Install -> Install media player and DRM packages
       apt:
         pkg:

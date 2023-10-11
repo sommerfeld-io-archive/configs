@@ -26,9 +26,9 @@
 
 - name: Vagrant Setup -> Install Vagrant
   ansible.builtin.shell: |
-    curl https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb --output vagrant.deb
-    sudo dpkg -i vagrant.deb
-    rm vagrant.deb
+    curl https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb --output /tmp/vagrant.deb
+    sudo dpkg -i /tmp/vagrant.deb
+    rm /tmp/vagrant.deb
   args:
     executable: /bin/bash
 
