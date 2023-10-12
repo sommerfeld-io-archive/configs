@@ -1,9 +1,8 @@
 ---
 # @file desktops-steam.yml
-# @brief Lorem Ipsum ...
+# @brief Install Steam on Ubuntu Desktop machines.
 #
-# @description Lorem Ipsum ...
-# TODO ...
+# @description Install Steam on link:https://ubuntu.com/download/desktop[Ubuntu Desktop] machines.
 #
 # == Prerequisites
 #

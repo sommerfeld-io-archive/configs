@@ -1,9 +1,26 @@
 ---
 # @file raspi-main.yml
-# @brief Lorem Ipsum ...
+# @brief Install and configure RasPi nodes.
 #
-# @description Lorem Ipsum ...
-# TODO ...
+# @description This Ansible playbook is specifically designed to set up all
+# Raspberry Pi nides in my  homelab environment. All RasPi nodes tun on top of
+# Ubuntu Server or Rapsberry Pi OS (which is based on Debian). So this playbook
+# can utilize tasks which were originally written for Raspberry Pi nodes.
+#
+# The purpose of this Ansible playbook is to automate the setup and configuration of
+# Raspberry Pi nodes my homelab. It ensures that these machines are equipped with all
+# the necessary software, configurations, and development tools required for efficient work.
+#
+# * The playbook includes configurations for setting up user accounts, defining user permissions, and configuring user-specific settings like ``.bashrc`` settings and SSH keys.
+# * The playbook installs all the needed software required for daily and development tasks.
+# * The playbook installs a comprehensive set of development tools necessary for software development and operations.
+#
+# This Ansible playbook streamlines the process of setting up Raspberry Pi nodes development
+# purposes and (recurring) operations tasks, ensuring that they are equipped with the
+# necessary software, configurations, and development tools. Additionally, it provides a
+# version-controlled and easily reproducible way to maintain my  homelab environment,
+# ensuring that all Raspberry Pi nodes are always up-to-date and configured according to
+# specifications.
 #
 # == Prerequisites
 #

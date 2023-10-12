@@ -1,9 +1,9 @@
 ---
 # @file update-upgrade.yml
-# @brief Lorem Ipsum ...
+# @brief Update and upgrade all workstations, server nodes and RasPi nodes from my homelab.
 #
-# @description Lorem Ipsum ...
-# TODO ...
+# @description Update and upgrade all workstations, server nodes and RasPi nodes from my homelab.
+# Basically this is done by utilizing `apt`.
 #
 # == Prerequisites
 #

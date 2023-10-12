@@ -1,6 +1,6 @@
 ---
 # @file desktops-main.yml
-# @brief Install and cofigure Ubuntu Desktop workstations.
+# @brief Install and configure Ubuntu Desktop workstations.
 #
 # @description This Ansible playbook is specifically designed to set up all the
 # workstations in my  homelab environment. The term "workstations" revers to all
@@ -8,7 +8,7 @@
 # business and development.
 #
 # The purpose of this Ansible playbook is to automate the setup and configuration of
-# Ubuntu desktop machines used for daily business and development tasks in my homelab.#
+# Ubuntu desktop machines used for daily business and development tasks in my homelab.
 # It ensures that these machines are equipped with all the necessary software,
 # configurations, and development tools required for efficient work.
 #
