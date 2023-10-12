@@ -1,4 +1,10 @@
 ---
+# @file install-virtualization.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Virtualbox Setup -> Install Virtualbox and dependencies
   apt:
     pkg:
@@ -23,6 +29,13 @@
   become_user: "{{ ansible_user }}"
   args:
     executable: /bin/bash
+
+- name: Virtualbox Setup -> Add user to docker group
+  user:
+    name: "{{ ansible_user }}"
+    shell: /bin/bash
+    groups: vboxusers
+    append: true
 
 - name: Vagrant Setup -> Install Vagrant
   ansible.builtin.shell: |

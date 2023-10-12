@@ -1,4 +1,10 @@
 ---
+# @file update-upgrade.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: apt update and upgrade
   hosts: all
   gather_facts: true

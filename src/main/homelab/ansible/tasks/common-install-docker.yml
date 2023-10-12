@@ -1,4 +1,10 @@
 ---
+# @file common-install-docker.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Docker Setup -> Purge deprecated docker installations
   apt:
     name:
@@ -32,8 +38,9 @@
     state: latest
     update_cache: true
 
-- name: Docker Setup -> Add default user to docker group
+- name: Docker Setup -> Add user to docker group
   user:
     name: "{{ ansible_user }}"
+    shell: /bin/bash
     groups: docker
     append: true

@@ -1,4 +1,10 @@
 ---
+# @file common-install-packages.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Install -> Basic packages
   apt:
     pkg:

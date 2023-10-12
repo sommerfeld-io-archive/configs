@@ -1,4 +1,10 @@
 ---
+# @file common-config-bash-aliases.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Config -> Write commands to .bashrc
   lineinfile:
     dest: "/home/{{ ansible_user }}/.bashrc"

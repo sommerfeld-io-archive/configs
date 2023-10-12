@@ -1,0 +1,29 @@
+---
+# @file copy-files.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
+- name: Wallpaper -> Create directory
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rwx,g=rwx,o=rwx
+  with_items:
+    - "/home/{{ ansible_user }}/Pictures/wallpapers"
+
+- name: Wallpaper -> Copy files
+  ansible.builtin.copy:
+    src: "../assets/wallpapers/{{ item }}"
+    dest: "/home/{{ ansible_user }}/Pictures/wallpapers/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rw,g=r,o=r
+  with_items:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+    - 4.jpg

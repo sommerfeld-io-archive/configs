@@ -1,4 +1,10 @@
 ---
+# @file config-bash-aliases-x86-ubuntu-desktop.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Config -> Write aliases to .bashrc (for Ubuntu desktop)
   lineinfile:
     create: true

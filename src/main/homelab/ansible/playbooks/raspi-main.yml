@@ -1,4 +1,10 @@
 ---
+# @file raspi-main.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Setup for RasPi nodes
   hosts: raspi
   gather_facts: true

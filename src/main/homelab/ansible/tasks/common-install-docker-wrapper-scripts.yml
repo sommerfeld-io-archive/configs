@@ -1,4 +1,10 @@
 ---
+# @file common-install-docker-wrapper-scripts.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Config -> Create directories for docker wrappers
   file:
     path: "{{ item }}"

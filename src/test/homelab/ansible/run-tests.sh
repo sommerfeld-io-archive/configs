@@ -15,8 +15,7 @@
 # * link:https://github.com/ansible/ansible-lint[ansible-lint]
 # * link:https://github.com/ansible-community/molecule[molecule]
 #
-# [CAUTION]
-# TODO This script is still work in progress ... see https://sommerfeld-io.atlassian.net/browse/SIO-221
+# CAUTION: TODO This script is still work in progress ...
 #
 # === Script Arguments
 #
@@ -36,10 +35,8 @@ set -o nounset
 # set -o xtrace
 
 
-
-
 # @description Wrapper function to encapsulate ``molecule`` and ``ansible-lint`` in a docker container
-# using the link:https://quay.io/repository/ansible/creator-ee[quay.io/ansible/creator-ee] image (for 
+# using the link:https://quay.io/repository/ansible/creator-ee[quay.io/ansible/creator-ee] image (for
 # additional info see link:https://github.com/ansible/creator-ee[ ansible/creator-ee] on Github).
 #
 # // Ansible runs in Docker as non-root user (the current user from the host is used inside the container).

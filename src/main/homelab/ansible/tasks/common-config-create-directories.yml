@@ -1,4 +1,10 @@
 ---
+# @file common-config-create-directories.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Config -> Create directories
   file:
     path: "{{ item }}"

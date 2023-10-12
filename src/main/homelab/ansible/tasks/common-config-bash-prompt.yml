@@ -1,4 +1,10 @@
 ---
+# @file common-config-bash-prompt.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Config -> Update prompt in .bashrc
   lineinfile:
     dest: "/home/{{ ansible_user }}/.bashrc"

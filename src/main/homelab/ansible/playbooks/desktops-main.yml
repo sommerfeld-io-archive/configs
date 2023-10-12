@@ -1,4 +1,17 @@
 ---
+# @file desktops-main.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+#
+# NOTE: Don't run this script inside a container (including devcontainers). Updating Docker might
+# affect the Docker deamon and hence affect the running Ansible process.
+#
+# == Prerequisites
+#
+# TODO ... Ansible should be there ... Bootstrap scripts
+
 - name: Setup for group ubuntu_desktop
   hosts: ubuntu_desktop
   gather_facts: true
@@ -163,9 +176,16 @@
       community.general.snap:
         name:
           - code # vscode
-          - pre-commit
+          #- pre-commit
         state: present
         classic: true
+
+    - name: Install -> Dev packages
+      apt:
+        pkg:
+          - pre-commit
+        state: latest
+        update_cache: true
 
     - name: GitHub CLI Setup -> Add GPG apt key
       apt_key:
@@ -224,6 +244,8 @@
         done
       args:
         executable: /bin/bash
+
+    - ansible.builtin.import_tasks: ../tasks/copy-files.yml
 
     #  +-----------------------------------------------------------------------------+
     #! |    Must be last task in this play !!!                                       |

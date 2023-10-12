@@ -1,4 +1,10 @@
 ---
+# @file common-config-git.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Config -> Copy git configuration
   ansible.builtin.copy:
     src: ../assets/.gitconfig

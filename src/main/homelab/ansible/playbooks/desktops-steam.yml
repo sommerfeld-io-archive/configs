@@ -1,4 +1,10 @@
 ---
+# @file desktops-steam.yml
+# @brief Lorem Ipsum ...
+#
+# @description Lorem Ipsum ...
+# TODO ...
+
 - name: Setup for group ubuntu_desktop
   hosts: ubuntu_desktop
   gather_facts: true
