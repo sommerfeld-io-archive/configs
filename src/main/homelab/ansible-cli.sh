@@ -2,33 +2,31 @@
 # @file ansible-cli.sh
 # @brief Command line interface to run Ansible playbooks.
 #
-# @description This Bash script allows the installation and uninstallation of Ansible Galaxy
-# modules and running Ansible playbooks. The script is designed to simplify the management of
-# Ansible modules and playbooks
+# @description This Bash script allows to running Ansible playbooks. The script is designed to
+# simplify the management of Ansible playbooks.
 #
 # The script uses a Docker container to run Ansible, ensuring that your system remains clean and
 # free from dependencies. The Docker container is pre-configured with Ansible and all required
-# dependencies. 
+# dependencies.
 #
-# In addition to module installation and uninstallation, the main purpose ot this script is to run
-# Ansible playbooks within the Docker container. 
-#
-# To run playbooks successfully, make sure to run ``ssh-copy-id <REMOTE_USER>@<REMOTE_SERVER>.fritz.box``
-# first to ensure seamless connects to all remote machines.
+# To run playbooks successfully, make sure to run ``ssh-copy-id <REMOTE_USER>@<REMOTE_HOST>.fritz.box``
+# first to ensure seamless connects to all remote machines. Run ``ssh-copy-id <LOCAL_USER>@<LOCAL_HOST>.fritz.box``
+# for your local machine as well (if this machine is listed in the host inventory.). Otherwise Ansible
+# might fail when connecting to your local machine via its FQDN.
 #
 # [source, bash]
 # ```
 # ssh-copy-id sebastian@caprica.fritz.box
 # ssh-copy-id sebastian@kobol.fritz.box
-# ssh-copy-id pi@prometheus.fritz.box
 # ```
 #
 # NOTE: Ansible expects the user ``sebastian`` to be present on all nodes. This user is the default
-# user for each node (workstation and RasPi). Normally this user is created from the setup wizard.
-# This scripts exits with ``exitcode=8`` if this user does not exist.
+# user for each node (workstation, server and RasPi). Normally this user is created when installing
+# an operating system through its setup wizard. This scripts exits with ``exitcode=8`` if this user
+# does not exist.
 #
-# Overall, this script is designed to simplify the management of Ansible modules and playbooks by
-# providing a clean and automated environment for running them.
+# Overall, this script is designed to simplify the management of Ansible playbooks by providing a
+# clean and automated environment for running them.
 #
 # === Script Arguments
 #
@@ -36,29 +34,32 @@
 #
 # == Prerequisites
 #
-# Before using this script, you need to ensure that Docker and Docker Compose is installed on the
-# system. The script assumes that the Docker engine is running, and the user has necessary
-# permissions to execute Docker commands.
+# Before using this script, you need to ensure that Docker 24.0.6 or greater is installed on the
+# system which runs the playbooks. The script assumes that the Docker engine is running, and the
+# user has necessary permissions to execute Docker commands.
 #
 # == Ansible Playbooks
 #
-# === Ansible Playbook: desktops-main.yml
+# This script automatically detects all Ansible playbooks in the ``src/main/homelab/ansible/playbooks``
+# folder.
+#
+# === Ansible Playbook: ``desktops-main.yml``
 #
 # This Ansible playbook is designed to configure basic settings, directory structure, and software
 # packages for Ubuntu desktop machines. The playbook also includes some tasks that are shared with
 # other playbooks to ensure a consistent setup among all machines.
 #
-# === Ansible Playbook: desktops-steam.yml
+# === Ansible Playbook: ``desktops-steam.yml``
 #
 # This Ansible playbook is designed to install Steam on Ubuntu desktop machines.
 #
-# === Ansible Playbook: raspi-main.yml
+# === Ansible Playbook: ``raspi-main.yml``
 #
 # This Ansible playbook is designed to configure basic settings, directory structure, and software
 # packages for Raspberry Pi machines. The playbook also includes some tasks that are shared with
 # other playbooks to ensure a consistent setup among all machines but uses a reduced tasks set.
 #
-# === Ansible Playbook: update-upgrade.yml
+# === Ansible Playbook: ``update-upgrade.yml``
 #
 # This Ansible playbook is designed to update all packages to their latest version and perform an
 # aptitude safe-upgrade on Ubuntu and RaspberryPi OS machines (both are Debian-based).
@@ -70,13 +71,10 @@ set -o nounset
 # set -o xtrace
 
 
-readonly SELECT_OPTION_INSTALL="install_dependencies"
-readonly SELECT_OPTION_UNINSTALL="uninstall_dependencies"
-readonly SELECT_OPTION_PLAYBOOK="run_playbook"
-readonly MANDATORY_USER="sebastian"
+readonly ANSIBLE_USER="sebastian"
 
 
-# @description Wrapper function to encapsulate ansible in a docker container using the 
+# @description Wrapper function to encapsulate ansible in a docker container using the
 # link:https://hub.docker.com/r/cytopia/ansible[cytopia/ansible] image.
 #
 # Ansible runs in Docker as non-root user (the current user from the host is used inside the container).
@@ -137,59 +135,30 @@ function ansible-playbook() {
 }
 
 
-# @description Facade to map ``ansible-galaxy`` command. The actual Ansible execution is delegated to
-# Ansible running in a Docker container.
-#
-# @example
-#    echo "test: $(ansible-galaxy install <extension>)"
-#
-# @arg $@ String The ansible-galaxy commands (1-n arguments) - $1 is mandatory
-function ansible-galaxy() {
-  invoke ansible-galaxy "$@"
-}
-
-
 docker run --rm mwendler/figlet:latest 'Ansible CLI'
-echo -e "$LOG_INFO What should I do?"
-select task in "$SELECT_OPTION_PLAYBOOK" "$SELECT_OPTION_INSTALL" "$SELECT_OPTION_UNINSTALL"; do
-  case "$task" in
-    "$SELECT_OPTION_PLAYBOOK" )
-      (
-        cd ansible || exit
 
-        if ! id "$MANDATORY_USER" &>/dev/null; then
-          echo -e "$LOG_ERROR +-----------------------------------------------------------------------------+"
-          echo -e "$LOG_ERROR |    MANDATORY USER NOT FOUND !!!                                             |"
-          echo -e "$LOG_ERROR |                                                                             |"
-          echo -e "$LOG_ERROR |    Ansible expects the user ${P}sebastian${D} to be present on all nodes.           |"
-          echo -e "$LOG_ERROR |    This user is the default user for each node (workstation and RasPi).     |"
-          echo -e "$LOG_ERROR |    Normally this user is created from the setup wizard.                     |"
-          echo -e "$LOG_ERROR +-----------------------------------------------------------------------------+"
-          echo -e "$LOG_ERROR exit" && exit 8
-        fi
+(
+  cd ansible || exit
+
+  if ! id "$ANSIBLE_USER" &>/dev/null; then
+    echo -e "$LOG_ERROR +-----------------------------------------------------------------------------+"
+    echo -e "$LOG_ERROR |                                                                             |"
+    echo -e "$LOG_ERROR |    ANSIBLE USER NOT FOUND !!!                                               |"
+    echo -e "$LOG_ERROR |                                                                             |"
+    echo -e "$LOG_ERROR |    Ansible expects the user ${P}${ANSIBLE_USER}${D} to be present on all nodes.           |"
+    echo -e "$LOG_ERROR |    This user is the default user for each node (workstation and RasPi).     |"
+    echo -e "$LOG_ERROR |    Normally this user is created from the setup wizard.                     |"
+    echo -e "$LOG_ERROR |                                                                             |"
+    echo -e "$LOG_ERROR +-----------------------------------------------------------------------------+"
+    echo -e "$LOG_ERROR exit" && exit 8
+  fi
 
 
-        echo -e "$LOG_INFO Select playbook"
-        #select s in $(cd playbooks && ls | grep .yml | grep -v playbook); do
-        select playbook in playbooks/*.yml; do
-          echo -e "$LOG_INFO Run $P$playbook$D"
-          ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
+  echo -e "$LOG_INFO Select playbook"
+  select playbook in playbooks/*.yml; do
+    echo -e "$LOG_INFO Run $P$playbook$D"
+    ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
 
-          break
-        done
-      )
-    ;;
-    "$SELECT_OPTION_INSTALL" )
-      echo -e "$LOG_INFO Install ansible-galaxy modules"
-      echo -e "$LOG_WARN Todo ..."
-      # ansible-galaxy install gantsign.visual-studio-code-extensions
-    ;;
-    "$SELECT_OPTION_UNINSTALL" )
-      echo -e "$LOG_INFO Uninstall ansible-galaxy modules"
-      echo -e "$LOG_WARN Todo ..."
-      # ansible-galaxy remove gantsign.visual-studio-code-extensions
-    ;;
-  esac
-
-  break
-done
+    break
+  done
+)
