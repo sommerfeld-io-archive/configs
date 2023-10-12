@@ -1,9 +1,12 @@
 ---
 # @file config-git-clone-repos.yml
-# @brief Lorem Ipsum ...
+# @brief Clone mandatory repositories from Github.
 #
-# @description Lorem Ipsum ...
-# TODO ...
+# @description The task clones repositories providing files, scripts and data, that are
+# essential for running all desired features on a machine, from Github.
+#
+# One such feature is running ``node_exporter``, ``cAdvisor`` and ``portainer`` on every
+# host to allow monitoring and Docker management.
 
 - name: Config -> Clone mandatory git repositories from Github (github.com/sebastian-sommerfeld-io)
   ansible.builtin.git:

@@ -1,9 +1,9 @@
 ---
 # @file common-config-create-directories.yml
-# @brief Lorem Ipsum ...
+# @brief Setup directory tree.
 #
-# @description Lorem Ipsum ...
-# TODO ...
+# @description  The task sets up the directory tree and ensures needed all
+# folders are present.
 
 - name: Config -> Create directories
   file:

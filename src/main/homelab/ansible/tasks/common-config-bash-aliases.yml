@@ -1,9 +1,10 @@
 ---
 # @file common-config-bash-aliases.yml
-# @brief Lorem Ipsum ...
+# @brief Update Bash settings.
 #
-# @description Lorem Ipsum ...
-# TODO ...
+# @description The task updates the Bash settings for the ``{{ ansible_user }}``
+# (which is the user who runs the playbooks, normally ``sebastian``). The task
+# ensures that all aliases and exported variables are present.
 
 - name: Config -> Write commands to .bashrc
   lineinfile:

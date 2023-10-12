@@ -1,9 +1,9 @@
 ---
 # @file common-config-bash-prompt.yml
-# @brief Lorem Ipsum ...
+# @brief Update Bash prompt.
 #
-# @description Lorem Ipsum ...
-# TODO ...
+# @description  The task updates the Bash prompt for the ``{{ ansible_user }}``
+# (which is the user who runs the playbooks, normally ``sebastian``).
 
 - name: Config -> Update prompt in .bashrc
   lineinfile:

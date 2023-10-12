@@ -1,9 +1,9 @@
 ---
 # @file common-install-packages.yml
-# @brief Lorem Ipsum ...
+# @brief Install basic packages.
 #
-# @description Lorem Ipsum ...
-# TODO ...
+# @description The task installs basic packages that act as dependencies for other
+# packages and some handy utilities.
 
 - name: Install -> Basic packages
   apt:

@@ -1,9 +1,11 @@
 ---
 # @file common-install-docker.yml
-# @brief Lorem Ipsum ...
+# @brief Install Docker with all dependencies.
 #
-# @description Lorem Ipsum ...
-# TODO ...
+# @description The task installs Docker with all dependencies. It also ensures that
+# all possibly existing legacy Docker packages are purged first. It also adds the
+# ``{{ ansible_user }}`` (which is the user who runs the playbooks, normally ``sebastian``)
+# is added to the Docker group to allow running Docker without ``sudo``.
 
 - name: Docker Setup -> Purge deprecated docker installations
   apt:
