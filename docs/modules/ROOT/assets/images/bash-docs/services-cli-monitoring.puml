@@ -3,7 +3,7 @@
 skinparam linetype ortho
 skinparam monochrome false
 skinparam componentStyle uml2
-skinparam backgroundColor #0D1117
+skinparam backgroundColor transparent
 skinparam ArrowColor #e6edf3
 skinparam NoteBorderColor #e6edf3
 skinparam NoteFontColor #e6edf3
@@ -49,15 +49,6 @@ rectangle monitoring as "monitoring.fritz.box" <<RasPi>> {
   grafana ~right~> nginx
 }
 
-rectangle supervisor as "supervisor.fritz.box" <<RasPi>> {
-  component tmp_grafana as "grafana"
-  component tmp_prometheus as "prometheus"
-  component tmp_nginx <<reverse-proxy>>
-  tmp_prometheus -> tmp_grafana
-  tmp_grafana ~right~> tmp_nginx
-}
-note right of supervisor: Temporary stack to check if the actual\nmonitoring stack in prometheus.fritz.box is stable\nand the RasPi node provides enough resources.
-
 rectangle clients <<multiple>> {
   component node_exporter
   component cAdvisor
@@ -65,6 +56,5 @@ rectangle clients <<multiple>> {
 note bottom of clients: kobol.fritz.box\ncaprica.fritz.box\nall RasPi nodes
 
 clients -left-> monitoring
-monitoring -down-> supervisor
 
 @enduml

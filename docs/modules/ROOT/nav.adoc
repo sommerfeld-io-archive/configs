@@ -3,5 +3,4 @@
 ** xref:homelab/caprica/index.adoc[]
 ** xref:homelab/kobol/index.adoc[]
 ** xref:homelab/monitoring.fritz.box/index.adoc[]
-** xref:homelab/supervisor.fritz.box/index.adoc[]
 * xref:onboardings.adoc[]

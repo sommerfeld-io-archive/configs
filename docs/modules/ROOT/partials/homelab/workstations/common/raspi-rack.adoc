@@ -8,7 +8,7 @@
 |  | monitoring.fritz.box |  |
 |  +----------------------+  |
 |  |               Slot 2 |  |
-|  | supervisor.fritz.box |  |
+|  |        Empty SD card |  |
 |  +----------------------+  |
 |  |               Slot 3 |  |
 |  |        Empty SD card |  |

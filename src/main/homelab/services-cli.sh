@@ -34,10 +34,6 @@
 #
 # include::ROOT:partial$homelab/services/docker/monitoring-fritz-box.adoc[]
 #
-# === Docker Compose Stack: supervisor.fritz.box
-#
-# include::ROOT:partial$homelab/services/docker/supervisor-fritz-box.adoc[]
-#
 # === Docker Compose Stack: ops
 #
 # include::ROOT:partial$homelab/services/docker/ops.adoc[]
