@@ -1,9 +1,15 @@
 ---
 # @file docker-compose.yml
-# @brief Lorem Ipsum ...
+# @brief Run all components needed to allow monitoring a host and management of Docker containers on a host.
 #
-# @description Lorem Ipsum ...
-# TODO ...
+# @description This ``ops`` compose stack run all components needed to allow
+# the monitoring of a host and management of Docker containers on a host.
+#
+# | Component     | Port | URL                   |
+# | ------------- | ---- | --------------------- |
+# | node_exporter | 9100 | http://localhost:9100 |
+# | cAdvisor      | 9110 | http://localhost:9110 |
+# | Portainer     | 9990 | http://localhost:9990 |
 
 version: "3.3"
 services:
