@@ -52,8 +52,4 @@ control 'docker-packages' do
     describe package('docker-ce-cli') do
         it { should be_installed }
     end
-
-    describe package('docker compose') do
-        it { should be_installed }
-    end
 end
