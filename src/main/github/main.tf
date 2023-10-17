@@ -9,7 +9,7 @@ terraform {
 
     github = {
       source  = "integrations/github"
-      version = "5.32.0"
+      version = "5.40.0"
     }
 
     bitwarden = {
