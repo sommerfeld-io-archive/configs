@@ -114,11 +114,10 @@
         state: latest
         update_cache: true
 
-    # https://wiki.ubuntuusers.de/Asunder
     - name: Install -> Install audio CD ripper
       apt:
         pkg:
-          - asunder
+          - asunder # https://wiki.ubuntuusers.de/Asunder
           - lame
           - vorbis-tools
           - flac
@@ -140,6 +139,7 @@
         pkg:
           - thunderbird
           - libreoffice
+          - libreoffice-*
           - totem
           - totem-video-thumbnailer
         state: absent
