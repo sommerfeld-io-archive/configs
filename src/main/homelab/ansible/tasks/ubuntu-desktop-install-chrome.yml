@@ -1,0 +1,22 @@
+---
+# @file ubuntu-desktop-install-chrome.yml
+# @brief Install Chrome and Chromium browsers.
+#
+# @description The task installs Chrome and Chromium browsers.
+
+- name: Install -> Chromium packages
+  apt:
+    pkg:
+      - chromium-browser
+      - chromium-browser-l10n
+      - chromium-codecs-ffmpeg
+    state: latest
+    update_cache: true
+
+- name: Install -> Chrome
+  ansible.builtin.shell: |
+    curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb --output /tmp/chrome.deb
+    sudo dpkg -i /tmp/chrome.deb
+    rm /tmp/chrome.deb
+  args:
+    executable: /bin/bash

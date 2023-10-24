@@ -1,0 +1,17 @@
+---
+# @file ubuntu-desktop-install-ansible.yml
+# @brief Install Ansible.
+#
+# @description The task installs Ansible.
+
+- name: Ansible Setup -> Add apt repository
+  apt_repository:
+    repo: "ppa:ansible/ansible"
+    state: present
+
+- name: Ansible Setup -> Install ansible
+  apt:
+    name:
+      - ansible
+    state: latest
+    update_cache: true

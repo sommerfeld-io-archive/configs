@@ -41,189 +41,21 @@
 
     - ansible.builtin.import_tasks: ../tasks/common-config-bash-prompt.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-bash-aliases.yml
-
-    - name: Config -> Write commands to .bashrc (desktop machines only)
-      lineinfile:
-        dest: "/home/{{ ansible_user }}/.bashrc"
-        state: present
-        line: "{{ item }}"
-      with_items:
-        - docker run --rm mwendler/figlet:latest "$(hostname)"
-
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-config-bash-aliases.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-create-directories.yml
-    - ansible.builtin.import_tasks: ../tasks/common-install-packages.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-git.yml
-
-    - ansible.builtin.import_tasks: ../tasks/config-bash-aliases-x86-ubuntu-desktop.yml
-
-    - name: Install -> Software packages
-      apt:
-        pkg:
-          - rpi-imager
-          - tilix
-          - filezilla
-          - gnome-tweaks
-          - conky-all
-          - rar
-          - unrar
-          - p7zip
-          - p7zip-full
-          - p7zip-rar
-          - nmap
-        state: latest
-        update_cache: true
-
-    - name: Install -> Development tools
-      apt:
-        pkg:
-          - yarn
-          - hugo
-          - asciidoctor
-        state: latest
-        update_cache: true
-
-    - name: Install -> Chromium packages
-      apt:
-        pkg:
-          - chromium-browser
-          - chromium-browser-l10n
-          - chromium-codecs-ffmpeg
-        state: latest
-        update_cache: true
-
-    - name: Install -> Chrome
-      ansible.builtin.shell: |
-        curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb --output /tmp/chrome.deb
-        sudo dpkg -i /tmp/chrome.deb
-        rm /tmp/chrome.deb
-      args:
-        executable: /bin/bash
-
-    - name: Install -> Install media player and DRM packages
-      apt:
-        pkg:
-          - vlc
-          - vlc-plugin-access-extra
-          - libbluray-bdj
-          - libdvdcss2
-          - vlc-plugin-fluidsynth
-          - vlc-plugin-jack
-          - ffmpeg
-          - libavcodec-extra
-          - ubuntu-restricted-extras
-        state: latest
-        update_cache: true
-
-    - name: Install -> Install audio CD ripper
-      apt:
-        pkg:
-          - asunder # https://wiki.ubuntuusers.de/Asunder
-          - lame
-          - vorbis-tools
-          - flac
-          - libopus0
-          - wavpack
-        state: latest
-        update_cache: true
-
-    - name: Install -> Install CD/DVD writer
-      apt:
-        pkg:
-          - brasero
-          - gstreamer1.0-plugins-ugly
-        state: latest
-        update_cache: true
-
-    - name: Uninstall -> Some pre-installed packages
-      apt:
-        pkg:
-          - thunderbird
-          - libreoffice
-          - libreoffice-*
-          - totem
-          - totem-video-thumbnailer
-        state: absent
-
-    - name: Config -> Create ssh keypair
-      openssh_keypair:
-        path: "/home/{{ ansible_user }}/.ssh/id_rsa"
-        owner: "{{ ansible_user }}"
-        group: "{{ ansible_user }}"
-        type: rsa
-        size: 4096
-        state: present
-        force: false
-
+    - ansible.builtin.import_tasks: ../tasks/common-install-packages.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-packages.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-chrome.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-media-players.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-uninstall.yml
+    - ansible.builtin.import_tasks: ../tasks/common-config-ssh-keypair.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-docker.yml
-
-    - name: Ansible Setup -> Add apt repository
-      apt_repository:
-        repo: "ppa:ansible/ansible"
-        state: present
-
-    - name: Ansible Setup -> Install ansible
-      apt:
-        name:
-          - ansible
-        state: latest
-        update_cache: true
-
-    - name: Sublime Setup -> Add GPG apt key
-      apt_key:
-        url: https://download.sublimetext.com/sublimehq-pub.gpg
-        state: present
-
-    - name: Sublime Setup -> Add apt repository
-      apt_repository:
-        repo: deb https://download.sublimetext.com apt/stable/
-        state: present
-
-    - name: Sublime Setup -> Install sublime
-      apt:
-        name:
-          - sublime-text
-        state: latest
-        update_cache: true
-
-    - name: Install -> Snap packages
-      community.general.snap:
-        name:
-          - postman
-        state: present
-
-    - name: Install -> Snap packages (classic)
-      community.general.snap:
-        name:
-          - code # vscode
-          #- pre-commit
-        state: present
-        classic: true
-
-    - name: Install -> Dev packages
-      apt:
-        pkg:
-          - pre-commit
-        state: latest
-        update_cache: true
-
-    - name: GitHub CLI Setup -> Add GPG apt key
-      apt_key:
-        url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
-        state: present
-
-    - name: GitHub CLI Setup -> Add apt repository
-      apt_repository:
-        repo: deb https://cli.github.com/packages stable main
-        state: present
-
-    - name: GitHub CLI Setup -> Install gh
-      apt:
-        name:
-          - gh
-        state: latest
-        update_cache: true
-
-    - ansible.builtin.import_tasks: ../tasks/install-virtualization.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-ansible.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-sublime.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-snap-packages.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-github-cli.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-virtualization.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-docker-wrapper-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
 
@@ -235,40 +67,13 @@
     - ../vars/global.yml
   tasks:
 
-    - ansible.builtin.import_tasks: ../tasks/config-cron-jobs.yml
-
-    - name: Install -> VSCode Extensions
-      ansible.builtin.shell: |
-        extensions=(
-          'aaron-bond.better-comments'
-          'asciidoctor.asciidoctor-vscode'
-          'chef-software.chef'
-          'hashicorp.terraform'
-          'jebbs.plantuml'
-          'ms-azuretools.vscode-docker'
-          'ms-vscode-remote.remote-containers'
-          'ms-python.python'
-          'pomdtr.markdown-kroki'
-          'recode4dev.jenkinsfile'
-          'redhat.ansible'
-          'redhat.vscode-yaml'
-          'timonwong.shellcheck'
-          'vscjava.vscode-java-pack'
-          'golang.go'
-        )
-        for extension in "${extensions[@]}"
-        do
-          echo "[INFO] Install VSCode extension $extension"
-          code --install-extension "$extension"
-        done
-      args:
-        executable: /bin/bash
-
-    - ansible.builtin.import_tasks: ../tasks/copy-files.yml
+    - ansible.builtin.import_tasks: ../tasks/common-config-cron-jobs.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-vscode-plugins.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-copy-files.yml
 
     #  +-----------------------------------------------------------------------------+
     #! |    Must be last task in this play !!!                                       |
     #  |    Local changes result in a failure for this task.                         |
     #  |    In case of failure, all other tasks for the affected node are skipped    |
     #  +-----------------------------------------------------------------------------+
-    - ansible.builtin.import_tasks: ../tasks/config-git-clone-repos.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-clone-repos.yml

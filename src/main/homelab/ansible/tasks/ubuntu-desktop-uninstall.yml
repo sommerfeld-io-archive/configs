@@ -1,0 +1,15 @@
+---
+# @file ubuntu-desktop-uninstall.yml
+# @brief Purge some pre-installed packages.
+#
+# @description The task uninstalls some pre-installed packages.
+
+- name: Uninstall -> Some pre-installed packages
+  apt:
+    pkg:
+      - thunderbird
+      - libreoffice
+      - libreoffice-*
+      - totem
+      - totem-*
+    state: absent

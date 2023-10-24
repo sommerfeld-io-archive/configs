@@ -1,0 +1,34 @@
+---
+# @file ubuntu-desktop-install-vscode-plugins.yml
+# @brief Install VSCode plugins.
+#
+# @description The task installs VSCode plugins.
+#
+# IMPORTANT: Run in a playbook that is NOT becoming ``root``.
+
+- name: Install -> VSCode Extensions
+  ansible.builtin.shell: |
+    extensions=(
+      'aaron-bond.better-comments'
+      'asciidoctor.asciidoctor-vscode'
+      'chef-software.chef'
+      'hashicorp.terraform'
+      'jebbs.plantuml'
+      'ms-azuretools.vscode-docker'
+      'ms-vscode-remote.remote-containers'
+      'ms-python.python'
+      'pomdtr.markdown-kroki'
+      'recode4dev.jenkinsfile'
+      'redhat.ansible'
+      'redhat.vscode-yaml'
+      'timonwong.shellcheck'
+      'vscjava.vscode-java-pack'
+      'golang.go'
+    )
+    for extension in "${extensions[@]}"
+    do
+      echo "[INFO] Install VSCode extension $extension"
+      code --install-extension "$extension"
+    done
+  args:
+    executable: /bin/bash

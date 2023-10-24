@@ -1,0 +1,32 @@
+---
+# @file ubuntu-desktop-install-packages.yml
+# @brief Install some basic packages with a UI
+#
+# @description The task installs some basic packages with a UI.
+
+- name: Install -> Software packages
+  apt:
+    pkg:
+      - rpi-imager
+      - tilix
+      - filezilla
+      - gnome-tweaks
+      - conky-all
+      - rar
+      - unrar
+      - p7zip
+      - p7zip-full
+      - p7zip-rar
+      - nmap
+    state: latest
+    update_cache: true
+
+- name: Install -> Development tools
+  apt:
+    pkg:
+      - yarn
+      - hugo
+      - asciidoctor
+      - pre-commit
+    state: latest
+    update_cache: true

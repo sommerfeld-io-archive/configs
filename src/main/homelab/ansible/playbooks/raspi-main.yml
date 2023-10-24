@@ -43,20 +43,9 @@
     - ansible.builtin.import_tasks: ../tasks/common-config-create-directories.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-packages.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-git.yml
-
     - ansible.builtin.import_tasks: ../tasks/common-install-docker-wrapper-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
-
-    - name: Config -> Create ssh keypair
-      openssh_keypair:
-        path: "/home/{{ ansible_user }}/.ssh/id_rsa"
-        owner: "{{ ansible_user }}"
-        group: "{{ ansible_user }}"
-        type: rsa
-        size: 4096
-        state: present
-        force: false
-
+    - ansible.builtin.import_tasks: ../tasks/common-config-ssh-keypair.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-docker.yml
 
     - name: Config -> Clone mandatory git repositories from Github (github.com/sebastian-sommerfeld-io) via https
