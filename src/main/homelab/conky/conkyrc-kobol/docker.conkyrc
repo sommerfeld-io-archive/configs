@@ -42,15 +42,7 @@ conky.config = {
 };
 
 conky.text = [[
-# Nodes
-# ${template0}${color #9f907d}NODES ON NETWORK ${color slate grey}${hr 2}${font}
-# ${template1}${exec cat ~/work/workspace/workspace-github/kobol/target/conky/nodes.txt}
-
-# Vagrantboxes
-#${template0}${color #9f907d}VAGRANTBOXES ${color slate grey}${hr 2}${font}
-#${template1}${exec vagrant global-status --prune}
-
 # Docker Containers -> kobol
 ${template0}${color #9f907d}DOCKER CONTAINERS ${color slate grey}${hr 2}${font}
-${template1}${exec docker ps --format="table {{.Image}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"}
+${template1}${exec docker ps --format="table {{.Image}}\t{{.Names}}\t{{.Status}}"}
 ]];

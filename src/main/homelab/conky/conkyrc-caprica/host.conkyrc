@@ -19,10 +19,11 @@ conky.config = {
 	cpu_avg_samples = 2,
 	override_utf8_locale = true,
 
-	xinerama_head = 2,
-	alignment = 'top_left',
-	gap_x = 75,
-	gap_y = 25,
+	xinerama_head = 1,
+
+	alignment = 'top_right',
+	gap_x = 25,
+	gap_y = 45,
 
 	draw_shades = false,
 	draw_outline = false,
