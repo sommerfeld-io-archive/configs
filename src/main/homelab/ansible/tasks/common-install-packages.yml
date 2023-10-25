@@ -6,7 +6,7 @@
 # packages and some handy utilities.
 
 - name: Install -> Basic packages
-  apt:
+  ansible.builtin.apt:
     pkg:
       - apt-transport-https
       - ca-certificates

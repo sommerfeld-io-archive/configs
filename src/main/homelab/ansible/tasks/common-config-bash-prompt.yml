@@ -6,7 +6,7 @@
 # (which is the user who runs the playbooks, normally ``sebastian``).
 
 - name: Config -> Update prompt in .bashrc
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "/home/{{ ansible_user }}/.bashrc"
     regexp: '^PS1='
     line: "export PS1='{{ ps1 }}'"

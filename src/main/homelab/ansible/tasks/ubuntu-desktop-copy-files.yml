@@ -5,7 +5,7 @@
 # @description The task copies common files to all hosts.
 
 - name: Wallpaper -> Create directory
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ ansible_user }}"

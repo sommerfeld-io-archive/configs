@@ -5,17 +5,17 @@
 # @description The task installs the Github CLI tool.
 
 - name: GitHub CLI Setup -> Add GPG apt key
-  apt_key:
+  ansible.builtin.apt_key:
     url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
     state: present
 
 - name: GitHub CLI Setup -> Add apt repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: deb https://cli.github.com/packages stable main
     state: present
 
 - name: GitHub CLI Setup -> Install gh
-  apt:
+  ansible.builtin.apt:
     name:
       - gh
     state: latest

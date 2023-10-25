@@ -1,0 +1,25 @@
+---
+profile: null # min, basic, moderate,safety, shared, production
+
+var_naming_pattern: "^[a-z_][a-z0-9_]*$"
+
+use_default_rules: true
+
+enable_list:
+  - args
+  - empty-string-compare # opt-in
+  - no-log-password # opt-in
+  - no-same-owner # opt-in
+  - yaml
+
+warn_list:
+  - command-instead-of-module
+  - latest[git]
+  - name[missing]
+  - no-changed-when
+  - package-latest
+
+skip_list:
+  - yaml[line-length]
+
+offline: true

@@ -19,14 +19,14 @@
   tasks:
 
     - name: Install -> Steam
-      apt:
+      ansible.builtin.apt:
         pkg:
           - steam
         state: latest
         update_cache: true
 
     - name: Info -> Post installation message
-      debug:
+      ansible.builtin.debug:
         msg:
           - "Things left to do"
           - "  - Login to Steam (see BitWarden for credentials)"

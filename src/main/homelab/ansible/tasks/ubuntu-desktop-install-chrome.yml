@@ -5,7 +5,7 @@
 # @description The task installs Chrome and Chromium browsers.
 
 - name: Install -> Chromium packages
-  apt:
+  ansible.builtin.apt:
     pkg:
       - chromium-browser
       - chromium-browser-l10n

@@ -8,7 +8,7 @@
 # Docker Container that takes the place of a normal package installation.
 
 - name: Config -> Create directories for docker wrappers
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ ansible_user }}"

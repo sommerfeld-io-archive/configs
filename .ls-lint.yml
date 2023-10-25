@@ -42,16 +42,9 @@ ignore:
 
   # linter definitions
   - .adoc-links.json
+  - .ansible-lint.yml
   - .gherkin-lintrc.json
   - .ls-lint.yml
   - .pre-commit-config.yaml
   - .yamllint.yml
   - resources/sync
-
-  # antora ui
-  - src/main/ui-docs/.gulp.json
-  - src/main/ui-docs/src/js/vendor/highlight.bundle.js
-  - src/templates/falcon-v3.17.0
-
-  # locals
-  - src/main/github/.terraform-docs.yml

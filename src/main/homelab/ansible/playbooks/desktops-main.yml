@@ -72,7 +72,7 @@
     - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-copy-files.yml
 
     #  +-----------------------------------------------------------------------------+
-    #! |    Must be last task in this play !!!                                       |
+    # !|    Must be last task in this play !!!                                       |
     #  |    Local changes result in a failure for this task.                         |
     #  |    In case of failure, all other tasks for the affected node are skipped    |
     #  +-----------------------------------------------------------------------------+

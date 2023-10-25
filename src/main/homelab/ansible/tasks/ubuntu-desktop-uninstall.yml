@@ -5,7 +5,7 @@
 # @description The task uninstalls some pre-installed packages.
 
 - name: Uninstall -> Some pre-installed packages
-  apt:
+  ansible.builtin.apt:
     pkg:
       - thunderbird
       - libreoffice

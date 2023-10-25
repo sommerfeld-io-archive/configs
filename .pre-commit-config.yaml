@@ -35,3 +35,9 @@ repos:
       - id: yamllint
         entry: yamllint
         types: [file, yaml]
+  - repo: local
+    hooks:
+      - id: ansible-lint
+        name: ansible-lint
+        language: script
+        entry: /bin/bash -c '(cd src/test && ./lint-ansible.sh)'

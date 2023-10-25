@@ -6,7 +6,7 @@
 # folders are present.
 
 - name: Config -> Create directories
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ ansible_user }}"

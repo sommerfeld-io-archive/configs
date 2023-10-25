@@ -8,7 +8,7 @@
 # on RasPi nodes or headless nodes.
 
 - name: Config -> Write aliases to .bashrc (for Ubuntu desktop)
-  lineinfile:
+  ansible.builtin.lineinfile:
     create: true
     mode: 0600
     dest: "/home/{{ ansible_user }}/.bash_aliases"

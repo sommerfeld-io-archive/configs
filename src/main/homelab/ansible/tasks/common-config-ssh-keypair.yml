@@ -7,7 +7,7 @@
 # already is a keypair present.
 
 - name: Config -> Create ssh keypair
-  openssh_keypair:
+  community.crypto.openssh_keypair:
     path: "/home/{{ ansible_user }}/.ssh/id_rsa"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"

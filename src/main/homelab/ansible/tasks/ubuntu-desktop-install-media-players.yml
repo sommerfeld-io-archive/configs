@@ -5,7 +5,7 @@
 # @description The task installs some media players, codecs, cd rippers, etc.
 
 - name: Install -> Install media player and DRM packages
-  apt:
+  ansible.builtin.apt:
     pkg:
       - vlc
       - vlc-plugin-access-extra
@@ -20,7 +20,7 @@
     update_cache: true
 
 - name: Install -> Install audio CD ripper
-  apt:
+  ansible.builtin.apt:
     pkg:
       - asunder # https://wiki.ubuntuusers.de/Asunder
       - lame
@@ -32,7 +32,7 @@
     update_cache: true
 
 - name: Install -> Install CD/DVD writer
-  apt:
+  ansible.builtin.apt:
     pkg:
       - brasero
       - gstreamer1.0-plugins-ugly

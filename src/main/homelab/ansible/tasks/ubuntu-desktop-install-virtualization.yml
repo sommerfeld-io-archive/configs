@@ -8,7 +8,7 @@
 # ``root`` privileges.
 
 - name: Virtualbox Setup -> Install Virtualbox and dependencies
-  apt:
+  ansible.builtin.apt:
     pkg:
       - virtualbox
       - virtualbox-qt
@@ -17,7 +17,7 @@
     update_cache: true
 
 - name: Virtualbox Setup -> Create virtual machines folder
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ ansible_user }}"
@@ -27,13 +27,13 @@
     - "/home/{{ ansible_user }}/virtualmachines"
 
 - name: Virtualbox Setup -> Set virtual machines folder
-  ansible.builtin.shell: "vboxmanage setproperty machinefolder /home/{{ ansible_user}}/virtualmachines"
+  ansible.builtin.shell: "vboxmanage setproperty machinefolder /home/{{ ansible_user }}/virtualmachines"
   become_user: "{{ ansible_user }}"
   args:
     executable: /bin/bash
 
 - name: Virtualbox Setup -> Add user to docker group
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_user }}"
     shell: /bin/bash
     groups: vboxusers

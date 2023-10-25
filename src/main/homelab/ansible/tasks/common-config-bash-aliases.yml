@@ -7,7 +7,7 @@
 # ensures that all aliases and exported variables are present.
 
 - name: Config -> Write commands to .bashrc
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "/home/{{ ansible_user }}/.bashrc"
     state: present
     line: "{{ item }}"
@@ -22,7 +22,7 @@
     - export G='\033[1;30m'
 
 - name: Config -> Write aliases to .bash_aliases
-  lineinfile:
+  ansible.builtin.lineinfile:
     create: true
     mode: 0600
     dest: "/home/{{ ansible_user }}/.bash_aliases"

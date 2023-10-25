@@ -13,7 +13,7 @@
 # additional packages installed, start with the ``* xref:AUTO-GENERATED:src/main/homelab/bootstrap/install-basics-sh.adoc[src/main/homelab/bootstrap/install-basics.sh]``
 # script to make sure all requirements are met.
 
-- name: apt update and upgrade
+- name: Update and upgrade
   hosts: all
   gather_facts: true
   become: true

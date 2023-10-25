@@ -5,7 +5,7 @@
 # @description The task installs some basic packages with a UI.
 
 - name: Install -> Software packages
-  apt:
+  ansible.builtin.apt:
     pkg:
       - rpi-imager
       - tilix
@@ -22,7 +22,7 @@
     update_cache: true
 
 - name: Install -> Development tools
-  apt:
+  ansible.builtin.apt:
     pkg:
       - yarn
       - hugo
