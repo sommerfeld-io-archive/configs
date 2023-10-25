@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Debug
         run: pwd && ls -alF
       - name: tflint
@@ -39,7 +39,7 @@ jobs:
     needs: lint-terraform
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: initialize
         run: |
           (
@@ -50,7 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
       - name: Checkout code of configs-persistent-data repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: sebastian-sommerfeld-io/configs-persistent-data
           token: ${{ secrets.TERRAFORM }}
@@ -91,7 +91,7 @@ jobs:
     needs: apply-github-config
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: format
         run: |
           (

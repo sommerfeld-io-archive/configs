@@ -26,7 +26,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Run Snyk to check latest Docker image for vulnerabilities
         continue-on-error: true
         uses: snyk/actions/docker@0.3.0
