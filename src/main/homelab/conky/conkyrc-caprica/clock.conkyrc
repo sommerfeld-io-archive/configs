@@ -1,8 +1,8 @@
 conky.config = {
-	own_window_title = "conky-services",
+	own_window_title = "conky-clock",
 	use_xft = true,
 	xftalpha = 0.8,
-	update_interval = 5.0,
+	update_interval = 1.0,
 	total_run_times = 0,
 	own_window = true,
 	own_window_transparent = true,
@@ -21,9 +21,9 @@ conky.config = {
 
 	xinerama_head = 1,
 
-	alignment = 'bottom_right',
-	gap_x = 25,
-	gap_y = 25,
+	alignment = 'top_left',
+	gap_x = 100,
+	gap_y = 45,
 
 	draw_shades = false,
 	draw_outline = false,
@@ -39,11 +39,11 @@ conky.config = {
 	default_color = '9f907d',
 	color1 = '9f907d',
 
-	template0 = [[${font Ubuntu Mono:bold:size=13}${template1}]],
+	template0 = [[${font Ubuntu Mono:size=48}]],
 	template1 = [[${font Ubuntu Mono:size=13}]],
 };
 
 conky.text = [[
-${template0}${color #9f907d}DOCKER CONTAINERS ${color slate grey}${hr 2}${font}
-${template1}${exec docker ps --format="table {{.Image}}\t{{.Names}}\t{{.Status}}"}
+${template0}${color slate grey}${time %H:%M}${font}
+${template1}    ${exec date '+%Y-%m-%d'}
 ]];

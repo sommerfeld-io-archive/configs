@@ -42,7 +42,6 @@ conky.config = {
 };
 
 conky.text = [[
-# Docker Containers -> kobol
 ${template0}${color #9f907d}DOCKER CONTAINERS ${color slate grey}${hr 2}${font}
 ${template1}${exec docker ps --format="table {{.Image}}\t{{.Names}}\t{{.Status}}"}
 ]];
