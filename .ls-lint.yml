@@ -48,3 +48,6 @@ ignore:
   - .pre-commit-config.yaml
   - .yamllint.yml
   - resources/sync
+
+  # misc
+  - src/main/github/.terraform-docs.yml
