@@ -1,5 +1,5 @@
 conky.config = {
-	own_window_title = "kobol-conky-services",
+	own_window_title = "conky-services",
 	use_xft = true,
 	xftalpha = 0.8,
 	update_interval = 5.0,
