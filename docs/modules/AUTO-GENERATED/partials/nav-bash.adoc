@@ -1,3 +1,4 @@
+* xref:AUTO-GENERATED:src/test/lint-ansible-sh.adoc[src/test/lint-ansible.sh]
 * xref:AUTO-GENERATED:src/test/homelab/inspec/run-tests-sh.adoc[src/test/homelab/inspec/run-tests.sh]
 * xref:AUTO-GENERATED:src/main/github/apply-config-sh.adoc[src/main/github/apply-config.sh]
 * xref:AUTO-GENERATED:src/main/github/run-local-sh.adoc[src/main/github/run-local.sh]
