@@ -18,7 +18,7 @@
 
 - name: Config -> Copy docker scipts
   ansible.builtin.copy:
-    src: "../assets/scripts/docker/wrappers/{{ item }}.sh"
+    src: "../assets/scripts/{{ item }}.sh"
     dest: "/opt/scripts/{{ item }}.sh"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
