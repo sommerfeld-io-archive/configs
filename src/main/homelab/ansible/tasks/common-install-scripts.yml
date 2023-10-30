@@ -16,7 +16,7 @@
   with_items:
     - /opt/scripts
 
-- name: Config -> Copy docker scipts
+- name: Config -> Copy scipts
   ansible.builtin.copy:
     src: "../assets/scripts/{{ item }}.sh"
     dest: "/opt/scripts/{{ item }}.sh"
