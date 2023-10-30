@@ -14,6 +14,7 @@
 * xref:AUTO-GENERATED:src/main/homelab/ansible/assets/scripts/docker/wrappers/mvn-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/mvn.sh]
 * xref:AUTO-GENERATED:src/main/homelab/ansible/assets/scripts/docker/wrappers/hugo-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/hugo.sh]
 * xref:AUTO-GENERATED:src/main/homelab/ansible/assets/scripts/system-info-sh.adoc[src/main/homelab/ansible/assets/scripts/system-info.sh]
+* xref:AUTO-GENERATED:src/main/homelab/ansible/assets/scripts/switch-display-inputs-sh.adoc[src/main/homelab/ansible/assets/scripts/switch-display-inputs.sh]
 * xref:AUTO-GENERATED:src/main/homelab/ansible/assets/scripts/cron/cleanup-filesystem-sh.adoc[src/main/homelab/ansible/assets/scripts/cron/cleanup-filesystem.sh]
 * xref:AUTO-GENERATED:src/main/homelab/ansible-cli-sh.adoc[src/main/homelab/ansible-cli.sh]
 * xref:AUTO-GENERATED:src/main/homelab/services-cli-sh.adoc[src/main/homelab/services-cli.sh]
