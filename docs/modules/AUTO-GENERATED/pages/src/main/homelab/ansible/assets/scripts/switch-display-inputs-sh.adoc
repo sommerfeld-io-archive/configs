@@ -1,0 +1,32 @@
+= switch-display-inputs.sh
+
+Switch display inputs for my Dell monitors from script.
+
+== Overview
+
+This script switches the display inputs for my Dell monitors to
+avoid having to use the monitors physical buttons.
+
+The Ansible playbook ensures that this script can be called through the alias
+`switch-display-inputs`.
+
+The script is designed to only work on the `caprica` host and fails if
+another machine runs this script.
+
+=== Script Arguments
+
+* _$1_ (string): The active workstation that should use both monitors
+
+=== Script Example
+
+[source, bash]
+
+----
+./switch-display-inputs.sh caprica # My main linux workstation
+./switch-display-inputs.sh provinzial # My office notebook
+----
+
+== Prerequisites
+
+The `ddcutil` package must be installed. The `ddcui` package can be used
+to get information about the screens.
