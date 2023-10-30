@@ -17,7 +17,7 @@
   with_items:
     - /opt/docker-wrappers
 
-- name: Config -> Copy docker wrapper scipts
+- name: Config -> Copy docker wrapper scripts
   ansible.builtin.copy:
     src: "../assets/scripts/docker/wrappers/{{ item }}.sh"
     dest: "/opt/docker-wrappers/{{ item }}.sh"
@@ -32,7 +32,7 @@
     - shellcheck
     - yamllint
 
-- name: Config -> Create symlinks to docker wrapper scipts in /usr/bin
+- name: Config -> Create symlinks to docker wrapper scripts in /usr/bin
   ansible.builtin.file:
     src: "/opt/docker-wrappers/{{ item }}.sh"
     dest: "/usr/bin/{{ item }}"
