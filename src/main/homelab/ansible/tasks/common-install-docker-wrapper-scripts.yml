@@ -17,7 +17,7 @@
   with_items:
     - /opt/docker-wrappers
 
-- name: Config -> Copy docker wrapper scipts configuration
+- name: Config -> Copy docker wrapper scipts
   ansible.builtin.copy:
     src: "../assets/scripts/docker/wrappers/{{ item }}.sh"
     dest: "/opt/docker-wrappers/{{ item }}.sh"

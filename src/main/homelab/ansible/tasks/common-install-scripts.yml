@@ -1,0 +1,37 @@
+---
+# @file common-install-scripts.yml
+# @brief Install utility scripts.
+#
+# @description The task installs utility scripts. These scripts act
+# like a normal package installation (because a symlink from ``/usr/bin`` is
+# pointing to the respective bash script).
+
+- name: Config -> Create directories for scripts
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rwx,g=rx,o=rx
+  with_items:
+    - /opt/scripts
+
+- name: Config -> Copy docker scipts
+  ansible.builtin.copy:
+    src: "../assets/scripts/docker/wrappers/{{ item }}.sh"
+    dest: "/opt/scripts/{{ item }}.sh"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rwx,g=rx,o=rx
+  with_items:
+    - system-info
+
+- name: Config -> Create symlinks to scipts in /usr/bin
+  ansible.builtin.file:
+    src: "/opt/scripts/{{ item }}.sh"
+    dest: "/usr/bin/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: link
+  with_items:
+    - system-info
