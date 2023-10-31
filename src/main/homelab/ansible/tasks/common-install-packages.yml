@@ -21,16 +21,3 @@
       - python3-pip # python package manager
     state: latest
     update_cache: true
-
-- name: Install -> Packages to control Dell monitors
-  ansible.builtin.apt:
-    pkg:
-      - ddcui
-      - libddcutil4
-      - ddcutil
-      - i2c-tools
-      - libi2c0
-      - libx86-1
-      - read-edid
-    state: latest
-    update_cache: true
