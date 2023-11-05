@@ -15,11 +15,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-
 BOX_IMAGE = "ubuntu/kinetic64" # = 23.04
 BOX_IP = "192.168.56.10"
 BOX_HOSTNAME = "ubuntu-desktop-test"
-
 
 Vagrant.configure("2") do |config|
   config.vm.box = BOX_IMAGE
