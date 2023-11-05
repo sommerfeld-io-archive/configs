@@ -8,6 +8,8 @@
 # By running the same playbooks inside this Vagrantbox it is testable whether
 # an installation-run would fail (for some reason) and whether the Ansible
 # Config works with newer versions of Ubuntu.
+#
+# CAUTION: Still work in progress
 
 
 # -*- mode: ruby -*-
