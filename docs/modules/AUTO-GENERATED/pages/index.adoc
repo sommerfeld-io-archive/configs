@@ -23,6 +23,11 @@ include::AUTO-GENERATED:partial$/nav-dockerfile.adoc[]
 
 include::AUTO-GENERATED:partial$/nav-docker-compose.adoc[]
 
+== Vagrant
+Vagrantfile documentation is done inline using the documentation pattern from `link:https://github.com/reconquest/shdoc[shdoc]`. Although `shdoc` does not officially support Vagrantfiles, it still works because both file types use the same comment-style (`#`). However with Vagrantfile it is only possible to document the whole file itself (since Vagrantfile do not support functions like bash scripts). These docs pages describing Vagrantfile are auto-generated from a pipeline using `shdoc`.
+
+include::AUTO-GENERATED:partial$/nav-vagrantfile.adoc[]
+
 // == Github Actions Docs
 // Github Actions workflows documentation is done inline using the documentation pattern from `link:https://github.com/reconquest/shdoc[shdoc]`. Although `shdoc` does not officially support `yml`-files, it still works because both file types use the same comment-style (`#`). However with `yml`-files it is only possible to document the whole file itself (since `yml` does not support functions like bash scripts). These docs pages describing Dockerfiles are auto-generated from a pipeline using `shdoc`.
 

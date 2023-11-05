@@ -1,0 +1,15 @@
+= Vagrantfile
+
+Vagrantfile
+
+== Overview
+
+This Vagrantfile represents a virtual machine which is used to
+test the Ansible playbooks which install my physical Ubuntu Desktop machines
+in my homelab.
+
+By running the same playbooks inside this Vagrantbox it is testable whether
+an installation-run would fail (for some reason) and whether the Ansible
+Config works with newer versions of Ubuntu.
+
+CAUTION: Still work in progress
