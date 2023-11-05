@@ -1,0 +1,43 @@
+# @file Vagrantfile
+# @brief Vagrantfile
+#
+# @description This Vagrantfile represents a virtual machine which is used to
+# test the Ansible playbooks which install my physical Ubuntu Desktop machines
+# in my homelab.
+#
+# By running the same playbooks inside this Vagrantbox it is testable whether
+# an installation-run would fail (for some reason) and whether the Ansible
+# Config works with newer versions of Ubuntu.
+
+
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+
+BOX_IMAGE = "ubuntu/kinetic64" # = 23.04
+BOX_IP = "192.168.56.10"
+BOX_HOSTNAME = "ubuntu-desktop-test"
+
+
+Vagrant.configure("2") do |config|
+  config.vm.box = BOX_IMAGE
+
+  config.vm.network "private_network", ip: BOX_IP
+  config.vm.hostname = BOX_HOSTNAME
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 4096
+    v.cpus = 2
+    v.name = BOX_HOSTNAME
+  end
+
+  # config.vm.network "forwarded_port", guest: 8000, host: 8000
+  # config.vm.provision "shell", path: "install-desktop.sh"
+
+  # config.vm.provision "ansible" do |ansible|
+  #   ansible.playbook = "... path/to/playbook ..."
+  #   ansible.extra_vars = {
+  #     node_ip: BOX_IP,
+  #   }
+  # end
+end
