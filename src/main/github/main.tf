@@ -40,13 +40,3 @@ data "bitwarden_item_login" "GOOGLE_CHAT_WEBHOOK" {
 data "bitwarden_item_login" "GH_TOKEN_REPO_AND_PROJECT" {
   id = "73912f41-e080-48fb-b225-b00d00cc3db4"
 }
-
-# Github Actions Secret - Global - Relevant for all repos
-data "bitwarden_item_login" "SNYK_TOKEN" {
-  id = "18d29e31-c440-4b59-9992-af7100cc6990"
-}
-
-# Github Actions Secret - Global - Relevant for all repos
-data "bitwarden_item_login" "DOCKERHUB_USER" {
-  id = "58479137-3c07-4592-86c2-af7100d020ba"
-}
