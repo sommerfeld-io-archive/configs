@@ -11,6 +11,8 @@ Sebastian Sommerfeld <sebastian@sommerfeld.io>
 // |                                                                  |
 // +------------------------------------------------------------------+
 
+Documentation based on the inline docs of our source code files. These pages are generated automatically to ensure they are up to date.
+
 == Bash Script Docs
 Bash scripts documentation is done inline using the documentation pattern from `link:https://github.com/reconquest/shdoc[shdoc]`. These docs pages describing bash scripts are auto-generated from a pipeline using `shdoc`.
 
@@ -22,6 +24,11 @@ Dockerfile documentation is done inline using the documentation pattern from `li
 include::AUTO-GENERATED:partial$/nav-dockerfile.adoc[]
 
 include::AUTO-GENERATED:partial$/nav-docker-compose.adoc[]
+
+== Makefile
+Makefile documentation is done inline using the documentation pattern from `link:https://github.com/reconquest/shdoc[shdoc]`. Although `shdoc` does not officially support Makefiles, it still works because both file types use the same comment-style (`#`). However with Makefiles it is only possible to document the whole file itself (since Makefiles do not support functions like bash scripts). These docs pages describing Makefiles are auto-generated from a pipeline using `shdoc`.
+
+include::AUTO-GENERATED:partial$/nav-makefile.adoc[]
 
 == Vagrant
 Vagrantfile documentation is done inline using the documentation pattern from `link:https://github.com/reconquest/shdoc[shdoc]`. Although `shdoc` does not officially support Vagrantfiles, it still works because both file types use the same comment-style (`#`). However with Vagrantfile it is only possible to document the whole file itself (since Vagrantfile do not support functions like bash scripts). These docs pages describing Vagrantfile are auto-generated from a pipeline using `shdoc`.
