@@ -1,5 +1,5 @@
 ---
-# @file ubuntu-desktop-clone-repos.yml
+# @file ubuntu-clone-repos.yml
 # @brief Clone mandatory repositories from Github.
 #
 # @description The task clones repositories providing files, scripts and data, that are

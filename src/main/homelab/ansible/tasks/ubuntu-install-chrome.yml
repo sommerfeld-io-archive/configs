@@ -1,5 +1,5 @@
 ---
-# @file ubuntu-desktop-install-chrome.yml
+# @file ubuntu-install-chrome.yml
 # @brief Install Chrome and Chromium browsers.
 #
 # @description The task installs Chrome and Chromium browsers.

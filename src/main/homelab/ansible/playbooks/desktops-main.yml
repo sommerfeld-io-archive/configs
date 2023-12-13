@@ -41,22 +41,22 @@
 
     - ansible.builtin.import_tasks: ../tasks/common-config-bash-prompt.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-bash-aliases.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-config-bash-aliases.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-config-bash-aliases.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-create-directories.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-git.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-packages.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-packages.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-chrome.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-media-players.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-uninstall.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-packages.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-chrome.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-media-players.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-uninstall.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-ssh-keypair.yml
-    - ansible.builtin.import_tasks: ../tasks/common-install-docker.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-ansible.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-sublime.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-snap-packages.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-github-cli.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-virtualization.yml
-    - ansible.builtin.import_tasks: ../tasks/common-install-docker-wrapper-scripts.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-docker.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-ansible.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-sublime.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-snap-packages.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-github-cli.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-virtualization.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-docker-wrapper-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
 
@@ -69,12 +69,12 @@
   tasks:
 
     - ansible.builtin.import_tasks: ../tasks/common-config-cron-jobs.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-install-vscode-plugins.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-copy-files.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-install-vscode-plugins.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-copy-files.yml
 
     #  +-----------------------------------------------------------------------------+
     # !|    Must be last task in this play !!!                                       |
     #  |    Local changes result in a failure for this task.                         |
     #  |    In case of failure, all other tasks for the affected node are skipped    |
     #  +-----------------------------------------------------------------------------+
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-desktop-clone-repos.yml
+    - ansible.builtin.import_tasks: ../tasks/ubuntu-clone-repos.yml

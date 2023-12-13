@@ -44,10 +44,9 @@
     - ansible.builtin.import_tasks: ../tasks/common-install-packages.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-git.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-ssh-keypair.yml
-    - ansible.builtin.import_tasks: ../tasks/common-install-docker.yml
-    - ansible.builtin.import_tasks: ../tasks/common-install-docker-wrapper-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
+    - ansible.builtin.import_tasks: ../tasks/raspi-install-docker.yml
 
     # - name: Config -> Clone mandatory git repositories from Github (github.com/sebastian-sommerfeld-io) via https
     #   ansible.builtin.git:

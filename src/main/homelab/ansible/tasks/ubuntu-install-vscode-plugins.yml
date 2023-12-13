@@ -1,5 +1,5 @@
 ---
-# @file ubuntu-desktop-install-vscode-plugins.yml
+# @file ubuntu-install-vscode-plugins.yml
 # @brief Install VSCode plugins.
 #
 # @description The task installs VSCode plugins.

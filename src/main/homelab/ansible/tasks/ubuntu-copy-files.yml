@@ -1,5 +1,5 @@
 ---
-# @file ubuntu-desktop-copy-files.yml
+# @file ubuntu-copy-files.yml
 # @brief Copy common files to all hosts.
 #
 # @description The task copies common files to all hosts.

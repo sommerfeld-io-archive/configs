@@ -1,5 +1,5 @@
 ---
-# @file ubuntu-desktop-uninstall.yml
+# @file ubuntu-uninstall.yml
 # @brief Purge some pre-installed packages.
 #
 # @description The task uninstalls some pre-installed packages.

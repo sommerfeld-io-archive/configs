@@ -17,7 +17,7 @@
 
 BOX_IMAGE = "ubuntu/kinetic64" # = 23.04
 BOX_IP = "192.168.56.10"
-BOX_HOSTNAME = "ubuntu-desktop-test"
+BOX_HOSTNAME = "ubuntu-test"
 
 Vagrant.configure("2") do |config|
   config.vm.box = BOX_IMAGE
