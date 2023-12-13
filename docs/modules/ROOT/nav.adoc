@@ -2,5 +2,5 @@
 * xref:github/config.adoc[]
 * xref:homelab/caprica/index.adoc[]
 * xref:homelab/kobol/index.adoc[]
-* xref:homelab/ubuntu-01.fritz.box/index.adoc[]
+* xref:homelab/raspi-01.fritz.box/index.adoc[]
 * xref:homelab/actions-runner-01.fritz.box/index.adoc[]
