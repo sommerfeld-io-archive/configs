@@ -1,4 +1,4 @@
-= Workstation `kobol`
+= Workstation: kobol
 Sebastian Sommerfeld <sebastian@sommerfeld.io>
 :description: Installation guide for machine 'kobol'
 
@@ -26,12 +26,3 @@ Setup openssh-server using `curl https://raw.githubusercontent.com/sebastian-som
 
 // == Start Services
 include::ROOT:partial$homelab/workstations/common/start-services.adoc[]
-
-== Risks and Technical Debts
-Scale for Probability and Impact: Low, Medium and High
-
-[cols="1,3,5,1,1,1", options="header"]
-|===
-|# |Title |Description |Probability |Impact |Response
-|{counter:usage} |none |none |none |none |none ||none
-|===

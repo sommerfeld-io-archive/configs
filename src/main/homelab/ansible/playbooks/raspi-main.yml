@@ -43,14 +43,15 @@
     - ansible.builtin.import_tasks: ../tasks/common-config-create-directories.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-packages.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-git.yml
-    - ansible.builtin.import_tasks: ../tasks/common-install-docker-wrapper-scripts.yml
-    - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-ssh-keypair.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-docker.yml
+    - ansible.builtin.import_tasks: ../tasks/common-install-docker-wrapper-scripts.yml
+    - ansible.builtin.import_tasks: ../tasks/common-install-scripts.yml
+    - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
 
-    - name: Config -> Clone mandatory git repositories from Github (github.com/sebastian-sommerfeld-io) via https
-      ansible.builtin.git:
-        repo: "https://github.com/sebastian-sommerfeld-io/{{ item }}.git"
-        dest: "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/{{ item }}"
-      with_items:
-        - configs
+    # - name: Config -> Clone mandatory git repositories from Github (github.com/sebastian-sommerfeld-io) via https
+    #   ansible.builtin.git:
+    #     repo: "https://github.com/sebastian-sommerfeld-io/{{ item }}.git"
+    #     dest: "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/{{ item }}"
+    #   with_items:
+    #     - configs
