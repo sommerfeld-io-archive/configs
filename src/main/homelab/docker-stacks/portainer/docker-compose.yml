@@ -1,0 +1,30 @@
+---
+# @file docker-compose.yml
+# @brief Run portainer with a default configuration.
+#
+# @description This ``portainer`` Docker stack starts a link:https://github.com/portainer/portainer[Portainer CE]
+# instance. This link:https://docs.portainer.io[Portainer] instance is pre-configured with an
+# admin user and handles deployments of other Docker stacks through GitOps techniques.
+#
+# | Component     | Port | URL                   |
+# | ------------- | ---- | --------------------- |
+# | Portainer     | 9990 | http://localhost:9990 |
+
+version: "3.3"
+services:
+
+  portainer:
+    image: portainer/portainer-ce:alpine
+    container_name: portainer
+    command: -H unix:///var/run/docker.sock --admin-password-file /tmp/portainer_passwords
+    restart: always
+    ports:
+      - 9990:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+      - ./assets/portainer.passwd:/tmp/portainer_passwords
+      - /etc/timezone:/etc/timezone:ro
+
+volumes:
+  portainer_data:

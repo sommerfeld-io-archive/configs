@@ -9,13 +9,13 @@
 # | ------------- | ---- | --------------------- |
 # | node_exporter | 9100 | http://localhost:9100 |
 # | cAdvisor      | 9110 | http://localhost:9110 |
-# | Portainer     | 9990 | http://localhost:9990 |
+
 
 version: "3.3"
 services:
 
   node_exporter:
-    image: prom/node-exporter:latest
+    image: prom/node-exporter:v1.7.0
     container_name: node_exporter
     restart: always
     command:
@@ -27,7 +27,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
 
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.47.0
+    image: gcr.io/cadvisor/cadvisor:v0.47.0 #v0.47.2
     container_name: cadvisor
     restart: always
     ports:
@@ -39,19 +39,3 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
     privileged: true
-
-  portainer:
-    image: portainer/portainer-ce:alpine
-    container_name: portainer
-    command: -H unix:///var/run/docker.sock --admin-password-file /tmp/portainer_passwords
-    restart: always
-    ports:
-      - 9990:9000
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
-      - ./assets/portainer.passwd:/tmp/portainer_passwords
-      - /etc/timezone:/etc/timezone:ro
-
-volumes:
-  portainer_data:
