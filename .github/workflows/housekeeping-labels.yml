@@ -1,0 +1,76 @@
+---
+# @file housekeeping-labels.yml
+# @brief Github Actions workflow that ensures all mandatory labels are present for a repo and all obsolete labels are removed.
+#
+# @description The workflow, that is called this way, is responsible for deleting unnecessary
+# labels and creating the required labels for issues and pull requests. By executing this workflow,
+# it ensures a streamlined and organized labeling system, enabling effective categorization and
+# tracking of tasks and contributions within your projects. Since the labels are managed through this
+# workflow, the settings from link:https://github.com/organizations/sommerfeld-io/settings/repository-defaults[GitHub organizations label-config]
+# don't take effect.
+
+
+name: "Housekeeping: Labels"
+
+on:
+  schedule:
+    - cron: '0 1 * * *' # https://crontab.guru
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/housekeeping-labels.yml
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  setup-labels:
+    name: Setup labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup labels
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label delete "documentation" --yes || true
+          gh label delete "duplicate" --yes || true
+          gh label delete "enhancement" --yes || true
+          gh label delete "good first issue" --yes || true
+          gh label delete "help wanted" --yes || true
+          gh label delete "invalid" --yes || true
+          gh label delete "question" --yes || true
+          gh label delete "wontfix" --yes || true
+
+          gh label create "blocked / waiting" --color "5319E7" --description "Issues that are blocked or waiting for something" --force
+          gh label create "bug" --color "B60205" --description "Something is not working" --force
+          gh label create "cancelled" --color "726b73" --description "No further actions, Issues should be closed" --force
+          gh label create "prio-high" --color "D93F0B" --description "High priority issues" --force
+          gh label create "risk" --color "cd3ad7" --description "Risks and technical debts" --force
+          gh label create "security" --color "cd3ad7" --description "CVEs, code scan violations, etc." --force
+          gh label create "task" --color "0052CC" --description "Implementation task - relates to a user story (most of the time)" --force
+          gh label create "user-story" --color "0E8A16" --description "User Story to describe a new feature" --force
+
+          gh label create "dependencies" --color "000000" --description "Dependabot: Pull requests that update a dependency file" --force
+          gh label create "docker" --color "000000" --description "Dependabot: Pull requests that update Docker code" --force
+          gh label create "github_actions" --color "000000" --description "Dependabot: Pull requests that update GitHub Actions code" --force
+          gh label create "go" --color "000000" --description "Dependabot: Pull requests that update Docker code" --force
+          gh label create "terraform" --color "000000" --description "Dependabot: Pull requests that update Terraform code" --force
+        shell: bash
+
+  on-failure:
+    runs-on: ubuntu-latest
+    needs: ['setup-labels']
+    if: failure()
+    steps:
+      - name: Send Pipeline Status to Google Chat
+        if: always()
+        uses: Co-qn/google-chat-notification@releases/v1
+        with:
+          name: ${{ github.workflow }}
+          url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+          status: failure
