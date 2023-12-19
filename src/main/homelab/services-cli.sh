@@ -18,33 +18,19 @@
 # through an easy-to-use interface that allows you to control your containers quickly and
 # efficiently.
 #
-# === Script Arguments
-#
-# The script does not accept any parameters.
-#
-# == Prerequisites
+# === Prerequisites
 #
 # Before using this script, you need to ensure that Docker and Docker Compose is installed on the
 # system. The script assumes that the Docker engine is running, and the user has necessary
 # permissions to execute Docker commands.
 #
-# == Docker Compose Stacks
+# === Script Arguments
 #
-# === Docker Compose Stack: monitoring.fritz.box
+# The script does not accept any parameters.
 #
-# include::ROOT:partial$homelab/services/docker/monitoring-fritz-box.adoc[]
-#
-# === Docker Compose Stack: ops
+# == Docker Compose Stack: ops
 #
 # include::ROOT:partial$homelab/services/docker/ops.adoc[]
-#
-# === Docker Compose Stack: sommerfeld-io
-#
-# include::ROOT:partial$homelab/services/docker/sommerfeld-io.adoc[]
-#
-# === Docker Compose Stack: websites
-#
-# include::ROOT:partial$homelab/services/docker/websites.adoc[]
 
 
 set -o errexit
