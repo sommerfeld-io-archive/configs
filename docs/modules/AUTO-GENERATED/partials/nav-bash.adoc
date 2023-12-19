@@ -2,7 +2,7 @@
 * xref:AUTO-GENERATED:src/main/homelab/bootstrap/ssh-server-sh.adoc[src/main/homelab/bootstrap/ssh-server.sh]
 * xref:AUTO-GENERATED:src/main/homelab/bootstrap/install-basics-sh.adoc[src/main/homelab/bootstrap/install-basics.sh]
 * xref:AUTO-GENERATED:src/main/homelab/-lib/system-info-sh.adoc[src/main/homelab/.lib/system-info.sh]
-* xref:AUTO-GENERATED:src/main/homelab/services-cli-sh.adoc[src/main/homelab/services-cli.sh]
+* xref:AUTO-GENERATED:src/main/homelab/docker-stacks-cli-sh.adoc[src/main/homelab/docker-stacks-cli.sh]
 * xref:AUTO-GENERATED:src/main/homelab/ansible/assets/scripts/system-info-sh.adoc[src/main/homelab/ansible/assets/scripts/system-info.sh]
 * xref:AUTO-GENERATED:src/main/homelab/ansible/assets/scripts/cron/cleanup-filesystem-sh.adoc[src/main/homelab/ansible/assets/scripts/cron/cleanup-filesystem.sh]
 * xref:AUTO-GENERATED:src/main/homelab/ansible/assets/scripts/docker/wrappers/node-npm-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/node-npm.sh]

@@ -1,4 +1,4 @@
-= services-cli.sh
+= docker-stacks-cli.sh
 
 Command line interface to control Docker Compose services on your local machine.
 
@@ -34,19 +34,19 @@ permissions to execute Docker commands.
 
 === Docker Compose Stack: monitoring.fritz.box
 
-include::ROOT:partial$homelab/services/docker/monitoring-fritz-box.adoc[]
+include::ROOT:partial$homelab/docker-stacks/monitoring-fritz-box.adoc[]
 
 === Docker Compose Stack: ops
 
-include::ROOT:partial$homelab/services/docker/ops.adoc[]
+include::ROOT:partial$homelab/docker-stacks/ops.adoc[]
 
 === Docker Compose Stack: sommerfeld-io
 
-include::ROOT:partial$homelab/services/docker/sommerfeld-io.adoc[]
+include::ROOT:partial$homelab/docker-stacks/sommerfeld-io.adoc[]
 
 === Docker Compose Stack: websites
 
-include::ROOT:partial$homelab/services/docker/websites.adoc[]
+include::ROOT:partial$homelab/docker-stacks/websites.adoc[]
 
 == Index
 

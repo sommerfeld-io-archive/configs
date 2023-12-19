@@ -1,9 +1,9 @@
 == Start Services
 === Docker Compose
-Use `xref:AUTO-GENERATED:bash-docs/src/main/homelab/services-cli-sh.adoc[src/main/homelab/services-cli.sh]` to start Docker Compose services.
+Use `xref:AUTO-GENERATED:bash-docs/src/main/homelab/docker-stacks-cli-sh.adoc[src/main/homelab/docker-stacks-cli.sh]` to start Docker Compose services.
 
 ==== Docker Compose Stack: Ops
-include::ROOT:partial$homelab/services/docker/ops.adoc[]
+include::ROOT:partial$homelab/docker-stacks/ops.adoc[]
 
 === Conky
 Use `xref:AUTO-GENERATED:bash-docs/src/main/homelab/conky/run-sh.adoc[src/main/homelab/conky/run.sh]` to start all conky instances.

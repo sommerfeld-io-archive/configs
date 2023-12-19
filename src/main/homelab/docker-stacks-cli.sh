@@ -1,5 +1,5 @@
 #!/bin/bash
-# @file services-cli.sh
+# @file docker-stacks-cli.sh
 # @brief Command line interface to control Docker Compose services on your local machine.
 #
 # @description This Bash script that acts as a command line interface to control Docker Compose
@@ -30,7 +30,7 @@
 #
 # == Docker Compose Stack: ops
 #
-# include::ROOT:partial$homelab/services/docker/ops.adoc[]
+# include::ROOT:partial$homelab/docker-stacks/ops.adoc[]
 
 
 set -o errexit
@@ -67,11 +67,10 @@ function logs() {
   docker compose logs -f
 }
 
-
-bash .lib/system-info.sh
+hostnamectl
 
 (
-  cd services/docker || exit
+  cd docker-stacks || exit
 
   echo -e "$LOG_INFO Select the docker compose stack"
   select s in */; do
