@@ -17,8 +17,4 @@ the monitoring of a host and management of Docker containers on a host.
 | cAdvisor
 | 9110
 | http://localhost:9110
-
-| Portainer
-| 9990
-| http://localhost:9990
 |===

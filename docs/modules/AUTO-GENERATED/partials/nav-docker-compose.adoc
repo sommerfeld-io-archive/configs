@@ -1,1 +1,2 @@
+* xref:AUTO-GENERATED:src/main/homelab/docker-stacks/portainer/docker-compose-yml.adoc[src/main/homelab/docker-stacks/portainer/docker-compose.yml]
 * xref:AUTO-GENERATED:src/main/homelab/docker-stacks/ops/docker-compose-yml.adoc[src/main/homelab/docker-stacks/ops/docker-compose.yml]
