@@ -1,0 +1,17 @@
+= docker-compose.yml
+
+Run portainer with a default configuration.
+
+== Overview
+
+This `portainer` Docker stack starts a link:https://github.com/portainer/portainer[Portainer CE]
+instance. This link:https://docs.portainer.io[Portainer] instance is pre-configured with an
+admin user and handles deployments of other Docker stacks through GitOps techniques.
+
+|===
+| Component | Port | URL
+
+| Portainer
+| 9990
+| http://localhost:9990
+|===
