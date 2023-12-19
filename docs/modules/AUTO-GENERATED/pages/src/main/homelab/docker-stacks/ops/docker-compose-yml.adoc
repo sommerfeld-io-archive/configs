@@ -4,8 +4,11 @@ Run all components needed to allow monitoring a host and management of Docker co
 
 == Overview
 
-This `ops` compose stack run all components needed to allow
-the monitoring of a host and management of Docker containers on a host.
+The `ops` Docker stack is a Docker Compose configuration that manages
+all of the needed exporters to monitor system metrics with Prometheus and Grafana. By
+using the `ops` Docker stack, you can quickly and easily deploy all of the necessary
+components for monitoring your system metrics. This includes exporters for various system
+metrics, such as CPU usage, disk usage, and network activity.
 
 |===
 | Component | Port | URL
