@@ -1,5 +1,4 @@
 * xref:index.adoc[]
-* xref:github/config.adoc[]
 * xref:homelab/caprica/index.adoc[]
 * xref:homelab/kobol/index.adoc[]
 * xref:homelab/raspi-01.fritz.box/index.adoc[]
