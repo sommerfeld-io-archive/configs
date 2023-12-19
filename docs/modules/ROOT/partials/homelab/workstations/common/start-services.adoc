@@ -1,9 +1,5 @@
-== Start Services
-=== Docker Compose
-Use `xref:AUTO-GENERATED:bash-docs/src/main/homelab/docker-stacks-cli-sh.adoc[src/main/homelab/docker-stacks-cli.sh]` to start Docker Compose services.
+== Start Docker Compose Stacks
+Use `xref:AUTO-GENERATED:bash-docs/src/main/homelab/docker-stacks-cli-sh.adoc[src/main/homelab/docker-stacks-cli.sh]` to start Docker Compose services. Make sure you only start the Portainer Stack (xref:AUTO-GENERATED:src/main/homelab/docker-stacks/portainer/docker-compose-yml.adoc[src/main/homelab/docker-stacks/portainer/docker-compose.yml]). All other Stacks (like the `ops` stack xref:AUTO-GENERATED:src/main/homelab/docker-stacks/ops/docker-compose-yml.adoc[src/main/homelab/docker-stacks/ops/docker-compose.yml]) are managed by Portainer.
 
-==== Docker Compose Stack: Ops
-include::ROOT:partial$homelab/docker-stacks/ops.adoc[]
-
-=== Conky
+== Start Conky
 Use `xref:AUTO-GENERATED:bash-docs/src/main/homelab/conky/run-sh.adoc[src/main/homelab/conky/run.sh]` to start all conky instances.

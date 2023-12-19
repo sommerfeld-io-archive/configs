@@ -16,7 +16,7 @@ services:
   portainer:
     image: portainer/portainer-ce:alpine
     container_name: portainer
-    command: -H unix:///var/run/docker.sock --admin-password-file /tmp/portainer_passwords
+    command: --host unix:///var/run/docker.sock --admin-password-file /tmp/portainer_passwords
     restart: always
     ports:
       - 9990:9000
