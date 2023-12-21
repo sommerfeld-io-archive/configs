@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "7c1bfd3f-e99d-48c3-a9ba-c4e7b5e318bd",
+		"name": "Portainer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "configure",
+			"item": [
+				{
+					"name": "create-stack-ops",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.test(\"Should reply with json object\", () => {",
+									"    pm.expect(json).to.be.an(\"object\")",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-API-Key",
+								"value": "{{ADMIN_ACCESS_TOKEN}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"autoUpdate\": {\n    \"forcePullImage\": false,\n    \"forceUpdate\": false,\n    \"interval\": \"5m\"\n  },\n  \"composeFile\": \"src/main/homelab/docker-stacks/ops/docker-compose.yml\",\n  \"fromAppTemplate\": false,\n  \"name\": \"ops\",\n  \"repositoryAuthentication\": false,\n  \"repositoryReferenceName\": \"refs/heads/main\",\n  \"repositoryURL\": \"https://github.com/sebastian-sommerfeld-io/configs\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9990/api/stacks/create/standalone/repository?endpointId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9990",
+							"path": [
+								"api",
+								"stacks",
+								"create",
+								"standalone",
+								"repository"
+							],
+							"query": [
+								{
+									"key": "endpointId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test",
+			"item": [
+				{
+					"name": "validate-settings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.test(\"Should reply with json array of docker stacks\", () => {",
+									"    pm.expect(json).to.be.an(\"object\")",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-API-Key",
+								"value": "{{ADMIN_ACCESS_TOKEN}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9990/api/settings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9990",
+							"path": [
+								"api",
+								"settings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate-stacks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.test(\"Should reply with json array of docker stacks\", () => {",
+									"    pm.expect(json).to.be.an(\"array\")",
+									"})",
+									"",
+									"json.forEach(function(stack) {",
+									"    pm.test(\"Should return expected data types\", () => {",
+									"        pm.expect(stack.Id).to.be.a(\"number\")",
+									"        pm.expect(stack.Name).to.be.a(\"string\")",
+									"    })",
+									"})",
+									"",
+									"// The \"portainer\" stack is not returned by the API",
+									"// Pobably because it is not fuklly controlled by portainer",
+									"pm.test(\"Should return ops stack only\", () => {",
+									"    pm.expect(json.length).to.equal(1)",
+									"",
+									"    json.forEach(function(stack) {",
+									"        pm.expect(stack.Name).to.equal(\"ops\")",
+									"    })",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-API-Key",
+								"value": "{{ADMIN_ACCESS_TOKEN}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9990/api/stacks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9990",
+							"path": [
+								"api",
+								"stacks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate-users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.test(\"Should reply with json array of users\", () => {",
+									"    pm.expect(json).to.be.an(\"array\")",
+									"})",
+									"",
+									"json.forEach(function(user) {",
+									"    pm.test(\"Should return expected data types\", () => {",
+									"        pm.expect(user.Id).to.be.a(\"number\")",
+									"        pm.expect(user.Username).to.be.a(\"string\")",
+									"        pm.expect(user.Role).to.be.a(\"number\")",
+									"    })",
+									"})",
+									"",
+									"pm.test(\"Should return admin user only\", () => {",
+									"    pm.expect(json.length).to.equal(1)",
+									"",
+									"    json.forEach(function(user) {",
+									"        pm.expect(user.Username).to.equal(\"admin\")",
+									"    })",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-API-Key",
+								"value": "{{ADMIN_ACCESS_TOKEN}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9990/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9990",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const EXPECTED_STATUS_CODE = 200",
+					"",
+					"pm.test(\"Should respond with status code \" + EXPECTED_STATUS_CODE, function () {",
+					"    pm.response.to.have.status(EXPECTED_STATUS_CODE);",
+					"})",
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ADMIN_ACCESS_TOKEN",
+			"value": "ptr_/Ww0LCdZ8PI4CEHfR581tDDSv2Xm6voOQ/5A6zWjDi8==",
+			"type": "default"
+		}
+	]
+}
