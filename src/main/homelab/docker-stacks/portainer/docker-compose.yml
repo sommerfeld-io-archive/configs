@@ -32,9 +32,9 @@ services:
       - /etc/timezone:/etc/timezone:ro
     healthcheck:
       test: "wget --no-verbose --tries=1 --spider http://localhost:9000 || exit 1"
-      interval: 30s
+      interval: 10s
       timeout: 10s
-      retries: 5
+      retries: 6
       start_period: 10s
 
   newman:
@@ -45,7 +45,7 @@ services:
         condition: service_healthy
     volumes:
       - ./assets/collections:/etc/newman
-    command: run portainer-postman-collection.json
+    command: run portainer-postman-collection.json --env-var "BASE_URL=http://portainer:9000/api"
 
 volumes:
   portainer_data:
