@@ -1,10 +1,63 @@
 {
 	"info": {
-		"_postman_id": "7c1bfd3f-e99d-48c3-a9ba-c4e7b5e318bd",
+		"_postman_id": "ea2e59d6-3bfe-46a7-a11a-5b68dd801a6d",
 		"name": "Portainer",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "initialize",
+			"item": [
+				{
+					"name": "auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.test(\"Should reply with JWT token\", () => {",
+									"    pm.expect(json).to.be.an(\"object\")",
+									"    pm.expect(json.jwt).to.be.a(\"string\")",
+									"",
+									"    pm.collectionVariables.set(\"JWT_TOKEN\", json.jwt)",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"{{ADMIN_PASSWORD}}\",\n    \"username\": \"admin\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9990/api/auth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9990",
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "configure",
 			"item": [
@@ -30,8 +83,8 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "X-API-Key",
-								"value": "{{ADMIN_ACCESS_TOKEN}}",
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
 								"type": "default"
 							}
 						],
@@ -95,8 +148,8 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "X-API-Key",
-								"value": "{{ADMIN_ACCESS_TOKEN}}",
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
 								"type": "default"
 							}
 						],
@@ -154,8 +207,8 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "X-API-Key",
-								"value": "{{ADMIN_ACCESS_TOKEN}}",
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
 								"type": "default"
 							}
 						],
@@ -212,8 +265,8 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "X-API-Key",
-								"value": "{{ADMIN_ACCESS_TOKEN}}",
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
 								"type": "default"
 							}
 						],
@@ -262,9 +315,13 @@
 	],
 	"variable": [
 		{
-			"key": "ADMIN_ACCESS_TOKEN",
-			"value": "ptr_/Ww0LCdZ8PI4CEHfR581tDDSv2Xm6voOQ/5A6zWjDi8==",
+			"key": "ADMIN_PASSWORD",
+			"value": "7gey2brcpvwt7d4m",
 			"type": "default"
+		},
+		{
+			"key": "JWT_TOKEN",
+			"value": ""
 		}
 	]
 }
