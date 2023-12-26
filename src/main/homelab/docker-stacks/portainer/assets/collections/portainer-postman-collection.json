@@ -216,6 +216,186 @@
 					"response": []
 				},
 				{
+					"name": "validate-system-info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.test(\"Should reply with json object and expected data types\", () => {",
+									"    pm.expect(json).to.be.an(\"object\")",
+									"    pm.expect(json.platform).to.be.a(\"string\")",
+									"    pm.expect(json.agents).to.be.a(\"number\")",
+									"    pm.expect(json.edgeAgents).to.be.a(\"number\")",
+									"})",
+									"",
+									"pm.test(\"Should return expected values\", () => {",
+									"    pm.expect(json.platform).to.equal(\"Docker Standalone\")",
+									"    pm.expect(json.agents).to.equal(0)",
+									"    pm.expect(json.edgeAgents).to.equal(0)",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/system/info",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"system",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate-system-nodes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"const NODE_COUNT = 1",
+									"",
+									"pm.test(\"Should reply with json object and expected data types\", () => {",
+									"    pm.expect(json).to.be.an(\"object\")",
+									"    pm.expect(json.nodes).to.be.a(\"number\")",
+									"})",
+									"",
+									"pm.test(\"Should return expected values\", () => {",
+									"    pm.expect(json.nodes).to.equal(NODE_COUNT)",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/system/nodes",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"system",
+								"nodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate-system-status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"const NODE_COUNT = 1",
+									"",
+									"pm.test(\"Should reply with json object and expected data types\", () => {",
+									"    pm.expect(json).to.be.an(\"object\")",
+									"    pm.expect(json.Version).to.be.a(\"string\")",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/system/status",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"system",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate-system-version",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"const NODE_COUNT = 1",
+									"",
+									"pm.test(\"Should reply with json object and expected data types\", () => {",
+									"    pm.expect(json).to.be.an(\"object\")",
+									"    pm.expect(json.ServerVersion).to.be.a(\"string\")",
+									"    pm.expect(json.DatabaseVersion).to.be.a(\"string\")",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/system/version",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"system",
+								"version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "validate-users",
 					"event": [
 						{
