@@ -10,10 +10,22 @@
 # | ------------- | ---- | --------------------- |
 # | Portainer     | 9990 | http://localhost:9990 |
 #
-# Additionally a `postman/newman` container is started to initialize portainer with all relevant
-# settings. This container runs a Postman collection that sets up all Docker stacks (among other
-# things) and runs some tests on the portainer instance. This container is terminated after the
-# collecetion run ended.
+# == How to manage Docker stacks
+#
+# In addition to Portainer, a `postman/newman` container is started to initialize portainer with
+# all relevantsettings. This container runs a Postman collection that sets up all Docker stacks
+# (among other things) and runs some tests on the portainer instance. This container is terminated
+# after the collecetion run ended.
+#
+# To add a new Docker stack, simple create a ``docker-compose.yml`` file in the respective repository
+# (the repo of the application) and add a new webservice call to the Postman collection (see
+# ``src/main/homelab/docker-stacks/portainer/assets/collections/portainer-postman-collection.json``).
+#
+# To update an exsisting Docker stack, simply update the ``docker-compose.yml`` and Portainer will
+# stop, pull and start the respective Docker stack automatically. To do this, Portainer checks the
+# ``docker-compose.yml`` files in a fixed interval. When the ``docker-compose.yml`` was updated,
+# Protainer updates the containers as well. The interval is defined in the respective webservidce in
+# the Postman collection.
 
 version: "3.3"
 services:
