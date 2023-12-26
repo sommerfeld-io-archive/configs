@@ -32,3 +32,6 @@ stop, pull and start the respective Docker stack automatically. To do this, Port
 `docker-compose.yml` files in a fixed interval. When the `docker-compose.yml` was updated,
 Protainer updates the containers as well. The interval is defined in the respective webservidce in
 the Postman collection.
+
+See https://app.swaggerhub.com/apis/portainer/portainer-ce/2.19.4#/ and https://docs.portainer.io/api/access
+for Portainer API docs.
