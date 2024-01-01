@@ -21,4 +21,4 @@ Steps to run on a normal workstation (= a machine with SSH access to the RasPi n
 . Enable passwordless SSH connections (from workstation, not the RasPi node)
 .. `ssh sebastian@actions-runner-01.fritz.box`
 .. `ssh-copy-id sebastian@actions-runner-01.fritz.box`
-. Apply ansible configs from this repo (`xref:AUTO-GENERATED:bash-docs/src/main/homelab/ansible-cli-sh.adoc[src/main/homelab/ansible-cli.sh]`)
+. Apply ansible configs from this repo (`xref:AUTO-GENERATED:bash-docs/components/homelab/src/main/ansible-cli-sh.adoc[components/homelab/src/main/ansible-cli.sh]`)

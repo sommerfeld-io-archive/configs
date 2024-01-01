@@ -15,7 +15,7 @@ violations and displays findings in the form of a report, but puts you in contro
 Inspec runs inside a Docker container with a non-root user. The profiles are auto-detected from
 the filesystem). Profiles must be stored in a dedicated folder. The folder-name must mach the
 group-name from the Ansible host inventory. The target machines are parsed from the Ansible
-inventory file (`src/main/homelab/ansible/hosts.yml`).
+inventory file (`components/homelab/src/main/ansible/hosts.yml`).
 
 IMPORTANT: This script is *not* intended for use "from anywhere". It is designed to work on my local
 workstations and depend on (1) all nodes up-and running, (2) network connectivity to the respective

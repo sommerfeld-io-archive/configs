@@ -1,0 +1,18 @@
+---
+# @file common-config-cron-jobs.yml
+# @brief Configure Cron jobs.
+#
+# @description The task configures Cron jobs for the ``{{ ansible_user }}`` (which
+# is the user who runs the playbooks, normally ``sebastian``).
+
+
+- name: Config -> Cron Job "cleanup-filesystem"
+  ansible.builtin.cron:
+    name: cleanup-filesystem
+    # https://crontab.guru/#0_*_*_*_*
+    minute: "0"
+    hour: "*"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/configs/components/homelab/src/main/ansible/assets/scripts/cron/cleanup-filesystem.sh"

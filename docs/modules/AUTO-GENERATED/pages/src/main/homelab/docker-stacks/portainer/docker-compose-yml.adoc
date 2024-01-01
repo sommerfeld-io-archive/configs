@@ -25,7 +25,7 @@ after the collecetion run ended.
 
 To add a new Docker stack, simple create a `docker-compose.yml` file in the respective repository
 (the repo of the application) and add a new webservice call to the Postman collection (see
-`src/main/homelab/docker-stacks/portainer/assets/collections/portainer-postman-collection.json`).
+`components/homelab/src/main/docker-stacks/portainer/assets/collections/portainer-postman-collection.json`).
 
 To update an exsisting Docker stack, simply update the `docker-compose.yml` and Portainer will
 stop, pull and start the respective Docker stack automatically. To do this, Portainer checks the

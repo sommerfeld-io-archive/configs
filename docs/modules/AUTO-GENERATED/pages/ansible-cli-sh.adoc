@@ -43,7 +43,7 @@ user has necessary permissions to execute Docker commands.
 
 == Ansible Playbooks
 
-This script automatically detects all Ansible playbooks in the `src/main/homelab/ansible/playbooks`
+This script automatically detects all Ansible playbooks in the `components/homelab/src/main/ansible/playbooks`
 folder.
 
 === Ansible Playbook: `desktops-main.yml`

@@ -15,5 +15,5 @@ The script does not accept any parameters.
 [source, bash]
 
 ----
-curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/src/main/homelab/bootstrap/ssh-server.sh | bash -
+curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/components/homelab/src/main/bootstrap/ssh-server.sh | bash -
 ----

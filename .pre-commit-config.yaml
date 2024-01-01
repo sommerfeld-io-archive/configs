@@ -40,4 +40,4 @@ repos:
       - id: ansible-lint
         name: ansible-lint
         language: script
-        entry: /bin/bash -c '(cd src/test && ./lint-ansible.sh)'
+        entry: /bin/bash -c '(cd components/homelab/src/test && ./lint-ansible.sh)'

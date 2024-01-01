@@ -16,7 +16,7 @@ located at `$HOME/.m2` on the Docker host.
 NOTE: This script is picked up by the ansible-playbook used to provision the `caprica` server node. This way all
 systems share the same setup and versions.
 
-CAUTION: To update scripts, adjust files at `~/work/repos/sebastian-sommerfeld-io/configs/src/main/homelab/ansible/assets/scripts/docker/wrappers` and run ansible playbook.
+CAUTION: To update scripts, adjust files at `~/work/repos/sebastian-sommerfeld-io/configs/components/homelab/src/main/ansible/assets/scripts/docker/wrappers` and run ansible playbook.
 
 === Script Arguments
 

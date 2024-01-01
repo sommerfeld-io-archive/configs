@@ -1,1 +1,1 @@
-* xref:AUTO-GENERATED:src/test/homelab/ansible/Vagrantfile.adoc[src/test/homelab/ansible/Vagrantfile]
+* xref:AUTO-GENERATED:components/homelab/src/test/ansible/Vagrantfile.adoc[components/homelab/src/test/ansible/Vagrantfile]
