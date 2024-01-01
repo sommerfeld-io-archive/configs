@@ -4,8 +4,8 @@ title: Ubuntu Desktops
 maintainer: Sebastian Sommerfeld
 copyright: Sebastian Sommerfeld
 copyright_email: sebastian@sommerfeld.io
-license: Proprietary, All rights reserved
+license: -tbd- Proprietary, All rights reserved
 summary: Baseline profile for all machines from the Ansible group 'ubuntu_desktop'
-version: 0.1.0
+version: 0.0.0
 supports:
   - platform-name: ubuntu
