@@ -1,3 +1,0 @@
-= Inspec Profile ubuntu_desktop
-
-Baseline profile for all machines from the Ansible group 'ubuntu_desktop' (= all nodes running link:https://ubuntu.com/download/desktop[Ubuntu Desktop]).

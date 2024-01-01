@@ -1,0 +1,11 @@
+---
+name: baseline
+title: Baseline profile with adopted checks from dev-sec.io
+maintainer: Sebastian Sommerfeld
+copyright: sommerfeld.io
+copyright_email: sebastian@sommerfeld.io
+license: -tbd-
+summary: System setup compliance profile
+version: 0.0.0
+supports:
+  os-family: linux
