@@ -59,7 +59,7 @@ jobs:
       - name: ansible-lint
         run: |
           (
-            cd src/test || exit
+            cd components/homelab/src/test || exit
             ./lint-ansible.sh
           )
         shell: bash
