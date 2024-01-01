@@ -164,6 +164,39 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
   done
 )
 
+
+# @description Wrapper function to encapsulate ``inspec`` in a docker container using the
+# link:https://hub.docker.com/r/chef/inspec[chef/inspec] image.
+#
+# The container does not run as root. Filesystem dependencies are mounted into the container to ensure
+# the user inside the container shares all relevant information with the user from the host.
+#
+# The current directory is mounted into the container and selected as working directory so that all
+# files of the project are available. Paths are preserved.
+#
+# @example
+#    inspec --version
+#
+# @arg $@ String The command arguments (1-n arguments) - $1 is mandatory
+#
+# @exitcode 8 If param with command arguments is missing
+function inspec() {
+  if [ -z "$1" ]; then
+    echo -e "$LOG_ERROR No command arguments passed to the container"
+    echo -e "$LOG_ERROR exit" && exit 8
+  fi
+
+  docker run -it --rm \
+    --volume /etc/passwd:/etc/passwd:ro \
+    --volume /etc/group:/etc/group:ro \
+    --user "$(id -u):$(id -g)" \
+    --volume "$HOME/.ssh:$HOME/.ssh:ro" \
+    --volume "$SSH_AUTH_SOCK:$SSH_AUTH_SOCK" \
+    --volume "$(pwd):$(pwd)" \
+    --workdir "$(pwd)" \
+    chef/inspec:5.22.36 "$@" --chef-license=accept-no-persist
+}
+
 # TODO ... update header docs -> Inspec
 # TODO ... wrapper function for inspec in docker container
 # TODO ... run tests
@@ -171,6 +204,8 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
 # TODO ... remove src/test/homelab/inspec/run-tests.sh
 
 docker run --rm mwendler/figlet:latest 'Test'
+
+readonly FQDN="$HOSTNAME.fritz.box"
 
 echo -e "$LOG_INFO Setup target directory"
 rm -rf "$TARGET_DIR"
@@ -180,8 +215,15 @@ mkdir -p "$TARGET_DIR/$INSPEC_TEST_DIR"
   echo -e "$LOG_INFO Run Inspec tests -> baseline"
   cd "$TARGET_DIR/$INSPEC_TEST_DIR" || exit
 
-  git clone git@github.com:dev-sec/linux-baseline.git
-  git clone git@github.com:dev-sec/cis-docker-benchmark.git
+  profile="linux-baseline"
+  git clone git@github.com:dev-sec/$profile.git
+  echo -e "$LOG_INFO Run inspec profile $P$profile$D against host $P$FQDN$D"
+  inspec exec "$profile" --target=ssh://"$USER@$FQDN" --key-files="$HOME/.ssh/id_rsa"
+
+  # profile="cis-docker-benchmark"
+  # git clone git@github.com:dev-sec/$profile.git
+  # echo -e "$LOG_INFO Run inspec profile $P$profile$D against host $P$FQDN$D"
+  # inspec exec "$profile" --target=ssh://"$USER@$FQDN" --key-files="$HOME/.ssh/id_rsa"
 
   ls -alF
 )
@@ -189,6 +231,14 @@ mkdir -p "$TARGET_DIR/$INSPEC_TEST_DIR"
 (
   echo -e "$LOG_INFO Run Inspec tests -> homelab"
   cd "$INSPEC_TEST_DIR" || exit
+
+  profile="ubuntu_desktop"
+
+  echo -e "$LOG_INFO Validate inspec profile $P$profile$D"
+  inspec check "$profile"
+
+  echo -e "$LOG_INFO Run inspec profile $P$profile$D against host $P$FQDN$D"
+  inspec exec "$profile" --target=ssh://"$USER@$FQDN" --key-files="$HOME/.ssh/id_rsa"
 
   ls -alF
 )
