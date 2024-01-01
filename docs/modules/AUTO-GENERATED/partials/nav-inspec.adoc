@@ -1,0 +1,4 @@
+* xref:AUTO-GENERATED:src/test/homelab/inspec/ubuntu_desktop/controls/filesystem-rb.adoc[src/test/homelab/inspec/ubuntu_desktop/controls/filesystem.rb]
+* xref:AUTO-GENERATED:src/test/homelab/inspec/ubuntu_desktop/controls/system-rb.adoc[src/test/homelab/inspec/ubuntu_desktop/controls/system.rb]
+* xref:AUTO-GENERATED:src/test/homelab/inspec/ubuntu_desktop/controls/users-rb.adoc[src/test/homelab/inspec/ubuntu_desktop/controls/users.rb]
+* xref:AUTO-GENERATED:src/test/homelab/inspec/ubuntu_desktop/controls/packages-rb.adoc[src/test/homelab/inspec/ubuntu_desktop/controls/packages.rb]
