@@ -1,11 +1,13 @@
 = docker-compose.yml
 
-...
+Docker Compose config to test the Ansible setup of all machines with Chef InSpec.
 
 == Overview
 
-...
-TODO ...
+This Docker Compose stack controls all test cases for all machines that
+are provisioned and configured with Ansible. The test cases are implemented with Chef
+InSpec. Once all Ansible tasks finished successfully the setup is tested with InSpec.
+Each InSpec profile is tested on each host in a dedicated container for each combination.
 
 === Prerequisites
 
@@ -14,4 +16,5 @@ Ubuntu 23.10.
 
 == How to Use
 
-TODO ... make sure you use the ansible-cli.sh
+Make sure you use the xref:AUTO-GENERATED:components/homelab/ansible-cli-sh.adoc[components/homelab/ansible-cli.sh]
+script to provision all machines with Ansible.
