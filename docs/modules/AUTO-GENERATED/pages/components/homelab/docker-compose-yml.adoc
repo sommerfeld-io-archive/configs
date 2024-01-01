@@ -1,0 +1,17 @@
+= docker-compose.yml
+
+...
+
+== Overview
+
+...
+TODO ...
+
+=== Prerequisites
+
+This compose config has been developed and tested with Docker version 24.0.2 on top of
+Ubuntu 23.10.
+
+== How to Use
+
+TODO ... make sure you use the ansible-cli.sh
