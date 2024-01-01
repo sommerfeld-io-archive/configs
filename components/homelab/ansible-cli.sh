@@ -28,6 +28,8 @@
 # Overall, this script is designed to simplify the management of Ansible playbooks by providing a
 # clean and automated environment for running them.
 #
+# TODO ... update header docs -> Inspec
+#
 # === Script Arguments
 #
 # The script does not accept any parameters.
@@ -72,8 +74,6 @@ set -o nounset
 
 
 readonly ANSIBLE_USER="sebastian"
-readonly TARGET_DIR="target"
-readonly INSPEC_TEST_DIR="src/test/inspec"
 
 
 # @description Wrapper function to encapsulate ansible in a docker container using the
@@ -159,48 +159,10 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
   echo -e "$LOG_INFO Select playbook"
   select playbook in playbooks/*.yml; do
     echo -e "$LOG_INFO Run $P$playbook$D"
-    #ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
+    ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
     break
   done
 )
-
-
-# @description Wrapper function to encapsulate ``inspec`` in a docker container using the
-# link:https://hub.docker.com/r/chef/inspec[chef/inspec] image.
-#
-# The container does not run as root. Filesystem dependencies are mounted into the container to ensure
-# the user inside the container shares all relevant information with the user from the host.
-#
-# The current directory is mounted into the container and selected as working directory so that all
-# files of the project are available. Paths are preserved.
-#
-# @example
-#    inspec --version
-#
-# @arg $@ String The command arguments (1-n arguments) - $1 is mandatory
-#
-# @exitcode 8 If param with command arguments is missing
-function inspec() {
-  if [ -z "$1" ]; then
-    echo -e "$LOG_ERROR No command arguments passed to the container"
-    echo -e "$LOG_ERROR exit" && exit 8
-  fi
-
-  docker run -it --rm \
-    --volume /etc/passwd:/etc/passwd:ro \
-    --volume /etc/group:/etc/group:ro \
-    --user "$(id -u):$(id -g)" \
-    --volume "$HOME/.ssh:$HOME/.ssh:ro" \
-    --volume "$SSH_AUTH_SOCK:$SSH_AUTH_SOCK" \
-    --volume "$(pwd):$(pwd)" \
-    --workdir "$(pwd)" \
-    chef/inspec:5.22.36 "$@" --chef-license=accept-no-persist
-}
-
-# TODO ... update header docs -> Inspec
-# TODO ... wrapper function for inspec in docker container
-# TODO ... run tests
-# TODO ... at best: dynamically determine the target nodes (only for nodes that are affected by the latest playbook execution)
 
 docker run --rm mwendler/figlet:latest 'Test'
 MY_USER="$USER" MY_UID="$(id -u)" MY_GID="$(id -g)" MY_SSH_AUTH_SOCK="$SSH_AUTH_SOCK" docker compose up
