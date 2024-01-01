@@ -159,7 +159,7 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
   echo -e "$LOG_INFO Select playbook"
   select playbook in playbooks/*.yml; do
     echo -e "$LOG_INFO Run $P$playbook$D"
-    ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
+    #ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
     break
   done
 )
@@ -203,37 +203,4 @@ function inspec() {
 # TODO ... at best: dynamically determine the target nodes (only for nodes that are affected by the latest playbook execution)
 
 docker run --rm mwendler/figlet:latest 'Test'
-
-readonly FQDN="$HOSTNAME.fritz.box"
-
-echo -e "$LOG_INFO Setup target directory"
-rm -rf "$TARGET_DIR"
-mkdir -p "$TARGET_DIR/$INSPEC_TEST_DIR"
-
-(
-  echo -e "$LOG_INFO Run Inspec tests -> baseline"
-  cd "$TARGET_DIR/$INSPEC_TEST_DIR" || exit
-
-  profile="linux-baseline"
-  git clone git@github.com:dev-sec/$profile.git
-  echo -e "$LOG_INFO Run inspec profile $P$profile$D against host $P$FQDN$D"
-  inspec exec "$profile" --target=ssh://"$USER@$FQDN" --key-files="$HOME/.ssh/id_rsa"
-
-  # profile="cis-docker-benchmark"
-  # git clone git@github.com:dev-sec/$profile.git
-  # echo -e "$LOG_INFO Run inspec profile $P$profile$D against host $P$FQDN$D"
-  # inspec exec "$profile" --target=ssh://"$USER@$FQDN" --key-files="$HOME/.ssh/id_rsa"
-)
-
-(
-  echo -e "$LOG_INFO Run Inspec tests -> homelab"
-  cd "$INSPEC_TEST_DIR" || exit
-
-  profile="ubuntu_desktop"
-
-  echo -e "$LOG_INFO Validate inspec profile $P$profile$D"
-  inspec check "$profile"
-
-  echo -e "$LOG_INFO Run inspec profile $P$profile$D against host $P$FQDN$D"
-  inspec exec "$profile" --target=ssh://"$USER@$FQDN" --key-files="$HOME/.ssh/id_rsa"
-)
+MY_USER="$USER" MY_UID="$(id -u)" MY_GID="$(id -g)" MY_SSH_AUTH_SOCK="$SSH_AUTH_SOCK" docker compose up

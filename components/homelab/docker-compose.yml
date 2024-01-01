@@ -1,0 +1,32 @@
+---
+# @file docker-compose.yml
+# @brief ...
+#
+# @description ...
+# TODO ...
+#
+# === Prerequisites
+#
+# This compose config has been developed and tested with Docker version 24.0.2 on top of
+# Ubuntu 23.10.
+#
+# == How to Use
+#
+# TODO ... make sure you use the ansible-cli.sh
+
+
+version: "3.3"
+services:
+
+  inspec-caprica:
+    container_name: inspec
+    image: chef/inspec:5.22.36
+    user: "${MY_UID}:${MY_GID}"
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - "/home/${MY_USER}/.ssh:/home/${MY_USER}/.ssh:ro"
+      - "${MY_SSH_AUTH_SOCK}:${MY_SSH_AUTH_SOCK}"
+      - ./src/test/inspec:/inspec
+    working_dir: &work_dir /inspec
+    command: exec ubuntu_desktop --target="ssh://${MY_USER}@caprica.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
