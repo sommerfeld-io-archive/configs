@@ -170,8 +170,6 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
 # TODO ... at best: dynamically determine the target nodes (only for nodes that are affected by the latest playbook execution)
 # TODO ... remove src/test/homelab/inspec/run-tests.sh
 
-# TODO ... think about removing "Clone mandatory git repositories" step ... add to manual install steps? does this make sense?
-
 docker run --rm mwendler/figlet:latest 'Test'
 
 echo -e "$LOG_INFO Setup target directory"
