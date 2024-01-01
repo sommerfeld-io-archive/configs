@@ -72,6 +72,7 @@ aptitude safe-upgrade on Ubuntu and RaspberryPi OS machines (both are Debian-bas
 * <<_invoke,invoke>>
 * <<_ansible,ansible>>
 * <<_ansible-playbook,ansible-playbook>>
+* <<_inspec,inspec>>
 
 === invoke
 
@@ -131,3 +132,29 @@ echo "test: $(ansible-playbook playbook.yml)"
 ==== Arguments
 
 * *...* (String): The ansible-playbook commands (1-n arguments) - $1 is mandatory
+
+=== inspec
+
+Wrapper function to encapsulate `inspec` in a docker container using the
+link:https://hub.docker.com/r/chef/inspec[chef/inspec] image.
+
+The container does not run as root. Filesystem dependencies are mounted into the container to ensure
+the user inside the container shares all relevant information with the user from the host.
+
+The current directory is mounted into the container and selected as working directory so that all
+files of the project are available. Paths are preserved.
+
+==== Example
+
+[,bash]
+----
+inspec --version
+----
+
+==== Arguments
+
+* *...* (String): The command arguments (1-n arguments) - $1 is mandatory
+
+==== Exit codes
+
+* *8*: If param with command arguments is missing

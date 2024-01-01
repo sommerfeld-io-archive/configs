@@ -1,4 +1,3 @@
-* xref:AUTO-GENERATED:src/test/homelab/inspec/run-tests-sh.adoc[src/test/homelab/inspec/run-tests.sh]
 * xref:AUTO-GENERATED:src/test/lint-ansible-sh.adoc[src/test/lint-ansible.sh]
 * xref:AUTO-GENERATED:src/main/homelab/bootstrap/install-basics-sh.adoc[src/main/homelab/bootstrap/install-basics.sh]
 * xref:AUTO-GENERATED:src/main/homelab/bootstrap/ssh-server-sh.adoc[src/main/homelab/bootstrap/ssh-server.sh]
