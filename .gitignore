@@ -7,14 +7,6 @@ node_modules
 *.lock
 yamllint-*
 
-# terraform
-.terraform
-.terraform.lock*
-*.tfstate*
-tfplan
-.bitwarden*
-src/main/github/tmp-repos
-
 # secrets
 *.token
 *.pass

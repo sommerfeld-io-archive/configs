@@ -72,6 +72,8 @@ set -o nounset
 
 
 readonly ANSIBLE_USER="sebastian"
+readonly TARGET_DIR="target"
+readonly INSPEC_TEST_DIR="src/test/homelab/inspec"
 
 
 # @description Wrapper function to encapsulate ansible in a docker container using the
@@ -158,8 +160,33 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
   select playbook in playbooks/*.yml; do
     echo -e "$LOG_INFO Run $P$playbook$D"
     ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
-
-    # INSPEC
     break
   done
+)
+
+# TODO ... update header docs -> Inspec
+# TODO ... wrapper function for inspec in docker container
+# TODO ... run tests
+# TODO ... at best: dynamically determine the target nodes (only for nodes that are affected by the latest playbook execution)
+# TODO ... remove src/test/homelab/inspec/run-tests.sh
+
+echo -e "$LOG_INFO Setup target directory"
+rm -rf "$TARGET_DIR"
+mkdir -p "$TARGET_DIR/$INSPEC_TEST_DIR"
+
+(
+  echo -e "$LOG_INFO Run Inspec tests -> baseline"
+  cd "$TARGET_DIR/$INSPEC_TEST_DIR" || exit
+
+  git clone git@github.com:dev-sec/linux-baseline.git
+  git clone git@github.com:dev-sec/cis-docker-benchmark.git
+
+  ll
+)
+
+(
+  echo -e "$LOG_INFO Run Inspec tests -> homelab"
+  cd "$INSPEC_TEST_DIR" || exit
+
+  ll
 )
