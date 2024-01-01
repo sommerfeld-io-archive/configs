@@ -1,4 +1,4 @@
-= Workstation: caprica* xref:homelab/monitoring.fritz.box/index.adoc[]
+= Workstation: caprica
 Sebastian Sommerfeld <sebastian@sommerfeld.io>
 :description: Installation guide for machine 'caprica'
 
