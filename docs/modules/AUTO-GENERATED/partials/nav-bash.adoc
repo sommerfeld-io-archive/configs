@@ -15,4 +15,4 @@
 * xref:AUTO-GENERATED:src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/groovy.sh]
 * xref:AUTO-GENERATED:src/main/homelab/ansible/assets/scripts/docker/wrappers/node-npm-sh.adoc[src/main/homelab/ansible/assets/scripts/docker/wrappers/node-npm.sh]
 * xref:AUTO-GENERATED:src/main/homelab/docker-stacks-cli-sh.adoc[src/main/homelab/docker-stacks-cli.sh]
-* xref:AUTO-GENERATED:src/main/homelab/ansible-cli-sh.adoc[src/main/homelab/ansible-cli.sh]
+* xref:AUTO-GENERATED:ansible-cli-sh.adoc[ansible-cli.sh]
