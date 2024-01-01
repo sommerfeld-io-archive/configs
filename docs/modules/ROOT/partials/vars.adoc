@@ -2,6 +2,6 @@ Sebastian Sommerfeld <sebastian@sommerfeld.io>
 :project-name: configs
 :url-project: https://github.com/sebastian-sommerfeld-io/{project-name}
 :github-actions-url: {url-project}/actions/workflows
-:job-ci: ci.yml
+:job-build: build.yml
 :job-generate-docs: generate-docs.yml
 :badge: badge.svg
