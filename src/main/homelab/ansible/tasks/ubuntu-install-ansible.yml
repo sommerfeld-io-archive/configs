@@ -4,12 +4,7 @@
 #
 # @description The task installs Ansible.
 
-- name: Ansible Setup -> Add apt repository
-  ansible.builtin.apt_repository:
-    repo: "ppa:ansible/ansible"
-    state: present
-
-- name: Ansible Setup -> Install ansible
+- name: Ansible Setup -> Install ansible (OS-codename {{ ansible_distribution_release }})
   ansible.builtin.apt:
     name:
       - ansible

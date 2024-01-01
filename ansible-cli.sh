@@ -138,7 +138,7 @@ function ansible-playbook() {
 docker run --rm mwendler/figlet:latest 'Ansible CLI'
 
 (
-  cd ansible || exit
+  cd src/main/homelab/ansible || exit
 
   if ! id "$ANSIBLE_USER" &>/dev/null; then
     echo -e "$LOG_ERROR +-----------------------------------------------------------------------------+"
@@ -159,6 +159,7 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
     echo -e "$LOG_INFO Run $P$playbook$D"
     ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
 
+    # INSPEC
     break
   done
 )
