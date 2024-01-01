@@ -224,8 +224,6 @@ mkdir -p "$TARGET_DIR/$INSPEC_TEST_DIR"
   # git clone git@github.com:dev-sec/$profile.git
   # echo -e "$LOG_INFO Run inspec profile $P$profile$D against host $P$FQDN$D"
   # inspec exec "$profile" --target=ssh://"$USER@$FQDN" --key-files="$HOME/.ssh/id_rsa"
-
-  ls -alF
 )
 
 (
@@ -239,6 +237,4 @@ mkdir -p "$TARGET_DIR/$INSPEC_TEST_DIR"
 
   echo -e "$LOG_INFO Run inspec profile $P$profile$D against host $P$FQDN$D"
   inspec exec "$profile" --target=ssh://"$USER@$FQDN" --key-files="$HOME/.ssh/id_rsa"
-
-  ls -alF
 )
