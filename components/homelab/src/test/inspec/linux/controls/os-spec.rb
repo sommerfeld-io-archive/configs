@@ -8,7 +8,7 @@ login_defs_umask = input('login_defs_umask', value: os.redhat? ? '077' : '027')
 
 login_defs_passmaxdays = input('login_defs_passmaxdays', value: '99999')
 login_defs_passmindays = input('login_defs_passmindays', value: '0')
-login_defs_passwarnage = input('login_defs_passwarnage', value: '0')
+login_defs_passwarnage = input('login_defs_passwarnage', value: '7')
 
 shadow_group = 'root'
 shadow_group = 'shadow' if os.debian? || os.suse? || os.name == 'alpine'
