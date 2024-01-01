@@ -28,7 +28,7 @@
 # Overall, this script is designed to simplify the management of Ansible playbooks by providing a
 # clean and automated environment for running them.
 #
-# TODO ... update header docs -> Inspec
+# Once all Ansible tasks finished successfully the setup is tested with InSpec (see xref:AUTO-GENERATED:components/homelab/docker-compose-yml.adoc[components/homelab/docker-compose.yml]).
 #
 # === Script Arguments
 #

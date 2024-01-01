@@ -180,7 +180,7 @@
 									"})",
 									"",
 									"// The \"portainer\" stack is not returned by the API",
-									"// Pobably because it is not fuklly controlled by portainer",
+									"// Probably because it is not fully controlled by portainer",
 									"pm.test(\"Should return ops stack only\", () => {",
 									"    pm.expect(json.length).to.equal(1)",
 									"",
