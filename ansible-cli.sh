@@ -172,9 +172,6 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
 
 # TODO ... think about removing "Clone mandatory git repositories" step ... add to manual install steps? does this make sense?
 
-#? When I use make test to run inspec, I could invoke this from a github actions workflow which delegates everything to
-#?  actions-runner-01.fritz.box as a self-hosted runner
-
 echo -e "$LOG_INFO Setup target directory"
 rm -rf "$TARGET_DIR"
 mkdir -p "$TARGET_DIR/$INSPEC_TEST_DIR"
@@ -186,12 +183,12 @@ mkdir -p "$TARGET_DIR/$INSPEC_TEST_DIR"
   git clone git@github.com:dev-sec/linux-baseline.git
   git clone git@github.com:dev-sec/cis-docker-benchmark.git
 
-  ll
+  ls -alF
 )
 
 (
   echo -e "$LOG_INFO Run Inspec tests -> homelab"
   cd "$INSPEC_TEST_DIR" || exit
 
-  ll
+  ls -alF
 )
