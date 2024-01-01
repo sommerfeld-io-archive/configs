@@ -1,9 +1,11 @@
 ---
 # @file docker-compose.yml
-# @brief ...
+# @brief Docker Compose config to test the Ansible setup of all machines with Chef InSpec.
 #
-# @description ...
-# TODO ...
+# @description This Docker Compose stack controls all test cases for all machines that
+# are provisioned and configured with Ansible. The test cases are implemented with Chef
+# InSpec. Once all Ansible tasks finished successfully the setup is tested with InSpec.
+# Each InSpec profile is tested on each host in a dedicated container for each combination.
 #
 # === Prerequisites
 #
@@ -12,14 +14,15 @@
 #
 # == How to Use
 #
-# TODO ... make sure you use the ansible-cli.sh
+# Make sure you use the xref:AUTO-GENERATED:components/homelab/ansible-cli-sh.adoc[components/homelab/ansible-cli.sh]
+# script to provision all machines with Ansible.
 
 
 version: "3.3"
 services:
 
-  inspec-caprica:
-    container_name: inspec-caprica
+  inspec-caprica-1:
+    container_name: inspec-caprica-1
     image: &image chef/inspec:5.22.36
     user: &user "${MY_UID}:${MY_GID}"
     volumes: &volumes
@@ -29,15 +32,21 @@ services:
       - "${MY_SSH_AUTH_SOCK}:${MY_SSH_AUTH_SOCK}"
       - ./src/test/inspec:/inspec
     working_dir: &work_dir /inspec
-    command: exec ubuntu_desktop --target="ssh://${MY_USER}@caprica.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
+    environment: &env_caprica
+      - TARGET_HOST=caprica.fritz.box
+      - INSPEC_PROFILE=ubuntu_desktop
+    command: exec ${INSPEC_PROFILE} --target="ssh://${MY_USER}@${TARGET_HOST}" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
 
-  inspec-kobol:
-    container_name: inspec-kobol
+  inspec-kobol-1:
+    container_name: inspec-kobol-1
     image: *image
     user: *user
     volumes: *volumes
     working_dir: *work_dir
-    command: exec ubuntu_desktop --target="ssh://${MY_USER}@kobol.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
+    environment: &env_kobol
+      - TARGET_HOST=kobol.fritz.box
+      - INSPEC_PROFILE=ubuntu_desktop
+    command: exec ${INSPEC_PROFILE} --target="ssh://${MY_USER}@${TARGET_HOST}" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
     depends_on:
-      inspec-caprica:
+      inspec-caprica-1:
         condition: service_completed_successfully
