@@ -172,6 +172,8 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
 
 # TODO ... think about removing "Clone mandatory git repositories" step ... add to manual install steps? does this make sense?
 
+docker run --rm mwendler/figlet:latest 'Test'
+
 echo -e "$LOG_INFO Setup target directory"
 rm -rf "$TARGET_DIR"
 mkdir -p "$TARGET_DIR/$INSPEC_TEST_DIR"
