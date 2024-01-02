@@ -158,8 +158,6 @@ function ansible-playbook() {
 #
 # @example
 #    test
-#
-# @arg $@ String The ansible-playbook commands (1-n arguments) - $1 is mandatory
 function test() {
   readonly TARGET_DIR="target"
   readonly TEST_DIR="$TARGET_DIR/test/inspec"
