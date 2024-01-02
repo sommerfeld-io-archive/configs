@@ -55,7 +55,7 @@ services:
       - /etc/group:/etc/group:ro
       - "/home/${MY_USER}/.ssh:/home/${MY_USER}/.ssh:ro"
       - "${MY_SSH_AUTH_SOCK}:${MY_SSH_AUTH_SOCK}"
-      - .target/test/inspec:/inspec
+      - ./target/test/inspec:/inspec
     working_dir: *work_dir
     command: exec ssh-baseline --target="ssh://${MY_USER}@caprica.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
     depends_on:

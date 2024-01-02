@@ -158,7 +158,7 @@ function ansible-playbook() {
 #
 # @example
 #    test
-function test() {
+function run-tests() {
   readonly TARGET_DIR="target"
   readonly TEST_DIR="$TARGET_DIR/test/inspec"
   readonly BASELINES=(
@@ -206,7 +206,8 @@ title 'Ansible CLI'
   select playbook in playbooks/*.yml; do
     echo -e "$LOG_INFO Run $P$playbook$D"
     ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
-    test
     break
   done
 )
+
+run-tests
