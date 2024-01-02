@@ -162,7 +162,7 @@ function run-tests() {
   readonly TARGET_DIR="target"
   readonly TEST_DIR="$TARGET_DIR/test/inspec"
   readonly BASELINES=(
-    'ssh-baseline'
+    'ssl-baseline'
   )
 
   title 'Test'
