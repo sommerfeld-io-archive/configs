@@ -1,0 +1,8 @@
+= users.rb
+
+Validate the users and their respective configuration.
+
+== Overview
+
+...
+TODO ...

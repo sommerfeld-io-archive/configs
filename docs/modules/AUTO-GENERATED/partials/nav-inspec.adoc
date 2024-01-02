@@ -4,6 +4,7 @@
 * xref:AUTO-GENERATED:components/homelab/src/test/inspec/linux/libraries/suid-check-rb.adoc[components/homelab/src/test/inspec/linux/libraries/suid-check.rb]
 * xref:AUTO-GENERATED:components/homelab/src/test/inspec/linux/libraries/suid-blacklist-rb.adoc[components/homelab/src/test/inspec/linux/libraries/suid-blacklist.rb]
 * xref:AUTO-GENERATED:components/homelab/src/test/inspec/ubuntu_desktop/controls/filesystem-rb.adoc[components/homelab/src/test/inspec/ubuntu_desktop/controls/filesystem.rb]
-* xref:AUTO-GENERATED:components/homelab/src/test/inspec/ubuntu_desktop/controls/system-rb.adoc[components/homelab/src/test/inspec/ubuntu_desktop/controls/system.rb]
 * xref:AUTO-GENERATED:components/homelab/src/test/inspec/ubuntu_desktop/controls/users-rb.adoc[components/homelab/src/test/inspec/ubuntu_desktop/controls/users.rb]
+* xref:AUTO-GENERATED:components/homelab/src/test/inspec/ubuntu_desktop/controls/basic-rb.adoc[components/homelab/src/test/inspec/ubuntu_desktop/controls/basic.rb]
 * xref:AUTO-GENERATED:components/homelab/src/test/inspec/ubuntu_desktop/controls/packages-rb.adoc[components/homelab/src/test/inspec/ubuntu_desktop/controls/packages.rb]
+* xref:AUTO-GENERATED:components/homelab/src/test/inspec/ubuntu_desktop/libraries/vars-rb.adoc[components/homelab/src/test/inspec/ubuntu_desktop/libraries/vars.rb]

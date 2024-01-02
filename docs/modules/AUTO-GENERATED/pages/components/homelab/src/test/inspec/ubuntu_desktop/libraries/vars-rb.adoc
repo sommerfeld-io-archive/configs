@@ -1,4 +1,4 @@
-= suid-check.rb
+= vars.rb
 
 Library module which provides some helper functions.
 
