@@ -26,7 +26,7 @@ services:
     container_name: inspec-caprica-1
     image: &image chef/inspec:5.22.36
     user: &user "${MY_UID}:${MY_GID}"
-    volumes: &volumes
+    volumes: &src-volumes
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
       - "/home/${MY_USER}/.ssh:/home/${MY_USER}/.ssh:ro"
@@ -39,31 +39,36 @@ services:
     container_name: inspec-kobol-1
     image: *image
     user: *user
-    volumes: *volumes
+    volumes: *src-volumes
     working_dir: *work_dir
     command: exec homelab-baseline --target="ssh://${MY_USER}@kobol.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
     depends_on:
       inspec-caprica-1:
         condition: service_completed_successfully
 
-  # inspec-caprica-2:
-  #   container_name: inspec-caprica-2
-  #   image: *image
-  #   user: *user
-  #   volumes: *volumes
-  #   working_dir: *work_dir
-  #   command: exec linux --target="ssh://${MY_USER}@caprica.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
-  #   depends_on:
-  #     inspec-kobol-1:
-  #       condition: service_completed_successfully
+  inspec-caprica-2:
+    container_name: inspec-caprica-2
+    image: *image
+    user: *user
+    volumes: &target-volumes
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - "/home/${MY_USER}/.ssh:/home/${MY_USER}/.ssh:ro"
+      - "${MY_SSH_AUTH_SOCK}:${MY_SSH_AUTH_SOCK}"
+      - .target/test/inspec:/inspec
+    working_dir: *work_dir
+    command: exec ssh-baseline --target="ssh://${MY_USER}@caprica.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
+    depends_on:
+      inspec-kobol-1:
+        condition: service_completed_successfully
 
-  # inspec-kobol-2:
-  #   container_name: inspec-kobol-2
-  #   image: *image
-  #   user: *user
-  #   volumes: *volumes
-  #   working_dir: *work_dir
-  #   command: exec linux --target="ssh://${MY_USER}@kobol.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
-  #   depends_on:
-  #     inspec-caprica-2:
-  #       condition: service_completed_successfully
+  inspec-kobol-2:
+    container_name: inspec-kobol-2
+    image: *image
+    user: *user
+    volumes: *target-volumes
+    working_dir: *work_dir
+    command: exec ssh-baseline --target="ssh://${MY_USER}@kobol.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
+    depends_on:
+      inspec-caprica-2:
+        condition: service_completed_successfully

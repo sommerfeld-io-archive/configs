@@ -161,6 +161,9 @@ function ansible-playbook() {
 function test() {
   readonly TARGET_DIR="target"
   readonly TEST_DIR="$TARGET_DIR/test/inspec"
+  readonly BASELINES=(
+    'ssh-baseline'
+  )
 
   title 'Test'
 
@@ -169,9 +172,6 @@ function test() {
   mkdir -p "$TEST_DIR"
 
   echo -e "$LOG_INFO Download basline profiles from dev-sec.io"
-  BASELINES=(
-    'ssh-baseline'
-  )
   for baseline in "${BASELINES[@]}"
   do
     echo -e "$LOG_INFO Download $P$baseline$D"
