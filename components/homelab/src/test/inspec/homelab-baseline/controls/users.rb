@@ -8,7 +8,7 @@ title 'validate users'
 
 control 'default-user-01' do
     impact 1.0
-    title 'Validate the default user and its ssh keys'
+    title "Validate the default user (username = #{vars.default_user})"
     desc 'Ensure the default user is present and correctly set up'
 
     describe user(vars.default_user) do
