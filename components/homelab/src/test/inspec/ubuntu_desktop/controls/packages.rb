@@ -6,10 +6,9 @@
 
 title 'audit software packages'
 
-control 'required-system-packages' do
+control 'packages-01' do
     impact 1.0
-    title 'Validate software package installations'
-    desc 'Ensure packages are installed'
+    title 'Validate basic package installations'
 
     describe package('apt-transport-https') do
         it { should be_installed }
@@ -28,10 +27,13 @@ control 'required-system-packages' do
     end
 end
 
-control 'tools-packages' do
+control 'packages-02' do
     impact 1.0
-    title 'Validate software package installations'
-    desc 'Ensure packages are installed'
+    title 'Validate tool package installations'
+
+    describe package('make') do
+        it { should be_installed }
+    end
 
     describe package('ncdu') do
         it { should be_installed }
@@ -44,12 +46,23 @@ control 'tools-packages' do
     describe package('git') do
         it { should be_installed }
     end
+
+    describe package('neofetch') do
+        it { should be_installed }
+    end
+
+    describe package('python3') do
+        it { should be_installed }
+    end
+
+    describe package('python3-pip') do
+        it { should be_installed }
+    end
 end
 
-control 'docker-packages' do
+control 'docker-packages-01' do
     impact 1.0
     title 'Validate software package installations'
-    desc 'Ensure packages are installed'
 
     describe package('docker-ce') do
         it { should be_installed }
@@ -57,5 +70,46 @@ control 'docker-packages' do
 
     describe package('docker-ce-cli') do
         it { should be_installed }
+    end
+
+    describe package('containerd.io') do
+        it { should be_installed }
+    end
+
+    describe package('docker-buildx-plugin') do
+        it { should be_installed }
+    end
+
+    describe package('docker-compose-plugin') do
+        it { should be_installed }
+    end
+end
+
+control 'no-deprecated-docker-packages-01' do
+    impact 1.0
+    title 'Validate that no deprecated docker packages are installed'
+
+    describe package('docker-compose') do
+        it { should_not be_installed }
+    end
+
+    describe package('docker') do
+        it { should_not be_installed }
+    end
+
+    describe package('docker-engine') do
+        it { should_not be_installed }
+    end
+
+    describe package('docker.io') do
+        it { should_not be_installed }
+    end
+
+    describe package('containerd') do
+        it { should_not be_installed }
+    end
+
+    describe package('runc') do
+        it { should_not be_installed }
     end
 end

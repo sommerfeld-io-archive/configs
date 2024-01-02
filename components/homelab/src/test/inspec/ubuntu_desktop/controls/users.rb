@@ -6,7 +6,7 @@
 
 title 'validate users'
 
-control 'default-user' do
+control 'default-user-01' do
     impact 1.0
     title 'Validate the default user and its ssh keys'
     desc 'Ensure the default user is present and correctly set up'
