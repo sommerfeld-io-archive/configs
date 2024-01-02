@@ -57,7 +57,7 @@ services:
       - "${MY_SSH_AUTH_SOCK}:${MY_SSH_AUTH_SOCK}"
       - ./target/test/inspec:/inspec
     working_dir: *work_dir
-    command: exec ssh-baseline --target="ssh://${MY_USER}@caprica.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
+    command: exec ssl-baseline --target="ssh://${MY_USER}@caprica.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
     depends_on:
       inspec-kobol-1:
         condition: service_completed_successfully
@@ -68,7 +68,7 @@ services:
     user: *user
     volumes: *target-volumes
     working_dir: *work_dir
-    command: exec ssh-baseline --target="ssh://${MY_USER}@kobol.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
+    command: exec ssl-baseline --target="ssh://${MY_USER}@kobol.fritz.box" --key-files="/home/${MY_USER}/.ssh/id_rsa" --chef-license=accept-no-persist
     depends_on:
       inspec-caprica-2:
         condition: service_completed_successfully
