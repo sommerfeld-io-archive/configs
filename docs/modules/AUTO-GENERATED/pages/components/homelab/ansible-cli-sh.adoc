@@ -71,9 +71,26 @@ aptitude safe-upgrade on Ubuntu and RaspberryPi OS machines (both are Debian-bas
 
 == Index
 
+* <<_title,title>>
 * <<_invoke,invoke>>
 * <<_ansible,ansible>>
 * <<_ansible-playbook,ansible-playbook>>
+* <<_test,test>>
+
+=== title
+
+Write a title to stdout.
+
+==== Example
+
+[,bash]
+----
+title 'Some Title'
+----
+
+==== Arguments
+
+* *$1* (String): The title to print
 
 === invoke
 
@@ -91,7 +108,7 @@ all file of the project are available. Paths are preserved.
 
 [,bash]
 ----
-echo "test: $(invoke ansible --version)"
+invoke ansible --version
 ----
 
 ==== Arguments
@@ -111,7 +128,7 @@ Ansible running in a Docker container.
 
 [,bash]
 ----
-echo "test: $(ansible --version)"
+ansible --version
 ----
 
 ==== Arguments
@@ -127,9 +144,21 @@ Ansible running in a Docker container.
 
 [,bash]
 ----
-echo "test: $(ansible-playbook playbook.yml)"
+ansible-playbook playbook.yml
 ----
 
 ==== Arguments
 
 * *...* (String): The ansible-playbook commands (1-n arguments) - $1 is mandatory
+
+=== test
+
+Run Inspec test profiles in Docker containers to assert the installations
+and the state of the nodes on ly homelab.
+
+==== Example
+
+[,bash]
+----
+test
+----
