@@ -39,13 +39,19 @@
     groups: vboxusers
     append: true
 
+- name: Install -> Download Chrome package
+  ansible.builtin.uri:
+    url: https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb
+    dest: /tmp/vagrant.deb
+
 - name: Vagrant Setup -> Install Vagrant
-  ansible.builtin.shell: |
-    curl https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb --output /tmp/vagrant.deb
-    sudo dpkg -i /tmp/vagrant.deb
-    rm /tmp/vagrant.deb
-  args:
-    executable: /bin/bash
+  ansible.builtin.apt:
+    deb: /tmp/vagrant.deb
+
+- name: Install -> Vagrant cleanup
+  ansible.builtin.file:
+    path: /tmp/vagrant.deb
+    state: absent
 
 - name: Vagrant Setup -> Install Vagrant plugins
   ansible.builtin.shell: |
