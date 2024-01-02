@@ -76,6 +76,22 @@ set -o nounset
 readonly ANSIBLE_USER="sebastian"
 
 
+# @description Write a title to stdout.
+#
+# @example
+#    title 'Some Title'
+#
+# @arg $1 String The title to print
+function title() {
+  if [ -z "$1" ]; then
+    echo -e "$LOG_ERROR No title passed"
+    echo -e "$LOG_ERROR exit" && exit 8
+  fi
+
+  docker run --rm mwendler/figlet:latest "$1"
+}
+
+
 # @description Wrapper function to encapsulate ansible in a docker container using the
 # link:https://hub.docker.com/r/cytopia/ansible[cytopia/ansible] image.
 #
@@ -87,7 +103,7 @@ readonly ANSIBLE_USER="sebastian"
 # all file of the project are available. Paths are preserved.
 #
 # @example
-#    echo "test: $(invoke ansible --version)"
+#    invoke ansible --version
 #
 # @arg $@ String The ansible commands (1-n arguments) - $1 is mandatory
 #
@@ -117,7 +133,7 @@ function invoke() {
 # Ansible running in a Docker container.
 #
 # @example
-#    echo "test: $(ansible --version)"
+#    ansible --version
 #
 # @arg $@ String The ansible-playbook commands (1-n arguments) - $1 is mandatory
 function ansible() {
@@ -129,7 +145,7 @@ function ansible() {
 # Ansible running in a Docker container.
 #
 # @example
-#    echo "test: $(ansible-playbook playbook.yml)"
+#    ansible-playbook playbook.yml
 #
 # @arg $@ String The ansible-playbook commands (1-n arguments) - $1 is mandatory
 function ansible-playbook() {
@@ -137,7 +153,39 @@ function ansible-playbook() {
 }
 
 
-docker run --rm mwendler/figlet:latest 'Ansible CLI'
+# @description Run Inspec test profiles in Docker containers to assert the installations
+# and the state of the nodes on ly homelab.
+#
+# @example
+#    test
+#
+# @arg $@ String The ansible-playbook commands (1-n arguments) - $1 is mandatory
+function test() {
+  readonly TARGET_DIR="target"
+  readonly TEST_DIR="$TARGET_DIR/test/inspec"
+
+  title 'Test'
+
+  echo -e "$LOG_INFO Setup $TEST_DIR directory"
+  rm -rf "$TEST_DIR"
+  mkdir -p "$TEST_DIR"
+
+  echo -e "$LOG_INFO Download basline profiles from dev-sec.io"
+  BASELINES=(
+    'ssh-baseline'
+  )
+  for baseline in "${BASELINES[@]}"
+  do
+    echo -e "$LOG_INFO Download $P$baseline$D"
+    git clone "git@github.com:dev-sec/$baseline.git" "$TEST_DIR/$baseline"
+  done
+
+  echo -e "$LOG_INFO Run test-containers"
+  MY_USER="$USER" MY_UID="$(id -u)" MY_GID="$(id -g)" MY_SSH_AUTH_SOCK="$SSH_AUTH_SOCK" docker compose up
+}
+
+
+title 'Ansible CLI'
 
 (
   cd src/main/ansible || exit
@@ -160,9 +208,7 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
   select playbook in playbooks/*.yml; do
     echo -e "$LOG_INFO Run $P$playbook$D"
     ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
+    test
     break
   done
 )
-
-docker run --rm mwendler/figlet:latest 'Test'
-MY_USER="$USER" MY_UID="$(id -u)" MY_GID="$(id -g)" MY_SSH_AUTH_SOCK="$SSH_AUTH_SOCK" docker compose up
