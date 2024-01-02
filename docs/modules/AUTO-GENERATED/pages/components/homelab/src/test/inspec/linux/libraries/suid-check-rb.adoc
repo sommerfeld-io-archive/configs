@@ -1,8 +1,0 @@
-= suid-check.rb
-
-Library module which provides some helper functions.
-
-== Overview
-
-...
-TODO ...
