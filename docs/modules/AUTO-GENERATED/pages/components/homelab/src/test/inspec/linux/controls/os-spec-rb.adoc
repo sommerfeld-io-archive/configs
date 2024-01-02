@@ -1,4 +1,4 @@
-= linux-os-spec.rb
+= os-spec.rb
 
 Inspec test cases ...
 

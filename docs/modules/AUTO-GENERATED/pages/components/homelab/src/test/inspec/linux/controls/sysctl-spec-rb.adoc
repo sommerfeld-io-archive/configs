@@ -1,4 +1,4 @@
-= linux-sysctl-spect.rb
+= sysctl-spect.rb
 
 Inspec test cases ...
 

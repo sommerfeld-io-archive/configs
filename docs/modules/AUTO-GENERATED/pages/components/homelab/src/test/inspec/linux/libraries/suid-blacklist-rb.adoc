@@ -1,4 +1,4 @@
-= linux-suid-blacklist.rb
+= suid-blacklist.rb
 
 Library module which provides some helper functions.
 

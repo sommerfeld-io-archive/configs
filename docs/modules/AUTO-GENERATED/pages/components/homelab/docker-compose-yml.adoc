@@ -16,5 +16,6 @@ Ubuntu 23.10.
 
 == How to Use
 
-Make sure you use the xref:AUTO-GENERATED:components/homelab/ansible-cli-sh.adoc[components/homelab/ansible-cli.sh]
-script to provision all machines with Ansible.
+This Compose config is automatically run after provisioning nodes with Ansible. Make sure
+you use the xref:AUTO-GENERATED:components/homelab/ansible-cli-sh.adoc[components/homelab/ansible-cli.sh]
+script to run Ansible.

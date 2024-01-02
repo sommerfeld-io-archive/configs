@@ -1,0 +1,8 @@
+= basic.rb
+
+Validate the basic system configuration.
+
+== Overview
+
+...
+TODO ...
