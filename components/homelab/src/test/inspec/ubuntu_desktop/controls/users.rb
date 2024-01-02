@@ -1,18 +1,24 @@
-title 'audit users setup'
+# @file users.rb
+# @brief Validate the users and their respective configuration.
+#
+# @description ...
+# TODO ...
 
-control 'default_user' do
+title 'validate users'
+
+control 'default-user' do
     impact 1.0
     title 'Validate the default user and its ssh keys'
     desc 'Ensure the default user is present and correctly set up'
 
-    describe user('sebastian') do
+    describe user(vars.default_user) do
         it { should exist }
         # its('groups') { should cmp ['sebastian', 'adm', 'sudo', 'docker']}
-        its('home') { should cmp '/home/sebastian' }
+        its('home') { should cmp "/home/#{vars.default_user}" }
         its('shell') { should cmp '/bin/bash' }
     end
 
-    describe file('/home/sebastian/.ssh/authorized_keys') do
+    describe file("/home/#{vars.default_user}/.ssh/authorized_keys") do
         it { should exist }
         it { should be_file }
         it { should_not be_directory }
@@ -27,11 +33,11 @@ control 'default_user' do
 
         it { should_not be_executable }
 
-        it { should be_owned_by 'sebastian' }
-        it { should be_grouped_into 'sebastian' }
+        it { should be_owned_by vars.default_user }
+        it { should be_grouped_into vars.default_user }
     end
 
-    describe file('/home/sebastian/.ssh/id_rsa') do
+    describe file("/home/#{vars.default_user}/.ssh/id_rsa") do
         it { should exist }
         it { should be_file }
         it { should_not be_directory }
@@ -46,11 +52,11 @@ control 'default_user' do
 
         it { should_not be_executable }
 
-        it { should be_owned_by 'sebastian' }
-        it { should be_grouped_into 'sebastian' }
+        it { should be_owned_by vars.default_user }
+        it { should be_grouped_into vars.default_user }
     end
 
-    describe file('/home/sebastian/.ssh/id_rsa.pub') do
+    describe file("/home/#{vars.default_user}/.ssh/id_rsa.pub") do
         it { should exist }
         it { should be_file }
         it { should_not be_directory }
@@ -65,7 +71,7 @@ control 'default_user' do
 
         it { should_not be_executable }
 
-        it { should be_owned_by 'sebastian' }
-        it { should be_grouped_into 'sebastian' }
+        it { should be_owned_by vars.default_user }
+        it { should be_grouped_into vars.default_user }
     end
 end

@@ -1,4 +1,4 @@
-# @file linux-suid-blacklist.rb
+# @file suid-blacklist.rb
 # @brief Library module which provides some helper functions.
 #
 # @description ...

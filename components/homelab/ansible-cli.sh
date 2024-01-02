@@ -159,7 +159,7 @@ docker run --rm mwendler/figlet:latest 'Ansible CLI'
   echo -e "$LOG_INFO Select playbook"
   select playbook in playbooks/*.yml; do
     echo -e "$LOG_INFO Run $P$playbook$D"
-    ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
+    #ansible-playbook "$playbook" --inventory hosts.yml --ask-become-pass
     break
   done
 )

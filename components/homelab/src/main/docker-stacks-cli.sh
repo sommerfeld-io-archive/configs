@@ -13,6 +13,8 @@
 # choose a stack. Once you select the stack, the script will provide you with a set of commands to
 # manage the containers within from the respective Docker Compose definition.
 #
+# * xref:AUTO-GENERATED:components/homelab/src/main/docker-stacks/ops/docker-compose-yml.adoc[components/homelab/src/main/docker-stacks/ops/docker-compose.yml]
+#
 # This script is intended to simplify the management of Docker Compose services on your local
 # machine. It provides a convenient, consistent and repoducible way to manage the Docker containers
 # through an easy-to-use interface that allows you to control your containers quickly and
@@ -27,10 +29,7 @@
 # === Script Arguments
 #
 # The script does not accept any parameters.
-#
-# == Docker Compose Stack: ops
-#
-# include::ROOT:partial$homelab/docker-stacks/ops.adoc[]
+
 
 
 set -o errexit

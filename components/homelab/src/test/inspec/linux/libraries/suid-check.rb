@@ -1,4 +1,4 @@
-# @file linux-suid-check.rb
+# @file suid-check.rb
 # @brief Library module which provides some helper functions.
 #
 # @description ...

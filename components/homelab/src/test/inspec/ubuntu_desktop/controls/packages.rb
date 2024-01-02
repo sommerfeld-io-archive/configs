@@ -1,3 +1,9 @@
+# @file packages.rb
+# @brief Validate software packages.
+#
+# @description ...
+# TODO ...
+
 title 'audit software packages'
 
 control 'required-system-packages' do
