@@ -7,15 +7,17 @@
 
 - name: Config -> Download jarvis bootstrap script
   ansible.builtin.uri:
-    url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    dest: /tmp/jarvis/install.sh
+    url: https://raw.githubusercontent.com/sebastian-sommerfeld-io/jarvis/main/src/main/install.sh
+    dest: /tmp/install-jarvis.sh
+    mode: u=rwx,g=rx,o=rx
+    status_code: [200, 301, 302, 304]
 
 - name: Config -> Install jarvis from bootstrap script
-  ansible.builtin.shell: /tmp/jarvis/install.sh
+  ansible.builtin.shell: /tmp/install-jarvis.sh
   args:
     executable: /bin/bash
 
 - name: Install -> Jarvis cleanup
   ansible.builtin.file:
-    path: /tmp/chrome.deb
+    path: /tmp/install-jarvis.sh
     state: absent

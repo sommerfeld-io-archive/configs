@@ -43,6 +43,7 @@
   ansible.builtin.uri:
     url: https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb
     dest: /tmp/vagrant.deb
+    status_code: [200, 301, 302, 304]
 
 - name: Vagrant Setup -> Install Vagrant
   ansible.builtin.apt:

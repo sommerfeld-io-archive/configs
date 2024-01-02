@@ -17,6 +17,7 @@
   ansible.builtin.uri:
     url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     dest: /tmp/chrome.deb
+    status_code: [200, 301, 302, 304]
 
 - name: Install -> Chrome
   ansible.builtin.apt:
