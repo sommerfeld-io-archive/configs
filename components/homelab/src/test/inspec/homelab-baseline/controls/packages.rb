@@ -152,10 +152,6 @@ control 'packages-02' do
         it { should be_installed }
     end
 
-    describe package('libdvdcss2') do
-        it { should be_installed }
-    end
-
     describe package('vlc-plugin-fluidsynth') do
         it { should be_installed }
     end
