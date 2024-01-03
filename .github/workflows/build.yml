@@ -69,7 +69,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Run checkmake in container
+      - name: Validate inspec profile
         run: docker run --rm --volume ./components/homelab/src/test/inspec:/inspec --workdir /inspec chef/inspec:5.22.36 check homelab-baseline --chef-license=accept-no-persist
         shell: bash
 
