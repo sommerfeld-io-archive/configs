@@ -1,8 +1,9 @@
 = vars.rb
 
-Library module which provides some helper functions.
+Library module which provides variables for test cases.
 
 == Overview
 
-...
-TODO ...
+This file provides variables and attributes to use within InSpec
+test scripts. It centralizes key information required for test execution to avoid
+repeating the same information in multiple test cases.
