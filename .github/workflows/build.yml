@@ -75,7 +75,7 @@ jobs:
 
   on-failure:
     runs-on: ubuntu-latest
-    needs: ['lint-yaml', 'lint-folders', 'lint-filenames', 'lint-ansible', 'shellcheck']
+    needs: ['lint-yaml', 'lint-folders', 'lint-filenames', 'lint-ansible', 'shellcheck', 'validate-inspec-profile']
     if: failure()
     steps:
       - name: Send Pipeline Status to Google Chat
