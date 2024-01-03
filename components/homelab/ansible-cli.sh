@@ -167,6 +167,12 @@ function run-tests() {
 
   title 'Test'
 
+  echo -e "$LOG_INFO Validate inspec tests"
+  docker run --rm \
+    --volume ./src/test/inspec:/inspec \
+    --workdir /inspec \
+    chef/inspec:5.22.36 check homelab-baseline --chef-license=accept-no-persist
+
   echo -e "$LOG_INFO Setup $TEST_DIR directory"
   rm -rf "$TEST_DIR"
   mkdir -p "$TEST_DIR"

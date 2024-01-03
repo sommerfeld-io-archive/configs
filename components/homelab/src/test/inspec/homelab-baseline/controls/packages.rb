@@ -12,6 +12,7 @@ title 'audit software packages'
 control 'packages-01' do
     impact 1.0
     title 'Validate basic package installations'
+    desc 'Packages should be present'
 
     describe package('apt-transport-https') do
         it { should be_installed }
@@ -142,6 +143,7 @@ end
 control 'packages-02' do
     impact 1.0
     title 'Validate media player package installations'
+    desc 'Packages should be present'
 
     describe package('vlc') do
         it { should be_installed }
@@ -178,7 +180,8 @@ end
 
 control 'packages-03' do
     impact 1.0
-    title 'Validate  audio CD ripper package installations'
+    title 'Validate audio CD ripper package installations'
+    desc 'Packages should be present'
 
     describe package('asunder') do
         it { should be_installed }
@@ -208,6 +211,7 @@ end
 control 'packages-04' do
     impact 1.0
     title 'Validate CD/DVD writer package installations'
+    desc 'Packages should be present'
 
     describe package('brasero') do
         it { should be_installed }
@@ -221,6 +225,7 @@ end
 control 'docker-packages-01' do
     impact 1.0
     title 'Validate software package installations'
+    desc 'Packages should be present'
 
     describe package('docker-ce') do
         it { should be_installed }
@@ -246,6 +251,7 @@ end
 control 'no-deprecated-docker-packages-01' do
     impact 1.0
     title 'Validate that no deprecated docker packages are installed'
+    desc 'Packages should NOT be present'
 
     describe package('docker-compose') do
         it { should_not be_installed }
