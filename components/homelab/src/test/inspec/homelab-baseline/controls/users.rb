@@ -1,8 +1,13 @@
 # @file users.rb
-# @brief Validate the users and their respective configuration.
+# @brief Ubuntu User Setup and Configuration Validation
+
+### Purpose
 #
-# @description ...
-# TODO ...
+# @description This InSpec test aims to validate the setup and configuration of
+# users on Ubuntu computers in my homelab. It ensures that user accounts exist,
+# have the correct attributes, and verifies the associated configurations align
+# with specified standards.
+
 
 title 'validate users'
 

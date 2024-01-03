@@ -1,8 +1,10 @@
 # @file basic.rb
-# @brief Validate the basic system configuration.
+# @brief Basic Operating System Settings Validation
 #
-# @description ...
-# TODO ...
+# @description This InSpec test aims to validate basic operating system settings
+# on the target system. It covers a range of basic configurations to ensure compliance,
+# security, and expected behavior.
+
 
 title 'check basic system configuration'
 

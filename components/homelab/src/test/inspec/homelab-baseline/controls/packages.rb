@@ -1,8 +1,11 @@
 # @file packages.rb
-# @brief Validate software packages.
+# @brief Ubuntu Package Installation Validation
 #
-# @description ...
-# TODO ...
+# @description This InSpec test aims to verify the presence of specified packages
+# installed on Ubuntu computers in my homelab. It ensures that required software
+# packages are installed, and align with defined standards. It also ensures that
+# certain packages are not present.
+
 
 title 'audit software packages'
 

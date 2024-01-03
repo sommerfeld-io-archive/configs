@@ -1,8 +1,11 @@
 # @file filesystem.rb
-# @brief Validate the basic filesystem layout.
+# @brief Filesystem Layout Validation
 #
-# @description ...
-# TODO ...
+# @description This InSpec test is designed to validate the filesystem layout
+# on a target system, specifically checking for the existence of predetermined
+# files and folders. It ensures that the required directory structure and
+# essential files are present as expected.
+
 
 title 'audit files and folders'
 
