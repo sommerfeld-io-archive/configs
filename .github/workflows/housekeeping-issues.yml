@@ -1,6 +1,6 @@
 ---
 # @file housekeeping-issues.yml
-# @brief Github Actions workflow generates Asciidoc documentation based on source code from this repo and updates the projects README file.
+# @brief Github Actions workflow handles the automatic assignment of newly created issues and pull requests.
 #
 # @description The workflow, that is called this way, handles the automatic assignment of newly
 # created issues and pull requests to specific projects and users. By leveraging this workflow,
