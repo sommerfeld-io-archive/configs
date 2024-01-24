@@ -13,7 +13,7 @@
 # == How to manage Docker stacks
 #
 # In addition to Portainer, a `postman/newman` container is started to initialize portainer with
-# all relevantsettings. This container runs a Postman collection that sets up all Docker stacks
+# all relevant settings. This container runs a Postman collection that sets up all Docker stacks
 # (among other things) and runs some tests on the portainer instance. This container is terminated
 # after the collecetion run ended.
 #
