@@ -1,4 +1,2 @@
 = Config Docs Startpage
-include::ROOT:partial$vars.adoc[]
-
 include::ROOT:partial$README.adoc[]
