@@ -144,7 +144,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"autoUpdate\": {\n    \"forcePullImage\": true,\n    \"forceUpdate\": true,\n    \"interval\": \"5m\"\n  },\n  \"composeFile\": \"config/docker-stacks/test/docker-compose.yml\",\n  \"fromAppTemplate\": false,\n  \"name\": \"website-test\",\n  \"repositoryAuthentication\": false,\n  \"repositoryReferenceName\": \"refs/heads/log-management\",\n  \"repositoryURL\": \"https://github.com/sommerfeld-io/website\"\n}\n",
+							"raw": "{\n  \"autoUpdate\": {\n    \"forcePullImage\": true,\n    \"forceUpdate\": true,\n    \"interval\": \"5m\"\n  },\n  \"composeFile\": \"config/docker-stacks/test/docker-compose.yml\",\n  \"fromAppTemplate\": false,\n  \"name\": \"website-test\",\n  \"repositoryAuthentication\": false,\n  \"repositoryReferenceName\": \"refs/heads/main\",\n  \"repositoryURL\": \"https://github.com/sommerfeld-io/website\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"

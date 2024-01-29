@@ -56,7 +56,7 @@ function startup() {
 # @description Utility function to shutdown docker compose services.
 function shutdown() {
   echo -e "$LOG_INFO Shutdown stack $P$STACK$D on $P$HOSTNAME$D"
-  docker compose down -v --rmi all
+  docker compose down --rmi all --volumes --remove-orphans
 }
 
 
