@@ -1,3 +1,3 @@
-* xref:AUTO-GENERATED:components/homelab/docker-compose-yml.adoc[components/homelab/docker-compose.yml]
-* xref:AUTO-GENERATED:components/homelab/src/main/docker-stacks/portainer/docker-compose-yml.adoc[components/homelab/src/main/docker-stacks/portainer/docker-compose.yml]
 * xref:AUTO-GENERATED:components/homelab/src/main/docker-stacks/ops/docker-compose-yml.adoc[components/homelab/src/main/docker-stacks/ops/docker-compose.yml]
+* xref:AUTO-GENERATED:components/homelab/src/main/docker-stacks/portainer/docker-compose-yml.adoc[components/homelab/src/main/docker-stacks/portainer/docker-compose.yml]
+* xref:AUTO-GENERATED:components/homelab/docker-compose-yml.adoc[components/homelab/docker-compose.yml]
