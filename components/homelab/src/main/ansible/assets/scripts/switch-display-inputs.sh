@@ -30,6 +30,8 @@
 
 
 readonly ALLOWED_HOST="caprica"
+readonly TARGET_CAPRICA="caprica"
+readonly TARGET_WORK="provinzial"
 
 
 if [[ ! "$HOSTNAME" == "$ALLOWED_HOST" ]]; then
@@ -37,12 +39,13 @@ if [[ ! "$HOSTNAME" == "$ALLOWED_HOST" ]]; then
     echo -e "$LOG_ERROR exit" && exit 8
 fi
 
-
-
-if [ -z "$1" ]; then
-    echo -e "$LOG_ERROR No workstation passed"
-    echo -e "$LOG_ERROR Allowed values are '$ALLOWED_HOST' and 'provinzial'"
-    echo -e "$LOG_ERROR exit" && exit 8
+TARGET="$1"
+if [ -z "$TARGET" ]; then
+    echo -e "$LOG_INFO No target workstation passed"
+    select t in "$TARGET_CAPRICA" "$TARGET_WORK"; do
+        TARGET="$t"
+        break
+    done
 fi
 
 
@@ -60,12 +63,12 @@ readonly SOURCE_HDMI_1="0x11"
 readonly SOURCE_HDMI_2="0x12"
 readonly SOURCE_DP="0x0f"
 
-case "$1" in
-    "$ALLOWED_HOST")
+case "$TARGET" in
+    "$TARGET_CAPRICA")
         ddcutil -b "$MONITOR_LEFT" setvcp "$CHANGE_INPUT_SOURCE" "$SOURCE_DP"
         ddcutil -b "$MONITOR_RIGHT" setvcp "$CHANGE_INPUT_SOURCE" "$SOURCE_HDMI_1"
     ;;
-    "provinzial")
+    "$TARGET_WORK")
         ddcutil -b "$MONITOR_LEFT" setvcp "$CHANGE_INPUT_SOURCE" "$SOURCE_HDMI_2"
         ddcutil -b "$MONITOR_RIGHT" setvcp "$CHANGE_INPUT_SOURCE" "$SOURCE_HDMI_2"
     ;;
