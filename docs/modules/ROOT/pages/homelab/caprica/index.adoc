@@ -11,14 +11,17 @@ Caprica is my primary workstation for all my development tasks and daily to-dos.
 . Install machine from stick (the setup wizard takes care of the hostname, network settings, ssh, ...)
 .. When prompted for a user and password, use the username `sebastian` and the default password.
 .. Remember to install and activate the OpenSSH server when the wizard prompts for this!
-.. Do not install any futher software packages. Installations take place later when provisioning the system with Ansible.
+.. Do not install any further software packages. Installations take place later when provisioning the system with Ansible.
 .. Set dark mode, dock config, etc.
-.. Add `~/work`, `~/tmp` and `~/virtualmachines` to favorites (in File Manager) and update file associations in "Settings > Applications > Sublime Text"
+.. Add `~/work`, `~/tmp` and `~/virtualmachines` to favorites (in File Manager)
+.. Update file associations in "Settings > Applications > Sublime Text"
 . Run basic setup tasks using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/components/homelab/src/main/bootstrap/install-basics.sh | bash -`
-. Test connecting to `caprica` via `ssh sebastian@caprica.fritz.box` (with sebastian being the user created while installing the OS).
+. Test connecting to my other Linux machines (with user "sebastian" being the user created while installing the OS).
+.. `caprica` via `ssh sebastian@caprica.fritz.box`
+.. `kobol` via `ssh sebastian@kobol.fritz.box`
 
 === Configuration and package installation
-. Install machine using the ansible configs from this repo (`xref:AUTO-GENERATED:bash-docs/components/homelab/src/main/ansible-cli-sh.adoc[components/homelab/src/main/ansible-cli.sh]`).
+. Install machine using the Ansible configs from this repo (`xref:AUTO-GENERATED:bash-docs/components/homelab/src/main/ansible-cli-sh.adoc[components/homelab/src/main/ansible-cli.sh]`).
 . Allow caprica to work with github. Use public key `id_rsa.pub`, NOT the pivate key!
 
 === Install SSH Server
