@@ -58,6 +58,7 @@
     - ansible.builtin.import_tasks: ../tasks/ubuntu-install-virtualization.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-install-docker-wrapper-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-scripts.yml
+    - ansible.builtin.import_tasks: ../tasks/common-uninstall-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
 
 - name: Setup for group ubuntu_desktop (non-root)

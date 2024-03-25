@@ -25,7 +25,6 @@
     mode: u=rwx,g=rx,o=rx
   with_items:
     - system-info
-    - switch-display-inputs
 
 - name: Config -> Create symlinks to scripts in /usr/bin
   ansible.builtin.file:
@@ -36,4 +35,3 @@
     state: link
   with_items:
     - system-info
-    - switch-display-inputs
