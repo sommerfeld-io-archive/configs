@@ -23,6 +23,7 @@
   ansible.builtin.apt_key:
     url: https://download.docker.com/linux/raspbian/gpg
     state: present
+    # keyring: /etc/apt/trusted.gpg.d/docker.gpg
 
 - name: Docker Setup -> Add apt repository (OS-codename {{ ansible_distribution_release }})
   ansible.builtin.apt_repository:

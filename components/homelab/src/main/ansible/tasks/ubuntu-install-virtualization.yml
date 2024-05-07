@@ -32,27 +32,45 @@
   args:
     executable: /bin/bash
 
-- name: Virtualbox Setup -> Add user to docker group
+- name: Virtualbox Setup -> Add user to group
   ansible.builtin.user:
     name: "{{ ansible_user }}"
     shell: /bin/bash
     groups: vboxusers
     append: true
 
-- name: Install -> Download Vagrant package
-  ansible.builtin.uri:
-    url: https://releases.hashicorp.com/vagrant/2.4.1/vagrant-2.4.1-1.x86_64.rpm
-    dest: /tmp/vagrant.deb
-    status_code: [200, 301, 302, 304]
+# - name: Install -> Download Vagrant package
+#   ansible.builtin.uri:
+#     url: https://releases.hashicorp.com/vagrant/2.4.1/vagrant-2.4.1-1.x86_64.rpm
+#     dest: /tmp/vagrant.deb
+#     status_code: [200, 301, 302, 304]
 
-- name: Vagrant Setup -> Install Vagrant
+# - name: Vagrant Setup -> Install Vagrant
+#   ansible.builtin.apt:
+#     deb: /tmp/vagrant.deb
+
+# - name: Install -> Vagrant cleanup
+#   ansible.builtin.file:
+#     path: /tmp/vagrant.deb
+#     state: absent
+
+- name: Vagrant Setup -> Add GPG apt key
+  ansible.builtin.apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+    keyring: /etc/apt/trusted.gpg.d/vagrant.gpg
+
+- name: Vagrant Setup -> Add apt repository (OS-codename {{ ansible_distribution_release }})
+  ansible.builtin.apt_repository:
+    repo: "deb https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+    state: present
+
+- name: Vagrant Setup -> Install Vagrant packages
   ansible.builtin.apt:
-    deb: /tmp/vagrant.deb
-
-- name: Install -> Vagrant cleanup
-  ansible.builtin.file:
-    path: /tmp/vagrant.deb
-    state: absent
+    pkg:
+      - vagrant
+    state: latest
+    update_cache: true
 
 - name: Vagrant Setup -> Install Vagrant plugins
   ansible.builtin.shell: |

@@ -8,6 +8,7 @@
   ansible.builtin.apt_key:
     url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
     state: present
+    keyring: /etc/apt/trusted.gpg.d/github-cli.gpg
 
 - name: GitHub CLI Setup -> Add apt repository
   ansible.builtin.apt_repository:
