@@ -88,7 +88,11 @@ function title() {
     echo -e "$LOG_ERROR exit" && exit 8
   fi
 
-  docker run --rm mwendler/figlet:latest "$1"
+  echo -e "$LOG_INFO +-------------------+"
+  echo -e "$LOG_INFO |                   |"
+  echo -e "$LOG_INFO |    Ansible CLI    |"
+  echo -e "$LOG_INFO |                   |"
+  echo -e "$LOG_INFO +-------------------+"
 }
 
 
