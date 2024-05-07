@@ -39,9 +39,9 @@
     groups: vboxusers
     append: true
 
-- name: Install -> Download Chrome package
+- name: Install -> Download Vagrant package
   ansible.builtin.uri:
-    url: https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb
+    url: https://releases.hashicorp.com/vagrant/2.4.1/vagrant-2.4.1-1.x86_64.rpm
     dest: /tmp/vagrant.deb
     status_code: [200, 301, 302, 304]
 
