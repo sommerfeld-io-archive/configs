@@ -19,7 +19,7 @@ conky.config = {
 	cpu_avg_samples = 2,
 	override_utf8_locale = true,
 
-	xinerama_head = 2,
+	xinerama_head = 1,
 
 	alignment = 'bottom_right',
 	gap_x = 25,
