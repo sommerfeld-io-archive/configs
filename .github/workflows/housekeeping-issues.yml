@@ -45,7 +45,7 @@ jobs:
     if: "${{ github.actor != 'dependabot[bot]' }}"
     steps:
       - name: Assign issue to user when moved into column
-        uses: pozil/auto-assign-issue@v1
+        uses: pozil/auto-assign-issue@v2
         # https://github.com/marketplace/actions/auto-assign-issue
         with:
           assignees: ${{ github.actor }}
