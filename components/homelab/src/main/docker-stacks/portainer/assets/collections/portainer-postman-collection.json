@@ -116,6 +116,120 @@
 					"response": []
 				},
 				{
+					"name": "create-stack-krokidile-release",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.test(\"Should reply with json object\", () => {",
+									"    pm.expect(json).to.be.an(\"object\")",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"autoUpdate\": {\n    \"forcePullImage\": true,\n    \"forceUpdate\": true,\n    \"interval\": \"5m\"\n  },\n  \"composeFile\": \"config/docker-stacks/release/docker-compose.yml\",\n  \"fromAppTemplate\": false,\n  \"name\": \"krokidile-release\",\n  \"repositoryAuthentication\": false,\n  \"repositoryReferenceName\": \"refs/heads/main\",\n  \"repositoryURL\": \"https://github.com/sommerfeld-io/krokidile\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/stacks/create/standalone/repository?endpointId=1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stacks",
+								"create",
+								"standalone",
+								"repository"
+							],
+							"query": [
+								{
+									"key": "endpointId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-stack-website-prod",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.test(\"Should reply with json object\", () => {",
+									"    pm.expect(json).to.be.an(\"object\")",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"autoUpdate\": {\n    \"forcePullImage\": true,\n    \"forceUpdate\": true,\n    \"interval\": \"5m\"\n  },\n  \"composeFile\": \"config/docker-stacks/prod/docker-compose.yml\",\n  \"fromAppTemplate\": false,\n  \"name\": \"website-prod\",\n  \"repositoryAuthentication\": false,\n  \"repositoryReferenceName\": \"refs/heads/main\",\n  \"repositoryURL\": \"https://github.com/sommerfeld-io/website\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/stacks/create/standalone/repository?endpointId=1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stacks",
+								"create",
+								"standalone",
+								"repository"
+							],
+							"query": [
+								{
+									"key": "endpointId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "create-stack-website-test",
 					"event": [
 						{
