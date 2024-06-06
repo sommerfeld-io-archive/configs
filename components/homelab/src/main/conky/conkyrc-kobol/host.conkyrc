@@ -82,15 +82,4 @@ ${template0}${color #9f907d}MEMORY USAGE ${color slate grey}${hr 2}${font}
 ${template1}RAM ${alignr}$mem/$memmax $memperc% ${membar}
 ${template1}Swap ${alignr}$swap/$swapmax $swapperc% ${swapbar}
 
-${template0}${color #9f907d}SHORTCUTS ${color slate grey}${hr 2}${font}${color slate grey}
-${template1}[ALT] + [F2]          ${alignr}Run Dialog
-${template1}[ALT] + [F2] -> [r]   ${alignr}Reset Screen
-${template1}[SUPER] + [E]         ${alignr}File Manager
-${template1}[SUPER] + [L]         ${alignr}Lock Screen
-${template1}[SUPER] + [T]         ${alignr}Terminal
-
-${template0}${color #9f907d}TERMINAL COMMANDS ${color slate grey}${hr 2}${font}${color slate grey}
-${template1}pull-all-repos        ${alignr}Git
-${template1}reset-conky           ${alignr}Restart Conky
-
 ]];
