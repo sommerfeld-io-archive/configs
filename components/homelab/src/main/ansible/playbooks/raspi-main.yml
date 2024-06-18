@@ -45,7 +45,6 @@
     - ansible.builtin.import_tasks: ../tasks/common-config-git.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-ssh-keypair.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-scripts.yml
-    - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
     - ansible.builtin.import_tasks: ../tasks/raspi-install-docker.yml
 
     # - name: Config -> Clone mandatory git repositories from Github (github.com/sebastian-sommerfeld-io) via https
@@ -54,3 +53,15 @@
     #     dest: "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/{{ item }}"
     #   with_items:
     #     - configs
+
+- name: Setup for RasPi nodes
+  hosts: pihole.fritz.box
+  gather_facts: true
+  become: true
+  vars_files:
+    - ../vars/global.yml
+  tasks:
+
+    - name: INFO -> Print return information from the previous task
+      ansible.builtin.debug:
+        msg: System {{ inventory_hostname }}
