@@ -29,6 +29,22 @@
 # local Ansible installation is not needed. When starting on a fresh system without any
 # additional packages installed, start with the ``* xref:AUTO-GENERATED:components/homelab/src/main/bootstrap/install-basics-sh.adoc[components/homelab/src/main/bootstrap/install-basics.sh]``
 # script to make sure all requirements are met.
+#
+# == Services
+#
+# This playbook starts Docker Compose stacks on all RasPi nodes:
+#
+# | Component     | Port | URL                   |
+# | ------------- | ---- | --------------------- |
+# | Portainer     | 9990 | http://localhost:9990 |
+# | node_exporter | 9100 | http://localhost:9100 |
+# | cAdvisor      | 9110 | http://localhost:9110 |
+#
+# Additionally, for the RasPi node "pihole.fritz.box", another service is started:
+#
+# | Component     | Port | URL                   |
+# | ------------- | ---- | --------------------- |
+# | Pi-hole       | ??   | http://localhost:??   |
 
 - name: Setup for group raspi
   hosts: raspi
