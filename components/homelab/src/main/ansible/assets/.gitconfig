@@ -9,3 +9,5 @@
         helper = cache --timeout=3600
 [pull]
         rebase = false
+[safe]
+        directory = /home/sebastian/work/repos/sebastian-sommerfeld-io/configs
