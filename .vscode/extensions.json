@@ -9,7 +9,6 @@
         "jebbs.plantuml",
         "github.vscode-github-actions",
         "redhat.vscode-yaml",
-        "ms-vscode.makefile-tools",
-        "Postman.postman-for-vscode"
+        "GitHub.copilot"
     ]
 }
