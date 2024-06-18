@@ -76,7 +76,7 @@
       register: compose_ps_output
       changed_when: false
       check_mode: false
-    - name: Service Startup -> Start Docker Compose stack if not running -> {{ ops_project_name }}
+    - name: Service Startup -> Start Docker Compose stack if not running -> {{ portainer_min_project_name }}
       ansible.builtin.shell: |
         docker compose -p {{ portainer_min_project_name }} -f {{ portainer_min_compose_file }} up -d
       when: compose_ps_output.stdout == ""
