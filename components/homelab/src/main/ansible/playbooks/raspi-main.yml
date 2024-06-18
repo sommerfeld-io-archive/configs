@@ -30,7 +30,7 @@
 # additional packages installed, start with the ``* xref:AUTO-GENERATED:components/homelab/src/main/bootstrap/install-basics-sh.adoc[components/homelab/src/main/bootstrap/install-basics.sh]``
 # script to make sure all requirements are met.
 
-- name: Setup for RasPi nodes
+- name: Setup for group raspi
   hosts: raspi
   gather_facts: true
   become: true
@@ -45,12 +45,34 @@
     - ansible.builtin.import_tasks: ../tasks/common-config-git.yml
     - ansible.builtin.import_tasks: ../tasks/common-config-ssh-keypair.yml
     - ansible.builtin.import_tasks: ../tasks/common-install-scripts.yml
-    - ansible.builtin.import_tasks: ../tasks/common-install-jarvis.yml
     - ansible.builtin.import_tasks: ../tasks/raspi-install-docker.yml
 
-    # - name: Config -> Clone mandatory git repositories from Github (github.com/sebastian-sommerfeld-io) via https
-    #   ansible.builtin.git:
-    #     repo: "https://github.com/sebastian-sommerfeld-io/{{ item }}.git"
-    #     dest: "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/{{ item }}"
-    #   with_items:
-    #     - configs
+    - name: Config -> Clone mandatory git repositories from Github (github.com/sebastian-sommerfeld-io) via https
+      ansible.builtin.git:
+        repo: "https://github.com/sebastian-sommerfeld-io/{{ item }}.git"
+        dest: "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/{{ item }}"
+      with_items:
+        - configs
+
+- name: Setup fir single raspi node -> pihole.fritz.box
+  hosts: pihole.fritz.box
+  gather_facts: true
+  become: true
+  vars_files:
+    - ../vars/global.yml
+  vars:
+    ops_project_name: ops
+    ops_compose_file: "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/configs/components/homelab/src/main/docker-stacks/ops/docker-compose.yml"
+  tasks:
+
+    - name: Service Startup -> Check if Docker Compose stack is running -> {{ ops_project_name }}
+      ansible.builtin.shell: |
+        docker compose -p {{ ops_project_name }} -f {{ ops_compose_file }} ps -q
+      register: compose_ps_output
+      changed_when: false
+      check_mode: false
+
+    - name: Service Startup -> Start Docker Compose stack if not running -> {{ ops_project_name }}
+      ansible.builtin.shell: |
+        docker compose -p {{ ops_project_name }} -f {{ ops_compose_file }} up -d
+      when: compose_ps_output.stdout == ""

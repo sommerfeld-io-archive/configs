@@ -75,7 +75,6 @@ aptitude safe-upgrade on Ubuntu and RaspberryPi OS machines (both are Debian-bas
 * <<_invoke,invoke>>
 * <<_ansible,ansible>>
 * <<_ansible-playbook,ansible-playbook>>
-* <<_run-tests,run-tests>>
 
 === title
 
@@ -150,15 +149,3 @@ ansible-playbook playbook.yml
 ==== Arguments
 
 * *...* (String): The ansible-playbook commands (1-n arguments) - $1 is mandatory
-
-=== run-tests
-
-Run Inspec test profiles in Docker containers to assert the installations
-and the state of the nodes on ly homelab.
-
-==== Example
-
-[,bash]
-----
-test
-----

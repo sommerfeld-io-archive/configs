@@ -14,7 +14,6 @@
 # | cAdvisor      | 9110 | http://localhost:9110 |
 
 
-version: "3.3"
 services:
 
   node_exporter:

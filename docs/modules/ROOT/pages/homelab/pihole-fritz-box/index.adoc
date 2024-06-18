@@ -1,0 +1,236 @@
+= RasPi: pihole.fritz.box
+Sebastian Sommerfeld <sebastian@sommerfeld.io>
+:model: Raspberry Pi 4 Model B
+:os: Ubuntu 24.04 Server (64-bit)
+
+This RasPi node runs Pi-hole to block ads on my local network.
+
+== About this Raspberry Pi
+Pi-hole is a Linux network-level advertisement and Internet tracker blocking application which acts as a link:https://en.wikipedia.org/wiki/DNS_sinkhole[DNS sinkhole] and optionally a link:https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol[DHCP server], intended for use on a private network. It is designed for low-power embedded devices with network capability, such as the link:https://en.wikipedia.org/wiki/Raspberry_Pi[Raspberry Pi], but can be installed on almost any Linux machine.
+
+This machine is not intended for development purposes so there is no need to push any data to Github. Therefore there is no SSH key configuration for GitHub on this machine. It is only possible to clone public repositories via HTTPS.
+
+== Operating System Setup
+Use the Raspberry Pi Imager to install "{os}" onto a SD card. Use the following settings:
+
+image:ROOT:homelab/pihole-fritz-box/setup-1.png[]
+image:ROOT:homelab/pihole-fritz-box/setup-2.png[]
+
+CAUTION: Make sure to enter a valid hostname and user `sebastian` uses the correct password!
+
+== Configuration and package installation
+Steps to run on a normal workstation (= a machine with SSH access to the RasPi node which is probably the one used to setup the SD card)
+
+=== Manual Todos
+. Enable passwordless SSH connections (from workstation, not the RasPi node)
+.. `ssh sebastian@pihole.fritz.box`
+.. `ssh-copy-id sebastian@pihole.fritz.box`
+. Router Settings
+.. Always assign the same IP address to the RasPi node
+
+=== Configuration and package installations
+. Apply ansible configs for RasPi node from this repo (`xref:AUTO-GENERATED:bash-docs/components/homelab/src/main/ansible-cli-sh.adoc[components/homelab/src/main/ansible-cli.sh]`)
+
+=== Service Startup
+CAUTION: TODO
+
+. ansible or similar?
+.. docker: pihole
+.. docker: ops stack
+.. docker: portainer
+
+== NOTES ...
+
+[quote, ChatGPT 1]
+____
+Yes, you can use Ubuntu as the operating system for your Raspberry Pi instead of Raspberry Pi OS. Here's a detailed guide on how to set up Pi-hole on a Raspberry Pi running Ubuntu:
+
+### Hardware Setup
+
+1. **Raspberry Pi Model**: Any Raspberry Pi model will work, but the Raspberry Pi 3B+ or 4 are recommended for better performance.
+
+2. **Power Supply**: Ensure you have a reliable power supply. For the Raspberry Pi 3B+, a 5V 2.5A power supply is sufficient. For the Raspberry Pi 4, a 5V 3A USB-C power supply is needed.
+
+3. **MicroSD Card**: Use a high-quality microSD card (at least 8GB, but 16GB or more is recommended). Class 10 cards are preferred.
+
+4. **Network Connection**: A wired Ethernet connection is preferred for stability, but Wi-Fi can also work if Ethernet is not an option.
+
+5. **Case**: A good case with proper ventilation will help keep your Raspberry Pi cool, especially if it will be running 24/7.
+
+### Software Setup
+
+1. **Download Ubuntu**:
+   - Go to the [official Ubuntu website](https://ubuntu.com/download/raspberry-pi) and download the version suitable for your Raspberry Pi model. The 32-bit version is generally recommended for compatibility, but if you have a Raspberry Pi 4 with more than 2GB of RAM, you might choose the 64-bit version.
+
+2. **Write Ubuntu to the MicroSD Card**:
+   - Use software like [Raspberry Pi Imager](https://www.raspberrypi.org/software/) or [Balena Etcher](https://www.balena.io/etcher/) to write the Ubuntu image to your microSD card.
+
+3. **Initial Setup**:
+   - Insert the microSD card into the Raspberry Pi and power it on.
+   - Follow the on-screen instructions to complete the initial setup, including configuring your Wi-Fi (if not using Ethernet), setting a password, and updating the system:
+     ```bash
+     sudo apt update && sudo apt upgrade -y
+     ```
+
+4. **Install Pi-hole**:
+   - Open a terminal on your Raspberry Pi.
+   - Run the Pi-hole installation command:
+     ```bash
+     curl -sSL https://install.pi-hole.net | bash
+     ```
+   - Follow the prompts to configure Pi-hole. You'll need to set your preferred DNS provider (like Google, OpenDNS, or Cloudflare) and choose whether to use Pi-hole as your DHCP server.
+
+5. **Network Configuration**:
+   - **Router Configuration**: To ensure all devices on your network use Pi-hole, set the Raspberry Pi's IP address as the primary DNS server in your router's DHCP settings. This will vary depending on your router model.
+   - **Static IP Address**: Ensure the Raspberry Pi has a static IP address. You can set this up by editing the netplan configuration:
+     ```bash
+     sudo nano /etc/netplan/01-netcfg.yaml
+     ```
+     Add or edit the following configuration to set a static IP address:
+     ```yaml
+     network:
+       version: 2
+       ethernets:
+         eth0:
+           dhcp4: no
+           addresses: [192.168.1.2/24]
+           gateway4: 192.168.1.1
+           nameservers:
+             addresses: [8.8.8.8, 8.8.4.4]
+     ```
+     Apply the changes:
+     ```bash
+     sudo netplan apply
+     ```
+
+6. **Web Interface and Management**:
+   - Access the Pi-hole admin interface by navigating to `http://<raspberrypi-ip-address>/admin` in your web browser.
+   - Log in using the password provided during installation (or reset it using `pihole -a -p` if needed).
+   - Configure adlists, whitelist, blacklist, and other settings as per your needs.
+
+7. **Security and Maintenance**:
+   - Regularly update Pi-hole to the latest version to benefit from the latest features and security fixes:
+     ```bash
+     pihole -up
+     ```
+   - Consider setting up automatic updates for blocklists.
+   - Monitor the performance and logs via the web interface to ensure Pi-hole is functioning correctly and to make any necessary adjustments.
+
+### Additional Tips
+
+- **Backups**: Regularly backup your Pi-hole configuration using the `teleporter` feature in the web interface.
+- **Temperature Monitoring**: Install tools like `lm-sensors` to monitor the Raspberry Pi's temperature and avoid overheating issues:
+  ```bash
+  sudo apt install lm-sensors
+  sudo sensors-detect
+  ```
+- **Optional Software**: Consider installing other useful software like Unbound (a recursive DNS resolver) for additional privacy and DNSSEC validation.
+
+By following these steps, you can set up a robust and efficient Pi-hole system on your Raspberry Pi running Ubuntu, enhancing your network's privacy and security.
+____
+
+[quote, ChatGPT 2]
+____
+Yes, you can run Pi-hole in a Docker container. Running Pi-hole in a Docker container offers flexibility, isolation, and ease of management. Here's a guide to set up Pi-hole using Docker on a Raspberry Pi:
+
+### Prerequisites
+
+1. **Raspberry Pi Model**: Preferably Raspberry Pi 3B+ or 4.
+2. **Operating System**: Raspbian, Ubuntu, or any Linux distribution that supports Docker.
+3. **Docker and Docker Compose**: Ensure Docker and Docker Compose are installed on your Raspberry Pi.
+
+### Install Docker and Docker Compose
+
+1. **Install Docker**:
+   ```bash
+   curl -sSL https://get.docker.com | sh
+   ```
+
+2. **Add your user to the Docker group**:
+   ```bash
+   sudo usermod -aG docker ${USER}
+   ```
+
+3. **Log out and log back in** to apply the group membership.
+
+4. **Install Docker Compose**:
+   ```bash
+   sudo apt-get install -y libffi-dev libssl-dev
+   sudo apt-get install -y python3 python3-pip
+   sudo pip3 install docker-compose
+   ```
+
+### Set Up Pi-hole Using Docker Compose
+
+1. **Create a directory for Pi-hole**:
+   ```bash
+   mkdir ~/pihole
+   cd ~/pihole
+   ```
+
+2. **Create a `docker-compose.yml` file** in this directory:
+   ```yaml
+   version: "3"
+
+   services:
+     pihole:
+       container_name: pihole
+       image: pihole/pihole:latest
+       environment:
+         TZ: 'America/Los_Angeles' # Replace with your timezone
+         WEBPASSWORD: 'yourpassword' # Replace with your desired web interface password
+       volumes:
+         - './etc-pihole/:/etc/pihole/'
+         - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
+       ports:
+         - "53:53/tcp"
+         - "53:53/udp"
+         - "80:80/tcp"
+         - "443:443/tcp"
+       restart: unless-stopped
+       network_mode: "host"
+   ```
+
+3. **Adjust the configuration**:
+   - **Timezone (TZ)**: Set this to your local timezone.
+   - **Web interface password (WEBPASSWORD)**: Set this to a secure password.
+
+4. **Create the necessary directories for volume mounts**:
+   ```bash
+   mkdir -p ./etc-pihole ./etc-dnsmasq.d
+   ```
+
+5. **Start Pi-hole**:
+   ```bash
+   docker-compose up -d
+   ```
+
+### Configure Your Network
+
+1. **Static IP Address**: Ensure your Raspberry Pi has a static IP address. This can be set in your router's DHCP settings or on the Raspberry Pi itself by editing the netplan configuration (for Ubuntu) or `dhcpcd.conf` (for Raspbian).
+
+2. **Router Configuration**: Set your router's DNS settings to point to the IP address of your Raspberry Pi, ensuring all network devices use Pi-hole for DNS.
+
+### Access Pi-hole
+
+- Open your web browser and navigate to `http://<raspberrypi-ip-address>/admin`.
+- Log in using the password you set in the `WEBPASSWORD` environment variable.
+
+### Maintenance and Updates
+
+- **Updating Pi-hole**: Pull the latest Pi-hole image and restart the container:
+  ```bash
+  docker-compose pull
+  docker-compose up -d
+  ```
+
+- **Logs and Monitoring**: Monitor Pi-hole logs and performance through the web interface.
+
+### Additional Tips
+
+- **Backup Configuration**: Regularly backup your Pi-hole configuration using the `teleporter` feature in the web interface.
+- **Security**: Consider additional Docker security measures such as limiting the container's capabilities and using Docker's user namespaces.
+- **Unbound Integration**: If you want to add a recursive DNS resolver for added privacy, you can also run Unbound in a separate Docker container and configure Pi-hole to use it.
+
+By following these steps, you can successfully run Pi-hole in a Docker container on your Raspberry Pi, providing a robust and manageable ad-blocking solution for your network.
+____

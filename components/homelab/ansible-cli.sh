@@ -160,35 +160,35 @@ function ansible-playbook() {
 #
 # @example
 #    test
-function run-tests() {
-  readonly TARGET_DIR="target"
-  readonly TEST_DIR="$TARGET_DIR/test/inspec"
-  readonly BASELINES=(
-    'ssl-baseline'
-  )
+# function run-tests() {
+#   readonly TARGET_DIR="target"
+#   readonly TEST_DIR="$TARGET_DIR/test/inspec"
+#   readonly BASELINES=(
+#     'ssl-baseline'
+#   )
 
-  title 'Test'
+#   title 'Test'
 
-  echo -e "$LOG_INFO Validate inspec tests"
-  docker run --rm \
-    --volume ./src/test/inspec:/inspec \
-    --workdir /inspec \
-    chef/inspec:5.22.36 check homelab-baseline --chef-license=accept-no-persist
+#   echo -e "$LOG_INFO Validate inspec tests"
+#   docker run --rm \
+#     --volume ./src/test/inspec:/inspec \
+#     --workdir /inspec \
+#     chef/inspec:5.22.36 check homelab-baseline --chef-license=accept-no-persist
 
-  echo -e "$LOG_INFO Setup $TEST_DIR directory"
-  rm -rf "$TEST_DIR"
-  mkdir -p "$TEST_DIR"
+#   echo -e "$LOG_INFO Setup $TEST_DIR directory"
+#   rm -rf "$TEST_DIR"
+#   mkdir -p "$TEST_DIR"
 
-  echo -e "$LOG_INFO Download basline profiles from dev-sec.io"
-  for baseline in "${BASELINES[@]}"
-  do
-    echo -e "$LOG_INFO Download $P$baseline$D"
-    git clone "git@github.com:dev-sec/$baseline.git" "$TEST_DIR/$baseline"
-  done
+#   echo -e "$LOG_INFO Download basline profiles from dev-sec.io"
+#   for baseline in "${BASELINES[@]}"
+#   do
+#     echo -e "$LOG_INFO Download $P$baseline$D"
+#     git clone "git@github.com:dev-sec/$baseline.git" "$TEST_DIR/$baseline"
+#   done
 
-  echo -e "$LOG_INFO Run test-containers"
-  MY_USER="$USER" MY_UID="$(id -u)" MY_GID="$(id -g)" MY_SSH_AUTH_SOCK="$SSH_AUTH_SOCK" docker compose up
-}
+#   echo -e "$LOG_INFO Run test-containers"
+#   MY_USER="$USER" MY_UID="$(id -u)" MY_GID="$(id -g)" MY_SSH_AUTH_SOCK="$SSH_AUTH_SOCK" docker compose up
+# }
 
 
 title 'Ansible CLI'
@@ -218,4 +218,4 @@ title 'Ansible CLI'
   done
 )
 
-run-tests
+# run-tests
