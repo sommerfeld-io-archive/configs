@@ -6,12 +6,12 @@ Sebastian Sommerfeld <sebastian@sommerfeld.io>
 This RasPi node runs Pi-hole to block ads on my local network.
 
 == About this Raspberry Pi
-Pi-hole is a Linux network-level advertisement and Internet tracker blocking application which acts as a link:https://en.wikipedia.org/wiki/DNS_sinkhole[DNS sinkhole] and optionally a link:https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol[DHCP server], intended for use on a private network. It is designed for low-power embedded devices with network capability, such as the link:https://en.wikipedia.org/wiki/Raspberry_Pi[Raspberry Pi], but can be installed on almost any Linux machine.
+link:https://docs.pi-hole.net[Pi-hole] is a Linux network-level advertisement and Internet tracker blocking application which acts as a link:https://en.wikipedia.org/wiki/DNS_sinkhole[DNS sinkhole] and optionally a link:https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol[DHCP server], intended for use on a private network. It is designed for low-power embedded devices with network capability, such as the link:https://en.wikipedia.org/wiki/Raspberry_Pi[Raspberry Pi], but can be installed on almost any Linux machine.
 
 This machine is not intended for development purposes so there is no need to push any data to Github. Therefore there is no SSH key configuration for GitHub on this machine. It is only possible to clone public repositories via HTTPS.
 
 == Operating System Setup
-Use the Raspberry Pi Imager to install "{os}" onto a SD card. Use the following settings:
+Use the "Raspberry Pi Imager" to install "{os}" onto a SD card. Use the following settings:
 
 image:ROOT:homelab/pihole-fritz-box/setup-1.png[]
 image:ROOT:homelab/pihole-fritz-box/setup-2.png[]
@@ -29,6 +29,12 @@ Steps to run on a normal workstation (= a machine with SSH access to the RasPi n
 . Configuration and package installations
 .. Apply ansible configs for RasPi node from this repo (`xref:AUTO-GENERATED:bash-docs/components/homelab/src/main/ansible-cli-sh.adoc[components/homelab/src/main/ansible-cli.sh]`)
 .. There is no need for a dedicated service startup script as Pi-hole and all other services are started via Docker Compose from Ansible.
+. Router Settings
+.. Use Pi-hole as DNS server for the local network
+... Configure your router's DHCP options to force clients to use Pi-hole as their DNS server. In this case, use `192.168.178.113` as the DNS server.
+... The FritzBox expects an alternative DNS server. Use `8.8.8.8` which is part of link:https://en.wikipedia.org/wiki/Google_Public_DNS[Google's public DNS servers].
+
+image:ROOT:homelab/pihole-fritz-box/fritz-box-dns-setup.png[]
 
 See xref:AUTO-GENERATED:components/homelab/src/main/docker-stacks/pihole/docker-compose-yml.adoc[components/homelab/src/main/docker-stacks/pihole/docker-compose.yml] for details about the pi-hole config.
 
