@@ -29,7 +29,7 @@ Steps to run on a normal workstation (= a machine with SSH access to the RasPi n
 .. Always assign the same IP address to the RasPi node
 
 === Configuration and package installations
-. Apply ansible configs for this raspi node from this repo (`xref:AUTO-GENERATED:bash-docs/components/homelab/src/main/ansible-cli-sh.adoc[components/homelab/src/main/ansible-cli.sh]`)
+. Apply ansible configs for RasPi node from this repo (`xref:AUTO-GENERATED:bash-docs/components/homelab/src/main/ansible-cli-sh.adoc[components/homelab/src/main/ansible-cli.sh]`)
 
 === Service Startup
 CAUTION: TODO
