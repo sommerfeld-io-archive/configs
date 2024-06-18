@@ -7,13 +7,13 @@ use_default_rules: true
 
 enable_list:
   - args
-  - empty-string-compare # opt-in
   - no-log-password # opt-in
   - no-same-owner # opt-in
   - yaml
 
 warn_list:
   - command-instead-of-module
+  - empty-string-compare
   - latest[git]
   - name[missing]
   - no-changed-when

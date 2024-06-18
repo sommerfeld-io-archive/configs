@@ -30,7 +30,6 @@
 # See https://app.swaggerhub.com/apis/portainer/portainer-ce/2.19.4#/ and https://docs.portainer.io/api/access
 # for Portainer API docs.
 
-version: "3.3"
 services:
 
   portainer:
