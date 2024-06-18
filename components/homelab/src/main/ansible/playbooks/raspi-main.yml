@@ -108,13 +108,22 @@
     pihole_compose_file: "/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/configs/components/homelab/src/main/docker-stacks/pihole/docker-compose.yml"
   tasks:
 
-    - name: Service Startup -> Check if Docker Compose stack is running -> {{ pihole_project_name }}
+    - name: Pi-hole Startup -> Stop systemd-resolved service to avoid conflicts with Pi-hole (DNS port)
+      ansible.builtin.systemd:
+        name: systemd-resolved
+        state: stopped
+    - name: Pi-hole Startup -> Disable systemd-resolved service to avoid conflicts with Pi-hole (DNS port)
+      ansible.builtin.systemd:
+        name: systemd-resolved
+        enabled: false
+
+    - name: Pi-hole Startup -> Check if Docker Compose stack is running -> {{ pihole_project_name }}
       ansible.builtin.shell: |
         docker compose -p {{ pihole_project_name }} -f {{ pihole_compose_file }} ps -q
       register: compose_ps_output
       changed_when: false
       check_mode: false
-    - name: Service Startup -> Start Docker Compose stack if not running -> {{ ops_project_name }}
+    - name: Pi-hole Startup -> Start Docker Compose stack if not running -> {{ pihole_project_name }}
       ansible.builtin.shell: |
         docker compose -p {{ pihole_project_name }} -f {{ pihole_compose_file }} up -d
       when: compose_ps_output.stdout == ""
