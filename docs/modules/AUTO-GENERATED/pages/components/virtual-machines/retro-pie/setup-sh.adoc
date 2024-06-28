@@ -12,6 +12,7 @@ Yun can invoke the script directly from GitHub by running the following command:
 [source, bash]
 
 ----
+sudo apt-get install -y curl
 curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/components/virtual-machines/retro-pie/setup.sh | bash -
 ----
 
