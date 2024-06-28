@@ -19,6 +19,7 @@ curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/component
 
 * Install a virtual machine with Ubuntu.
 * Install Virtual Box Guest Additions
+** Insert the Guest Additions CD image: In the VirtualBox window menu, go to Devices > Insert Guest Additions CD image
 * The script does not install any games. You need to download the games (ROMs) manually and place in `~/RetroPie/roms`.
 
 === VM Requirements
