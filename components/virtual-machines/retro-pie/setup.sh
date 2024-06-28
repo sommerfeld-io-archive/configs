@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 # @file setup.sh
 # @brief Setup Retro Pie.
 #
@@ -9,6 +9,7 @@
 #
 # [source, bash]
 # ```
+# sudo apt-get install -y curl
 # curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/components/virtual-machines/retro-pie/setup.sh | bash -
 # ```
 #
