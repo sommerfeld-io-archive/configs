@@ -16,6 +16,7 @@
 #
 # * Install a virtual machine with Ubuntu.
 # * Install Virtual Box Guest Additions
+# ** Insert the Guest Additions CD image: In the VirtualBox window menu, go to Devices > Insert Guest Additions CD image
 # * The script does not install any games. You need to download the games (ROMs) manually and place in ``~/RetroPie/roms``.
 #
 # === VM Requirements
@@ -44,9 +45,14 @@ readonly REPO="RetroPie-Setup"
 (
     cd "$HOME" || exit
 
-    echo "[INFO] Install packages"
-    sudo apt update && sudo apt upgrade
-    sudo apt install -y git dialog unzip xmlstarlet
+    echo "[INFO] Update package list and upgrade packages"
+    sudo apt-get update && sudo apt upgrade
+
+    echo "[INFO] Install packages for virtualbox guest additions"
+    sudo apt-get install -y "build-essential dkms linux-headers-$(uname -r)"
+
+    echo "[INFO] Install packages for RetroPie"
+    sudo apt-get install -y git dialog unzip xmlstarlet
 
     echo "[INFO] Clone $REPO repository"
     git clone --depth=1 "https://github.com/RetroPie/$REPO.git"
