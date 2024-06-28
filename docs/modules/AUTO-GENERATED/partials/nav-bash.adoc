@@ -14,4 +14,3 @@
 * xref:AUTO-GENERATED:components/homelab/src/main/conky/run-sh.adoc[components/homelab/src/main/conky/run.sh]
 * xref:AUTO-GENERATED:components/homelab/src/main/docker-stacks-cli-sh.adoc[components/homelab/src/main/docker-stacks-cli.sh]
 * xref:AUTO-GENERATED:components/homelab/ansible-cli-sh.adoc[components/homelab/ansible-cli.sh]
-* xref:AUTO-GENERATED:components/virtual-machines/retro-pie/setup-sh.adoc[components/virtual-machines/retro-pie/setup.sh]
