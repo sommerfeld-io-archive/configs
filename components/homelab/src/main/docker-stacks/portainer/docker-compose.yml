@@ -51,15 +51,5 @@ services:
       retries: 6
       start_period: 10s
 
-  newman:
-    image: postman/newman:6.0.0-alpine
-    container_name: newman
-    depends_on:
-      portainer:
-        condition: service_healthy
-    volumes:
-      - ./assets/collections:/etc/newman
-    command: run portainer-postman-collection.json --env-var "BASE_URL=http://portainer:9000/api"
-
 volumes:
   portainer_data:
