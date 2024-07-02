@@ -1,5 +1,5 @@
 * xref:AUTO-GENERATED:components/homelab/src/test/lint-ansible-sh.adoc[components/homelab/src/test/lint-ansible.sh]
-* xref:AUTO-GENERATED:components/homelab/src/main/bootstrap/install-basics-sh.adoc[components/homelab/src/main/bootstrap/install-basics.sh]
+* xref:AUTO-GENERATED:components/homelab/src/main/bootstrap/basics-sh.adoc[components/homelab/src/main/bootstrap/basics.sh]
 * xref:AUTO-GENERATED:components/homelab/src/main/bootstrap/ssh-server-sh.adoc[components/homelab/src/main/bootstrap/ssh-server.sh]
 * xref:AUTO-GENERATED:components/homelab/src/main/ansible/assets/scripts/docker/wrappers/groovy-sh.adoc[components/homelab/src/main/ansible/assets/scripts/docker/wrappers/groovy.sh]
 * xref:AUTO-GENERATED:components/homelab/src/main/ansible/assets/scripts/docker/wrappers/hadolint-sh.adoc[components/homelab/src/main/ansible/assets/scripts/docker/wrappers/hadolint.sh]
