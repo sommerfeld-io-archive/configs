@@ -31,7 +31,6 @@
 # The script does not accept any parameters.
 
 
-
 set -o errexit
 set -o pipefail
 set -o nounset
