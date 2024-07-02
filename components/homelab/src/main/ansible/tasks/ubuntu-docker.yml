@@ -47,3 +47,19 @@
     shell: /bin/bash
     groups: docker
     append: true
+
+- name: Docker Setup -> Verify Docker installation
+  ansible.builtin.command: docker version
+  register: docker_version_output
+
+- name: Docker Setup -> Print Docker version
+  ansible.builtin.debug:
+    msg: "{{ docker_version_output.stdout }}"
+
+- name: Docker Setup -> Verify Docker Compose installation
+  ansible.builtin.command: docker compose version
+  register: docker_compose_version_output
+
+- name: Docker Setup -> Print Docker Compose version
+  ansible.builtin.debug:
+    msg: "{{ docker_compose_version_output.stdout }}"

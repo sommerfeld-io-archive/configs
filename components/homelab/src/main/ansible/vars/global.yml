@@ -5,3 +5,6 @@
 # @description List of global variables for all tasks and playbooks.
 
 file_permissions: u=rw,g=r,o=r
+
+minikube_version: 1.33.1
+helm_version: 3.15.2

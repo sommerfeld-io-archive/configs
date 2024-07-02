@@ -10,3 +10,11 @@
       - ansible
     state: latest
     update_cache: true
+
+- name: Ansible -> Verify installation
+  ansible.builtin.command: ansible --version
+  register: ansible_version_output
+
+- name: Ansible -> Print version
+  ansible.builtin.debug:
+    msg: "{{ ansible_version_output.stdout }}"

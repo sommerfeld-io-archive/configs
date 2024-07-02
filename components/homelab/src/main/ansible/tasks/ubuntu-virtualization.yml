@@ -27,10 +27,8 @@
     - "/home/{{ ansible_user }}/virtualmachines"
 
 - name: Virtualbox Setup -> Set virtual machines folder
-  ansible.builtin.shell: "vboxmanage setproperty machinefolder /home/{{ ansible_user }}/virtualmachines"
+  ansible.builtin.command: "vboxmanage setproperty machinefolder /home/{{ ansible_user }}/virtualmachines"
   become_user: "{{ ansible_user }}"
-  args:
-    executable: /bin/bash
 
 - name: Virtualbox Setup -> Add user to group
   ansible.builtin.user:
@@ -38,21 +36,6 @@
     shell: /bin/bash
     groups: vboxusers
     append: true
-
-# - name: Install -> Download Vagrant package
-#   ansible.builtin.uri:
-#     url: https://releases.hashicorp.com/vagrant/2.4.1/vagrant-2.4.1-1.x86_64.rpm
-#     dest: /tmp/vagrant.deb
-#     status_code: [200, 301, 302, 304]
-
-# - name: Vagrant Setup -> Install Vagrant
-#   ansible.builtin.apt:
-#     deb: /tmp/vagrant.deb
-
-# - name: Install -> Vagrant cleanup
-#   ansible.builtin.file:
-#     path: /tmp/vagrant.deb
-#     state: absent
 
 - name: Vagrant Setup -> Add GPG apt key
   ansible.builtin.apt_key:
@@ -74,7 +57,6 @@
 
 - name: Vagrant Setup -> Install Vagrant plugins
   ansible.builtin.shell: |
-    echo "$USER"
     vagrant plugin install vagrant-cachier
     vagrant plugin install vagrant-vbguest
     vagrant plugin install vagrant-docker-compose
@@ -82,3 +64,11 @@
   become_user: "{{ ansible_user }}"
   args:
     executable: /bin/bash
+
+- name: Vagrant Setup -> Verify installation
+  ansible.builtin.command: vagrant --version
+  register: vagrant_version_output
+
+- name: Vagrant Setup -> Print version
+  ansible.builtin.debug:
+    msg: "{{ vagrant_version_output.stdout }}"

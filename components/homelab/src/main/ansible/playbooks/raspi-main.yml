@@ -76,24 +76,24 @@
         - configs
 
     - name: Service Startup -> Check if Docker Compose stack is running -> {{ ops_project_name }}
-      ansible.builtin.shell: |
+      ansible.builtin.command: |
         docker compose -p {{ ops_project_name }} -f {{ ops_compose_file }} ps -q
       register: compose_ps_output
       changed_when: false
       check_mode: false
     - name: Service Startup -> Start Docker Compose stack if not running -> {{ ops_project_name }}
-      ansible.builtin.shell: |
+      ansible.builtin.command: |
         docker compose -p {{ ops_project_name }} -f {{ ops_compose_file }} up -d
       when: compose_ps_output.stdout == ""
 
     - name: Service Startup -> Check if Docker Compose stack is running -> {{ portainer_project_name }}
-      ansible.builtin.shell: |
+      ansible.builtin.command: |
         docker compose -p {{ portainer_project_name }} -f {{ portainer_compose_file }} ps -q
       register: compose_ps_output
       changed_when: false
       check_mode: false
     - name: Service Startup -> Start Docker Compose stack if not running -> {{ portainer_project_name }}
-      ansible.builtin.shell: |
+      ansible.builtin.command: |
         docker compose -p {{ portainer_project_name }} -f {{ portainer_compose_file }} up -d
       when: compose_ps_output.stdout == ""
 
@@ -118,12 +118,12 @@
         enabled: false
 
     - name: Pi-hole Startup -> Check if Docker Compose stack is running -> {{ pihole_project_name }}
-      ansible.builtin.shell: |
+      ansible.builtin.command: |
         docker compose -p {{ pihole_project_name }} -f {{ pihole_compose_file }} ps -q
       register: compose_ps_output
       changed_when: false
       check_mode: false
     - name: Pi-hole Startup -> Start Docker Compose stack if not running -> {{ pihole_project_name }}
-      ansible.builtin.shell: |
+      ansible.builtin.command: |
         docker compose -p {{ pihole_project_name }} -f {{ pihole_compose_file }} up -d
       when: compose_ps_output.stdout == ""
