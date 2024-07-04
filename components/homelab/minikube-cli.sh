@@ -2,8 +2,10 @@
 # @file minikube-cli.sh
 # @brief Script to manage minikube.
 #
-# @description This script controls the local minikube instance. The whole setup consists of
-# multiple components that are not all managed by this script and not all part of minikube.
+# @description This script controls the local minikube instance. This setup includes Minikube and
+# Docker Compose stacks. This script exclusively manages Minikube and Helm, while a
+# xref:AUTO-GENERATED:components/homelab/docker-stacks-cli-sh.adoc[separate script] handles the
+# Docker Compose stacks. Minikube will not fail if the Docker Compose stacks are not running.
 #
 # [ditaa, ditaa-image, svg]
 #
