@@ -11,6 +11,8 @@ service:
   port: 3000
   nodePort: 30080
 
+namespace: krokidile-ns
+
 ingress:
   enabled: false
 

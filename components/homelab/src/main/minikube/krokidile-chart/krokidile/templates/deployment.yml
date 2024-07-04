@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "krokidile.fullname" . }}
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "krokidile.labels" . | nindent 4 }}
 spec:
