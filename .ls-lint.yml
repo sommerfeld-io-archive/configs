@@ -10,7 +10,7 @@ ls:
   .rb: kebab-case
   .tf: kebab-case
   .yml: kebab-case
-  .yaml: kebab-case
+  .yaml: kebab-case | PascalCase # Helm Chart
   .feature: kebab-case # cucumber
 
   .sh: kebab-case
@@ -39,6 +39,9 @@ ignore:
   - node_modules
   - .gitpod.yml
   - target
+
+  # Helm expects this specific filename in this specific case
+  - Chart.yaml
 
   # linter definitions
   - .ansible-lint.yml
