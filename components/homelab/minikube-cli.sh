@@ -77,6 +77,18 @@
 # ./minikube-cli.sh
 # ```
 #
+# Installing and uninstalling apps is done with Helm. The script does not handle Helm charts.
+# Installing apps must be done manually. The following example shows how to install and uninstall
+# the krokidile app.
+#
+# [source, bash]
+# ```
+# cd src/main/minikube/krokidile-chart
+#
+# helm install krokidile ./krokidile
+# helm uninstall krokidile
+# ```
+#
 # == Prerequisites
 #
 # A local Docker and a local minikube installation is required. To deploy applications to the
@@ -169,7 +181,14 @@ function help() {
 
 
 echo -e "$LOG_INFO Select the action"
-select s in "$OPTION_START" "$OPTION_STOP" "$OPTION_DASHBOARD" "$OPTION_PODS" "$OPTION_SERVICES" "$OPTION_INFO" "$OPTION_HELP"; do
+select s in "$OPTION_START" \
+            "$OPTION_STOP" \
+            "$OPTION_DASHBOARD" \
+            "$OPTION_PODS" \
+            "$OPTION_SERVICES" \
+            "$OPTION_INFO" \
+            "$OPTION_HELP"
+  do
     case "$s" in
     "$OPTION_START" )
         startup
@@ -194,7 +213,3 @@ select s in "$OPTION_START" "$OPTION_STOP" "$OPTION_DASHBOARD" "$OPTION_PODS" "$
         break;;
     esac
 done
-
-# helm install krokidile ./krokidile
-# minikube service krokidile -n apps
-# helm uninstall krokidile
