@@ -1,4 +1,4 @@
-= Minikube vs Portainer
+= minikube vs Portainer
 
 ----
 status: accepted
@@ -17,16 +17,16 @@ Given these challenges, we are at a crossroads in deciding how to proceed with o
 == Considered Options
 * **Maintaining and Enhancing the Current Portainer Setup**: This option involves sticking with our existing Portainer infrastructure but taking steps to enhance its stability and reliability. The focus would be on addressing the issues with the GitOps feature and integrating our custom Newman side container setup more seamlessly.
 
-* **Transitioning to a Minikube-Based Container Management Approach**: Under this option, we would shift our container management and deployment processes to a local Minikube instance. This would reposition Portainer to serve primarily for operational and inspection tasks. The transition to Minikube would leverage the Kubernetes ecosystem for container orchestration, aiming to standardize our deployment processes and improve scalability.
+* **Transitioning to a minikube-Based Container Management Approach**: Under this option, we would shift our container management and deployment processes to a local minikube instance. This would reposition Portainer to serve primarily for operational and inspection tasks. The transition to minikube would leverage the Kubernetes ecosystem for container orchestration, aiming to standardize our deployment processes and improve scalability.
 
 == Decision Outcome
-We chose to transition to a Minikube-based approach, because of the following reasons:
+We chose to transition to a minikube-based approach, because of the following reasons:
 
-* **Standardization**: Leveraging Kubernetes through Minikube can lead to more standardized deployment processes.
-* **Development and Testing**: Minikube is ideal for local development and testing, allowing developers to test their applications in a Kubernetes environment that somewhat mirrors production.
-* **Community and Support**: Kubernetes, and by extension Minikube, has a large community and extensive documentation, providing robust support for troubleshooting and learning.
-* **Learning Opportunities**: Transitioning to Minikube offers an opportunity to learn more about Kubernetes and container orchestration, enhancing our skill set and knowledge.
+* **Standardization**: Leveraging Kubernetes through minikube can lead to more standardized deployment processes.
+* **Development and Testing**: minikube is ideal for local development and testing, allowing developers to test their applications in a Kubernetes environment that somewhat mirrors production.
+* **Community and Support**: Kubernetes, and by extension minikube, has a large community and extensive documentation, providing robust support for troubleshooting and learning.
+* **Learning Opportunities**: Transitioning to minikube offers an opportunity to learn more about Kubernetes and container orchestration, enhancing our skill set and knowledge.
 
-However, we need to keep the disadvantages of using Minikube in mind:
+However, we need to keep the disadvantages of using minikube in mind:
 
-* **Resource Intensive**: Running a local Kubernetes cluster with Minikube can be more resource-intensive than managing Docker containers directly, potentially impacting the performance of local machines.
+* **Resource Intensive**: Running a local Kubernetes cluster with minikube can be more resource-intensive than managing Docker containers directly, potentially impacting the performance of local machines.

@@ -2,15 +2,73 @@
 # @file minikube-cli.sh
 # @brief Script to manage minikube.
 #
-# @description This script controls the local minikube instance. It allows to start, stop and expose the dashboard.
-# Common commands are available as options. The script is interactive and will prompt the user to select an action.
+# @description This script controls the local minikube instance. The whole setup consists of
+# multiple components that are not all managed by this script and not all part of minikube.
+#
+# [ditaa, ditaa-image, svg]
+#
+# ....
+# +------------------------------------------------------------+
+# |  Workstation                                               |
+# |                                                            |
+# |    +--------------------+        +--------------------+    |          +----------------------+
+# |    | DockerCompose: ops |        |  minikube          |    |          |  DockerHub           |
+# |    |                    |        |                    |    |          |                      |
+# |    |  +--------------+  |        |  +--------------+  |    |   Helm   |  +----------------+  |
+# |    |  | Portainer    |  |        |  | krokidile    |<--------------------+  krokidile     |  |
+# |    |  +--------------+  |        |  +--------------+  |    |          |  +----------------+  |
+# |    |                    |        |                    |    |          |                      |
+# |    |  +--------------+  |        |  +--------------+  |    |   Helm   |  +----------------+  |
+# |    |  | cAdvisor     +------+    |  | ... app ...  |<--------------------+  ... app ...   |  |
+# |    |  +--------------+  |   |    |  +--------------+  |    |          |  +----------------+  |
+# |    |                    |   |    |                    |    |          +----------------------+
+# |    |  +--------------+  |   |    |                    |    |
+# |    |  | NodeExporter +------+    |   +----------------+    |
+# |    |  +--------------+  |   |    |   | metrics server |    |
+# |    +--------------------+   |    +---+---+------------+    |
+# |                             |            |                 |
+# |                             +------------+                 |
+# |                             |                              |
+# |    +--------------------+   |                              |
+# |    | DockerCompose      |   |                              |
+# |    |                    |   |                              |
+# |    |  +--------------+  |   :                              |
+# |    |  | Prometheus   |<-----+                              |
+# |    |  +--+-----------+  |                                  |
+# |    |     |              |                                  |
+# |    |     v              |                                  |
+# |    |  +--------------+  |                                  |
+# |    |  | Grafana      |  |                                  |
+# |    |  +--------------+  |                                  |
+# |    +--------------------+                                  |
+# |                                                            |
+# +------------------------------------------------------------+
+# ....
+#
+# === About minikube and Helm
+#
+# link:https://minikube.sigs.k8s.io/docs[minikube] is a tool that simplifies running Kubernetes
+# clusters locally. It allows developers to set up a single-node Kubernetes cluster on their local
+# workstation, which is useful for development, testing, and learning purposes. minikube supports
+# various hypervisors (like VirtualBox, KVM, Hyper-V) and container runtimes (like Docker, Podman,
+# containerd, and CRI-O). By providing a local Kubernetes environment, minikube helps developers
+# emulate the behavior of a production cluster, enabling them to test Kubernetes applications in a
+# controlled, local setup before deploying them to a larger, more complex cluster.
+#
+# link:https://helm.sh[Helm] is a package manager for Kubernetes, designed to streamline the
+# deployment, management, and scaling of applications on Kubernetes clusters. It uses "charts",
+# which are packages of pre-configured Kubernetes resources, to define, install, and upgrade
+# Kubernetes applications. Helm helps automate the deployment process, manage dependencies, and
+# simplify updates and rollbacks, making it easier to manage Kubernetes applications consistently
+# and reproducibly.
+#
+# === Usage
+#
+# This script allows to start, stop and expose the dashboard (among others). Common commands are
+# available as options. The script is interactive and will prompt the user to select an action.
 # More specific actions need to be executed directly with minikube.
 #
-# === Script Arguments
-#
 # The script does not accept any parameters.
-#
-# === Script Example
 #
 # [source, bash]
 # ```
@@ -19,7 +77,12 @@
 #
 # == Prerequisites
 #
-# A locla Docker and a local miniKube installation is required.
+# A locla Docker and a local minikube installation is required. To deploy applications to the
+# cluster, Helm is also required.
+#
+# == See
+#
+# * Initial implementation issue: https://github.com/sebastian-sommerfeld-io/configs/issues/1421
 
 
 set -o errexit
@@ -40,6 +103,9 @@ readonly OPTION_HELP="help"
 function startup() {
   echo -e "$LOG_INFO Startup minikube on ${P}${HOSTNAME}${D}"
   minikube start
+
+  echo -e "$LOG_INFO Startup metrics-server"
+  minikube addons enable metrics-server
 }
 
 
@@ -66,11 +132,14 @@ function pods() {
 
 # @description Utility function to display minikube status and some metadata.
 function info() {
-  echo -e "$LOG_INFO Minikube version"
+  echo -e "$LOG_INFO minikube version"
   minikube version
 
-  echo -e "$LOG_INFO Minikube status"
+  echo -e "$LOG_INFO minikube status"
   minikube status
+
+  echo -e "$LOG_INFO Helm version"
+  helm version
 }
 
 
