@@ -122,10 +122,13 @@ function startup() {
   echo -e "$LOG_INFO Startup minikube on ${P}${HOSTNAME}${D}"
   minikube start
 
-  sleep 3s
+  sleep 5s
 
   echo -e "$LOG_INFO Startup metrics-server"
   minikube addons enable metrics-server
+
+  echo -e "$LOG_INFO Startup ingress addon"
+  minikube addons enable ingress
 }
 
 
