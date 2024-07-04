@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.krokidile_docs.metadata.name }}-svc
+  name: {{ .Values.krokidile_docs.metadata.name }}-service
   namespace: {{ .Values.namespace }}
   labels:
     {{- include "krokidile_docs.labels" . | nindent 4 }}
