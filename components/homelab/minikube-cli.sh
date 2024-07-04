@@ -109,6 +109,8 @@ function startup() {
   echo -e "$LOG_INFO Startup minikube on ${P}${HOSTNAME}${D}"
   minikube start
 
+  sleep 3s
+
   echo -e "$LOG_INFO Startup metrics-server"
   minikube addons enable metrics-server
 }
@@ -181,3 +183,7 @@ select s in "$OPTION_START" "$OPTION_STOP" "$OPTION_DASHBOARD" "$OPTION_PODS" "$
         break;;
     esac
 done
+
+# helm install krokidile ./krokidile
+# minikube service krokidile -n apps
+# helm uninstall krokidile

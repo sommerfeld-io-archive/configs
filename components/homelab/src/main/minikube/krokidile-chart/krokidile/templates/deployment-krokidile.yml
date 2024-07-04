@@ -2,12 +2,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "krokidile.fullname" . }}
+  name: {{ .Values.krokidile.metadata.name }}-depl
   namespace: {{ .Values.namespace }}
   labels:
     {{- include "krokidile.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.krokidile.replicaCount }}
   selector:
     matchLabels:
       {{- include "krokidile.selectorLabels" . | nindent 6 }}
@@ -18,10 +18,10 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.krokidile.image.repository }}:{{ .Values.krokidile.image.tag }}"
+          imagePullPolicy: {{ .Values.krokidile.image.pullPolicy }}
           ports:
-            - containerPort: 3000
+            - containerPort: {{ .Values.krokidile.service.port }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

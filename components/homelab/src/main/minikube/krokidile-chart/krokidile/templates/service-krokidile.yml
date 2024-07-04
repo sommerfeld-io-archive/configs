@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.krokidile.metadata.name }}-srv
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "krokidile.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.krokidile.service.type }}
+  ports:
+    - port: {{ .Values.krokidile.service.port }}
+      targetPort: {{ .Values.krokidile.service.port }}
+      nodePort: {{ .Values.krokidile.service.nodePort }}
+  selector:
+    {{- include "krokidile.selectorLabels" . | nindent 4 }}
