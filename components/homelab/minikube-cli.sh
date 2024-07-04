@@ -100,6 +100,7 @@ readonly OPTION_START="start"
 readonly OPTION_STOP="stop"
 readonly OPTION_DASHBOARD="dashboard"
 readonly OPTION_PODS="list-pods"
+readonly OPTION_SERVICES="list-services"
 readonly OPTION_INFO="info"
 readonly OPTION_HELP="help"
 
@@ -130,10 +131,17 @@ function dashboard() {
 }
 
 
-# @description Utility function to expose the minikube dashboad.
+# @description Utility function to list pods.
 function pods() {
   echo -e "$LOG_INFO List pods from all namespaces"
   minikube kubectl -- get po -A
+}
+
+
+# @description Utility function to list services from all namespaces.
+function services() {
+  echo -e "$LOG_INFO List services from all namespaces"
+  minikube service list # --namespace apps
 }
 
 
@@ -161,7 +169,7 @@ function help() {
 
 
 echo -e "$LOG_INFO Select the action"
-select s in "$OPTION_START" "$OPTION_STOP" "$OPTION_DASHBOARD" "$OPTION_PODS" "$OPTION_INFO" "$OPTION_HELP"; do
+select s in "$OPTION_START" "$OPTION_STOP" "$OPTION_DASHBOARD" "$OPTION_PODS" "$OPTION_SERVICES" "$OPTION_INFO" "$OPTION_HELP"; do
     case "$s" in
     "$OPTION_START" )
         startup
@@ -174,6 +182,9 @@ select s in "$OPTION_START" "$OPTION_STOP" "$OPTION_DASHBOARD" "$OPTION_PODS" "$
         break;;
     "$OPTION_PODS" )
         pods
+        break;;
+    "$OPTION_SERVICES" )
+        services
         break;;
     "$OPTION_INFO" )
         info
