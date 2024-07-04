@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.krokidile.image.repository }}:{{ .Values.krokidile.image.tag }}"
-          imagePullPolicy: {{ .Values.krokidile.image.pullPolicy }}
+          image: "{{ .Values.krokidile.image.repository }}:{{ .Values.common.image.tag }}"
+          imagePullPolicy: {{ .Values.common.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.krokidile.service.port }}
           resources:
