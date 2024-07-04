@@ -36,6 +36,18 @@
     deb: /tmp/minikube_amd64.deb
     state: present
 
+- name: Minikube Setup -> Write aliases to .bash_aliases
+  ansible.builtin.lineinfile:
+    create: true
+    mode: 0600
+    dest: "/home/{{ ansible_user }}/.bash_aliases"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - alias kubectl="minikube kubectl --"
+
 - name: Minikube Setup -> Verify installation
   ansible.builtin.command: minikube version
   register: minikube_version_output

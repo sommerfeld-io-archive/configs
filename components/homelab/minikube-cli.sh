@@ -79,8 +79,11 @@
 #
 # == Prerequisites
 #
-# A locla Docker and a local minikube installation is required. To deploy applications to the
+# A local Docker and a local minikube installation is required. To deploy applications to the
 # cluster, Helm is also required.
+#
+# Keep in mind, that the Ansible playbook create a ``kubectl`` alias which points to
+# ``minikube kubectl`` so this might conflict with other ``kubectl`` installations.
 #
 # == See
 #
