@@ -127,7 +127,7 @@ jobs:
       - name: Copy partials from Helm carts
         run:
           PARTIAL_DIR="docs/modules/AUTO-GENERATED/partials/helm-charts"
-          mkdir -r "$PARTIAL_DIR"
+          mkdir -p "$PARTIAL_DIR"
           cp components/homelab/src/main/minikube/krokidile-chart/krokidile/README.adoc "$PARTIAL_DIR"/krokidile.adoc
           cp components/homelab/src/main/minikube/source2adoc-chart/source2adoc-website/README.adoc "$PARTIAL_DIR"/source2adoc-website.adoc
         shell: bash
