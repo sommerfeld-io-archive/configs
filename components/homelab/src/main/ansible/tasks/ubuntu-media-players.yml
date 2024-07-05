@@ -1,0 +1,40 @@
+---
+# @file ubuntu-media-players.yml
+# @brief Install some mediaplayers and codecs.
+#
+# @description The task installs some media players, codecs, cd rippers, etc.
+
+- name: Install -> Install media player and DRM packages
+  ansible.builtin.apt:
+    pkg:
+      - vlc
+      - vlc-plugin-access-extra
+      - libbluray-bdj
+      - libdvdcss2
+      - vlc-plugin-fluidsynth
+      - vlc-plugin-jack
+      - ffmpeg
+      - libavcodec-extra
+      - ubuntu-restricted-extras
+    state: latest
+    update_cache: true
+
+- name: Install -> Install audio CD ripper
+  ansible.builtin.apt:
+    pkg:
+      - asunder # https://wiki.ubuntuusers.de/Asunder
+      - lame
+      - vorbis-tools
+      - flac
+      - libopus0
+      - wavpack
+    state: latest
+    update_cache: true
+
+- name: Install -> Install CD/DVD writer
+  ansible.builtin.apt:
+    pkg:
+      - brasero
+      - gstreamer1.0-plugins-ugly
+    state: latest
+    update_cache: true

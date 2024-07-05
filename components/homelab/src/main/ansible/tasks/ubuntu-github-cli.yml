@@ -1,0 +1,31 @@
+---
+# @file ubuntu-github-cli.yml
+# @brief Install the Github CLI.
+#
+# @description The task installs the Github CLI tool.
+
+- name: GitHub CLI Setup -> Add GPG apt key
+  ansible.builtin.apt_key:
+    url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
+    state: present
+    keyring: /etc/apt/trusted.gpg.d/github-cli.gpg
+
+- name: GitHub CLI Setup -> Add apt repository
+  ansible.builtin.apt_repository:
+    repo: deb https://cli.github.com/packages stable main
+    state: present
+
+- name: GitHub CLI Setup -> Install gh
+  ansible.builtin.apt:
+    name:
+      - gh
+    state: latest
+    update_cache: true
+
+- name: GitHub CLI Setup -> Verify installation
+  ansible.builtin.command: gh --version
+  register: ghcli_version_output
+
+- name: GitHub CLI Setup -> Print version
+  ansible.builtin.debug:
+    msg: "{{ ghcli_version_output.stdout }}"

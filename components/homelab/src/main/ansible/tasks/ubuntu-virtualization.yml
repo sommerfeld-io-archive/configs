@@ -1,0 +1,74 @@
+---
+# @file ubuntu-virtualization.yml
+# @brief Install Virtualbox and Vagrant with all dependencies.
+#
+# @description The task installs Virtualbox and Vagrant with some plugins. It also
+# adds the ``{{ ansible_user }}`` (which is the user who runs the playbooks, normally ``sebastian``)
+# is added to the ``vboxusers`` group to allow running Virtualbox with all features and without
+# ``root`` privileges.
+
+- name: Virtualbox Setup -> Install Virtualbox and dependencies
+  ansible.builtin.apt:
+    pkg:
+      - virtualbox
+      - virtualbox-qt
+      - virtualbox-dkms
+    state: latest
+    update_cache: true
+
+- name: Virtualbox Setup -> Create virtual machines folder
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rwx,g=rx,o=rx
+  with_items:
+    - "/home/{{ ansible_user }}/virtualmachines"
+
+- name: Virtualbox Setup -> Set virtual machines folder
+  ansible.builtin.command: "vboxmanage setproperty machinefolder /home/{{ ansible_user }}/virtualmachines"
+  become_user: "{{ ansible_user }}"
+
+- name: Virtualbox Setup -> Add user to group
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    shell: /bin/bash
+    groups: vboxusers
+    append: true
+
+- name: Vagrant Setup -> Add GPG apt key
+  ansible.builtin.apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+    keyring: /etc/apt/trusted.gpg.d/vagrant.gpg
+
+- name: Vagrant Setup -> Add apt repository (OS-codename {{ ansible_distribution_release }})
+  ansible.builtin.apt_repository:
+    repo: "deb https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+    state: present
+
+- name: Vagrant Setup -> Install Vagrant packages
+  ansible.builtin.apt:
+    pkg:
+      - vagrant
+    state: latest
+    update_cache: true
+
+- name: Vagrant Setup -> Install Vagrant plugins
+  ansible.builtin.shell: |
+    vagrant plugin install vagrant-cachier
+    vagrant plugin install vagrant-vbguest
+    vagrant plugin install vagrant-docker-compose
+  become: true
+  become_user: "{{ ansible_user }}"
+  args:
+    executable: /bin/bash
+
+- name: Vagrant Setup -> Verify installation
+  ansible.builtin.command: vagrant --version
+  register: vagrant_version_output
+
+- name: Vagrant Setup -> Print version
+  ansible.builtin.debug:
+    msg: "{{ vagrant_version_output.stdout }}"

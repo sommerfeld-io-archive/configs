@@ -1,0 +1,65 @@
+---
+# @file ubuntu-docker.yml
+# @brief Install Docker with all dependencies.
+#
+# @description The task installs Docker with all dependencies. It also ensures that
+# all possibly existing legacy Docker packages are purged first. It also adds the
+# ``{{ ansible_user }}`` (which is the user who runs the playbooks, normally ``sebastian``)
+# is added to the Docker group to allow running Docker without ``sudo``.
+
+- name: Docker Setup -> Purge deprecated docker installations
+  ansible.builtin.apt:
+    pkg:
+      - docker-compose
+      - docker
+      - docker-engine
+      - docker.io
+      - containerd
+      - runc
+    state: absent
+    update_cache: true
+
+- name: Docker Setup -> Add GPG apt key
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+    keyring: /etc/apt/trusted.gpg.d/docker.gpg
+
+- name: Docker Setup -> Add apt repository (OS-codename {{ ansible_distribution_release }})
+  ansible.builtin.apt_repository:
+    repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    state: present
+
+- name: Docker Setup -> Install docker packages
+  ansible.builtin.apt:
+    pkg:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: latest
+    update_cache: true
+
+- name: Docker Setup -> Add user to docker group
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    shell: /bin/bash
+    groups: docker
+    append: true
+
+- name: Docker Setup -> Verify Docker installation
+  ansible.builtin.command: docker version
+  register: docker_version_output
+
+- name: Docker Setup -> Print Docker version
+  ansible.builtin.debug:
+    msg: "{{ docker_version_output.stdout }}"
+
+- name: Docker Setup -> Verify Docker Compose installation
+  ansible.builtin.command: docker compose version
+  register: docker_compose_version_output
+
+- name: Docker Setup -> Print Docker Compose version
+  ansible.builtin.debug:
+    msg: "{{ docker_compose_version_output.stdout }}"

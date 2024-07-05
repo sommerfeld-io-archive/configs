@@ -1,0 +1,45 @@
+---
+# @file ubuntu-packages.yml
+# @brief Install some basic packages with a UI
+#
+# @description The task installs some basic packages with a UI.
+
+- name: Install -> Software packages
+  ansible.builtin.apt:
+    pkg:
+      - rpi-imager
+      - tilix
+      - filezilla
+      - gnome-tweaks
+      - conky-all
+      - rar
+      - unrar
+      - p7zip
+      - p7zip-full
+      - p7zip-rar
+      - nmap
+    state: latest
+    update_cache: true
+
+- name: Install -> Development tools
+  ansible.builtin.apt:
+    pkg:
+      - yarn
+      - hugo
+      - asciidoctor
+      - pre-commit
+    state: latest
+    update_cache: true
+
+- name: Install -> Packages to control Dell monitors
+  ansible.builtin.apt:
+    pkg:
+      - ddcui
+      - libddcutil4
+      - ddcutil
+      - i2c-tools
+      - libi2c0
+      - libx86-1
+      - read-edid
+    state: latest
+    update_cache: true

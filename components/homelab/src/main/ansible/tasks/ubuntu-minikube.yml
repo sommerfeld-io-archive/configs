@@ -1,0 +1,87 @@
+---
+# @file ubuntu-minikube.yml
+# @brief Install Minikube and Helm all dependencies expect for the virtualization provider.
+#
+# @description The task installs Minikube and Helm and all dependencies expect for the
+# virtualization provider. Minikube automatically selects the virtualization provider based on the
+# host system. Since ``ubuntu-minikube.yml`` took care of installing docker, there is a
+# virtualization provider available. Just make sure Docker is installed before starting minikube.
+
+# ! Remove Minikube before installing a new version
+# - name: Minikube Setup -> Purge Minikube before installing a new version
+#   ansible.builtin.apt:
+#     name: minikube
+#     state: absent
+#     purge: true
+
+# ! Remove Minikube binary before installing a new version
+# - name: Minikube Setup -> Purge Minikube before installing a new version (delete binary)
+#   ansible.builtin.file:
+#     path: "{{ item }}"
+#     state: absent
+#   with_items:
+#     - /usr/local/bin/minikube
+
+- name: Minikube Setup -> Download
+  ansible.builtin.get_url:
+    # url: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+    url: "https://github.com/kubernetes/minikube/releases/download/v{{ minikube_version }}/minikube_{{ minikube_version }}-0_amd64.deb"
+    dest: /tmp/minikube_amd64.deb
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rwx,g=rx,o=rx
+
+- name: Minikube Setup -> Install Minikube
+  ansible.builtin.apt:
+    deb: /tmp/minikube_amd64.deb
+    state: present
+
+- name: Minikube Setup -> Write aliases to .bash_aliases
+  ansible.builtin.lineinfile:
+    create: true
+    mode: 0600
+    dest: "/home/{{ ansible_user }}/.bash_aliases"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - alias kubectl="minikube kubectl --"
+
+- name: Minikube Setup -> Verify installation
+  ansible.builtin.command: minikube version
+  register: minikube_version_output
+
+- name: Minikube Setup -> Print version
+  ansible.builtin.debug:
+    msg: "{{ minikube_version_output.stdout }}"
+
+- name: Helm Setup -> Download
+  ansible.builtin.get_url:
+    url: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+    dest: /tmp/helm-linux-amd64.tar.gz
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: u=rwx,g=rx,o=rx
+
+- name: Helm Setup -> Extract tarball
+  ansible.builtin.unarchive:
+    src: /tmp/helm-linux-amd64.tar.gz
+    dest: /tmp
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    remote_src: true
+    # extra_opts: [--strip-components=1]
+
+- name: Helm Setup -> Move to /usr/local/bin
+  ansible.builtin.command: mv /tmp/linux-amd64/helm /usr/local/bin/helm
+  args:
+    creates: /usr/local/bin/helm
+
+- name: Helm Setup -> Verify installation
+  ansible.builtin.command: helm version
+  register: helm_version_output
+
+- name: Helm Setup -> Print version
+  ansible.builtin.debug:
+    msg: "{{ helm_version_output.stdout }}"

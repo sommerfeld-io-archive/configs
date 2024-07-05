@@ -1,0 +1,13 @@
+---
+# @file common-unscripts.yml
+# @brief Un-Install old utility scripts.
+#
+# @description The task un-installs old utility scripts.
+
+- name: Uninstall -> Scripts
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /usr/bin/switch-display-inputs
+    - /opt/scripts/switch-display-inputs.sh

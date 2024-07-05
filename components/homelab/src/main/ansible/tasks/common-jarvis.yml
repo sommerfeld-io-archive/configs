@@ -1,0 +1,21 @@
+---
+# @file common-jarvis.yml
+# @brief Install Jarvis utility.
+#
+# @description The task installs the link:https://github.com/sebastian-sommerfeld-io/jarvis[Jarvis]
+# utility.
+
+- name: Config -> Download jarvis bootstrap script
+  ansible.builtin.uri:
+    url: https://raw.githubusercontent.com/sebastian-sommerfeld-io/jarvis/main/src/main/install.sh
+    dest: /tmp/jarvis.sh
+    mode: u=rwx,g=rx,o=rx
+    status_code: [200, 301, 302, 304]
+
+- name: Config -> Install jarvis from bootstrap script
+  ansible.builtin.command: /tmp/jarvis.sh
+
+- name: Install -> Jarvis cleanup
+  ansible.builtin.file:
+    path: /tmp/jarvis.sh
+    state: absent

@@ -9,6 +9,7 @@
         "jebbs.plantuml",
         "github.vscode-github-actions",
         "redhat.vscode-yaml",
-        "GitHub.copilot"
+        "GitHub.copilot",
+        "ms-kubernetes-tools.vscode-kubernetes-tools"
     ]
 }

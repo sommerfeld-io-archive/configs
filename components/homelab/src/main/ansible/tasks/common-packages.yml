@@ -1,0 +1,24 @@
+---
+# @file common-packages.yml
+# @brief Install basic packages.
+#
+# @description The task installs basic packages that act as dependencies for other
+# packages and some handy utilities.
+
+- name: Install -> Basic packages
+  ansible.builtin.apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+      - software-properties-common
+      - make
+      - ncdu
+      - htop
+      - git
+      - neofetch
+      - python3-pip # python package manager
+    state: latest
+    update_cache: true

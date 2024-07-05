@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.krokidile_docs.metadata.name }}-depl
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "krokidile_docs.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.krokidile_docs.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "krokidile_docs.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "krokidile_docs.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.krokidile_docs.image.repository }}:{{ .Values.common.image.tag }}"
+          imagePullPolicy: {{ .Values.common.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.krokidile_docs.service.port }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

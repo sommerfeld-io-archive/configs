@@ -1,0 +1,42 @@
+---
+common:
+  image:
+    tag: 0.8.2
+    pullPolicy: IfNotPresent
+
+krokidile:
+  metadata:
+    name: krokidile
+  image:
+    repository: sommerfeldio/krokidile
+  service:
+    type: NodePort
+    port: 3000
+    nodePort: 30000
+  replicaCount: 1
+
+krokidile_docs:
+  metadata:
+    name: krokidile-docs
+  image:
+    repository: sommerfeldio/krokidile-docs
+    tag: 0.8.2
+    pullPolicy: IfNotPresent
+  service:
+    type: NodePort
+    port: 3000
+    nodePort: 30080
+  replicaCount: 1
+
+namespace: krokidile
+
+ingress:
+  enabled: false
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
