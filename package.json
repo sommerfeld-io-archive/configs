@@ -1,0 +1,19 @@
+{
+  "name": "configs",
+  "version": "0.4.02",
+  "directories": {
+    "doc": "docs"
+  },
+  "keywords": [],
+  "author": "sebastian-sommerfeld.io",
+  "license": "tbd ... for the moment: *All rights reserved*",
+  "description": "Infrastructure repository with configs and docs for my workstations, servers and RasPi nodes.",
+  "devDependencies": {
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.6",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.1"
+  }
+}
