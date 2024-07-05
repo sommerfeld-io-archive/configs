@@ -1,0 +1,6 @@
+[source, bash]
+----
+cd src/main/minikube/krokidile-chart
+helm install krokidile ./krokidile
+helm uninstall krokidile
+----

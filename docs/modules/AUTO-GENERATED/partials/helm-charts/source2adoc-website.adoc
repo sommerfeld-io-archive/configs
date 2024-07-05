@@ -1,0 +1,6 @@
+[source, bash]
+----
+cd src/main/minikube/source2adoc-chart
+helm install source2adoc-website ./source2adoc-website
+helm uninstall source2adoc-website
+----
