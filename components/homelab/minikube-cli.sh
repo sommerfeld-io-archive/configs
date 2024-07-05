@@ -81,13 +81,9 @@
 # Installing apps must be done manually. The following example shows how to install and uninstall
 # the krokidile app.
 #
-# [source, bash]
-# ```
-# cd src/main/minikube/krokidile-chart
+# include::AUTO-GENERATED:partial$/helm-charts/krokidile.adoc[]
 #
-# helm install krokidile ./krokidile
-# helm uninstall krokidile
-# ```
+# include::AUTO-GENERATED:partial$/helm-charts/source2adoc-website.adoc[]
 #
 # == Prerequisites
 #

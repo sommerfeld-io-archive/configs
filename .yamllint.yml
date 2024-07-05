@@ -6,7 +6,7 @@ ignore: |
   node_modules
   .vagrant
   target
-  components/homelab/src/main/minikube/krokidile-chart/krokidile
+  components/homelab/src/main/minikube
 
 rules:
   line-length:

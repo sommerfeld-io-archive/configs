@@ -1,0 +1,28 @@
+---
+image:
+  repository: sommerfeldio/source2adoc-website
+  tag: rc
+  pullPolicy: IfNotPresent
+
+metadata:
+  name: source2adoc-website
+
+service:
+  type: NodePort
+  port: 7880
+  nodePort: 30088
+
+replicaCount: 1
+
+namespace: source2adoc
+
+ingress:
+  enabled: false
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
