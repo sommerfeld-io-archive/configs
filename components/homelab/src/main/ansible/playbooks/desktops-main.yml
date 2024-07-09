@@ -45,7 +45,7 @@
     - ansible.builtin.import_tasks: ../tasks/ubuntu-chrome.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-media-players.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-uninstall.yml
-    - ansible.builtin.import_tasks: ../tasks/common-ssh-keypair.yml
+    - ansible.builtin.import_tasks: ../tasks/common-ssh.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-ansible.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-sublime.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-snap-packages.yml

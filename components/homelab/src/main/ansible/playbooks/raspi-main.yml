@@ -65,7 +65,7 @@
     - ansible.builtin.import_tasks: ../tasks/common-create-directories.yml
     - ansible.builtin.import_tasks: ../tasks/common-packages.yml
     - ansible.builtin.import_tasks: ../tasks/common-git.yml
-    - ansible.builtin.import_tasks: ../tasks/common-ssh-keypair.yml
+    - ansible.builtin.import_tasks: ../tasks/common-ssh.yml
     - ansible.builtin.import_tasks: ../tasks/common-scripts.yml
     - ansible.builtin.import_tasks: ../tasks/raspi-docker.yml
 

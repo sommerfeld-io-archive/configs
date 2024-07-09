@@ -1,0 +1,29 @@
+---
+## The task create a SSH keypair for the `{{ ansible_user }}` inside
+## `/home/{{ ansible_user }}/.ssh/id_rsa`. The key is not overwritten or replaces, in case there
+## already is a keypair present. Additionally the task create bash aliases to easily connect to
+## other linux machines via ssh.
+
+- name: SSH Config -> Create ssh keypair
+  community.crypto.openssh_keypair:
+    path: "/home/{{ ansible_user }}/.ssh/id_rsa"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    type: rsa
+    size: 4096
+    state: present
+    force: false
+
+- name: SSH Config -> Write aliases to .bash_aliases
+  ansible.builtin.lineinfile:
+    create: true
+    mode: 0600
+    dest: "/home/{{ ansible_user }}/.bash_aliases"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    line: alias ssh-connect-{{ item }}="ssh sebastian@{{ item }}.fritz.box"
+    state: present
+  with_items:
+    - kobol
+    - caprica
+    - pihole
