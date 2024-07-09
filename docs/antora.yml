@@ -1,7 +1,7 @@
 ---
 name: configs
 title: Configuration Docs
-version: 0.6.0
+version: main
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
