@@ -67,6 +67,19 @@ jobs:
           )
         shell: bash
 
+  lint-helm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: helm-lint
+        run: |
+          (
+            cd components/homelab/src/test || exit
+            ./lint-helm.sh
+          )
+        shell: bash
+
   validate-inspec-profile:
     runs-on: ubuntu-latest
     steps:

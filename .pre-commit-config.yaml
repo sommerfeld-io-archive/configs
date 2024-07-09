@@ -53,3 +53,9 @@ repos:
         name: ansible-lint
         language: script
         entry: /bin/bash -c '(cd components/homelab/src/test && ./lint-ansible.sh)'
+  - repo: local
+    hooks:
+      - id: helm-lint-1
+        name: helm-lint-1
+        language: script
+        entry: /bin/bash -c '(cd components/homelab/src/test && ./lint-helm.sh)'
