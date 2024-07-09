@@ -109,7 +109,7 @@ readonly OPTION_STOP="stop"
 readonly OPTION_DASHBOARD="dashboard"
 readonly OPTION_PODS="list-pods"
 readonly OPTION_SERVICES="list-services"
-readonly OPTION_INFO="info"
+readonly OPTION_STATUS="status"
 readonly OPTION_HELP="help"
 
 
@@ -157,15 +157,15 @@ function services() {
 
 
 # @description Utility function to display minikube status and some metadata.
-function info() {
+function status() {
   echo -e "$LOG_INFO minikube version"
   minikube version
 
-  echo -e "$LOG_INFO minikube status"
-  minikube status
-
   echo -e "$LOG_INFO Helm version"
   helm version
+
+  echo -e "$LOG_INFO minikube status"
+  minikube status
 }
 
 
@@ -185,7 +185,7 @@ select s in "$OPTION_START" \
             "$OPTION_DASHBOARD" \
             "$OPTION_PODS" \
             "$OPTION_SERVICES" \
-            "$OPTION_INFO" \
+            "$OPTION_STATUS" \
             "$OPTION_HELP"
   do
     case "$s" in
@@ -204,8 +204,8 @@ select s in "$OPTION_START" \
     "$OPTION_SERVICES" )
         services
         break;;
-    "$OPTION_INFO" )
-        info
+    "$OPTION_STATUS" )
+        status
         break;;
     "$OPTION_HELP" )
         help
