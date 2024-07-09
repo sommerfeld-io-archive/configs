@@ -1,14 +1,10 @@
 #!/bin/bash
-# @file provision.sh
-# @brief Run Conky instances on kobol laptop.
-#
-# @description The script starts all Conky instances. By default this script is triggered
-# automatically when the machine starts (the script is configured as a startup application
-# by ansible playbook).
-#
-# === Script Arguments
-#
-# The script does not accept any parameters.
+## The script starts all Conky instances. By default this script is triggered
+## automatically when the machine starts (the script is configured as a startup application
+## by ansible playbook).
+##
+## === Script Arguments
+## The script does not accept any parameters.
 
 
 readonly BASE_PATH="$HOME/work/repos/sebastian-sommerfeld-io/configs/components/homelab/src/main/conky"

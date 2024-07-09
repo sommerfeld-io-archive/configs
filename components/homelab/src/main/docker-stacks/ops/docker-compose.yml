@@ -1,17 +1,16 @@
 ---
-# @file docker-compose.yml
-# @brief Run all components needed to allow monitoring a host and management of Docker containers on a host.
-#
-# @description The ``ops`` Docker stack is a Docker Compose configuration that manages
-# all of the needed exporters to monitor system metrics with Prometheus and Grafana. By
-# using the ``ops`` Docker stack, you can quickly and easily deploy all of the necessary
-# components for monitoring your system metrics. This includes exporters for various system
-# metrics, such as CPU usage, disk usage, and network activity.
-#
-# | Component     | Port | URL                   |
-# | ------------- | ---- | --------------------- |
-# | node_exporter | 9100 | http://localhost:9100 |
-# | cAdvisor      | 9110 | http://localhost:9110 |
+## The `ops` Docker stack is a Docker Compose configuration that manages
+## all of the needed exporters to monitor system metrics with Prometheus and Grafana. By
+## using the `ops` Docker stack, you can quickly and easily deploy all of the necessary
+## components for monitoring your system metrics. This includes exporters for various system
+## metrics, such as CPU usage, disk usage, and network activity.
+##
+## [cols="2,1,3", options="header"]
+## |===
+## |Component     |Port |URL
+## |node_exporter |9100 |http://localhost:9100
+## |cAdvisor      |9110 |http://localhost:9110
+## |===
 
 services:
 

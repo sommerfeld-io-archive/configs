@@ -1,10 +1,7 @@
 ---
-# @file ubuntu-vscode-plugins.yml
-# @brief Install VSCode plugins.
-#
-# @description The task installs VSCode plugins.
-#
-# IMPORTANT: Run in a playbook that is NOT becoming ``root``.
+## The task installs VSCode plugins.
+##
+## IMPORTANT: Run in a playbook that is NOT becoming `root`.
 
 - name: Install -> VSCode Extensions
   ansible.builtin.shell: |

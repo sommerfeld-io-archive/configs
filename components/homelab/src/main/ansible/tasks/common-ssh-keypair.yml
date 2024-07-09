@@ -1,10 +1,7 @@
 ---
-# @file common-ssh-keypair.yml
-# @brief Create SSH keypair
-#
-# @description The task create a SSH keypair for the ``{{ ansible_user }}`` inside
-# ``/home/{{ ansible_user }}/.ssh/id_rsa``. The key is not overwritten or replaces, in case there
-# already is a keypair present.
+## The task create a SSH keypair for the `{{ ansible_user }}` inside
+## `/home/{{ ansible_user }}/.ssh/id_rsa`. The key is not overwritten or replaces, in case there
+## already is a keypair present.
 
 - name: Config -> Create ssh keypair
   community.crypto.openssh_keypair:

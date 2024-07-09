@@ -1,10 +1,7 @@
 ---
-# @file common-scripts.yml
-# @brief Install utility scripts.
-#
-# @description The task installs utility scripts. These scripts act
-# like a normal package installation (because a symlink from ``/usr/bin`` is
-# pointing to the respective bash script).
+## The task installs utility scripts. These scripts act
+## like a normal package installation (because a symlink from `/usr/bin` is
+## pointing to the respective bash script).
 
 - name: Config -> Create directories for scripts
   ansible.builtin.file:

@@ -1,8 +1,5 @@
 ---
-# @file ubuntu-github-cli.yml
-# @brief Install the Github CLI.
-#
-# @description The task installs the Github CLI tool.
+## The task installs the Github CLI tool.
 
 - name: GitHub CLI Setup -> Add GPG apt key
   ansible.builtin.apt_key:

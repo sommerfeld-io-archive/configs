@@ -1,9 +1,5 @@
 ---
-# @file common-jarvis.yml
-# @brief Install Jarvis utility.
-#
-# @description The task installs the link:https://github.com/sebastian-sommerfeld-io/jarvis[Jarvis]
-# utility.
+## The task installs the link:https://github.com/sebastian-sommerfeld-io/jarvis[Jarvis]  utility.
 
 - name: Config -> Download jarvis bootstrap script
   ansible.builtin.uri:

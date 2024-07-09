@@ -3,9 +3,9 @@
 # @brief Install Virtualbox and Vagrant with all dependencies.
 #
 # @description The task installs Virtualbox and Vagrant with some plugins. It also
-# adds the ``{{ ansible_user }}`` (which is the user who runs the playbooks, normally ``sebastian``)
-# is added to the ``vboxusers`` group to allow running Virtualbox with all features and without
-# ``root`` privileges.
+# adds the `{{ ansible_user }}` (which is the user who runs the playbooks, normally `sebastian`)
+# is added to the `vboxusers` group to allow running Virtualbox with all features and without
+# `root` privileges.
 
 - name: Virtualbox Setup -> Install Virtualbox and dependencies
   ansible.builtin.apt:

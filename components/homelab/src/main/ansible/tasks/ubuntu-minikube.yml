@@ -1,11 +1,8 @@
 ---
-# @file ubuntu-minikube.yml
-# @brief Install Minikube and Helm all dependencies expect for the virtualization provider.
-#
-# @description The task installs Minikube and Helm and all dependencies expect for the
-# virtualization provider. Minikube automatically selects the virtualization provider based on the
-# host system. Since ``ubuntu-minikube.yml`` took care of installing docker, there is a
-# virtualization provider available. Just make sure Docker is installed before starting minikube.
+## The task installs Minikube and Helm and all dependencies expect for the
+## virtualization provider. Minikube automatically selects the virtualization provider based on the
+## host system. Since `ubuntu-minikube.yml` took care of installing docker, there is a
+## virtualization provider available. Just make sure Docker is installed before starting minikube.
 
 # ! Remove Minikube before installing a new version
 # - name: Minikube Setup -> Purge Minikube before installing a new version

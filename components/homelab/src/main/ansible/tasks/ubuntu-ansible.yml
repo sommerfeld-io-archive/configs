@@ -1,8 +1,5 @@
 ---
-# @file ubuntu-ansible.yml
-# @brief Install Ansible.
-#
-# @description The task installs Ansible.
+## The task installs Ansible.
 
 - name: Ansible Setup -> Install ansible (OS-codename {{ ansible_distribution_release }})
   ansible.builtin.apt:

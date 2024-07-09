@@ -1,9 +1,6 @@
 ---
-# @file common-packages.yml
-# @brief Install basic packages.
-#
-# @description The task installs basic packages that act as dependencies for other
-# packages and some handy utilities.
+## The task installs basic packages that act as dependencies for other
+## packages and some handy utilities.
 
 - name: Install -> Basic packages
   ansible.builtin.apt:

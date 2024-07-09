@@ -8,9 +8,9 @@
 # === Usage
 #
 # [source, bash]
-# ```
+# ``
 # ./lint-helm.sh
-# ```
+# ``
 #
 # The script does not accept any parameters.
 

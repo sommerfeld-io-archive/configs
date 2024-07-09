@@ -1,8 +1,5 @@
 ---
-# @file common-unscripts.yml
-# @brief Un-Install old utility scripts.
-#
-# @description The task un-installs old utility scripts.
+## The task un-installs old utility scripts.
 
 - name: Uninstall -> Scripts
   ansible.builtin.file:

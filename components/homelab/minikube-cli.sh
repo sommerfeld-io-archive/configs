@@ -1,101 +1,93 @@
 #!/bin/bash
-# @file minikube-cli.sh
-# @brief Script to manage minikube.
-#
-# @description This script controls the local minikube instance. This setup includes Minikube and
-# Docker Compose stacks. This script exclusively manages Minikube and Helm, while a
-# xref:AUTO-GENERATED:components/homelab/docker-stacks-cli-sh.adoc[separate script] handles the
-# Docker Compose stacks. Minikube will not fail if the Docker Compose stacks are not running.
-#
-# [ditaa, ditaa-image, svg]
-#
-# ....
+## This script controls the local minikube instance. This setup includes Minikube and
+## Docker Compose stacks. This script exclusively manages Minikube and Helm, while a
+## xref:AUTO-GENERATED:components/homelab/docker-stacks-cli-sh.adoc[separate script] handles the
+## Docker Compose stacks. Minikube will not fail if the Docker Compose stacks are not running.
+##
+## [ditaa, ditaa-image, svg]
+## ....
+## +------------------------------------------------------------+
+## |  Workstation                                               |
+## |                                                            |
+## |    +--------------------+        +--------------------+    |          +----------------------+
+## |    | DockerCompose: ops |        |  minikube          |    |          |  DockerHub           |
+## |    |                    |        |                    |    |          |                      |
+## |    |  +--------------+  |        |  +--------------+  |    |   Helm   |  +----------------+  |
+## |    |  | Portainer    |  |        |  | krokidile    |<--------------------+  krokidile     |  |
+## |    |  +--------------+  |        |  +--------------+  |    |          |  +----------------+  |
+## |    |                    |        |                    |    |          |                      |
+## |    |  +--------------+  |        |  +--------------+  |    |   Helm   |  +----------------+  |
+## |    |  | cAdvisor     +------+    |  | ... app ...  |<--------------------+  ... app ...   |  |
+## |    |  +--------------+  |   |    |  +--------------+  |    |          |  +----------------+  |
+## |    |                    |   |    |                    |    |          +----------------------+
+## |    |  +--------------+  |   |    |                    |    |
+## |    |  | NodeExporter +------+    |   +----------------+    |
+## |    |  +--------------+  |   |    |   | metrics server |    |
+## |    +--------------------+   |    +---+---+------------+    |
+## |                             |            |                 |
+## |                             +------------+                 |
+## |                             |                              |
+## |    +--------------------+   |                              |
+## |    | DockerCompose      |   |                              |
+## |    |                    |   |                              |
+## |    |  +--------------+  |   :                              |
+## |    |  | Prometheus   |<-----+                              |
+## |    |  +--+-----------+  |                                  |
+## |    |     |              |                                  |
+## |    |     v              |                                  |
+## |    |  +--------------+  |                                  |
+## |    |  | Grafana      |  |                                  |
+## |    |  +--------------+  |                                  |
+## |    +--------------------+                                  |
+## |                                                            |
 # +------------------------------------------------------------+
-# |  Workstation                                               |
-# |                                                            |
-# |    +--------------------+        +--------------------+    |          +----------------------+
-# |    | DockerCompose: ops |        |  minikube          |    |          |  DockerHub           |
-# |    |                    |        |                    |    |          |                      |
-# |    |  +--------------+  |        |  +--------------+  |    |   Helm   |  +----------------+  |
-# |    |  | Portainer    |  |        |  | krokidile    |<--------------------+  krokidile     |  |
-# |    |  +--------------+  |        |  +--------------+  |    |          |  +----------------+  |
-# |    |                    |        |                    |    |          |                      |
-# |    |  +--------------+  |        |  +--------------+  |    |   Helm   |  +----------------+  |
-# |    |  | cAdvisor     +------+    |  | ... app ...  |<--------------------+  ... app ...   |  |
-# |    |  +--------------+  |   |    |  +--------------+  |    |          |  +----------------+  |
-# |    |                    |   |    |                    |    |          +----------------------+
-# |    |  +--------------+  |   |    |                    |    |
-# |    |  | NodeExporter +------+    |   +----------------+    |
-# |    |  +--------------+  |   |    |   | metrics server |    |
-# |    +--------------------+   |    +---+---+------------+    |
-# |                             |            |                 |
-# |                             +------------+                 |
-# |                             |                              |
-# |    +--------------------+   |                              |
-# |    | DockerCompose      |   |                              |
-# |    |                    |   |                              |
-# |    |  +--------------+  |   :                              |
-# |    |  | Prometheus   |<-----+                              |
-# |    |  +--+-----------+  |                                  |
-# |    |     |              |                                  |
-# |    |     v              |                                  |
-# |    |  +--------------+  |                                  |
-# |    |  | Grafana      |  |                                  |
-# |    |  +--------------+  |                                  |
-# |    +--------------------+                                  |
-# |                                                            |
-# +------------------------------------------------------------+
-# ....
-#
-# === About minikube and Helm
-#
-# link:https://minikube.sigs.k8s.io/docs[minikube] is a tool that simplifies running Kubernetes
-# clusters locally. It allows developers to set up a single-node Kubernetes cluster on their local
-# workstation, which is useful for development, testing, and learning purposes. minikube supports
-# various hypervisors (like VirtualBox, KVM, Hyper-V) and container runtimes (like Docker, Podman,
-# containerd, and CRI-O). By providing a local Kubernetes environment, minikube helps developers
-# emulate the behavior of a production cluster, enabling them to test Kubernetes applications in a
-# controlled, local setup before deploying them to a larger, more complex cluster.
-#
-# link:https://helm.sh[Helm] is a package manager for Kubernetes, designed to streamline the
-# deployment, management, and scaling of applications on Kubernetes clusters. It uses "charts",
-# which are packages of pre-configured Kubernetes resources, to define, install, and upgrade
-# Kubernetes applications. Helm helps automate the deployment process, manage dependencies, and
-# simplify updates and rollbacks, making it easier to manage Kubernetes applications consistently
-# and reproducibly.
-#
-# === Usage
-#
-# This script allows to start, stop and expose the dashboard (among others). Common commands are
-# available as options. The script is interactive and will prompt the user to select an action.
-# More specific actions need to be executed directly with minikube.
-#
-# The script does not accept any parameters.
-#
-# [source, bash]
-# ```
-# ./minikube-cli.sh
-# ```
-#
-# Installing and uninstalling apps is done with Helm. The script does not handle Helm charts.
-# Installing apps must be done manually. The following example shows how to install and uninstall
-# the krokidile app.
-#
-# include::AUTO-GENERATED:partial$/helm-charts/krokidile.adoc[]
-#
-# include::AUTO-GENERATED:partial$/helm-charts/source2adoc-website.adoc[]
-#
-# == Prerequisites
-#
-# A local Docker and a local minikube installation is required. To deploy applications to the
-# cluster, Helm is also required.
-#
-# Keep in mind, that the Ansible playbook create a ``kubectl`` alias which points to
-# ``minikube kubectl`` so this might conflict with other ``kubectl`` installations.
-#
-# == See
-#
-# * Initial implementation issue: https://github.com/sebastian-sommerfeld-io/configs/issues/1421
+## ....
+##
+## === About minikube and Helm
+## link:https://minikube.sigs.k8s.io/docs[minikube] is a tool that simplifies running Kubernetes
+## clusters locally. It allows developers to set up a single-node Kubernetes cluster on their local
+## workstation, which is useful for development, testing, and learning purposes. minikube supports
+## various hypervisors (like VirtualBox, KVM, Hyper-V) and container runtimes (like Docker, Podman,
+## containerd, and CRI-O). By providing a local Kubernetes environment, minikube helps developers
+## emulate the behavior of a production cluster, enabling them to test Kubernetes applications in a
+## controlled, local setup before deploying them to a larger, more complex cluster.
+##
+## link:https://helm.sh[Helm] is a package manager for Kubernetes, designed to streamline the
+## deployment, management, and scaling of applications on Kubernetes clusters. It uses "charts",
+## which are packages of pre-configured Kubernetes resources, to define, install, and upgrade
+## Kubernetes applications. Helm helps automate the deployment process, manage dependencies, and
+## simplify updates and rollbacks, making it easier to manage Kubernetes applications consistently
+## and reproducibly.
+##
+## === Usage
+## This script allows to start, stop and expose the dashboard (among others). Common commands are
+## available as options. The script is interactive and will prompt the user to select an action.
+## More specific actions need to be executed directly with minikube.
+##
+## The script does not accept any parameters.
+##
+## [source, bash]
+## ....
+## ./minikube-cli.sh
+## ....
+##
+## Installing and uninstalling apps is done with Helm. The script does not handle Helm charts.
+## Installing apps must be done manually. The following example shows how to install and uninstall
+## the krokidile app.
+##
+## include::AUTO-GENERATED:partial$/helm-charts/krokidile.adoc[]
+##
+## include::AUTO-GENERATED:partial$/helm-charts/source2adoc-website.adoc[]
+##
+## == Prerequisites
+## A local Docker and a local minikube installation is required. To deploy applications to the
+## cluster, Helm is also required.
+##
+## Keep in mind, that the Ansible playbook create a `kubectl` alias which points to
+## `minikube kubectl` so this might conflict with other `kubectl` installations.
+##
+## == See
+## * Initial implementation issue: https://github.com/sebastian-sommerfeld-io/configs/issues/1421
 
 
 set -o errexit
@@ -113,7 +105,7 @@ readonly OPTION_STATUS="status"
 readonly OPTION_HELP="help"
 
 
-# @description Utility function to startup minikube.
+## Utility function to startup minikube.
 function startup() {
   echo -e "$LOG_INFO Startup minikube on ${P}${HOSTNAME}${D}"
   minikube start
@@ -128,35 +120,35 @@ function startup() {
 }
 
 
-# @description Utility function to shutdown minikube.
+## Utility function to shutdown minikube.
 function shutdown() {
   echo -e "$LOG_INFO Shutdown minikube on ${P}${HOSTNAME}${D}"
   minikube stop
 }
 
 
-# @description Utility function to expose the minikube dashboad.
+## Utility function to expose the minikube dashboad.
 function dashboard() {
   echo -e "$LOG_INFO Expose the minikube dashboard"
   minikube dashboard
 }
 
 
-# @description Utility function to list pods.
+## Utility function to list pods.
 function pods() {
   echo -e "$LOG_INFO List pods from all namespaces"
   minikube kubectl -- get po -A
 }
 
 
-# @description Utility function to list services from all namespaces.
+## Utility function to list services from all namespaces.
 function services() {
   echo -e "$LOG_INFO List services from all namespaces"
   minikube service list # --namespace apps
 }
 
 
-# @description Utility function to display minikube status and some metadata.
+## Utility function to display minikube status and some metadata.
 function status() {
   echo -e "$LOG_INFO minikube version"
   minikube version
@@ -169,7 +161,7 @@ function status() {
 }
 
 
-# @description Utility function to display the minikube help.
+## Utility function to display the minikube help.
 function help() {
   echo -e "$LOG_INFO minikube help"
   echo -e "$LOG_WARN ----------------------------------------------------------------------------------------------"

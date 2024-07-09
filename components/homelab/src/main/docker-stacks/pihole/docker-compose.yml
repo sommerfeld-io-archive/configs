@@ -1,57 +1,49 @@
 ---
-# @file docker-compose.yml
-# @brief Run all Pi-hole to act as a DNS sinkhole.
-#
-# @description The ``pihole`` Docker stack starts pi-hole which acts as a
-# link:https://en.wikipedia.org/wiki/DNS_sinkhole[DNS sinkhole] to block
-# unwanted traffic. Pi-hole is a Linux network-level advertisement and
-# Internet tracker blocking application which acts.
-#
-# See https://github.com/pi-hole/docker-pi-hole?tab=readme-ov-file#quick-start
-#
-# == Setup Options
-#
-# You can use Pi-hole to block ads and trackers, or as a DHCP server.
-#
-# === Setting Up Pi-hole for Ad-Blocking Only
-#
-# If you prefer to keep your existing router's DHCP service and only want to use
-# Pi-hole for ad-blocking, you can do so with the following steps:
-#
-# . Install and Configure Pi-hole:
-# .. Follow the standard installation process for Pi-hole on your Raspberry Pi or other server.
-# . Configure Router's DNS Settings:
-# .. Set your router's DNS server settings to use the IP address of your Pi-hole instance. This ensures that all DNS requests from devices on your network are routed through Pi-hole.
-# . Disable Pi-hole's DHCP Server:
-# .. By default, Pi-hole's DHCP server is disabled. Ensure it remains disabled if you do not want Pi-hole to handle DHCP.
-# .. You can verify this in the Pi-hole web interface under Settings > DHCP.
-# . Test Configuration:
-# .. Verify that your devices are using Pi-hole for DNS by checking the DNS server settings on a few devices. You can also check the Pi-hole query log to see if DNS requests are being processed.
-#
-# === Advantages of Using Pi-hole as a DHCP Server
-#
-# . Consistent Network-Wide Ad-Blocking:
-# .. When Pi-hole is used as a DHCP server, it ensures that all devices on your network use Pi-hole as their DNS server. This avoids potential issues where devices might bypass Pi-hole if they are manually configured or use alternative DNS settings.
-# . Device-Specific Blocking and Statistics:
-# .. Pi-hole can provide more detailed statistics and logs, showing which devices are making DNS requests. This can help you understand the ad traffic on a per-device basis and customize blocking accordingly.
-# . Ease of Management:
-# .. Managing DHCP and DNS settings through Pi-hole's web interface can be simpler than dealing with your router's interface, especially if your router has limited DHCP and DNS configuration options.
-# . Advanced Features:
-# .. Pi-hole's DHCP server supports advanced features like static DHCP leases, which can assign fixed IP addresses to specific devices. This can be useful for network organization and management.
-# . No Need to Configure Router's DNS Settings:
-# .. When using Pi-hole as the DHCP server, it automatically assigns itself as the DNS server for all devices. This means you don't have to manually configure the DNS settings on your router, which can sometimes be a limitation on certain routers.
-#
-# === Summary
-#
-# Using Pi-hole as a DHCP server can simplify network-wide DNS management and provide enhanced
-# monitoring and control over individual devices. However, if your primary goal is ad-blocking,
-# configuring your router to use Pi-hole as the DNS server without changing the DHCP server is
-# perfectly fine and may be easier to manage. The choice depends on your specific needs and
-# network setup.
-#
-# === Setup of choice
-#
-# Pi-hole is set up as a DNS sinkhole only. The router's DHCP server is used.
+## The `pihole` Docker stack starts pi-hole which acts as a
+## link:https://en.wikipedia.org/wiki/DNS_sinkhole[DNS sinkhole] to block
+## unwanted traffic. Pi-hole is a Linux network-level advertisement and
+## Internet tracker blocking application which acts.
+##
+## See https://github.com/pi-hole/docker-pi-hole?tab=readme-ov-file##quick-start
+##
+## == Setup Options
+## You can use Pi-hole to block ads and trackers, or as a DHCP server.
+##
+## === Setting Up Pi-hole for Ad-Blocking Only
+## If you prefer to keep your existing router's DHCP service and only want to use
+## Pi-hole for ad-blocking, you can do so with the following steps:
+##
+## . Install and Configure Pi-hole:
+## .. Follow the standard installation process for Pi-hole on your Raspberry Pi or other server.
+## . Configure Router's DNS Settings:
+## .. Set your router's DNS server settings to use the IP address of your Pi-hole instance. This ensures that all DNS requests from devices on your network are routed through Pi-hole.
+## . Disable Pi-hole's DHCP Server:
+## .. By default, Pi-hole's DHCP server is disabled. Ensure it remains disabled if you do not want Pi-hole to handle DHCP.
+## .. You can verify this in the Pi-hole web interface under Settings > DHCP.
+## . Test Configuration:
+## .. Verify that your devices are using Pi-hole for DNS by checking the DNS server settings on a few devices. You can also check the Pi-hole query log to see if DNS requests are being processed.
+##
+## === Advantages of Using Pi-hole as a DHCP Server
+## . Consistent Network-Wide Ad-Blocking:
+## .. When Pi-hole is used as a DHCP server, it ensures that all devices on your network use Pi-hole as their DNS server. This avoids potential issues where devices might bypass Pi-hole if they are manually configured or use alternative DNS settings.
+## . Device-Specific Blocking and Statistics:
+## .. Pi-hole can provide more detailed statistics and logs, showing which devices are making DNS requests. This can help you understand the ad traffic on a per-device basis and customize blocking accordingly.
+## . Ease of Management:
+## .. Managing DHCP and DNS settings through Pi-hole's web interface can be simpler than dealing with your router's interface, especially if your router has limited DHCP and DNS configuration options.
+## . Advanced Features:
+## .. Pi-hole's DHCP server supports advanced features like static DHCP leases, which can assign fixed IP addresses to specific devices. This can be useful for network organization and management.
+## . No Need to Configure Router's DNS Settings:
+## .. When using Pi-hole as the DHCP server, it automatically assigns itself as the DNS server for all devices. This means you don't have to manually configure the DNS settings on your router, which can sometimes be a limitation on certain routers.
+##
+## === Summary
+## Using Pi-hole as a DHCP server can simplify network-wide DNS management and provide enhanced
+## monitoring and control over individual devices. However, if your primary goal is ad-blocking,
+## configuring your router to use Pi-hole as the DNS server without changing the DHCP server is
+## perfectly fine and may be easier to manage. The choice depends on your specific needs and
+## network setup.
+##
+## === Setup of choice
+## Pi-hole is set up as a DNS sinkhole only. The router's DHCP server is used.
 
 services:
 

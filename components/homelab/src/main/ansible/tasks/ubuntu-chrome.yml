@@ -1,8 +1,5 @@
 ---
-# @file ubuntu-chrome.yml
-# @brief Install Chrome and Chromium browsers.
-#
-# @description The task installs Chrome and Chromium browsers.
+## The task installs Chrome and Chromium browsers.
 
 - name: Install -> Chromium packages
   ansible.builtin.apt:

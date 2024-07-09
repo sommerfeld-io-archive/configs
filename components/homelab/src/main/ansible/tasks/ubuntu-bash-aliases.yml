@@ -1,11 +1,8 @@
 ---
-# @file ubuntu-bash-aliases.yml
-# @brief Add aliases to the bash config
-#
-# @description The task adds aliases to the bash config.
-#
-# CAUTION: This task is specific to Ubuntu Desktop machines and should not run
-# on RasPi nodes or headless nodes.
+## The task adds aliases to the bash config.
+##
+## CAUTION: This task is specific to Ubuntu Desktop machines and should not run
+## on RasPi nodes or headless nodes.
 
 - name: Config -> Write aliases to .bashrc (for Ubuntu desktop)
   ansible.builtin.lineinfile:

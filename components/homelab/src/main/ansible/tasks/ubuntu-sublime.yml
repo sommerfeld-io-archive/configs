@@ -1,8 +1,5 @@
 ---
-# @file ubuntu-sublime.yml
-# @brief Install Sublime.
-#
-# @description The task installs the Sublime text editor.
+## The task installs the Sublime text editor.
 
 - name: Sublime Setup -> Add GPG apt key
   ansible.builtin.apt_key:

@@ -1,14 +1,10 @@
 ---
-# @file housekeeping-labels.yml
-# @brief Github Actions workflow that ensures all mandatory labels are present for a repo and all obsolete labels are removed.
-#
-# @description The workflow, that is called this way, is responsible for deleting unnecessary
-# labels and creating the required labels for issues and pull requests. By executing this workflow,
-# it ensures a streamlined and organized labeling system, enabling effective categorization and
-# tracking of tasks and contributions within your projects. Since the labels are managed through this
-# workflow, the settings from link:https://github.com/organizations/sommerfeld-io/settings/repository-defaults[GitHub organizations label-config]
-# don't take effect.
-
+## The workflow, that is called this way, is responsible for deleting unnecessary
+## labels and creating the required labels for issues and pull requests. By executing this workflow,
+## it ensures a streamlined and organized labeling system, enabling effective categorization and
+## tracking of tasks and contributions within your projects. Since the labels are managed through this
+## workflow, the settings from link:https://github.com/organizations/sommerfeld-io/settings/repository-defaults[GitHub organizations label-config]
+## don't take effect.
 
 name: "Housekeeping: Labels"
 

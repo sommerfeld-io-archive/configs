@@ -1,19 +1,15 @@
 ---
-# @file .pre-commit-config.yml
-# @brief Config for pre-commit.
+## Run the defined checks before committing code to the remote repo. This should catch
+## simple violations early and lessens the amount of pipeline failures.
 #
-# @description Run the defined checks before committing code to the remote repo. This should catch
-# simple violations early and lessens the amount of pipeline failures.
+## Every time you clone a project using pre-commit running `pre-commit install` should always be the
+## first thing you do.
 #
-# Every time you clone a project using pre-commit running ``pre-commit install`` should always be the
-# first thing you do.
+## IMPORTANT: For pre-commit to work, this file must carry the extension `.yaml`, NOT `.yml`.
 #
-# IMPORTANT: For pre-commit to work, this file must carry the extension ``.yaml``, NOT ``.yml``.
-#
-# == Install the git hook scripts
-#
-# run ``pre-commit install`` to set up the git hook scripts. Now pre-commit will run automatically
-# on git commit.
+## == Install the git hook scripts
+## run `pre-commit install` to set up the git hook scripts. Now pre-commit will run automatically
+## on git commit.
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0

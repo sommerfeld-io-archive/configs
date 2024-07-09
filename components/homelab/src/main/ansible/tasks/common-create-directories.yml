@@ -1,9 +1,6 @@
 ---
-# @file common-create-directories.yml
-# @brief Setup directory tree.
-#
-# @description  The task sets up the directory tree and ensures needed all
-# folders are present.
+## The task sets up the directory tree and ensures needed all
+## folders are present.
 
 - name: Config -> Create directories
   ansible.builtin.file:

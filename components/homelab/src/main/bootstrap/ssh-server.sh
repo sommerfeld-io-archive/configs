@@ -1,19 +1,13 @@
 #!/bin/bash
-# @file bootstrap-ssh-server.sh
-# @brief Run basic provisioning.
-#
-# @description This script installs and configures openssh-server.
-#
-# === Script Arguments
-#
-# The script does not accept any parameters.
-#
-# === Script Example
-#
-# [source, bash]
-# ```
-# curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/components/homelab/src/main/bootstrap/ssh-server.sh | bash -
-# ```
+## This script installs and configures openssh-server.
+##
+# === Usage
+## [source, bash]
+## ....
+## curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/components/homelab/src/main/bootstrap/ssh-server.sh | bash -
+## ....
+##
+## The script does not accept any parameters.
 
 
 set -o errexit

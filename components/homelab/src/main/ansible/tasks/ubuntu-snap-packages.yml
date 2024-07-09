@@ -1,8 +1,5 @@
 ---
-# @file ubuntu-snap-packages.yml
-# @brief Install some span packages.
-#
-# @description The task installs several snap packages (some of them in ``classic`` mode).
+## The task installs several snap packages (some of them in `classic` mode).
 
 - name: Install -> Snap packages
   community.general.snap:

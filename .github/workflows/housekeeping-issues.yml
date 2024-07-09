@@ -1,13 +1,9 @@
 ---
-# @file housekeeping-issues.yml
-# @brief Github Actions workflow handles the automatic assignment of newly created issues and pull requests.
-#
-# @description The workflow, that is called this way, handles the automatic assignment of newly
-# created issues and pull requests to specific projects and users. By leveraging this workflow,
-# tasks and contributions are efficiently tracked and assigned, ensuring clear ownership and
-# streamlined collaboration within your development projects. It is designed to automatically
-# trigger whenever new issues or Pull Requests are created.
-
+## The workflow, that is called this way, handles the automatic assignment of newly
+## created issues and pull requests to specific projects and users. By leveraging this workflow,
+## tasks and contributions are efficiently tracked and assigned, ensuring clear ownership and
+## streamlined collaboration within your development projects. It is designed to automatically
+## trigger whenever new issues or Pull Requests are created.
 
 name: "Housekeeping: Issues + PRs"
 

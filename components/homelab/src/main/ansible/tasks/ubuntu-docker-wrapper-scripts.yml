@@ -1,11 +1,8 @@
 ---
-# @file ubuntu-docker-wrapper-scripts.yml
-# @brief Install Docker wrapper scripts.
-#
-# @description The task installs all Docker wrapper scripts. These scripts act
-# like a normal package installation (because a symlink from ``/usr/bin`` is
-# pointing to the respective bash script) but instead delegate the command to
-# Docker Container that takes the place of a normal package installation.
+## The task installs all Docker wrapper scripts. These scripts act
+## like a normal package installation (because a symlink from `/usr/bin` is
+## pointing to the respective bash script) but instead delegate the command to
+## Docker Container that takes the place of a normal package installation.
 
 - name: Config -> Create directories for docker wrappers
   ansible.builtin.file:

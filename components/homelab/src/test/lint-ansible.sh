@@ -14,9 +14,9 @@
 # === Script Example
 #
 # [source, bash]
-# ```
+# ``
 # ./lint-ansible.sh
-# ```
+# ``
 #
 # == Prerequisites
 #

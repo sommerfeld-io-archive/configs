@@ -1,22 +1,17 @@
 #!/bin/bash
-# @file cleanup-filesystem.sh
-# @brief Script to delete undesired files and folders from machine. Script is triggered from cron.
-#
-# @description Sometimes applications leave traces in the form of files and folders. Virtual machines
-# running  Windows often leave ``System Volume Information`` folders behind and IntelliJ leaves some
-# logfiles behind (among other files and folders). This script deletes these files and folders.
-# The script is configured as a cronjob and runs regularly.
-#
-# === Script Arguments
-#
-# The script does not accept any parameters.
-#
-# === Script Example
-#
-# [source, bash]
-# ```
-# ./cleanup-filesystem.sh
-# ```
+## Sometimes applications leave traces in the form of files and folders. Virtual machines
+## running  Windows often leave `System Volume Information` folders behind and IntelliJ leaves some
+## logfiles behind (among other files and folders). This script deletes these files and folders.
+## The script is configured as a cronjob and runs regularly.
+##
+## === Script Arguments
+## The script does not accept any parameters.
+##
+## === Script Example
+## [source, bash]
+## ....
+## ./cleanup-filesystem.sh
+## ....
 
 
 set -o errexit

@@ -1,8 +1,5 @@
 ---
-# @file common-git.yml
-# @brief Configure Git.
-#
-# @description The task configures git with the ``.gitconfig`` from this repo.
+## The task configures git with the `.gitconfig` from this repo.
 
 - name: Config -> Copy git configuration
   ansible.builtin.copy:

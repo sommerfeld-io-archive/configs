@@ -1,8 +1,5 @@
 ---
-# @file global.yml
-# @brief Global variables for all playbooks.
-#
-# @description List of global variables for all tasks and playbooks.
+## List of global variables for all tasks and playbooks.
 
 file_permissions: u=rw,g=r,o=r
 

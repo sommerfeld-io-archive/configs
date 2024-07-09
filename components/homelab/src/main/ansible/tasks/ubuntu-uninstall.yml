@@ -1,8 +1,5 @@
 ---
-# @file ubuntu-uninstall.yml
-# @brief Purge some pre-installed packages.
-#
-# @description The task uninstalls some pre-installed packages.
+## The task uninstalls some pre-installed packages.
 
 - name: Uninstall -> Some pre-installed packages
   ansible.builtin.apt:
