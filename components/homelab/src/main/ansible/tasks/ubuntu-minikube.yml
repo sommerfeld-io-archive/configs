@@ -44,7 +44,7 @@
     state: present
   with_items:
     - alias kubectl="minikube kubectl --"
-    - alias minikube-cli="/home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/configs/components/homelab/minikube-cli.sh"
+    - alias minikube-cli="(cd /home/{{ ansible_user }}/work/repos/sebastian-sommerfeld-io/configs/components/homelab && ./minikube-cli.sh)"
 
 - name: Minikube Setup -> Verify installation
   ansible.builtin.command: minikube version
