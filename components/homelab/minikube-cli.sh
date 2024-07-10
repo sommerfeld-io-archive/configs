@@ -103,6 +103,7 @@ readonly OPTION_PODS="list-pods"
 readonly OPTION_SERVICES="list-services"
 readonly OPTION_STATUS="status"
 readonly OPTION_HELP="help"
+readonly OPTION_DESTROY="destroy"
 
 
 ## Utility function to startup minikube.
@@ -171,6 +172,16 @@ function help() {
 }
 
 
+## Utility function to delete the minkube instance and clean everything up.
+function destroy() {
+  echo -e "$LOG_INFO minikube destroy"
+  echo -e "$LOG_WARN ----------------------------------------------------------------------------------------------"
+  echo -e "$LOG_WARN The minikube instance will be deleted."
+  echo -e "$LOG_WARN ----------------------------------------------------------------------------------------------"
+  minikube delete
+}
+
+
 echo -e "$LOG_INFO Select the action"
 select s in "$OPTION_START" \
             "$OPTION_STOP" \
@@ -178,7 +189,8 @@ select s in "$OPTION_START" \
             "$OPTION_PODS" \
             "$OPTION_SERVICES" \
             "$OPTION_STATUS" \
-            "$OPTION_HELP"
+            "$OPTION_HELP" \
+            "$OPTION_DESTROY"
   do
     case "$s" in
     "$OPTION_START" )
@@ -201,6 +213,9 @@ select s in "$OPTION_START" \
         break;;
     "$OPTION_HELP" )
         help
+        break;;
+    "$OPTION_DESTROY" )
+        destroy
         break;;
     esac
 done
