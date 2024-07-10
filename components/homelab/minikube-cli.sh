@@ -1,46 +1,45 @@
 #!/bin/bash
-## This script controls the local minikube instance. This setup includes Minikube and
-## Docker Compose stacks. This script exclusively manages Minikube and Helm, while a
-## xref:AUTO-GENERATED:components/homelab/docker-stacks-cli-sh.adoc[separate script] handles the
-## Docker Compose stacks. Minikube will not fail if the Docker Compose stacks are not running.
+## This script controls the local minikube instance. This setup includes Minikube and a Docker
+## Compose stack. This script exclusively manages Minikube. Helm and all related Compose stacks.
+## Minikube will not fail if the Docker Compose stacks are not running.
 ##
 ## [ditaa, ditaa-image, svg]
 ## ....
-## +------------------------------------------------------------+
-## |  Workstation                                               |
-## |                                                            |
-## |    +--------------------+        +--------------------+    |          +----------------------+
-## |    | DockerCompose: ops |        |  minikube          |    |          |  DockerHub           |
-## |    |                    |        |                    |    |          |                      |
-## |    |  +--------------+  |        |  +--------------+  |    |   Helm   |  +----------------+  |
-## |    |  | Portainer    |  |        |  | krokidile    |<--------------------+  krokidile     |  |
-## |    |  +--------------+  |        |  +--------------+  |    |          |  +----------------+  |
-## |    |                    |        |                    |    |          |                      |
-## |    |  +--------------+  |        |  +--------------+  |    |   Helm   |  +----------------+  |
-## |    |  | cAdvisor     +------+    |  | ... app ...  |<--------------------+  ... app ...   |  |
-## |    |  +--------------+  |   |    |  +--------------+  |    |          |  +----------------+  |
-## |    |                    |   |    |                    |    |          +----------------------+
-## |    |  +--------------+  |   |    |                    |    |
-## |    |  | NodeExporter +------+    |   +----------------+    |
-## |    |  +--------------+  |   |    |   | metrics server |    |
-## |    +--------------------+   |    +---+---+------------+    |
-## |                             |            |                 |
-## |                             +------------+                 |
-## |                             |                              |
-## |    +--------------------+   |                              |
-## |    | DockerCompose      |   |                              |
-## |    |                    |   |                              |
-## |    |  +--------------+  |   :                              |
-## |    |  | Prometheus   |<-----+                              |
-## |    |  +--+-----------+  |                                  |
-## |    |     |              |                                  |
-## |    |     v              |                                  |
-## |    |  +--------------+  |                                  |
-## |    |  | Grafana      |  |                                  |
-## |    |  +--------------+  |                                  |
-## |    +--------------------+                                  |
-## |                                                            |
-# +------------------------------------------------------------+
+## +----------------------------------+
+## |  Workstation                     |
+## |                                  |
+## |    +------------------------+    |          +------------------------+
+## |    |  minikube              |    |          |  DockerHub             |
+## |    |                        |    |          |                        |
+## |    |    +--------------+    |    |   Helm   |    +--------------+    |
+## |    |    | Portainer    |<------------------------+ Portainer    |    |
+## |    |    +--------------+    |    |          |    +--------------+    |
+## |    |                        |    |          |                        |
+## |    |    +--------------+    |    |   Helm   |    +--------------+    |
+## |    |    | ArgoCD       |<------------------------+ ArgoCD       |    |
+## |    |    +--------------+    |    |          |    +--------------+    |
+## |    |                        |    |          +------------------------+
+## |    |       +----------------+    |
+## |    |       |      dashboard |    |
+## |    |       +----------------+    |
+## |    |       | metrics server |    |
+## |    +-------+---------+------+    |
+## |                      :           |
+## |                      |           |
+## |    +-----------------|------+    |
+## |    | DockerCompose   |      |    |
+## |    |                 v      |    |
+## |    |    +--------------+    |    |
+## |    |    | Prometheus   |    |    |
+## |    |    +--+-----------+    |    |
+## |    |       |                |    |
+## |    |       v                |    |
+## |    |    +--------------+    |    |
+## |    |    | Grafana      |    |    |
+## |    |    +--------------+    |    |
+## |    +------------------------+    |
+## |                                  |
+## +----------------------------------+
 ## ....
 ##
 ## === About minikube and Helm
@@ -62,9 +61,7 @@
 ## === Usage
 ## This script allows to start, stop and expose the dashboard (among others). Common commands are
 ## available as options. The script is interactive and will prompt the user to select an action.
-## More specific actions need to be executed directly with minikube.
-##
-## The script does not accept any parameters.
+## More specific actions need to be executed directly with `minikube`, `kubectl` or `helm`.
 ##
 ## [source, bash]
 ## ....
@@ -75,10 +72,13 @@
 ## minikube-cli
 ## ....
 ##
-## Installing and uninstalling apps is done with Helm. Can handle some Helm scripts, but not all.
-## All supported Helm charts can be selected from the menu.
+## The script does not accept any parameters.
 ##
-## include::AUTO-GENERATED:partial$/admin-charts/portainer.adoc[]
+## ==== Deployments
+## Installing and uninstalling apps is done with `helm` or ArgoCD. This script can handle some
+## `helm` charts, but not all. All supported Helm charts can be selected from the menu.
+##
+## include::AUTO-GENERATED:partial$/admin-chartss/portainer.adoc[]
 ##
 ## ==== Increasing the NodePort range
 ## By default, minikube only exposes ports `30000-32767`. If this does not work for you, you can
@@ -101,7 +101,7 @@ set -o nounset
 # set -o xtrace
 
 
-readonly CHART_ADMIN="admin-chart"
+readonly CHART_ADMIN="admin-charts"
 
 readonly OPTION_START="start"
 readonly OPTION_STOP="stop"
@@ -199,7 +199,7 @@ function deploy() {
   (
     cd "src/main/minikube/$1" || exit
 
-    echo -e "$LOG_INFO Deploy ${P}$2${D} from Helm chart ${P}$1${D}"
+    echo -e "$LOG_INFO Deploy ${P}$1${D}/${P}$2${D} with helm"
     helm install "$2" "./$2"
   )
 }

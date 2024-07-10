@@ -1,0 +1,21 @@
+==== Portainer
+Portainer is deployed into Minikube to offer an additional method for inspecting and monitoring the Minikube cluster, complementing the existing Dashboard plugin.
+
+To deploy Portainer in the Minikube cluster, you can select the respective action in the `minikube-cli` or deploy directly with `helm`.
+
+[source, bash]
+----
+cd src/main/minikube/admin-charts
+
+helm install portainer ./portainer
+helm uninstall portainer
+----
+
+[CAUTION]
+====
+With this Portainer setup, a service account with `cluster-admin` permissions is used to enable Portainer to interact with the Kubernetes API. This high-level permission is necessary because it allows Portainer to query detailed information about the cluster, manage resources, and perform administrative tasks.
+
+This could be a security risk, so it is recommended to use Portainer in a controlled environment. This minikube setup is intended for development and testing purposes only. It is not recommended for production use.
+====
+
+For more information, see the Portainer Helm Chart in the link:https://github.com/portainer/k8s[`portainer / k8s` GitHub repository].
