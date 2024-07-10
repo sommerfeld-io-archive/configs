@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.metadata.name }}-service
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    {{- include "portainer.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - name: http
+      protocol: TCP
+      port: {{ .Values.service.httpPort }}
+      targetPort: {{ .Values.service.httpPort }}
+      nodePort: {{ .Values.service.httpNodePort }}
+  selector:
+    {{- include "portainer.selectorLabels" . | nindent 4 }}

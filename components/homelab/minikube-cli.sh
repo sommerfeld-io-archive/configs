@@ -75,9 +75,8 @@
 ## minikube-cli
 ## ....
 ##
-## Installing and uninstalling apps is done with Helm. The script does not handle Helm charts.
-## Installing apps must be done manually. The following example shows how to install and uninstall
-## the krokidile app.
+## Installing and uninstalling apps is done with Helm. Can handle some Helm scripts, but not all.
+## All supported Helm charts can be selected from the menu.
 ##
 ## include::AUTO-GENERATED:partial$/admin-charts/portainer.adoc[]
 ##

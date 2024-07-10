@@ -1,0 +1,42 @@
+---
+replicaCount: 1
+
+image:
+  repository: portainer/portainer-ce
+  tag: 2.20.3-alpine
+  pullPolicy: IfNotPresent
+
+metadata:
+  name: portainer
+
+service:
+  type: NodePort
+  httpPort: 9000
+  httpNodePort: 30990
+
+serviceAccount:
+  name: portainer-sa-clusteradmin
+  annotations: {}
+
+namespace:
+  create: true
+  name: admin
+
+ingress:
+  enabled: false
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+persistence:
+  enabled: true
+  size: "2Gi"
+  annotations: {}
+  storageClass:
+  existingClaim:
+  # see persistent-volume-claim.yml for some defaults and some more possible (here unset) values

@@ -141,8 +141,7 @@ jobs:
         run: |
           readonly PARTIAL_DIR="docs/modules/AUTO-GENERATED/partials/helm-charts"
           mkdir -p "$PARTIAL_DIR"
-          cp components/homelab/src/main/minikube/krokidile-chart/krokidile/README.adoc "$PARTIAL_DIR/krokidile.adoc"
-          cp components/homelab/src/main/minikube/source2adoc-chart/source2adoc-website/README.adoc "$PARTIAL_DIR/source2adoc-website.adoc"
+          cp components/homelab/src/main/minikube/admin-chart/portainer/README.adoc "$PARTIAL_DIR/portainer.adoc"
         shell: bash
       - name: Commit and push
         uses: EndBug/add-and-commit@v9.1.4

@@ -1,0 +1,49 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.metadata.name }}-depl
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    {{- include "portainer.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "portainer.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "portainer.selectorLabels" . | nindent 8 }}
+    spec:
+      volumes:
+        - name: portainer-passwords-volume
+          configMap:
+            name: {{ .Values.metadata.name }}-configmap
+      containers:
+        - name: {{ .Values.metadata.name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          # command: ["/portainer"]
+          args:
+            - "--admin-password-file=/tmp/portainer_passwords"
+          volumeMounts:
+          - name: portainer-passwords-volume
+            subPath: portainer_passwords
+            mountPath: "/tmp/portainer_passwords"
+          ports:
+            - containerPort: {{ .Values.service.httpPort }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

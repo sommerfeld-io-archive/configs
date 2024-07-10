@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.metadata.name }}-configmap
+  namespace: {{ .Values.namespace.name }}
+data:
+  portainer_passwords: |
+    7gey2brcpvwt7d4m
