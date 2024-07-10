@@ -16,6 +16,7 @@ spec:
       labels:
         {{- include "portainer.selectorLabels" . | nindent 8 }}
     spec:
+      serviceAccountName: {{ .Values.serviceAccount.name }}
       volumes:
         - name: portainer-passwords-volume
           configMap:
