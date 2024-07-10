@@ -68,22 +68,28 @@
 ##
 ## [source, bash]
 ## ....
+## # Start the script from its location in the filesystem
 ## ./minikube-cli.sh
+##
+## # Start the script through a bash alias (written by ansible playbook)
+## minikube-cli
 ## ....
 ##
 ## Installing and uninstalling apps is done with Helm. The script does not handle Helm charts.
 ## Installing apps must be done manually. The following example shows how to install and uninstall
 ## the krokidile app.
 ##
-## include::AUTO-GENERATED:partial$/helm-charts/krokidile.adoc[]
+## include::AUTO-GENERATED:partial$/admin-charts/portainer.adoc[]
 ##
-## include::AUTO-GENERATED:partial$/helm-charts/source2adoc-website.adoc[]
+## ==== Increasing the NodePort range
+## By default, minikube only exposes ports `30000-32767`. If this does not work for you, you can
+## adjust the range by using: `minikube start --extra-config=apiserver.service-node-port-range=1024-65535`
 ##
 ## == Prerequisites
 ## A local Docker and a local minikube installation is required. To deploy applications to the
 ## cluster, Helm is also required.
 ##
-## Keep in mind, that the Ansible playbook create a `kubectl` alias which points to
+## Keep in mind, that the Ansible playbook creates a `kubectl` alias which points to
 ## `minikube kubectl` so this might conflict with other `kubectl` installations.
 ##
 ## == See
@@ -96,14 +102,18 @@ set -o nounset
 # set -o xtrace
 
 
+readonly CHART_ADMIN="admin-chart"
+
 readonly OPTION_START="start"
 readonly OPTION_STOP="stop"
-readonly OPTION_DASHBOARD="dashboard"
+readonly OPTION_DASHBOARD="open-dashboard"
 readonly OPTION_PODS="list-pods"
 readonly OPTION_SERVICES="list-services"
 readonly OPTION_STATUS="status"
 readonly OPTION_HELP="help"
 readonly OPTION_DESTROY="destroy"
+readonly OPTION_DEPLOY_ADMIN="deploy-$CHART_ADMIN"
+readonly OPTION_UNDEPLOY_ADMIN="undeploy-$CHART_ADMIN"
 
 
 ## Utility function to startup minikube.
@@ -182,10 +192,37 @@ function destroy() {
 }
 
 
+## Utility function to deploy a Helm chart.
+##
+## @arg $1 string The folder name containing the Helm charts (based in `components/homelab/src/main/minikube`).
+## @arg $2 string The sub folder name containing the actual deployment configuration.
+function deploy() {
+  (
+    cd "src/main/minikube/$1" || exit
+
+    echo -e "$LOG_INFO Deploy ${P}$2${D} from Helm chart ${P}$1${D}"
+    helm install "$2" "./$2"
+  )
+}
+
+
+## Utility function to undeploy a Helm chart.
+##
+## @arg $1 string The sub folder name (= the release name) of the actual deployment configuration.
+function undeploy() {
+  (
+    echo -e "$LOG_INFO Undeploy ${P}$1${D}"
+    helm uninstall "$1"
+  )
+}
+
+
 echo -e "$LOG_INFO Select the action"
 select s in "$OPTION_START" \
             "$OPTION_STOP" \
             "$OPTION_DASHBOARD" \
+            "$OPTION_DEPLOY_ADMIN" \
+            "$OPTION_UNDEPLOY_ADMIN" \
             "$OPTION_PODS" \
             "$OPTION_SERVICES" \
             "$OPTION_STATUS" \
@@ -201,6 +238,12 @@ select s in "$OPTION_START" \
         break;;
     "$OPTION_DASHBOARD" )
         dashboard
+        break;;
+    "$OPTION_DEPLOY_ADMIN" )
+        deploy "$CHART_ADMIN" portainer
+        break;;
+    "$OPTION_UNDEPLOY_ADMIN" )
+        undeploy portainer
         break;;
     "$OPTION_PODS" )
         pods
