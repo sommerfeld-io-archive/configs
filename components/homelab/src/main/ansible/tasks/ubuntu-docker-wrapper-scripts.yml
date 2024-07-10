@@ -43,7 +43,7 @@
     - shellcheck
     - yamllint
 
-- name: Config -> Create symlinks to docker wrapper scipt 'node-npm.sh' in /usr/bin
+- name: Config -> Create symlinks to docker wrapper script 'node-npm.sh' in /usr/bin
   ansible.builtin.file:
     src: "/opt/docker-wrappers/node-npm.sh"
     dest: "/usr/bin/{{ item }}"
