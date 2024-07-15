@@ -167,7 +167,7 @@ jobs:
         run: cat docs/antora.yml
         shell: bash
       - name: Install Node.js
-        uses: actions/setup-node@v4.0.2
+        uses: actions/setup-node@v4.0.3
         with:
           node-version: 22.2.0
       - name: semantic-release - Install
