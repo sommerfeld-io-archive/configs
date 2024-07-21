@@ -19,10 +19,9 @@ conky.config = {
 	cpu_avg_samples = 2,
 	override_utf8_locale = true,
 
-	xinerama_head = 1,
-
+	xinerama_head = 2,
 	alignment = 'bottom_right',
-	gap_x = 25,
+	gap_x = 400,
 	gap_y = 25,
 
 	draw_shades = false,
@@ -45,5 +44,6 @@ conky.config = {
 
 conky.text = [[
 ${template0}${color #9f907d}DOCKER CONTAINERS ${color slate grey}${hr 2}${font}
-${template1}${exec docker ps --format="table {{.Image}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"}
+#${template1}${exec docker ps --format="table {{.Names}}\t{{printf \"%.48s\" .Image}}\t{{.Ports}}\t{{.Status}}"}
+${template1}${exec docker ps --format="table {{.Names}}\t{{printf \"%.48s\" .Image}}\t{{.Status}}"}
 ]];

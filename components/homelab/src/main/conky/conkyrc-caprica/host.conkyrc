@@ -21,9 +21,9 @@ conky.config = {
 
 	xinerama_head = 2,
 
-	alignment = 'top_right',
+	alignment = 'bottom_right',
 	gap_x = 25,
-	gap_y = 45,
+	gap_y = 25,
 
 	draw_shades = false,
 	draw_outline = false,
@@ -87,5 +87,4 @@ ${template1}Temperature: ${alignr}${acpitemp}°C
 ${template0}${color #9f907d}MEMORY USAGE ${color slate grey}${hr 2}${font}
 ${template1}RAM ${alignr}$mem/$memmax $memperc% ${membar}
 ${template1}Swap ${alignr}$swap/$swapmax $swapperc% ${swapbar}
-
 ]];
