@@ -3,5 +3,8 @@
     "cSpell.words": [
         "homelab",
         "pihole"
-    ]
+    ],
+    "files.associations": {
+        "*.conkyrc": "lua"
+    }
 }
