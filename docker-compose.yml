@@ -32,3 +32,12 @@ services:
     working_dir: /workspaces/configs
     command: .
     tty: true
+
+  lint-ansible:
+    container_name: ${COMPOSE_PROJECT_NAME}-lint-ansible
+    image: cytopia/ansible-lint:latest
+    volumes:
+      - .:/workspaces/configs
+    working_dir: /workspaces/configs
+    command: components/homelab/src/main/ansible/playbooks -c .ansible-lint.yml
+    tty: true

@@ -9,7 +9,7 @@
 ## It ensures that these machines are equipped with all the necessary software,
 ## configurations, and development tools required for efficient work.
 ##
-## * The playbook includes configurations for setting up user accounts, defining user permissions, and configuring user-specific settings like `.bashrc` settings and SSH keys.
+## * The playbook includes configurations for setting up user accounts, defining userpermissions, and configuring user-specific settings like `.bashrc` settings and SSH keys.
 ## * The playbook installs all the needed software required for daily business and development tasks.
 ## * The playbook installs a comprehensive set of development tools necessary for software development.
 ##

@@ -15,3 +15,9 @@
 - name: Ansible -> Print version
   ansible.builtin.debug:
     msg: "{{ ansible_version_output.stdout }}"
+
+- name: Ansible -> Install ansible-lint
+  ansible.builtin.pip:
+    name: ansible-lint
+    state: latest
+    break_system_packages: true

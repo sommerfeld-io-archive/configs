@@ -60,11 +60,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: ansible-lint
-        run: |
-          (
-            cd components/homelab/src/test || exit
-            ./lint-ansible.sh
-          )
+        run: docker compose up lint-ansible --exit-code-from lint-ansible
         shell: bash
 
   lint-helm:
