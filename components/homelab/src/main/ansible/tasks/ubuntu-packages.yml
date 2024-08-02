@@ -40,3 +40,17 @@
       - read-edid
     state: latest
     update_cache: true
+
+- name: Install -> Snap packages
+  community.general.snap:
+    name:
+      - postman
+      - spotify
+    state: present
+
+- name: Install -> Snap packages (classic)
+  community.general.snap:
+    name:
+      - code # vscode
+    state: present
+    classic: true

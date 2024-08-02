@@ -119,6 +119,13 @@ control 'packages-01' do
         it { should be_executable }
     end
 
+    describe file('/snap/bin/spotify') do
+        it { should exist }
+        it { should be_file }
+        it { should_not be_directory }
+        it { should be_executable }
+    end
+
     describe package('hugo') do
         it { should be_installed }
     end

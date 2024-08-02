@@ -48,7 +48,6 @@
     - ansible.builtin.import_tasks: ../tasks/common-ssh.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-ansible.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-sublime.yml
-    - ansible.builtin.import_tasks: ../tasks/ubuntu-snap-packages.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-github-cli.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-virtualization.yml
     - ansible.builtin.import_tasks: ../tasks/ubuntu-docker.yml
