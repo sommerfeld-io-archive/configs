@@ -20,12 +20,16 @@ Caprica is my primary workstation for all my development tasks and daily to-dos.
 .. `caprica` via `ssh sebastian@caprica.fritz.box`
 .. `kobol` via `ssh sebastian@kobol.fritz.box`
 
-=== Configuration and package installation
-. Install machine using the Ansible configs from this repo (`xref:AUTO-GENERATED:bash-docs/components/homelab/src/main/ansible-cli-sh.adoc[components/homelab/src/main/ansible-cli.sh]`).
-. Allow caprica to work with github. Use public key `id_rsa.pub`, NOT the pivate key!
-
 === Install SSH Server
 Setup openssh-server using `curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/configs/main/components/homelab/src/main/bootstrap/ssh-server.sh | bash -`
+
+=== Configuration and package installation
+. Install machine using the Ansible configs from this repo (`xref:AUTO-GENERATED:bash-docs/components/homelab/src/main/ansible-cli-sh.adoc[components/homelab/src/main/ansible-cli.sh]`).
+. Allow caprica to work with github. Use public key `id_rsa.pub`, NOT the private key!
+
+=== Manual Follow-Up todos
+. Install GitHub CLI extensions
+.. `gh extension install seachicken/gh-poi`
 
 // == Start Services
 include::ROOT:partial$homelab/workstations/common/start-services.adoc[]
