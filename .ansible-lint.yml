@@ -6,18 +6,19 @@ var_naming_pattern: "^[a-z_][a-z0-9_]*$"
 use_default_rules: true
 
 enable_list:
-  - args
   - no-log-password # opt-in
   - no-same-owner # opt-in
   - yaml
 
 warn_list:
+  - args
   - command-instead-of-module
   - empty-string-compare
   - latest[git]
   - name[missing]
   - no-changed-when
   - package-latest
+
 
 skip_list:
   - yaml[line-length]
